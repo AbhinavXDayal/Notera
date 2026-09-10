@@ -120,8 +120,12 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             </h4>
 
             <div className="space-y-1.5">
-              <p className="text-xs font-mono text-primary font-semibold uppercase">QA</p>
-              <p className="text-xs text-secondary font-light">Start rebuilding mathematical fundamentals:</p>
+              <p className="text-xs font-mono text-primary font-semibold uppercase">
+                QA
+              </p>
+              <p className="text-xs text-secondary font-light">
+                Start rebuilding mathematical fundamentals:
+              </p>
               <div className="text-secondary text-sm space-y-0.5 pl-2">
                 <p>• Arithmetic basics</p>
                 <p>• Algebra basics</p>
@@ -132,7 +136,9 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             </div>
 
             <div className="space-y-1.5">
-              <p className="text-xs font-mono text-primary font-semibold uppercase">VARC</p>
+              <p className="text-xs font-mono text-primary font-semibold uppercase">
+                VARC
+              </p>
               <div className="text-secondary text-sm space-y-0.5 pl-2">
                 <p>• Build a daily reading habit</p>
                 <p>• Learn how Reading Comprehension works</p>
@@ -142,8 +148,12 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             </div>
 
             <div className="space-y-1.5">
-              <p className="text-xs font-mono text-primary font-semibold uppercase">DILR</p>
-              <p className="text-xs text-secondary font-light">Start immediately — don't postpone it</p>
+              <p className="text-xs font-mono text-primary font-semibold uppercase">
+                DILR
+              </p>
+              <p className="text-xs text-secondary font-light">
+                Start immediately — don't postpone it
+              </p>
               <div className="text-secondary text-sm space-y-0.5 pl-2">
                 <p>• Basic DI</p>
                 <p>• Basic logical reasoning</p>
@@ -154,7 +164,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             </div>
 
             <p className="text-[11px] text-secondary/80 italic pt-1">
-              Reddit preparation plans repeatedly emphasize starting DILR early rather than leaving it until after completing Quant.
+              Reddit preparation plans repeatedly emphasize starting DILR early
+              rather than leaving it until after completing Quant.
             </p>
           </div>
 
@@ -166,7 +177,7 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
               03 — Complete the Core Syllabus
             </h4>
             <pre className="text-xs font-mono text-secondary bg-surface/70 border border-outline-variant p-3.5 rounded-lg overflow-x-auto leading-relaxed select-text">
-{`CAT CORE
+              {`CAT CORE
 ├── QA
 │   ├── Arithmetic
 │   ├── Algebra
@@ -186,7 +197,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     └── Set Selection`}
             </pre>
             <p className="text-xs text-primary font-medium pt-1">
-              Goal: Understand every major area before entering intensive mock preparation
+              Goal: Understand every major area before entering intensive mock
+              preparation
             </p>
           </div>
 
@@ -204,28 +216,39 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             </div>
 
             <div className="space-y-1.5">
-              <p className="text-xs font-mono text-primary font-semibold uppercase">QA</p>
+              <p className="text-xs font-mono text-primary font-semibold uppercase">
+                QA
+              </p>
               <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
-                Concept ↓ Basic Questions ↓ Intermediate Questions ↓ CAT-Level Questions ↓ Mixed Practice
+                Concept ↓ Basic Questions ↓ Intermediate Questions ↓ CAT-Level
+                Questions ↓ Mixed Practice
               </p>
             </div>
 
             <div className="space-y-1.5">
-              <p className="text-xs font-mono text-primary font-semibold uppercase">VARC</p>
+              <p className="text-xs font-mono text-primary font-semibold uppercase">
+                VARC
+              </p>
               <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
-                Daily Reading ↓ RC Practice ↓ Question Analysis ↓ Accuracy Improvement
+                Daily Reading ↓ RC Practice ↓ Question Analysis ↓ Accuracy
+                Improvement
               </p>
             </div>
 
             <div className="space-y-1.5">
-              <p className="text-xs font-mono text-primary font-semibold uppercase">DILR</p>
+              <p className="text-xs font-mono text-primary font-semibold uppercase">
+                DILR
+              </p>
               <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
-                Basic Sets ↓ Different Set Types ↓ Mixed Sets ↓ Timed Sets ↓ Set Selection Strategy
+                Basic Sets ↓ Different Set Types ↓ Mixed Sets ↓ Timed Sets ↓ Set
+                Selection Strategy
               </p>
             </div>
 
             <p className="text-[11px] text-secondary/80 italic pt-1">
-              One detailed Reddit roadmap recommends consistent DILR volume and repeated practice rather than treating it as a theory-heavy subject.
+              One detailed Reddit roadmap recommends consistent DILR volume and
+              repeated practice rather than treating it as a theory-heavy
+              subject.
             </p>
           </div>
 
@@ -243,7 +266,9 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             </div>
 
             <div className="space-y-1">
-              <p className="text-xs font-mono text-primary font-semibold uppercase">QA</p>
+              <p className="text-xs font-mono text-primary font-semibold uppercase">
+                QA
+              </p>
               <div className="text-secondary text-sm space-y-0.5 pl-2">
                 <p>• Mixed-topic practice</p>
                 <p>• Speed vs accuracy</p>
@@ -252,7 +277,9 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             </div>
 
             <div className="space-y-1">
-              <p className="text-xs font-mono text-primary font-semibold uppercase">VARC</p>
+              <p className="text-xs font-mono text-primary font-semibold uppercase">
+                VARC
+              </p>
               <div className="text-secondary text-sm space-y-0.5 pl-2">
                 <p>• RC accuracy</p>
                 <p>• Reading strategy</p>
@@ -261,7 +288,9 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             </div>
 
             <div className="space-y-1">
-              <p className="text-xs font-mono text-primary font-semibold uppercase">DILR</p>
+              <p className="text-xs font-mono text-primary font-semibold uppercase">
+                DILR
+              </p>
               <div className="text-secondary text-sm space-y-0.5 pl-2">
                 <p>• Choosing the right sets</p>
                 <p>• Leaving bad sets early</p>
@@ -270,7 +299,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             </div>
 
             <p className="text-xs text-primary font-medium pt-1">
-              Goal: Stop thinking only about solving questions and start thinking about attempting CAT strategically
+              Goal: Stop thinking only about solving questions and start
+              thinking about attempting CAT strategically
             </p>
           </div>
 
@@ -288,7 +318,9 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
               Start mocks before you feel “perfectly ready.”
             </p>
             <p className="text-xs text-secondary leading-relaxed font-light">
-              The preparation discussions consistently emphasize that the mock phase is where aspirants learn their actual strengths, weaknesses, speed, stamina and exam strategy.
+              The preparation discussions consistently emphasize that the mock
+              phase is where aspirants learn their actual strengths, weaknesses,
+              speed, stamina and exam strategy.
             </p>
           </div>
 
@@ -302,9 +334,13 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <p className="text-xs text-secondary leading-relaxed font-light">
               This should be one of the biggest parts of your roadmap.
             </p>
-            <p className="text-xs font-mono text-secondary">After every mock:</p>
+            <p className="text-xs font-mono text-secondary">
+              After every mock:
+            </p>
             <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-3 rounded-lg leading-relaxed">
-              MOCK ↓ Analyse Every Section ↓ Why was this wrong? ↓ Why did I skip this? ↓ Was my selection correct? ↓ Concept / Speed / Accuracy issue? ↓ Create Action Plan ↓ Next Mock
+              MOCK ↓ Analyse Every Section ↓ Why was this wrong? ↓ Why did I
+              skip this? ↓ Was my selection correct? ↓ Concept / Speed /
+              Accuracy issue? ↓ Create Action Plan ↓ Next Mock
             </div>
             <p className="text-xs font-mono text-secondary pt-1">Track:</p>
             <div className="text-secondary text-sm space-y-0.5 pl-2">
@@ -330,7 +366,9 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <p className="text-xs text-secondary leading-relaxed font-light">
               Move increasingly toward actual CAT-level material.
             </p>
-            <p className="text-xs font-mono text-secondary">Use PYQs to understand:</p>
+            <p className="text-xs font-mono text-secondary">
+              Use PYQs to understand:
+            </p>
             <div className="text-secondary text-sm space-y-0.5 pl-2">
               <p>• Real CAT difficulty</p>
               <p>• Question patterns</p>
@@ -339,7 +377,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
               <p>• Question selection</p>
             </div>
             <p className="text-[11px] text-secondary/80 italic pt-1">
-              Reddit roadmaps particularly stress solving and revisiting previous CAT papers during the later preparation stages.
+              Reddit roadmaps particularly stress solving and revisiting
+              previous CAT papers during the later preparation stages.
             </p>
           </div>
 
@@ -354,7 +393,7 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
               By now, every aspirant should have their own strategy.
             </p>
             <pre className="text-xs font-mono text-secondary bg-surface/70 border border-outline-variant p-3.5 rounded-lg overflow-x-auto leading-relaxed select-text">
-{`YOUR CAT STRATEGY
+              {`YOUR CAT STRATEGY
 QA       → Which questions do I attempt?
 VARC     → What is my reading approach?
 DILR     → How do I select sets?
@@ -375,10 +414,24 @@ ACCURACY → What causes my mistakes?`}
             </h4>
             <p className="text-xs font-mono text-secondary">Create:</p>
             <div className="text-secondary text-sm space-y-1.5 pl-2">
-              <p><span className="text-primary font-medium">Formula Sheet:</span> QA formulas &amp; shortcuts</p>
-              <p><span className="text-primary font-medium">Mistake Book:</span> Repeated mistakes</p>
-              <p><span className="text-primary font-medium">DILR Archive:</span> Important sets to revisit</p>
-              <p><span className="text-primary font-medium">VARC Learning Notes:</span> Patterns in your errors</p>
+              <p>
+                <span className="text-primary font-medium">Formula Sheet:</span>{" "}
+                QA formulas &amp; shortcuts
+              </p>
+              <p>
+                <span className="text-primary font-medium">Mistake Book:</span>{" "}
+                Repeated mistakes
+              </p>
+              <p>
+                <span className="text-primary font-medium">DILR Archive:</span>{" "}
+                Important sets to revisit
+              </p>
+              <p>
+                <span className="text-primary font-medium">
+                  VARC Learning Notes:
+                </span>{" "}
+                Patterns in your errors
+              </p>
             </div>
             <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
               WEAKNESS ↓ IDENTIFY ↓ PRACTICE ↓ REVISIT ↓ MEASURE
@@ -392,7 +445,9 @@ ACCURACY → What causes my mistakes?`}
             <h4 className="font-display text-lg text-on-surface font-semibold">
               11 — Intensive Mock Phase
             </h4>
-            <p className="text-xs font-mono text-secondary">Now focus shifts from learning new things to:</p>
+            <p className="text-xs font-mono text-secondary">
+              Now focus shifts from learning new things to:
+            </p>
             <div className="text-secondary text-sm space-y-0.5 pl-2">
               <p>• Speed</p>
               <p>• Accuracy</p>
@@ -402,7 +457,9 @@ ACCURACY → What causes my mistakes?`}
               <p>• Consistency</p>
             </div>
             <p className="text-[11px] text-secondary/80 italic pt-1">
-              The later-stage Reddit guidance strongly focuses on flexibility, mock temperament, reducing errors and learning how to approach the paper rather than endlessly adding new material.
+              The later-stage Reddit guidance strongly focuses on flexibility,
+              mock temperament, reducing errors and learning how to approach the
+              paper rather than endlessly adding new material.
             </p>
           </div>
 
@@ -425,7 +482,9 @@ ACCURACY → What causes my mistakes?`}
               <p>• PYQs</p>
               <p>• Formula revision</p>
             </div>
-            <p className="text-xs font-mono text-secondary pt-1">Avoid suddenly collecting:</p>
+            <p className="text-xs font-mono text-secondary pt-1">
+              Avoid suddenly collecting:
+            </p>
             <div className="text-secondary text-sm space-y-0.5 pl-2">
               <p>• New courses</p>
               <p>• 50 PDFs</p>
@@ -433,7 +492,8 @@ ACCURACY → What causes my mistakes?`}
               <p>• Too many new resources</p>
             </div>
             <p className="text-[11px] text-secondary/80 italic pt-1">
-              A recurring community theme is to avoid resource hoarding and instead use a focused system consistently.
+              A recurring community theme is to avoid resource hoarding and
+              instead use a focused system consistently.
             </p>
           </div>
 
@@ -444,7 +504,9 @@ ACCURACY → What causes my mistakes?`}
             <h4 className="font-display text-lg text-on-surface font-semibold">
               13 — CAT Exam Strategy
             </h4>
-            <p className="text-xs font-mono text-secondary">Before exam day, know:</p>
+            <p className="text-xs font-mono text-secondary">
+              Before exam day, know:
+            </p>
             <div className="text-secondary text-sm space-y-0.5 pl-2">
               <p>• Your section strategy</p>
               <p>• How long you give a difficult question</p>
@@ -466,7 +528,8 @@ ACCURACY → What causes my mistakes?`}
               14 — Beyond CAT
             </h4>
             <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
-              CAT RESULT ↓ Shortlists ↓ WAT / GD / PI Preparation ↓ College Selection ↓ MBA Journey
+              CAT RESULT ↓ Shortlists ↓ WAT / GD / PI Preparation ↓ College
+              Selection ↓ MBA Journey
             </div>
           </div>
 
@@ -494,9 +557,14 @@ ACCURACY → What causes my mistakes?`}
                 { num: "13", text: "CAT Exam Day" },
                 { num: "14", text: "Interviews & MBA Journey" },
               ].map((item) => (
-                <div key={item.num} className="flex items-center space-x-2 py-1.5 px-2.5 rounded-lg bg-surface/60 border border-outline-variant/60">
+                <div
+                  key={item.num}
+                  className="flex items-center space-x-2 py-1.5 px-2.5 rounded-lg bg-surface/60 border border-outline-variant/60"
+                >
                   <span className="text-primary font-bold">{item.num}</span>
-                  <span className="text-on-surface font-sans text-xs">{item.text}</span>
+                  <span className="text-on-surface font-sans text-xs">
+                    {item.text}
+                  </span>
                 </div>
               ))}
             </div>
@@ -511,10 +579,12 @@ ACCURACY → What causes my mistakes?`}
               Notes
             </h3>
             <p className="text-secondary text-xs sm:text-sm leading-relaxed font-light">
-              Core first-principles theory, analytical frameworks, and rapid revision sheets for every CAT topic.
+              Core first-principles theory, analytical frameworks, and rapid
+              revision sheets for every CAT topic.
             </p>
             <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-3 rounded-lg leading-relaxed">
-              First Principles → Mental Models → Worked Benchmarks → Traps &amp; Pitfalls → Rapid Sheets
+              First Principles → Mental Models → Worked Benchmarks → Traps &amp;
+              Pitfalls → Rapid Sheets
             </div>
           </div>
 
@@ -822,24 +892,45 @@ ACCURACY → What causes my mistakes?`}
             <div className="space-y-2">
               <div className="p-3 rounded-xl bg-surface/60 border border-outline-variant/80 flex items-center justify-between">
                 <div>
-                  <p className="text-xs font-medium text-on-surface">QA Formula Sheet &amp; Shortcut Handbook</p>
-                  <p className="text-[11px] text-secondary font-light">All core arithmetic, algebra, geometry &amp; number formulas in one sheet.</p>
+                  <p className="text-xs font-medium text-on-surface">
+                    QA Formula Sheet &amp; Shortcut Handbook
+                  </p>
+                  <p className="text-[11px] text-secondary font-light">
+                    All core arithmetic, algebra, geometry &amp; number formulas
+                    in one sheet.
+                  </p>
                 </div>
-                <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-2 py-0.5 rounded font-semibold">CODEX</span>
+                <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-2 py-0.5 rounded font-semibold">
+                  CODEX
+                </span>
               </div>
               <div className="p-3 rounded-xl bg-surface/60 border border-outline-variant/80 flex items-center justify-between">
                 <div>
-                  <p className="text-xs font-medium text-on-surface">DILR Puzzle Archetype Archive</p>
-                  <p className="text-[11px] text-secondary font-light">50 benchmark puzzle templates covering every recurring CAT format.</p>
+                  <p className="text-xs font-medium text-on-surface">
+                    DILR Puzzle Archetype Archive
+                  </p>
+                  <p className="text-[11px] text-secondary font-light">
+                    50 benchmark puzzle templates covering every recurring CAT
+                    format.
+                  </p>
                 </div>
-                <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-2 py-0.5 rounded font-semibold">ARCHIVE</span>
+                <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-2 py-0.5 rounded font-semibold">
+                  ARCHIVE
+                </span>
               </div>
               <div className="p-3 rounded-xl bg-surface/60 border border-outline-variant/80 flex items-center justify-between">
                 <div>
-                  <p className="text-xs font-medium text-on-surface">VARC Cognitive Traps &amp; Error Taxonomy</p>
-                  <p className="text-[11px] text-secondary font-light">Systematic guide to avoiding extreme options, out-of-scope traps &amp; distortion.</p>
+                  <p className="text-xs font-medium text-on-surface">
+                    VARC Cognitive Traps &amp; Error Taxonomy
+                  </p>
+                  <p className="text-[11px] text-secondary font-light">
+                    Systematic guide to avoiding extreme options, out-of-scope
+                    traps &amp; distortion.
+                  </p>
                 </div>
-                <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-2 py-0.5 rounded font-semibold">GUIDE</span>
+                <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-2 py-0.5 rounded font-semibold">
+                  GUIDE
+                </span>
               </div>
             </div>
           </div>
