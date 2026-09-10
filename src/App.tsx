@@ -45,7 +45,9 @@ export function App() {
   // AUTOMATIC ONBOARDING PROMPT FOR NEW USERS
   useEffect(() => {
     try {
-      const hasDismissed = sessionStorage.getItem("notera_dismissed_welcome_onboarding");
+      const hasDismissed = sessionStorage.getItem(
+        "notera_dismissed_welcome_onboarding",
+      );
       if (!isOnboarded && !hasDismissed) {
         const timer = setTimeout(() => {
           setIsOnboardingOpen(true);
@@ -79,7 +81,7 @@ export function App() {
   };
 
   const handleSelectField = (field: FieldCategory) => {
-    if (field.available === false && field.id !== "CAT") {
+    if (field.available === false) {
       return;
     }
     if (field.id === "CAT") {
@@ -101,12 +103,9 @@ export function App() {
     if (fieldId === "CAT") {
       handleSelectField(FIELDS_DATA[0]);
     } else {
-      const found = FIELDS_DATA.find((f) => f.id === fieldId);
-      if (found && found.available !== false) {
-        setSelectedFieldId(fieldId);
-        setCurrentView("field");
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      setSelectedFieldId(fieldId);
+      setCurrentView("field");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -136,7 +135,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-surface text-on-surface font-body selection:bg-primary/20 selection:text-on-surface pb-16">
+    <div className="min-h-screen bg-surface text-on-surface font-body selection:bg-primary/20 selection:text-on-surface">
       {/* Persistent Editorial Navigation */}
       <Navbar
         currentView={currentView}
@@ -149,7 +148,7 @@ export function App() {
 
       {/* NEW SCHOLAR WELCOME BANNER (If not yet onboarded) */}
       {!isOnboarded && currentView === "home" && (
-        <div className="bg-surface-container border-b border-outline-variant py-2.5 px-6 lg:px-12 text-xs flex flex-col sm:flex-row items-center justify-between gap-2 fade-in">
+        <div className="bg-surface-container border-b border-outline-variant py-2 px-6 lg:px-12 text-xs flex flex-col sm:flex-row items-center justify-between gap-2 fade-in">
           <div className="flex items-center space-x-2 text-secondary text-center sm:text-left">
             <span className="w-2 h-2 rounded-full bg-tertiary animate-pulse flex-shrink-0" />
             <span>
@@ -160,7 +159,7 @@ export function App() {
           </div>
           <button
             onClick={() => setIsOnboardingOpen(true)}
-            className="font-semibold text-primary hover:text-primary-hover flex items-center space-x-1 underline cursor-pointer"
+            className="font-semibold text-primary hover:text-primary-hover flex items-center space-x-1 underline cursor-pointer flex-shrink-0"
           >
             <span>Start 60-Sec Diagnostic</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -170,44 +169,26 @@ export function App() {
 
       {/* VIEW 1: UNIVERSAL DISCOVERY HOMEPAGE */}
       {currentView === "home" && (
-        <main className="fade-in">
-          {/* Hero */}
+        <main className="max-w-7xl mx-auto px-6 lg:px-12 py-6 fade-in">
+          {/* Streamlined Header */}
           <HeroSection />
 
-          {/* Path Exploration Section */}
-          <section className="max-w-7xl mx-auto px-6 lg:px-12 py-20" id="paths">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-4 border-b border-outline-variant">
-              <div>
-                <span className="text-xs uppercase tracking-[0.25em] text-tertiary block mb-2 font-medium">
-                  Curated Fields of Study
-                </span>
-                <h2 className="font-display text-3xl sm:text-4xl text-on-surface font-normal">
-                  Choose your path
-                </h2>
-              </div>
-              <p className="text-secondary text-xs sm:text-sm mt-3 sm:mt-0 max-w-xs font-normal">
-                Each domain opens a dedicated learning universe with syllabus
-                maps, foundational doctrine, and guided progression.
-              </p>
-            </div>
-
-            {/* Editorial Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {FIELDS_DATA.map((field) => (
-                <CategoryCard
-                  key={field.id}
-                  field={field}
-                  onSelect={handleSelectField}
-                />
-              ))}
-            </div>
-          </section>
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {FIELDS_DATA.map((field) => (
+              <CategoryCard
+                key={field.id}
+                field={field}
+                onSelect={handleSelectField}
+              />
+            ))}
+          </div>
         </main>
       )}
 
       {/* VIEW 2: DEDICATED CAT UNIVERSE */}
       {currentView === "cat" && (
-        <section className="min-h-screen fade-in">
+        <section className="min-h-screen fade-in pb-16">
           <CatHeaderNav
             activeTab={catTab}
             onTabChange={setCatTab}

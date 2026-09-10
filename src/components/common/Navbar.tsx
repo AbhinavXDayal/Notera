@@ -23,8 +23,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   return (
     <header className="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-outline-variant transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-        <div className="flex items-center space-x-6">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
+        <div className="flex items-center">
           {/* Aesthetic Logo */}
           <button
             onClick={onNavigateHome}
@@ -33,9 +33,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Logo />
           </button>
-          <span className="text-xs uppercase tracking-[0.2em] text-secondary hidden sm:inline-block pl-2 border-l border-outline-variant font-mono">
-            The Knowledge Sanctuary
-          </span>
         </div>
 
         {/* Center Navigation Links */}
@@ -70,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={onOpenSearch}
             className="relative hidden sm:flex items-center group cursor-pointer text-left"
           >
-            <div className="bg-surface-container border border-outline-variant rounded-full pl-9 pr-4 py-1.5 text-xs text-secondary/80 group-hover:border-primary group-hover:bg-surface transition-all w-52 focus:w-64 flex items-center justify-between">
+            <div className="bg-surface-container border border-outline-variant rounded-full pl-9 pr-4 py-1 text-xs text-secondary/80 group-hover:border-primary group-hover:bg-surface transition-all w-48 focus:w-60 flex items-center justify-between">
               <span>Search exam, topic...</span>
               <span className="text-[10px] font-mono bg-outline-variant/60 px-1.5 py-0.5 rounded text-secondary">
                 ⌘K
@@ -89,7 +86,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={onOpenSignIn}
-            className="text-xs tracking-wider uppercase font-semibold px-4 py-2 border border-outline-variant rounded-full text-on-surface hover:border-primary hover:bg-primary hover:text-on-primary transition-all duration-200 cursor-pointer"
+            className="text-xs tracking-wider uppercase font-semibold px-4 py-1.5 border border-outline-variant rounded-full text-on-surface hover:border-primary hover:bg-primary hover:text-on-primary transition-all duration-200 cursor-pointer"
           >
             Sign In
           </button>
