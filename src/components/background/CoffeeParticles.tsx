@@ -22,7 +22,7 @@ const PARTICLES: Particle[] = [
     top: "18%",
     left: "12%",
     size: 3,
-    color: "#9E643B",
+    color: "#C9824C",
     duration: "7s",
     delay: "0s",
   },
@@ -31,7 +31,7 @@ const PARTICLES: Particle[] = [
     top: "35%",
     left: "86%",
     size: 2.5,
-    color: "#B8835A",
+    color: "#D99C66",
     duration: "9s",
     delay: "1.5s",
   },
@@ -40,7 +40,7 @@ const PARTICLES: Particle[] = [
     top: "55%",
     left: "16%",
     size: 2,
-    color: "#7A5C4A",
+    color: "#A88570",
     duration: "8s",
     delay: "3s",
   },
@@ -49,7 +49,7 @@ const PARTICLES: Particle[] = [
     top: "75%",
     left: "80%",
     size: 3.5,
-    color: "#9E643B",
+    color: "#C9824C",
     duration: "6.5s",
     delay: "0.5s",
   },
@@ -58,7 +58,7 @@ const PARTICLES: Particle[] = [
     top: "25%",
     left: "45%",
     size: 2,
-    color: "#B8835A",
+    color: "#D99C66",
     duration: "10s",
     delay: "4s",
   },
@@ -67,7 +67,7 @@ const PARTICLES: Particle[] = [
     top: "85%",
     left: "30%",
     size: 2.5,
-    color: "#7A5C4A",
+    color: "#A88570",
     duration: "8.5s",
     delay: "2s",
   },
@@ -76,7 +76,7 @@ const PARTICLES: Particle[] = [
     top: "45%",
     left: "92%",
     size: 3,
-    color: "#D6C0A5",
+    color: "#F3EBE1",
     duration: "7.5s",
     delay: "3.5s",
   },
@@ -85,7 +85,7 @@ const PARTICLES: Particle[] = [
     top: "65%",
     left: "60%",
     size: 2,
-    color: "#9E643B",
+    color: "#C9824C",
     duration: "9.5s",
     delay: "1s",
   },
@@ -102,9 +102,10 @@ export const CoffeeParticles: React.FC<CoffeeParticlesProps> = ({
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
+      className="fixed inset-0 pointer-events-none overflow-hidden z-0"
       style={{
-        transform: `translate3d(${parallaxOffset.x * 2.2}px, ${parallaxOffset.y * 2.2}px, 0)`,
+        transform: `translate(${parallaxOffset.x * 1.5}px, ${parallaxOffset.y * 1.5}px)`,
+        transition: "transform 0.1s ease-out",
       }}
     >
       {activeParticles.map((p) => (
@@ -117,7 +118,7 @@ export const CoffeeParticles: React.FC<CoffeeParticlesProps> = ({
             width: `${p.size}px`,
             height: `${p.size}px`,
             backgroundColor: p.color,
-            boxShadow: `0 0 ${p.size * 2}px ${p.color}`,
+            boxShadow: `0 0 ${p.size * 3}px ${p.color}`,
             animation: `particlePulse ${p.duration} ease-in-out infinite`,
             animationDelay: p.delay,
           }}

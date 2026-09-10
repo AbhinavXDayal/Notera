@@ -45,7 +45,7 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
           ? 0.12
           : 0.11;
     const glowRadius = isReading ? 0 : isSubtle ? 150 : 220;
-    const glowAlphaBoost = isReading ? 0 : isSubtle ? 0.12 : 0.2;
+    const glowAlphaBoost = isReading ? 0 : isSubtle ? 0.15 : 0.25;
 
     let time = 0;
 
@@ -56,7 +56,7 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
       const cols = Math.ceil(width / dotSpacing) + 1;
       const rows = Math.ceil(height / dotSpacing) + 1;
 
-      // Draw coffee dot matrix
+      // Draw darkish mocha dot matrix
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           const x = c * dotSpacing;
@@ -83,20 +83,20 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
 
           if (alpha <= 0.005) continue;
 
-          // Warm latte palette: soft mocha brown, warm caramel (#9E643B), honey amber (#B8835A)
+          // Darkish mocha palette: warm roasted caramel (#C9824C), toasted amber (#D99C66), soft cream highlight
           const isCaramel = (c + r * 2) % 7 === 0;
           const isGold = (c * 3 + r) % 11 === 0;
-          const isDeepMocha = (c * 5 + r * 7) % 23 === 0;
+          const isCreamHighlight = (c * 5 + r * 7) % 23 === 0;
 
-          if (isDeepMocha && !isReading) {
-            ctx.fillStyle = `rgba(92, 64, 51, ${Math.min(alpha * 1.6, 0.4)})`;
+          if (isCreamHighlight && !isReading) {
+            ctx.fillStyle = `rgba(243, 235, 225, ${Math.min(alpha * 1.5, 0.4)})`;
           } else if (isGold && !isReading) {
-            ctx.fillStyle = `rgba(184, 131, 90, ${Math.min(alpha * 1.4, 0.45)})`;
+            ctx.fillStyle = `rgba(217, 156, 102, ${Math.min(alpha * 1.4, 0.45)})`;
           } else if (isCaramel && !isReading) {
-            ctx.fillStyle = `rgba(158, 100, 59, ${Math.min(alpha * 1.5, 0.5)})`;
+            ctx.fillStyle = `rgba(201, 130, 76, ${Math.min(alpha * 1.5, 0.5)})`;
           } else {
-            // Soft warm mocha brown base dot
-            ctx.fillStyle = `rgba(122, 92, 74, ${Math.min(alpha * 1.1, 0.3)})`;
+            // Soft warm mocha base dot
+            ctx.fillStyle = `rgba(145, 115, 95, ${Math.min(alpha * 1.2, 0.28)})`;
           }
 
           const dotSize =
@@ -113,7 +113,7 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
           // Delicate coordinate plus crosses at selected intersections on hero / roadmap
           if ((variant === "hero" || isRoadmap) && c % 6 === 0 && r % 6 === 0) {
             const crossAlpha = alpha * 1.8;
-            ctx.strokeStyle = `rgba(158, 100, 59, ${Math.min(crossAlpha, 0.35)})`;
+            ctx.strokeStyle = `rgba(201, 130, 76, ${Math.min(crossAlpha, 0.35)})`;
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(x - 3.5, y);

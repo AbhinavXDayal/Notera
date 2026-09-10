@@ -80,3 +80,4 @@ export const CAT_FIELD_GUIDE: FieldGuideConfig = {
 export const FIELD_GUIDE_CONFIGS: Record<string, FieldGuideConfig> = {
   CAT: CAT_FIELD_GUIDE,
 };
+

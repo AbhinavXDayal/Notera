@@ -1,5 +1,8 @@
 import React from "react";
-import type { FieldGuideConfig, FieldGuideModule } from "../../types/fieldGuide";
+import type {
+  FieldGuideConfig,
+  FieldGuideModule,
+} from "../../types/fieldGuide";
 import { GuideCard } from "./GuideCard";
 
 interface FieldGuideSectionProps {
