@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-body;
+  }
+}
+
+/* Subtle natural organic texture overlay */
+.paper-texture {
+  background-color: #faf6f0;
+  background-image:
+    radial-gradient(rgba(74, 124, 89, 0.05) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(112, 92, 48, 0.04) 0.5px, #faf6f0 0.5px);
+  background-size: 24px 24px;
+  background-position:
+    0 0,
+    12px 12px;
+}
+
+/* Terra custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #faf6f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d5cebe;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a7c59;
+}
+
+/* Smooth transitions */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
