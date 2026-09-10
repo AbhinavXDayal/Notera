@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  ArrowRight,
-  ArrowLeft,
-  Compass,
-  Brain,
-  Target,
-  BookOpen,
-} from "lucide-react";
-import { FieldGuideSection } from "../field-guide/FieldGuideSection";
-import { CAT_FIELD_GUIDE } from "../../data/fieldGuideConfigs";
-import type { FieldGuideModule } from "../../types/fieldGuide";
+import { ArrowLeft } from "lucide-react";
 
 export type CatTabType =
   | "overview"
@@ -26,56 +16,11 @@ interface CatOverviewTabProps {
 }
 
 export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
-  onNavigateTab,
   onBackToPaths,
-  onOpenFundamentals,
 }) => {
-  const tenets = [
-    {
-      icon: Brain,
-      title: "First-Principles Intuition",
-      description:
-        "Master foundational mathematical logic and core principles instead of memorizing fragile shortcut formulas that fail under novel question variations.",
-    },
-    {
-      icon: Target,
-      title: "Strategic Selection & Time Valuation",
-      description:
-        "CAT is a test of discipline. Developing the clarity to identify and reject convoluted trap questions within 45 seconds is as decisive as solving what you attempt.",
-    },
-    {
-      icon: BookOpen,
-      title: "Deep Cognitive Synthesis",
-      description:
-        "In VARC and DILR, cultivate sustained endurance for dense, unfamiliar prose and intricate reasoning sets without panic or mental fatigue.",
-    },
-    {
-      icon: Compass,
-      title: "Calm, Non-Linear Compounding",
-      description:
-        "Progress methodically from core mental models to full-length exam diagnostics—free from chaotic question dumps or anxiety-driven score chasing.",
-    },
-  ];
-
-  const handleSelectModule = (module: FieldGuideModule) => {
-    if (module.id === "roadmap") {
-      onNavigateTab?.("journey");
-    } else if (module.id === "fundamentals") {
-      if (onOpenFundamentals) {
-        onOpenFundamentals();
-      } else {
-        onNavigateTab?.("subjects");
-      }
-    } else if (module.id === "theory-practical") {
-      onNavigateTab?.("subjects");
-    } else if (module.id === "notes-docs") {
-      onNavigateTab?.("resources");
-    }
-  };
-
   return (
-    <div className="max-w-5xl mx-auto px-6 lg:px-12 py-10 space-y-12 fade-in">
-      {/* Back to All Paths */}
+    <div className="max-w-4xl mx-auto px-6 lg:px-12 py-10 space-y-6 fade-in">
+      {/* Back Navigation */}
       {onBackToPaths && (
         <div>
           <button
@@ -88,81 +33,101 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
         </div>
       )}
 
-      {/* 1. Ideology Behind Learning Section */}
-      <div className="rounded-[16px] bg-surface-container border-2 border-outline-variant p-8 sm:p-12 relative overflow-hidden shadow-terra-card">
-        <div className="max-w-3xl space-y-6 relative z-10">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-tertiary/15 text-tertiary font-mono text-[11px] font-semibold uppercase tracking-wider">
-            <span>Philosophy &amp; Pedagogy</span>
-            <span>•</span>
-            <span>CAT Universe</span>
-          </div>
-
-          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl text-on-surface font-normal leading-tight">
-            Ideology behind learning in cat section
-          </h1>
-
-          <p className="text-secondary text-base sm:text-lg leading-relaxed font-light">
-            The Common Admission Test does not measure mechanical calculation
-            speed or memorized trivia. It evaluates intellectual composure,
-            rigorous structural deconstruction, and the ability to make optimal
-            decisions under tight constraints.
-          </p>
-
-          {/* Core Principles Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-4">
-            {tenets.map((tenet, idx) => {
-              const Icon = tenet.icon;
-              return (
-                <div
-                  key={idx}
-                  className="p-5 rounded-[12px] bg-surface border border-outline-variant shadow-sm space-y-2.5 transition-all hover:border-primary/50"
-                >
-                  <div className="flex items-center space-x-2.5 text-primary">
-                    <Icon className="w-4 h-4" />
-                    <h2 className="font-display text-lg text-on-surface font-medium">
-                      {tenet.title}
-                    </h2>
-                  </div>
-                  <p className="text-xs text-secondary leading-relaxed font-light">
-                    {tenet.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Action links */}
-          {onNavigateTab && (
-            <div className="pt-6 flex flex-wrap items-center gap-4">
-              <button
-                onClick={() => onNavigateTab("journey")}
-                className="px-6 py-3 rounded-full bg-primary text-on-primary text-sm font-semibold hover:bg-primary-hover transition-all flex items-center space-x-2 shadow-terra-card cursor-pointer"
-              >
-                <span>Explore 14-Step Journey</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={() => onNavigateTab("subjects")}
-                className="px-6 py-3 rounded-full bg-surface border border-outline-variant text-on-surface text-sm font-medium hover:border-primary hover:text-primary transition-all flex items-center space-x-2 cursor-pointer"
-              >
-                <span>Browse Subjects (QA, VARC, DILR)</span>
-              </button>
-            </div>
-          )}
+      {/* Single Field Guide Blueprint Card */}
+      <div className="rounded-[18px] bg-surface-container border border-outline-variant p-8 sm:p-12 shadow-terra-card relative overflow-hidden space-y-10">
+        {/* Category Header Badge */}
+        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-surface border border-outline-variant text-[11px] font-mono uppercase tracking-widest text-tertiary">
+          <span>Field Guide Framework</span>
+          <span>•</span>
+          <span>Core Architecture</span>
         </div>
 
-        {/* Subtle decorative watermark */}
-        <div className="absolute -right-8 -bottom-10 opacity-5 pointer-events-none select-none">
-          <span className="font-display text-[180px] text-primary">CAT</span>
+        {/* 1. Any Field Guide Section */}
+        <div className="space-y-4">
+          <h2 className="font-display text-2xl sm:text-3xl text-on-surface font-normal">
+            Any Field Guide
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div className="p-4 rounded-xl bg-surface border border-outline-variant/80 text-sm font-medium text-on-surface shadow-sm flex items-center space-x-3">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span>Roadmap</span>
+            </div>
+            <div className="p-4 rounded-xl bg-surface border border-outline-variant/80 text-sm font-medium text-on-surface shadow-sm flex items-center space-x-3">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span>Fundamentals</span>
+            </div>
+            <div className="p-4 rounded-xl bg-surface border border-outline-variant/80 text-sm font-medium text-on-surface shadow-sm flex items-center space-x-3">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span>Theory &amp; Practical</span>
+            </div>
+            <div className="p-4 rounded-xl bg-surface border border-outline-variant/80 text-sm font-medium text-on-surface shadow-sm flex items-center space-x-3">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              <span>Notes / Docs</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 2. For Ex Section */}
+        <div className="space-y-4">
+          <h2 className="font-display text-2xl sm:text-3xl text-on-surface font-normal">
+            For Ex
+          </h2>
+          <div className="space-y-2.5 pt-1">
+            <div className="p-3.5 rounded-xl bg-surface border border-outline-variant/80 text-sm text-on-surface font-mono flex items-center space-x-3">
+              <span className="text-primary font-bold">1.</span>
+              <span>Cs Roadmap</span>
+            </div>
+            <div className="p-3.5 rounded-xl bg-surface border border-outline-variant/80 text-sm text-on-surface font-mono flex items-center space-x-3">
+              <span className="text-primary font-bold">1.2</span>
+              <span>Computer Fundamentals</span>
+            </div>
+            <div className="p-3.5 rounded-xl bg-surface border border-outline-variant/80 text-sm text-on-surface font-mono flex items-center space-x-3">
+              <span className="text-primary font-bold">1.3</span>
+              <span>DSA - Programming Language</span>
+            </div>
+            <div className="p-3.5 rounded-xl bg-surface border border-outline-variant/80 text-sm text-on-surface font-mono flex items-center space-x-3">
+              <span className="text-primary font-bold">1.4</span>
+              <span>Field - App Development</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 3. For Each Section */}
+        <div className="space-y-4">
+          <h2 className="font-display text-2xl sm:text-3xl text-on-surface font-normal">
+            For Each Section
+          </h2>
+          <ul className="space-y-3 pt-1 text-sm text-secondary font-medium">
+            <li className="flex items-center space-x-3">
+              <span className="text-primary font-bold text-lg leading-none">•</span>
+              <span className="text-on-surface">Roadmap</span>
+            </li>
+            <li className="flex items-center space-x-3">
+              <span className="text-primary font-bold text-lg leading-none">•</span>
+              <span className="text-on-surface">Fundamentals</span>
+            </li>
+            <li className="flex items-center space-x-3">
+              <span className="text-primary font-bold text-lg leading-none">•</span>
+              <span className="text-on-surface">Theory &amp; Practicals</span>
+            </li>
+            <li className="flex items-center space-x-3">
+              <span className="text-primary font-bold text-lg leading-none">•</span>
+              <span className="text-on-surface">Notes / Docs</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Subtle Watermark */}
+        <div className="absolute -right-6 -bottom-8 opacity-[0.03] pointer-events-none select-none">
+          <span className="font-display text-[160px] text-primary">GUIDE</span>
         </div>
       </div>
-
-      {/* 2. The CAT Field Guide Framework Section */}
-      <FieldGuideSection
-        config={CAT_FIELD_GUIDE}
-        onSelectModule={handleSelectModule}
-      />
     </div>
   );
 };

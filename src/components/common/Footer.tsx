@@ -18,7 +18,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateHome }) => {
             <Logo size="sm" showText={true} />
           </button>
           <span className="text-outline-variant">•</span>
-          <span className="font-light">An Intellectual Sanctuary for Students</span>
+          <span className="font-light">
+            An Intellectual Sanctuary for Students
+          </span>
         </div>
         <div className="flex items-center space-x-6">
           <button className="hover:text-primary transition-colors cursor-pointer">

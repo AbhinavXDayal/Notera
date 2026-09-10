@@ -46,24 +46,12 @@ export const Logo: React.FC<LogoProps> = ({
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <linearGradient
-              id="noteraGold"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="100%"
-            >
+            <linearGradient id="noteraGold" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#E5AB74" />
               <stop offset="50%" stopColor="#C9824C" />
               <stop offset="100%" stopColor="#9E5D30" />
             </linearGradient>
-            <linearGradient
-              id="noteraGlow"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="100%"
-            >
+            <linearGradient id="noteraGlow" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#F8E1CE" stopOpacity="0.9" />
               <stop offset="100%" stopColor="#C9824C" stopOpacity="0.4" />
             </linearGradient>
