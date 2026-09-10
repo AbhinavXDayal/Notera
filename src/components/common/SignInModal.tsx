@@ -31,14 +31,14 @@ export const SignInModal: React.FC<SignInModalProps> = ({
     <Modal isOpen={isOpen} onClose={handleReset} maxWidth="max-w-md">
       <div className="space-y-6">
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-full border border-primary/60 flex items-center justify-center mx-auto text-primary font-display italic text-2xl bg-surface-container">
-            G
+          <div className="w-12 h-12 rounded-full border border-primary/60 flex items-center justify-center mx-auto text-primary font-display italic text-2xl bg-surface-container shadow-sm">
+            N
           </div>
           <h3 className="font-display text-2xl text-on-surface">
-            Guide Sanctuary Pass
+            Notera Sanctuary Pass
           </h3>
           <p className="text-xs text-secondary max-w-xs mx-auto">
-            All notes, interactive roadmaps, and diagnostics remain open &
+            All notes, interactive roadmaps, and diagnostics remain open &amp;
             freely accessible without mandatory login.
           </p>
         </div>
@@ -55,7 +55,7 @@ export const SignInModal: React.FC<SignInModalProps> = ({
             </p>
             <button
               onClick={handleReset}
-              className="w-full py-2.5 rounded-full bg-primary text-on-primary text-xs font-semibold hover:bg-primary-hover transition-all"
+              className="w-full py-2.5 rounded-full bg-primary text-on-primary text-xs font-semibold hover:bg-primary-hover transition-all cursor-pointer"
             >
               Return to Sanctuary
             </button>
@@ -85,7 +85,7 @@ export const SignInModal: React.FC<SignInModalProps> = ({
 
             <button
               type="submit"
-              className="w-full py-3 rounded-full bg-primary text-on-primary text-xs font-semibold hover:bg-primary-hover transition-all shadow-terra-card"
+              className="w-full py-3 rounded-full bg-primary text-on-primary text-xs font-semibold hover:bg-primary-hover transition-all shadow-terra-card cursor-pointer"
             >
               Activate Local Sanctuary Pass
             </button>

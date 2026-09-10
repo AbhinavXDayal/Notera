@@ -1,5 +1,6 @@
 import React from "react";
 import { Search } from "lucide-react";
+import { Logo } from "./Logo";
 import type { FieldId } from "../../types/field";
 
 interface NavbarProps {
@@ -23,20 +24,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-outline-variant transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-        <div className="flex items-center space-x-8">
-          {/* Minimal Logo */}
+        <div className="flex items-center space-x-6">
+          {/* Aesthetic Logo */}
           <button
             onClick={onNavigateHome}
-            className="group flex items-center space-x-3 cursor-pointer text-left focus:outline-none"
+            className="text-left focus:outline-none"
+            aria-label="Notera Home"
           >
-            <span className="w-8 h-8 rounded-full border border-primary/60 flex items-center justify-center font-display italic text-lg text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
-              G
-            </span>
-            <span className="font-display text-2xl tracking-wide font-normal text-on-surface">
-              Guide
-            </span>
+            <Logo />
           </button>
-          <span className="text-xs uppercase tracking-[0.2em] text-secondary hidden sm:inline-block pl-2 border-l border-outline-variant">
+          <span className="text-xs uppercase tracking-[0.2em] text-secondary hidden sm:inline-block pl-2 border-l border-outline-variant font-mono">
             The Knowledge Sanctuary
           </span>
         </div>
