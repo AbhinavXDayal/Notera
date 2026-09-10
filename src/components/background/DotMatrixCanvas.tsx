@@ -26,15 +26,22 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
     if (!ctx) return;
 
     let animationFrameId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    let cssWidth = window.innerWidth;
+    let cssHeight = window.innerHeight;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     const handleResize = () => {
       if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      cssWidth = window.innerWidth;
+      cssHeight = window.innerHeight;
+      canvas.width = cssWidth * dpr;
+      canvas.height = cssHeight * dpr;
+      canvas.style.width = `${cssWidth}px`;
+      canvas.style.height = `${cssHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     // Warm Café Theme Dot Configuration
@@ -46,10 +53,10 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
 
     const render = () => {
       time += 0.012;
-      ctx.clearRect(0, 0, width, height);
+      ctx.clearRect(0, 0, cssWidth, cssHeight);
 
-      const cols = Math.ceil(width / dotSpacing) + 1;
-      const rows = Math.ceil(height / dotSpacing) + 1;
+      const cols = Math.ceil(cssWidth / dotSpacing) + 1;
+      const rows = Math.ceil(cssHeight / dotSpacing) + 1;
 
       // Glow radius around cursor
       const glowRadius = isReading ? 0 : 160;
@@ -65,7 +72,7 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           // Subtle organic pulsing wave
-          const wave = Math.sin(time + (x * 0.005) + (y * 0.004));
+          const wave = Math.sin(time + x * 0.005 + y * 0.004);
           const baseAlpha = isReading ? 0.07 : variant === "minimal" ? 0.09 : 0.14;
           let alpha = baseAlpha + wave * 0.03;
 
@@ -135,7 +142,7 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none select-none z-0 opacity-90 transition-opacity duration-700"
+      className="fixed inset-0 pointer-events-none select-none z-0 opacity-90 transition-opacity duration-700 gpu-layer"
       aria-hidden="true"
     />
   );

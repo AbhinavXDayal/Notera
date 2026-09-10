@@ -48,8 +48,8 @@ export const KnowledgeMapBackground: React.FC<KnowledgeMapBackgroundProps> = ({
     };
 
     const updateParallax = () => {
-      currentX += (targetX - currentX) * 0.05;
-      currentY += (targetY - currentY) * 0.05;
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
       setParallaxOffset({ x: currentX, y: currentY });
       animationFrameId = requestAnimationFrame(updateParallax);
     };
@@ -66,7 +66,7 @@ export const KnowledgeMapBackground: React.FC<KnowledgeMapBackgroundProps> = ({
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 pointer-events-none select-none z-0 overflow-hidden"
+      className="fixed inset-0 pointer-events-none select-none z-0 overflow-hidden gpu-layer"
     >
       {/* 1. Deep Dot Matrix Canvas (High-Performance 60fps) */}
       <DotMatrixCanvas variant={variant} mousePos={mousePos} />

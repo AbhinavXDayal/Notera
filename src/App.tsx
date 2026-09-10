@@ -15,7 +15,6 @@ import { NotesLayout } from "./components/notes/NotesLayout";
 import { ResourceLibraryView } from "./components/resources/ResourceLibraryView";
 import { FieldGuideView } from "./components/field/FieldGuideView";
 import { GuideNavigation } from "./components/field-guide/GuideNavigation";
-import { Footer } from "./components/common/Footer";
 import { KnowledgeMapBackground } from "./components/background/KnowledgeMapBackground";
 
 import { FIELDS_DATA } from "./data/fields";
@@ -334,9 +333,6 @@ export function App() {
           />
         )}
       </div>
-
-      {/* Global Brand Footer */}
-      <Footer onNavigateHome={handleNavigateHome} />
 
       {/* 3-Question Visitor Onboarding & Preference Modal */}
       <VisitorOnboardingModal

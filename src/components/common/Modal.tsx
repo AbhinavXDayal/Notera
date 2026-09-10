@@ -37,14 +37,14 @@ export const Modal: React.FC<ModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-on-surface/60 backdrop-blur-sm flex items-center justify-center p-4 transition-all duration-300">
+    <div className="fixed inset-0 z-50 bg-black/65 backdrop-blur-md flex items-center justify-center p-4 transition-opacity duration-300">
       <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
       <div
-        className={`bg-surface border border-outline-variant rounded-[12px] w-full ${maxWidth} p-6 sm:p-8 shadow-2xl relative z-10 max-h-[90vh] overflow-y-auto transform transition-all duration-300 fade-in`}
+        className={`bg-surface border border-outline-variant rounded-2xl w-full ${maxWidth} p-6 sm:p-8 shadow-2xl relative z-10 max-h-[90vh] overflow-y-auto transform transition-all duration-300 fade-in`}
       >
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 text-secondary hover:text-on-surface p-1 rounded-full hover:bg-surface-container transition-all cursor-pointer"
+          className="absolute top-6 right-6 text-secondary hover:text-on-surface p-1.5 rounded-full hover:bg-surface-container transition-all cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />

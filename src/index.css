@@ -3,9 +3,22 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
     @apply bg-background text-on-surface font-body selection:bg-primary/20 selection:text-on-surface;
     background-color: #322720;
+    overflow-x: hidden;
+  }
+
+  /* Smooth interactive transitions */
+  a, button, input, select, textarea {
+    @apply transition-colors duration-200 ease-out;
   }
 }
 
@@ -21,7 +34,7 @@
     14px 14px;
 }
 
-/* Warm mocha custom scrollbar */
+/* Ultra smooth custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -33,30 +46,37 @@
 
 ::-webkit-scrollbar-thumb {
   background: #544236;
-  border-radius: 4px;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease-out;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #DE935A;
 }
 
-/* Smooth transitions */
+/* Silky smooth entrance transitions */
 .fade-in {
-  animation: fadeIn 0.3s ease-in-out;
+  animation: smoothFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-@keyframes fadeIn {
-  from {
+@keyframes smoothFadeIn {
+  0% {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(6px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Coffee steam rising animation */
+/* GPU acceleration helper */
+.gpu-layer {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Coffee steam rising animation - smooth floating curve */
 @keyframes coffeeSteamRising {
   0% {
     opacity: 0;
