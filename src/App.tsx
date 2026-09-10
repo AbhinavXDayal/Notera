@@ -50,7 +50,7 @@ export function App() {
   const { completedStages, completedActions, toggleStage, toggleAction } =
     useRoadmapProgress();
 
-  // AUTOMATIC ONBOARDING PROMPT FOR NEW VISITORS
+  // Automatic onboarding prompt for new visitors
   useEffect(() => {
     try {
       const hasDismissed = sessionStorage.getItem(

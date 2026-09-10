@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowRight, HelpCircle } from "lucide-react";
-import type { PersonalizedRecommendation } from "../../types/onboarding";
+import type { PersonalizedRecommendation } from "../../types/preferences";
 import type { CatTabType } from "./CatHeaderNav";
 
 interface CatOverviewTabProps {
@@ -65,7 +65,7 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <button
               onClick={() =>
                 onNavigateTab(
-                  recommendation.targetTab,
+                  recommendation.targetTab || "overview",
                   recommendation.targetChapterId,
                 )
               }

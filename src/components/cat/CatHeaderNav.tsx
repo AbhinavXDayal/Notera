@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowLeft } from "lucide-react";
-import type { PersonalizedRecommendation } from "../../types/onboarding";
+import type { PersonalizedRecommendation } from "../../types/preferences";
 
 export type CatTabType =
   | "overview"
