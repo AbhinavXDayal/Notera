@@ -282,15 +282,9 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-1">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
                   {[
                     "CAT",
-                    "JEE",
-                    "NEET",
-                    "UPSC",
-                    "CUET",
-                    "Class 12",
-                    "Class 10",
                     "Computer Science",
                     "Just Exploring",
                   ].map((field) => {
