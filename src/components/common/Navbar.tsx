@@ -8,10 +8,9 @@ interface NavbarProps {
   activeFieldId?: FieldId;
   onNavigateHome: () => void;
   onNavigateCat: (
-    tab?: "overview" | "journey" | "subjects" | "notes" | "practice",
+    tab?: "overview" | "journey" | "subjects" | "notes" | "practice" | "resources",
   ) => void;
   onOpenSearch: () => void;
-  onOpenSignIn: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -19,7 +18,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   onNavigateHome,
   onNavigateCat,
   onOpenSearch,
-  onOpenSignIn,
 }) => {
   return (
     <header className="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-outline-variant transition-all duration-300">
@@ -59,6 +57,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             Notes
           </button>
+          <button
+            onClick={() => onNavigateCat("resources")}
+            className="hover:text-primary transition-colors py-1 text-left cursor-pointer"
+          >
+            Library &amp; PDFs
+          </button>
         </nav>
 
         {/* Right Action Items & Search */}
@@ -67,8 +71,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={onOpenSearch}
             className="relative hidden sm:flex items-center group cursor-pointer text-left"
           >
-            <div className="bg-surface-container border border-outline-variant rounded-full pl-9 pr-4 py-1 text-xs text-secondary/80 group-hover:border-primary group-hover:bg-surface transition-all w-48 focus:w-60 flex items-center justify-between">
-              <span>Search exam, topic...</span>
+            <div className="bg-surface-container border border-outline-variant rounded-full pl-9 pr-4 py-1 text-xs text-secondary/80 group-hover:border-primary group-hover:bg-surface transition-all w-52 focus:w-64 flex items-center justify-between">
+              <span>Search notes, PDFs, topics...</span>
               <span className="text-[10px] font-mono bg-outline-variant/60 px-1.5 py-0.5 rounded text-secondary">
                 ⌘K
               </span>
@@ -82,13 +86,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             aria-label="Search"
           >
             <Search className="w-5 h-5" />
-          </button>
-
-          <button
-            onClick={onOpenSignIn}
-            className="text-xs tracking-wider uppercase font-semibold px-4 py-1.5 border border-outline-variant rounded-full text-on-surface hover:border-primary hover:bg-primary hover:text-on-primary transition-all duration-200 cursor-pointer"
-          >
-            Sign In
           </button>
         </div>
       </div>

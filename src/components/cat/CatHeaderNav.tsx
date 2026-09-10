@@ -7,7 +7,8 @@ export type CatTabType =
   | "journey"
   | "subjects"
   | "notes"
-  | "practice";
+  | "practice"
+  | "resources";
 
 interface CatHeaderNavProps {
   activeTab: CatTabType;
@@ -29,11 +30,12 @@ export const CatHeaderNav: React.FC<CatHeaderNavProps> = ({
     { id: "journey", label: "14-Step Journey" },
     { id: "subjects", label: "Subjects (QA, VARC, DILR)" },
     { id: "notes", label: "Digital Textbook Notes" },
+    { id: "resources", label: "PDF Library & Codices" },
     { id: "practice", label: "Practice & Mocks" },
   ];
 
   return (
-    <div className="bg-surface-container border-b border-outline-variant py-3 px-6 lg:px-12 sticky top-20 z-30 flex items-center justify-between overflow-x-auto text-xs">
+    <div className="bg-surface-container border-b border-outline-variant py-3 px-6 lg:px-12 sticky top-16 z-30 flex items-center justify-between overflow-x-auto text-xs">
       <div className="flex items-center space-x-6 min-w-max">
         <button
           onClick={onBackToPaths}

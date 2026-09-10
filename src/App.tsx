@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Navbar } from "./components/common/Navbar";
 import { SearchModal } from "./components/common/SearchModal";
-import { SignInModal } from "./components/common/SignInModal";
 import { HeroSection } from "./components/home/HeroSection";
 import { CategoryCard } from "./components/home/CategoryCard";
 import { OnboardingModal } from "./components/onboarding/OnboardingModal";
@@ -13,6 +12,7 @@ import { CatSubjectsTab } from "./components/cat/CatSubjectsTab";
 import { CatPracticeTab } from "./components/cat/CatPracticeTab";
 import { CatExamInfoModal } from "./components/cat/CatExamInfoModal";
 import { NotesLayout } from "./components/notes/NotesLayout";
+import { ResourceLibraryView } from "./components/resources/ResourceLibraryView";
 import { FieldGuideView } from "./components/field/FieldGuideView";
 
 import { FIELDS_DATA } from "./data/fields";
@@ -34,7 +34,6 @@ export function App() {
   // Modals
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isSignInOpen, setIsSignInOpen] = useState(false);
   const [isCatExamModalOpen, setIsCatExamModalOpen] = useState(false);
 
   // Custom Hooks
@@ -42,7 +41,7 @@ export function App() {
   const { completedStages, completedActions, toggleStage, toggleAction } =
     useRoadmapProgress();
 
-  // AUTOMATIC ONBOARDING PROMPT FOR NEW USERS
+  // Automatic onboarding prompt for new visitors
   useEffect(() => {
     try {
       const hasDismissed = sessionStorage.getItem(
@@ -143,10 +142,9 @@ export function App() {
         onNavigateHome={handleNavigateHome}
         onNavigateCat={handleNavigateCat}
         onOpenSearch={() => setIsSearchOpen(true)}
-        onOpenSignIn={() => setIsSignInOpen(true)}
       />
 
-      {/* NEW SCHOLAR WELCOME BANNER (If not yet onboarded) */}
+      {/* Welcome Banner (Pure client-side guidance) */}
       {!isOnboarded && currentView === "home" && (
         <div className="bg-surface-container border-b border-outline-variant py-2 px-6 lg:px-12 text-xs flex flex-col sm:flex-row items-center justify-between gap-2 fade-in">
           <div className="flex items-center space-x-2 text-secondary text-center sm:text-left">
@@ -232,6 +230,10 @@ export function App() {
             />
           )}
 
+          {catTab === "resources" && (
+            <ResourceLibraryView initialField="CAT" />
+          )}
+
           {catTab === "practice" && <CatPracticeTab />}
         </section>
       )}
@@ -264,12 +266,6 @@ export function App() {
         onClose={() => setIsSearchOpen(false)}
         onSelectField={handleSelectFieldById}
         onSelectCatTab={handleNavigateCat}
-      />
-
-      {/* Sign In & Sanctuary Pass Modal */}
-      <SignInModal
-        isOpen={isSignInOpen}
-        onClose={() => setIsSignInOpen(false)}
       />
 
       {/* Official CAT Blueprint & Scoring Modal */}

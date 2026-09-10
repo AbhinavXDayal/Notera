@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import { CAT_SUBJECTS } from "../../data/catSubjects";
-import { ArrowRight } from "lucide-react";
+import { CAT_RESOURCES } from "../../data/catResources";
+import { StorageService } from "../../services/storageService";
+import { ArrowRight, FileText, Download, ExternalLink } from "lucide-react";
 
 interface CatSubjectsTabProps {
   onNavigateNotes: (chapterId?: string) => void;
+  onNavigateLibrary?: () => void;
 }
 
 export const CatSubjectsTab: React.FC<CatSubjectsTabProps> = ({
   onNavigateNotes,
+  onNavigateLibrary,
 }) => {
   const [activeSubjectId, setActiveSubjectId] = useState<string>("qa");
 
   const currentSubject =
     CAT_SUBJECTS.find((s) => s.id === activeSubjectId) || CAT_SUBJECTS[0];
+
+  const subjectResources = CAT_RESOURCES.filter(
+    (res) => res.subject?.toUpperCase() === currentSubject.shortName.toUpperCase(),
+  );
 
   return (
     <div className="max-w-7xl mx-auto px-6 lg:px-12 py-10 space-y-12 fade-in">
@@ -87,6 +95,60 @@ export const CatSubjectsTab: React.FC<CatSubjectsTabProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Subject Public PDF Downloads Strip */}
+      {subjectResources.length > 0 && (
+        <div className="p-5 rounded-[12px] bg-surface border border-outline-variant space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-mono uppercase tracking-wider text-tertiary font-semibold flex items-center gap-1.5">
+              <FileText className="w-3.5 h-3.5" />
+              <span>{currentSubject.shortName} Reference PDFs &amp; Formula Sheets</span>
+            </span>
+            {onNavigateLibrary && (
+              <button
+                onClick={onNavigateLibrary}
+                className="text-xs text-primary hover:underline font-medium cursor-pointer"
+              >
+                View Full Library →
+              </button>
+            )}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {subjectResources.map((res) => (
+              <div
+                key={res.id}
+                className="p-3 rounded-lg bg-surface-container border border-outline-variant hover:border-primary/60 flex items-center justify-between transition-all"
+              >
+                <div className="min-w-0 pr-2">
+                  <div className="text-xs font-display font-medium text-on-surface truncate">
+                    {res.title}
+                  </div>
+                  <div className="text-[10px] font-mono text-secondary/70">
+                    {res.type} • {res.fileSize}
+                  </div>
+                </div>
+                <div className="flex items-center space-x-1.5 flex-shrink-0">
+                  <button
+                    onClick={() => StorageService.openResource(res)}
+                    className="p-1.5 rounded bg-surface hover:bg-primary hover:text-on-primary text-secondary transition-colors cursor-pointer"
+                    title="Read PDF"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={() => StorageService.downloadResource(res)}
+                    className="p-1.5 rounded bg-surface hover:bg-primary hover:text-on-primary text-secondary transition-colors cursor-pointer"
+                    title="Download File"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Modules Grid */}
       <div className="space-y-6">
