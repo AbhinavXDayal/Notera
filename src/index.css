@@ -5,16 +5,16 @@
 @layer base {
   body {
     @apply bg-background text-on-surface font-body selection:bg-primary/20 selection:text-on-surface;
-    background-color: #241D18;
+    background-color: #322720;
   }
 }
 
 /* Warm roasted mocha café library texture */
 .paper-texture {
-  background-color: #241D18;
+  background-color: #322720;
   background-image:
-    radial-gradient(rgba(212, 137, 80, 0.08) 0.5px, transparent 0.5px),
-    radial-gradient(rgba(224, 166, 112, 0.05) 0.5px, #241D18 0.5px);
+    radial-gradient(rgba(222, 147, 90, 0.08) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(229, 173, 122, 0.05) 0.5px, #322720 0.5px);
   background-size: 28px 28px;
   background-position:
     0 0,
@@ -28,16 +28,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #241D18;
+  background: #322720;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #48392F;
+  background: #544236;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D48950;
+  background: #DE935A;
 }
 
 /* Smooth transitions */

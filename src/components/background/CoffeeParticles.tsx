@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import type { BackgroundVariant } from "./DotMatrixCanvas";
 
 interface CoffeeParticlesProps {
@@ -6,121 +6,61 @@ interface CoffeeParticlesProps {
   parallaxOffset?: { x: number; y: number };
 }
 
-interface Particle {
-  id: string;
-  top: string;
-  left: string;
-  size: number;
-  color: string;
-  duration: string;
-  delay: string;
-}
-
-const PARTICLES: Particle[] = [
-  {
-    id: "p1",
-    top: "18%",
-    left: "12%",
-    size: 3,
-    color: "#D48950",
-    duration: "7s",
-    delay: "0s",
-  },
-  {
-    id: "p2",
-    top: "35%",
-    left: "86%",
-    size: 2.5,
-    color: "#E0A670",
-    duration: "9s",
-    delay: "1.5s",
-  },
-  {
-    id: "p3",
-    top: "55%",
-    left: "16%",
-    size: 2,
-    color: "#BFA38E",
-    duration: "8s",
-    delay: "3s",
-  },
-  {
-    id: "p4",
-    top: "75%",
-    left: "80%",
-    size: 3.5,
-    color: "#D48950",
-    duration: "6.5s",
-    delay: "0.5s",
-  },
-  {
-    id: "p5",
-    top: "25%",
-    left: "45%",
-    size: 2,
-    color: "#E0A670",
-    duration: "10s",
-    delay: "4s",
-  },
-  {
-    id: "p6",
-    top: "85%",
-    left: "30%",
-    size: 2.5,
-    color: "#BFA38E",
-    duration: "8.5s",
-    delay: "2s",
-  },
-  {
-    id: "p7",
-    top: "45%",
-    left: "92%",
-    size: 3,
-    color: "#F7EFE6",
-    duration: "7.5s",
-    delay: "3.5s",
-  },
-  {
-    id: "p8",
-    top: "65%",
-    left: "60%",
-    size: 2,
-    color: "#D48950",
-    duration: "9.5s",
-    delay: "1s",
-  },
-];
-
 export const CoffeeParticles: React.FC<CoffeeParticlesProps> = ({
   variant = "hero",
   parallaxOffset = { x: 0, y: 0 },
 }) => {
-  if (variant === "reading") return null;
+  const isReading = variant === "reading";
+  const count = isReading ? 0 : variant === "minimal" ? 8 : 16;
 
-  const count = variant === "hero" ? PARTICLES.length : 4;
-  const activeParticles = PARTICLES.slice(0, count);
+  const particles = useMemo(() => {
+    const list = [];
+    const colors = [
+      "#DE935A", // Caramel
+      "#E5AD7A", // Honey Amber
+      "#CCA88F", // Soft Toasted Crema
+      "#FAF3EC", // Cream highlight
+    ];
+
+    for (let i = 0; i < 20; i++) {
+      list.push({
+        id: i,
+        left: (i * 17 + 7) % 94 + 3,
+        top: (i * 23 + 13) % 90 + 5,
+        size: (i % 3) + 2,
+        color: colors[i % colors.length],
+        duration: 4 + (i % 5) * 1.5,
+        delay: (i % 7) * 0.8,
+        driftX: ((i % 5) - 2) * 8,
+      });
+    }
+    return list;
+  }, []);
+
+  if (isReading) return null;
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none overflow-hidden z-0"
+      aria-hidden="true"
+      className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden"
       style={{
-        transform: `translate(${parallaxOffset.x * 1.5}px, ${parallaxOffset.y * 1.5}px)`,
-        transition: "transform 0.1s ease-out",
+        transform: `translate3d(${parallaxOffset.x * 0.4}px, ${parallaxOffset.y * 0.4}px, 0)`,
+        transition: "transform 0.2s cubic-bezier(0.25, 1, 0.5, 1)",
       }}
     >
-      {activeParticles.map((p) => (
+      {particles.slice(0, count).map((p) => (
         <div
           key={p.id}
           className="absolute rounded-full"
           style={{
-            top: p.top,
-            left: p.left,
+            left: `${p.left}%`,
+            top: `${p.top}%`,
             width: `${p.size}px`,
             height: `${p.size}px`,
             backgroundColor: p.color,
-            boxShadow: `0 0 ${p.size * 3}px ${p.color}`,
-            animation: `particlePulse ${p.duration} ease-in-out infinite`,
-            animationDelay: p.delay,
+            boxShadow: `0 0 ${p.size * 3}px ${p.color}80`,
+            animation: `particlePulse ${p.duration}s ease-in-out infinite alternate, coffeeBeanDrift ${p.duration * 1.8}s ease-in-out infinite`,
+            animationDelay: `${p.delay}s`,
           }}
         />
       ))}

@@ -94,7 +94,7 @@ export const KnowledgeMapBackground: React.FC<KnowledgeMapBackgroundProps> = ({
         className="fixed inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 85% 75% at 50% 25%, transparent 35%, rgba(36, 29, 24, 0.55) 75%, rgba(26, 20, 16, 0.9) 100%)",
+            "radial-gradient(ellipse 85% 75% at 50% 25%, transparent 35%, rgba(50, 39, 32, 0.52) 75%, rgba(38, 29, 23, 0.88) 100%)",
         }}
       />
     </div>

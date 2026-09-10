@@ -1,6 +1,11 @@
 import React, { useEffect, useRef } from "react";
 
-export type BackgroundVariant = "hero" | "subtle" | "roadmap" | "reading";
+export type BackgroundVariant =
+  | "hero"
+  | "reading"
+  | "roadmap"
+  | "subtle"
+  | "minimal";
 
 interface DotMatrixCanvasProps {
   variant?: BackgroundVariant;
@@ -16,6 +21,7 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
@@ -31,72 +37,58 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
 
     window.addEventListener("resize", handleResize);
 
-    // Configuration according to variant
+    // Warm Café Theme Dot Configuration
+    const dotSpacing = variant === "hero" ? 28 : variant === "reading" ? 34 : 30;
     const isReading = variant === "reading";
-    const isSubtle = variant === "subtle";
     const isRoadmap = variant === "roadmap";
-
-    const dotSpacing = isRoadmap ? 36 : isReading ? 32 : isSubtle ? 30 : 28;
-    const baseAlpha = isReading
-      ? 0.04
-      : isSubtle
-        ? 0.08
-        : isRoadmap
-          ? 0.12
-          : 0.11;
-    const glowRadius = isReading ? 0 : isSubtle ? 150 : 220;
-    const glowAlphaBoost = isReading ? 0 : isSubtle ? 0.15 : 0.25;
 
     let time = 0;
 
     const render = () => {
-      ctx.clearRect(0, 0, width, height);
       time += 0.012;
+      ctx.clearRect(0, 0, width, height);
 
       const cols = Math.ceil(width / dotSpacing) + 1;
       const rows = Math.ceil(height / dotSpacing) + 1;
 
-      // Draw warm mocha dot matrix
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
+      // Glow radius around cursor
+      const glowRadius = isReading ? 0 : 160;
+
+      for (let c = 0; c < cols; c++) {
+        for (let r = 0; r < rows; r++) {
           const x = c * dotSpacing;
           const y = r * dotSpacing;
 
-          // Distance from mouse for interactive glow
+          // Distance to mouse for subtle interactive highlight
           const dx = mousePos.x - x;
           const dy = mousePos.y - y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          // Subtle harmonic wave pulse across grid
-          const wave =
-            isReading || isSubtle
-              ? 0
-              : Math.sin(x * 0.0035 + y * 0.0035 + time) * 0.025;
+          // Subtle organic pulsing wave
+          const wave = Math.sin(time + (x * 0.005) + (y * 0.004));
+          const baseAlpha = isReading ? 0.07 : variant === "minimal" ? 0.09 : 0.14;
+          let alpha = baseAlpha + wave * 0.03;
 
-          let alpha = baseAlpha + wave;
-
-          // Proximity glow
-          if (glowRadius > 0 && dist < glowRadius) {
-            const proximityFactor = 1 - dist / glowRadius;
-            alpha += proximityFactor * glowAlphaBoost;
+          // Mouse proximity boost
+          if (dist < glowRadius && glowRadius > 0) {
+            const proximity = 1 - dist / glowRadius;
+            alpha += proximity * 0.28;
           }
 
-          if (alpha <= 0.005) continue;
-
-          // Warm mocha palette: radiant caramel (#D48950), toasted gold (#E0A670), warm cream highlight
-          const isCaramel = (c + r * 2) % 7 === 0;
-          const isGold = (c * 3 + r) % 11 === 0;
-          const isCreamHighlight = (c * 5 + r * 7) % 23 === 0;
+          // Dynamic warm coffee accent colors on constellation patterns
+          const isCaramel = (c * 3 + r * 5) % 19 === 0;
+          const isGold = (c * 7 + r * 2) % 23 === 0;
+          const isCreamHighlight = (c + r) % 29 === 0;
 
           if (isCreamHighlight && !isReading) {
-            ctx.fillStyle = `rgba(247, 239, 230, ${Math.min(alpha * 1.5, 0.45)})`;
+            ctx.fillStyle = `rgba(250, 243, 236, ${Math.min(alpha * 1.5, 0.45)})`;
           } else if (isGold && !isReading) {
-            ctx.fillStyle = `rgba(224, 166, 112, ${Math.min(alpha * 1.4, 0.45)})`;
+            ctx.fillStyle = `rgba(229, 173, 122, ${Math.min(alpha * 1.4, 0.45)})`;
           } else if (isCaramel && !isReading) {
-            ctx.fillStyle = `rgba(212, 137, 80, ${Math.min(alpha * 1.5, 0.5)})`;
+            ctx.fillStyle = `rgba(222, 147, 90, ${Math.min(alpha * 1.5, 0.5)})`;
           } else {
             // Soft warm mocha base dot
-            ctx.fillStyle = `rgba(165, 135, 115, ${Math.min(alpha * 1.2, 0.3)})`;
+            ctx.fillStyle = `rgba(180, 148, 126, ${Math.min(alpha * 1.2, 0.32)})`;
           }
 
           const dotSize =
@@ -113,7 +105,7 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
           // Delicate coordinate plus crosses at selected intersections on hero / roadmap
           if ((variant === "hero" || isRoadmap) && c % 6 === 0 && r % 6 === 0) {
             const crossAlpha = alpha * 1.8;
-            ctx.strokeStyle = `rgba(212, 137, 80, ${Math.min(crossAlpha, 0.35)})`;
+            ctx.strokeStyle = `rgba(222, 147, 90, ${Math.min(crossAlpha, 0.35)})`;
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(x - 3.5, y);
@@ -138,13 +130,13 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [variant, mousePos?.x, mousePos?.y]);
+  }, [variant, mousePos.x, mousePos.y]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 transition-opacity duration-700"
-      style={{ opacity: 1 }}
+      className="fixed inset-0 pointer-events-none select-none z-0 opacity-90 transition-opacity duration-700"
+      aria-hidden="true"
     />
   );
 };
