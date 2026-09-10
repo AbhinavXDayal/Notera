@@ -21,6 +21,7 @@ import { FIELDS_DATA } from "./data/fields";
 import type { FieldCategory, FieldId } from "./types/field";
 import { useOnboarding } from "./hooks/useOnboarding";
 import { useRoadmapProgress } from "./hooks/useRoadmapProgress";
+import { ArrowRight } from "lucide-react";
 
 export function App() {
   const [currentView, setCurrentView] = useState<"home" | "cat" | "field">(
@@ -43,6 +44,21 @@ export function App() {
   const { completedStages, completedActions, toggleStage, toggleAction } =
     useRoadmapProgress();
 
+  // AUTOMATIC ONBOARDING PROMPT FOR NEW USERS
+  useEffect(() => {
+    try {
+      const hasDismissed = sessionStorage.getItem("notera_dismissed_welcome_onboarding");
+      if (!isOnboarded && !hasDismissed) {
+        const timer = setTimeout(() => {
+          setIsOnboardingOpen(true);
+        }, 600);
+        return () => clearTimeout(timer);
+      }
+    } catch {
+      // Ignore storage errors in restricted contexts
+    }
+  }, [isOnboarded]);
+
   // Keyboard shortcut for search (Cmd+K / Ctrl+K)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -54,6 +70,15 @@ export function App() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  const handleCloseOnboarding = () => {
+    setIsOnboardingOpen(false);
+    try {
+      sessionStorage.setItem("notera_dismissed_welcome_onboarding", "true");
+    } catch {
+      // Ignore
+    }
+  };
 
   const handleSelectField = (field: FieldCategory) => {
     if (field.id === "CAT") {
@@ -117,6 +142,25 @@ export function App() {
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenSignIn={() => setIsSignInOpen(true)}
       />
+
+      {/* NEW SCHOLAR WELCOME BANNER (If not yet onboarded) */}
+      {!isOnboarded && currentView === "home" && (
+        <div className="bg-surface-container border-b border-outline-variant py-2.5 px-6 lg:px-12 text-xs flex flex-col sm:flex-row items-center justify-between gap-2 fade-in">
+          <div className="flex items-center space-x-2 text-secondary text-center sm:text-left">
+            <span className="w-2 h-2 rounded-full bg-tertiary animate-pulse flex-shrink-0" />
+            <span>
+              <strong className="text-on-surface">New to Notera?</strong> Complete our 4-question diagnostic interview to calibrate your personalized roadmap &amp; notes.
+            </span>
+          </div>
+          <button
+            onClick={() => setIsOnboardingOpen(true)}
+            className="font-semibold text-primary hover:text-primary-hover flex items-center space-x-1 underline cursor-pointer"
+          >
+            <span>Start 60-Sec Diagnostic</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      )}
 
       {/* VIEW 1: UNIVERSAL DISCOVERY HOMEPAGE */}
       {currentView === "home" && (
@@ -237,7 +281,7 @@ export function App() {
       {/* Onboarding Questionnaire Modal */}
       <OnboardingModal
         isOpen={isOnboardingOpen}
-        onClose={() => setIsOnboardingOpen(false)}
+        onClose={handleCloseOnboarding}
         onComplete={handleOnboardingComplete}
       />
 
