@@ -22,12 +22,12 @@
   }
 }
 
-/* Warm roasted mocha café library texture */
+/* Warm roasted mocha café library texture with beige stipple */
 .paper-texture {
   background-color: #322720;
   background-image:
-    radial-gradient(rgba(222, 147, 90, 0.08) 0.5px, transparent 0.5px),
-    radial-gradient(rgba(229, 173, 122, 0.05) 0.5px, #322720 0.5px);
+    radial-gradient(rgba(216, 195, 165, 0.08) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(235, 224, 210, 0.05) 0.5px, #322720 0.5px);
   background-size: 28px 28px;
   background-position:
     0 0,
@@ -51,7 +51,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #DE935A;
+  background: #D8C3A5;
 }
 
 /* Silky smooth entrance transitions */

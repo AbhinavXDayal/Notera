@@ -21,7 +21,7 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
     >
       {/* Top Right Study Desk Coffee Ring */}
       <svg
-        className="absolute top-[-40px] right-[-50px] w-72 h-72 sm:w-96 sm:h-96 opacity-30 select-none"
+        className="absolute top-[-40px] right-[-50px] w-72 h-72 sm:w-96 sm:h-96 opacity-25 select-none"
         viewBox="0 0 200 200"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
           cx="100"
           cy="100"
           r="82"
-          stroke="#8C5E3C"
+          stroke="#4D3B30"
           strokeWidth="3.5"
           strokeDasharray="40 12 80 8 30 15"
           strokeOpacity="0.25"
@@ -61,18 +61,18 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
           cx="100"
           cy="100"
           r="76"
-          stroke="#70472B"
+          stroke="#3D2E25"
           strokeWidth="1.5"
           strokeDasharray="60 20 50 15"
           strokeOpacity="0.18"
         />
 
-        {/* Delicate cup edge highlight */}
+        {/* Delicate cup edge highlight in warm beige */}
         <circle
           cx="99"
           cy="99"
           r="84"
-          stroke="#B8835A"
+          stroke="#CDBCA8"
           strokeWidth="0.75"
           strokeDasharray="25 70 30 50"
           strokeOpacity="0.2"
@@ -82,7 +82,7 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
       {/* Bottom Left Desk Coffee Ring */}
       {variant === "hero" && (
         <svg
-          className="absolute bottom-[-60px] left-[-40px] w-64 h-64 sm:w-80 sm:h-80 opacity-25 select-none"
+          className="absolute bottom-[-60px] left-[-40px] w-64 h-64 sm:w-80 sm:h-80 opacity-20 select-none"
           viewBox="0 0 200 200"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +91,7 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
             cx="100"
             cy="100"
             r="78"
-            stroke="#8C5E3C"
+            stroke="#4D3B30"
             strokeWidth="3"
             strokeDasharray="50 15 70 10 20 20"
             strokeOpacity="0.22"
@@ -100,7 +100,7 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
             cx="100"
             cy="100"
             r="73"
-            stroke="#70472B"
+            stroke="#3D2E25"
             strokeWidth="1.2"
             strokeDasharray="40 30 60 10"
             strokeOpacity="0.15"
@@ -109,7 +109,7 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
             cx="101"
             cy="101"
             r="80"
-            stroke="#B8835A"
+            stroke="#CDBCA8"
             strokeWidth="0.5"
             strokeDasharray="20 80 40 40"
             strokeOpacity="0.18"

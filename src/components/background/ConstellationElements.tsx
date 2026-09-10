@@ -27,7 +27,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
   const isHero = variant === "hero";
   const isRoadmap = variant === "roadmap";
 
-  // Deterministic set of elegant academic nodes in coffee tones
+  // Deterministic set of elegant academic nodes in warm beige tones
   const nodes: NodeElement[] = useMemo(() => {
     if (variant === "reading") {
       return [];
@@ -40,8 +40,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 15,
           y: 25,
           size: 10,
-          color: "#9E643B",
-          opacity: 0.22,
+          color: "#D8C3A5",
+          opacity: 0.25,
           duration: 22,
           delay: 0,
         },
@@ -51,8 +51,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 82,
           y: 40,
           size: 12,
-          color: "#B8835A",
-          opacity: 0.18,
+          color: "#CDBCA8",
+          opacity: 0.2,
           duration: 28,
           delay: 3,
         },
@@ -62,8 +62,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 25,
           y: 75,
           size: 9,
-          color: "#9E643B",
-          opacity: 0.2,
+          color: "#D8C3A5",
+          opacity: 0.22,
           duration: 26,
           delay: 1,
         },
@@ -73,8 +73,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 70,
           y: 80,
           size: 4,
-          color: "#B8835A",
-          opacity: 0.25,
+          color: "#CDBCA8",
+          opacity: 0.28,
           duration: 20,
           delay: 5,
         },
@@ -89,8 +89,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 10,
           y: 18,
           size: 11,
-          color: "#9E643B",
-          opacity: 0.3,
+          color: "#D8C3A5",
+          opacity: 0.32,
           duration: 24,
           delay: 0,
           label: "01",
@@ -101,8 +101,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 26,
           y: 28,
           size: 12,
-          color: "#B8835A",
-          opacity: 0.25,
+          color: "#CDBCA8",
+          opacity: 0.28,
           duration: 20,
           delay: 1.5,
           label: "02",
@@ -113,8 +113,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 48,
           y: 20,
           size: 11,
-          color: "#9E643B",
-          opacity: 0.28,
+          color: "#D8C3A5",
+          opacity: 0.3,
           duration: 26,
           delay: 3,
           label: "03",
@@ -125,8 +125,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 68,
           y: 32,
           size: 12,
-          color: "#B8835A",
-          opacity: 0.25,
+          color: "#CDBCA8",
+          opacity: 0.28,
           duration: 22,
           delay: 2,
           label: "04",
@@ -137,8 +137,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 88,
           y: 22,
           size: 13,
-          color: "#9E643B",
-          opacity: 0.32,
+          color: "#D8C3A5",
+          opacity: 0.34,
           duration: 28,
           delay: 4,
           label: "05",
@@ -150,8 +150,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 18,
           y: 65,
           size: 14,
-          color: "#B8835A",
-          opacity: 0.2,
+          color: "#CDBCA8",
+          opacity: 0.24,
           duration: 25,
           delay: 1,
         },
@@ -162,15 +162,15 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 82,
           y: 60,
           size: 12,
-          color: "#9E643B",
-          opacity: 0.24,
+          color: "#D8C3A5",
+          opacity: 0.26,
           duration: 23,
           delay: 3.5,
         },
       ];
     }
 
-    // Default Hero constellation
+    // Default Hero constellation in warm beige
     return [
       {
         id: "hero-1",
@@ -179,8 +179,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         x: 8,
         y: 16,
         size: 14,
-        color: "#c68a4c",
-        opacity: 0.35,
+        color: "#D8C3A5",
+        opacity: 0.38,
         duration: 20,
         delay: 0,
       },
@@ -190,8 +190,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         x: 90,
         y: 20,
         size: 10,
-        color: "#cfa164",
-        opacity: 0.28,
+        color: "#E8DDD0",
+        opacity: 0.3,
         duration: 24,
         delay: 2,
       },
@@ -201,8 +201,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         x: 4,
         y: 48,
         size: 12,
-        color: "#c68a4c",
-        opacity: 0.22,
+        color: "#D8C3A5",
+        opacity: 0.25,
         duration: 26,
         delay: 4,
       },
@@ -212,8 +212,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         x: 94,
         y: 52,
         size: 11,
-        color: "#cfa164",
-        opacity: 0.26,
+        color: "#E8DDD0",
+        opacity: 0.28,
         duration: 22,
         delay: 1,
       },
@@ -224,8 +224,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         x: 12,
         y: 82,
         size: 16,
-        color: "#c68a4c",
-        opacity: 0.25,
+        color: "#D8C3A5",
+        opacity: 0.28,
         duration: 28,
         delay: 3,
       },
@@ -235,8 +235,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         x: 86,
         y: 78,
         size: 9,
-        color: "#cfa164",
-        opacity: 0.24,
+        color: "#E8DDD0",
+        opacity: 0.26,
         duration: 25,
         delay: 5,
       },
@@ -247,8 +247,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         x: 52,
         y: 12,
         size: 11,
-        color: "#c68a4c",
-        opacity: 0.25,
+        color: "#D8C3A5",
+        opacity: 0.28,
         duration: 21,
         delay: 2.5,
       },
@@ -258,8 +258,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         x: 45,
         y: 88,
         size: 4.5,
-        color: "#cfa164",
-        opacity: 0.35,
+        color: "#E8DDD0",
+        opacity: 0.38,
         duration: 19,
         delay: 1.2,
       },
@@ -361,33 +361,33 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         transform: `translate(${parallaxOffset.x}px, ${parallaxOffset.y}px)`,
       }}
     >
-      {/* Delicate Curved Bezier Filaments (Knowledge Path Lines) */}
+      {/* Delicate Curved Bezier Filaments (Knowledge Path Lines) in warm beige */}
       <svg
         className="absolute inset-0 w-full h-full opacity-35"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
           <linearGradient
-            id="pathGradientCaramel"
+            id="pathGradientBeige"
             x1="0%"
             y1="0%"
             x2="100%"
             y2="100%"
           >
-            <stop offset="0%" stopColor="#9E643B" stopOpacity="0.05" />
-            <stop offset="50%" stopColor="#9E643B" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#B8835A" stopOpacity="0.05" />
+            <stop offset="0%" stopColor="#D8C3A5" stopOpacity="0.05" />
+            <stop offset="50%" stopColor="#D8C3A5" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="#CDBCA8" stopOpacity="0.05" />
           </linearGradient>
           <linearGradient
-            id="pathGradientGold"
+            id="pathGradientCream"
             x1="100%"
             y1="0%"
             x2="0%"
             y2="100%"
           >
-            <stop offset="0%" stopColor="#B8835A" stopOpacity="0.05" />
-            <stop offset="50%" stopColor="#B8835A" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="#9E643B" stopOpacity="0.05" />
+            <stop offset="0%" stopColor="#CDBCA8" stopOpacity="0.05" />
+            <stop offset="50%" stopColor="#CDBCA8" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#D8C3A5" stopOpacity="0.05" />
           </linearGradient>
         </defs>
 
@@ -397,7 +397,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
             <path
               d="M 50 180 C 180 120, 320 220, 500 160 S 750 140, 950 200"
               fill="none"
-              stroke="url(#pathGradientCaramel)"
+              stroke="url(#pathGradientBeige)"
               strokeWidth="0.85"
               strokeDasharray="4 6"
               className="animate-[dash_60s_linear_infinite]"
@@ -407,7 +407,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
             <path
               d="M 200 650 C 450 580, 680 720, 950 620 S 1200 590, 1400 680"
               fill="none"
-              stroke="url(#pathGradientGold)"
+              stroke="url(#pathGradientCream)"
               strokeWidth="0.8"
               strokeDasharray="3 5"
             />
@@ -420,14 +420,14 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
             <path
               d="M 120 180 Q 400 280, 700 200 T 1300 320"
               fill="none"
-              stroke="url(#pathGradientCaramel)"
+              stroke="url(#pathGradientBeige)"
               strokeWidth="1"
               strokeDasharray="6 4"
             />
             <path
               d="M 250 620 C 500 500, 850 680, 1200 580"
               fill="none"
-              stroke="url(#pathGradientGold)"
+              stroke="url(#pathGradientCream)"
               strokeWidth="0.9"
             />
           </>

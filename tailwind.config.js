@@ -24,29 +24,29 @@ export default {
         "surface-bright": "#57473D",
         "surface-dim": "#2E231D",
 
-        // Primary: Glowing Roasted Caramel & Crema
-        primary: "#DE935A",
-        "primary-hover": "#EBAD7C",
-        "on-primary": "#20150D",
-        "primary-container": "#5E3E26",
-        "on-primary-container": "#FCE8D5",
-        "primary-fixed": "#ECD5C2",
-        "primary-fixed-dim": "#DE935A",
-        "on-primary-fixed": "#20150D",
-        "primary-tint": "#DE935A",
-        "surface-tint": "#DE935A",
-        "inverse-primary": "#5E3E26",
+        // Primary: Refined Warm Beige & Light Oat (Zero Orange)
+        primary: "#D8C3A5",
+        "primary-hover": "#E5D5C0",
+        "on-primary": "#2A2018",
+        "primary-container": "#45382E",
+        "on-primary-container": "#F7F2EB",
+        "primary-fixed": "#E8DDD0",
+        "primary-fixed-dim": "#D8C3A5",
+        "on-primary-fixed": "#2A2018",
+        "primary-tint": "#D8C3A5",
+        "surface-tint": "#D8C3A5",
+        "inverse-primary": "#45382E",
         "inverse-surface": "#FAF3EC",
 
-        // Tertiary: Honey Amber & Toasted Golden Roast
-        tertiary: "#E5AD7A",
-        "tertiary-dark": "#C98D54",
-        "tertiary-container": "#543C28",
-        "on-tertiary": "#20150D",
-        "on-tertiary-container": "#FDF0E3",
-        "tertiary-fixed": "#FDEBDD",
-        "tertiary-fixed-dim": "#E5AD7A",
-        "on-tertiary-fixed": "#20150D",
+        // Tertiary: Soft Almond Beige & Creamy Latte Crema
+        tertiary: "#CDBCA8",
+        "tertiary-dark": "#B5A28E",
+        "tertiary-container": "#42352B",
+        "on-tertiary": "#2A2018",
+        "on-tertiary-container": "#FAF5EE",
+        "tertiary-fixed": "#EFE6DB",
+        "tertiary-fixed-dim": "#CDBCA8",
+        "on-tertiary-fixed": "#2A2018",
 
         // Outlines & Hairlines in Warm Mocha
         outline: "#6B5647",
@@ -76,7 +76,7 @@ export default {
         "terra-card":
           "0 4px 20px rgba(0, 0, 0, 0.28), 0 1px 3px rgba(0, 0, 0, 0.18)",
         "terra-hover":
-          "0 10px 30px rgba(0, 0, 0, 0.42), 0 3px 10px rgba(222, 147, 90, 0.22)",
+          "0 10px 30px rgba(0, 0, 0, 0.42), 0 3px 10px rgba(216, 195, 165, 0.22)",
       },
     },
   },

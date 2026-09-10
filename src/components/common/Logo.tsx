@@ -31,12 +31,12 @@ export const Logo: React.FC<LogoProps> = ({
     <div
       className={`inline-flex items-center space-x-3 group cursor-pointer select-none ${className}`}
     >
-      {/* Aesthetic Notera Codex Seal Emblem */}
+      {/* Aesthetic Notera Codex Seal Emblem in Luminous Beige */}
       <div
-        className={`${iconSizes} relative flex items-center justify-center rounded-xl bg-gradient-to-br from-surface-container-high to-surface border border-outline-variant group-hover:border-primary/80 transition-all duration-500 shadow-sm group-hover:shadow-[0_0_22px_rgba(201,130,76,0.3)] shrink-0 overflow-hidden`}
+        className={`${iconSizes} relative flex items-center justify-center rounded-xl bg-gradient-to-br from-surface-container-high to-surface border border-outline-variant group-hover:border-primary/80 transition-all duration-500 shadow-sm group-hover:shadow-[0_0_22px_rgba(216,195,165,0.25)] shrink-0 overflow-hidden`}
       >
-        {/* Ambient Warm Crema Radial Glow */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-tertiary/15 opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        {/* Ambient Warm Beige Radial Glow */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary/15 via-transparent to-tertiary/20 opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
         {/* Vector Codex & Monogram Icon */}
         <svg
@@ -46,14 +46,14 @@ export const Logo: React.FC<LogoProps> = ({
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <linearGradient id="noteraGold" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#E5AB74" />
-              <stop offset="50%" stopColor="#C9824C" />
-              <stop offset="100%" stopColor="#9E5D30" />
+            <linearGradient id="noteraBeige" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#EFE6DB" />
+              <stop offset="50%" stopColor="#D8C3A5" />
+              <stop offset="100%" stopColor="#B5A28E" />
             </linearGradient>
             <linearGradient id="noteraGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F8E1CE" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#C9824C" stopOpacity="0.4" />
+              <stop offset="0%" stopColor="#FAF5EE" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#D8C3A5" stopOpacity="0.5" />
             </linearGradient>
           </defs>
 
@@ -62,7 +62,7 @@ export const Logo: React.FC<LogoProps> = ({
             cx="18"
             cy="18"
             r="15"
-            stroke="url(#noteraGold)"
+            stroke="url(#noteraBeige)"
             strokeWidth="0.75"
             strokeDasharray="2 2"
             strokeOpacity="0.35"
@@ -71,7 +71,7 @@ export const Logo: React.FC<LogoProps> = ({
           {/* Open Codex Foliate Leaves / Wings */}
           <path
             d="M18 26C14 24 9 24.5 6.5 26.5V11C9 9 14 8.5 18 10.5M18 26C22 24 27 24.5 29.5 26.5V11C27 9 22 8.5 18 10.5V26Z"
-            stroke="url(#noteraGold)"
+            stroke="url(#noteraBeige)"
             strokeWidth="1.2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -85,7 +85,7 @@ export const Logo: React.FC<LogoProps> = ({
             y1="10.5"
             x2="18"
             y2="26"
-            stroke="url(#noteraGold)"
+            stroke="url(#noteraBeige)"
             strokeWidth="1.4"
             strokeLinecap="round"
           />
@@ -99,10 +99,10 @@ export const Logo: React.FC<LogoProps> = ({
           />
 
           {/* Top Cardinal Celestial Star */}
-          <circle cx="18" cy="6.5" r="1.2" fill="#E5AB74" />
+          <circle cx="18" cy="6.5" r="1.2" fill="#EFE6DB" />
           <path
             d="M18 4.5V8.5M16 6.5H20"
-            stroke="#E5AB74"
+            stroke="#EFE6DB"
             strokeWidth="0.6"
             strokeLinecap="round"
           />

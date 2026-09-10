@@ -44,7 +44,7 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    // Warm Café Theme Dot Configuration
+    // Warm Café Theme Dot Configuration (Warm Beige & Crema Highlights)
     const dotSpacing = variant === "hero" ? 28 : variant === "reading" ? 34 : 30;
     const isReading = variant === "reading";
     const isRoadmap = variant === "roadmap";
@@ -82,26 +82,26 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
             alpha += proximity * 0.28;
           }
 
-          // Dynamic warm coffee accent colors on constellation patterns
-          const isCaramel = (c * 3 + r * 5) % 19 === 0;
-          const isGold = (c * 7 + r * 2) % 23 === 0;
-          const isCreamHighlight = (c + r) % 29 === 0;
+          // Dynamic warm beige and cream accent colors on constellation patterns
+          const isBeigeOat = (c * 3 + r * 5) % 19 === 0;
+          const isCreamAlmond = (c * 7 + r * 2) % 23 === 0;
+          const isIvoryHighlight = (c + r) % 29 === 0;
 
-          if (isCreamHighlight && !isReading) {
-            ctx.fillStyle = `rgba(250, 243, 236, ${Math.min(alpha * 1.5, 0.45)})`;
-          } else if (isGold && !isReading) {
-            ctx.fillStyle = `rgba(229, 173, 122, ${Math.min(alpha * 1.4, 0.45)})`;
-          } else if (isCaramel && !isReading) {
-            ctx.fillStyle = `rgba(222, 147, 90, ${Math.min(alpha * 1.5, 0.5)})`;
+          if (isIvoryHighlight && !isReading) {
+            ctx.fillStyle = `rgba(250, 245, 238, ${Math.min(alpha * 1.5, 0.45)})`;
+          } else if (isCreamAlmond && !isReading) {
+            ctx.fillStyle = `rgba(229, 213, 192, ${Math.min(alpha * 1.4, 0.45)})`;
+          } else if (isBeigeOat && !isReading) {
+            ctx.fillStyle = `rgba(216, 195, 165, ${Math.min(alpha * 1.5, 0.5)})`;
           } else {
             // Soft warm mocha base dot
-            ctx.fillStyle = `rgba(180, 148, 126, ${Math.min(alpha * 1.2, 0.32)})`;
+            ctx.fillStyle = `rgba(180, 155, 136, ${Math.min(alpha * 1.2, 0.32)})`;
           }
 
           const dotSize =
             dist < glowRadius && glowRadius > 0
               ? 1.25 + (1 - dist / glowRadius) * 0.75
-              : isCaramel || isGold
+              : isBeigeOat || isCreamAlmond
                 ? 1.35
                 : 1.05;
 
@@ -109,10 +109,10 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
           ctx.arc(x, y, dotSize, 0, Math.PI * 2);
           ctx.fill();
 
-          // Delicate coordinate plus crosses at selected intersections on hero / roadmap
+          // Delicate coordinate plus crosses in soft beige on hero / roadmap
           if ((variant === "hero" || isRoadmap) && c % 6 === 0 && r % 6 === 0) {
             const crossAlpha = alpha * 1.8;
-            ctx.strokeStyle = `rgba(222, 147, 90, ${Math.min(crossAlpha, 0.35)})`;
+            ctx.strokeStyle = `rgba(216, 195, 165, ${Math.min(crossAlpha, 0.35)})`;
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(x - 3.5, y);
