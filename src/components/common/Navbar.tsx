@@ -8,7 +8,13 @@ interface NavbarProps {
   activeFieldId?: FieldId;
   onNavigateHome: () => void;
   onNavigateCat: (
-    tab?: "overview" | "journey" | "subjects" | "notes" | "practice" | "resources",
+    tab?:
+      | "overview"
+      | "journey"
+      | "subjects"
+      | "notes"
+      | "practice"
+      | "resources",
   ) => void;
   onOpenSearch: () => void;
 }

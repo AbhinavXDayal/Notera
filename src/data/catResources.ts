@@ -217,3 +217,4 @@ export const CAT_RESOURCES: EducationalResource[] = [
     tags: ['Strategy', 'Triage Protocol', 'Speed Management'],
   },
 ];
+

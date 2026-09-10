@@ -15,14 +15,27 @@ export const ResourceLibraryView: React.FC<ResourceLibraryViewProps> = ({
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const subjects = ["ALL", "QA", "VARC", "DILR", "Strategy"];
-  const resourceTypes = ["ALL", "Formula Sheet", "Notes", "Guide", "Document", "PDF"];
+  const resourceTypes = [
+    "ALL",
+    "Formula Sheet",
+    "Notes",
+    "Guide",
+    "Document",
+    "PDF",
+  ];
 
   const filteredResources = useMemo(() => {
     return ALL_RESOURCES.filter((res) => {
-      if (initialField && res.field.toUpperCase() !== initialField.toUpperCase()) {
+      if (
+        initialField &&
+        res.field.toUpperCase() !== initialField.toUpperCase()
+      ) {
         return false;
       }
-      if (selectedSubject !== "ALL" && res.subject?.toUpperCase() !== selectedSubject.toUpperCase()) {
+      if (
+        selectedSubject !== "ALL" &&
+        res.subject?.toUpperCase() !== selectedSubject.toUpperCase()
+      ) {
         return false;
       }
       if (selectedType !== "ALL" && res.type !== selectedType) {

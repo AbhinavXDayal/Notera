@@ -19,7 +19,8 @@ export const CatSubjectsTab: React.FC<CatSubjectsTabProps> = ({
     CAT_SUBJECTS.find((s) => s.id === activeSubjectId) || CAT_SUBJECTS[0];
 
   const subjectResources = CAT_RESOURCES.filter(
-    (res) => res.subject?.toUpperCase() === currentSubject.shortName.toUpperCase(),
+    (res) =>
+      res.subject?.toUpperCase() === currentSubject.shortName.toUpperCase(),
   );
 
   return (
@@ -102,7 +103,9 @@ export const CatSubjectsTab: React.FC<CatSubjectsTabProps> = ({
           <div className="flex items-center justify-between">
             <span className="text-xs font-mono uppercase tracking-wider text-tertiary font-semibold flex items-center gap-1.5">
               <FileText className="w-3.5 h-3.5" />
-              <span>{currentSubject.shortName} Reference PDFs &amp; Formula Sheets</span>
+              <span>
+                {currentSubject.shortName} Reference PDFs &amp; Formula Sheets
+              </span>
             </span>
             {onNavigateLibrary && (
               <button

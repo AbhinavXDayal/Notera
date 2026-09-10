@@ -25,3 +25,4 @@ export function getResourcesForField(field: string): EducationalResource[] {
 export function getResourceById(id: string): EducationalResource | undefined {
   return ALL_RESOURCES.find((item) => item.id === id);
 }
+

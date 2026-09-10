@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Search, BookOpen, Map, GraduationCap, ArrowRight, FileText } from "lucide-react";
+import {
+  Search,
+  BookOpen,
+  Map,
+  GraduationCap,
+  ArrowRight,
+  FileText,
+} from "lucide-react";
 import { Modal } from "./Modal";
 import { FIELDS_DATA } from "../../data/fields";
 import { CAT_ROADMAP_STAGES } from "../../data/catRoadmap";
@@ -39,7 +46,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           r.description.toLowerCase().includes(trimmed) ||
           r.topic?.toLowerCase().includes(trimmed) ||
           r.subject?.toLowerCase().includes(trimmed) ||
-          r.tags?.some((t) => t.toLowerCase().includes(trimmed))
+          r.tags?.some((t) => t.toLowerCase().includes(trimmed)),
       )
     : [];
 
@@ -135,8 +142,8 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             {matchingResources.length > 0 && (
               <div>
                 <span className="text-[11px] font-mono uppercase tracking-wider text-primary font-semibold flex items-center gap-1.5 mb-2">
-                  <FileText className="w-3.5 h-3.5" /> PDF Library &amp; Codices (
-                  {matchingResources.length})
+                  <FileText className="w-3.5 h-3.5" /> PDF Library &amp; Codices
+                  ({matchingResources.length})
                 </span>
                 <div className="space-y-2">
                   {matchingResources.map((res) => (
@@ -146,9 +153,13 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                     >
                       <div>
                         <div className="text-xs text-secondary font-mono flex items-center gap-2">
-                          <span className="text-primary font-semibold">{res.type}</span>
+                          <span className="text-primary font-semibold">
+                            {res.type}
+                          </span>
                           <span>•</span>
-                          <span>{res.subject} ({res.topic})</span>
+                          <span>
+                            {res.subject} ({res.topic})
+                          </span>
                           <span>•</span>
                           <span>{res.fileSize}</span>
                         </div>

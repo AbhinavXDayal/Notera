@@ -55,9 +55,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({ resource }) => {
               </span>
             )}
             {resource.topic && (
-              <span className="hidden sm:inline-block">
-                {resource.topic}
-              </span>
+              <span className="hidden sm:inline-block">{resource.topic}</span>
             )}
           </div>
         </div>
