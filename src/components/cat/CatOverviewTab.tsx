@@ -506,7 +506,7 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 fade-in">
+    <div className="w-full px-3 sm:px-6 lg:px-8 py-6 space-y-6 fade-in">
       {/* Back Navigation */}
       {onBackToPaths && (
         <div>
@@ -520,52 +520,54 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
         </div>
       )}
 
-      {/* 1. Field Guide Framework Card */}
-      <div className="max-w-lg mx-auto rounded-2xl bg-surface-container border border-outline-variant p-6 sm:p-7 shadow-terra-card space-y-6">
-        {/* Section 1 */}
-        <div className="space-y-2">
-          <h3 className="font-display text-xl text-on-surface font-semibold">
-            Any Field Guide
-          </h3>
-          <div className="text-secondary text-sm leading-relaxed space-y-1">
-            <p>Roadmap</p>
-            <p>Fundamentals</p>
-            <p>Theory &amp; Practical</p>
-            <p>Notes / Docs</p>
+      {/* 1. Field Guide Framework Card (Compact & Full Width) */}
+      <div className="w-full rounded-2xl bg-surface-container border border-outline-variant p-4 sm:p-5 shadow-terra-card">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 md:divide-x md:divide-outline-variant/50">
+          {/* Section 1 */}
+          <div className="space-y-1.5">
+            <h4 className="font-display text-base sm:text-lg text-on-surface font-semibold">
+              Any Field Guide
+            </h4>
+            <div className="text-secondary text-xs sm:text-sm leading-relaxed space-y-0.5">
+              <p>• Roadmap</p>
+              <p>• Fundamentals</p>
+              <p>• Theory &amp; Practical</p>
+              <p>• Notes / Docs</p>
+            </div>
           </div>
-        </div>
 
-        {/* Section 2 */}
-        <div className="space-y-2">
-          <h3 className="font-display text-xl text-on-surface font-semibold">
-            For Ex
-          </h3>
-          <div className="text-secondary text-sm leading-relaxed space-y-1">
-            <p>1. Cs Roadmap</p>
-            <p>1.2 Computer Fundamentals</p>
-            <p>1.3 DSA - Programming Language</p>
-            <p>1.4 Field - App Development</p>
+          {/* Section 2 */}
+          <div className="space-y-1.5 md:pl-6 pt-3 md:pt-0 border-t md:border-t-0 border-outline-variant/40">
+            <h4 className="font-display text-base sm:text-lg text-on-surface font-semibold">
+              For Ex
+            </h4>
+            <div className="text-secondary text-xs sm:text-sm leading-relaxed space-y-0.5">
+              <p>1. Cs Roadmap</p>
+              <p>1.2 Computer Fundamentals</p>
+              <p>1.3 DSA - Programming Language</p>
+              <p>1.4 Field - App Development</p>
+            </div>
           </div>
-        </div>
 
-        {/* Section 3 */}
-        <div className="space-y-2">
-          <h3 className="font-display text-xl text-on-surface font-semibold">
-            For Each Section
-          </h3>
-          <div className="text-secondary text-sm leading-relaxed space-y-1">
-            <p>• Roadmap</p>
-            <p>• Fundamentals</p>
-            <p>• Theory &amp; Practicals</p>
-            <p>• Notes / Docs</p>
+          {/* Section 3 */}
+          <div className="space-y-1.5 md:pl-6 pt-3 md:pt-0 border-t md:border-t-0 border-outline-variant/40">
+            <h4 className="font-display text-base sm:text-lg text-on-surface font-semibold">
+              For Each Section
+            </h4>
+            <div className="text-secondary text-sm leading-relaxed space-y-0.5">
+              <p>• Roadmap</p>
+              <p>• Fundamentals</p>
+              <p>• Theory &amp; Practicals</p>
+              <p>• Notes / Docs</p>
+            </div>
           </div>
         </div>
       </div>
 
       {/* 2 & 3. Side-by-Side Dual Column: Roadmap (Left) & Notes (Right) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
         {/* LEFT COLUMN: Roadmap Card (Canvas / List Switchable) */}
-        <div className="rounded-2xl bg-surface-container border border-outline-variant p-6 sm:p-7 shadow-terra-card space-y-6">
+        <div className="w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-6 shadow-terra-card space-y-6">
           {/* Header & Mode Switcher */}
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
@@ -1723,7 +1725,7 @@ ACCURACY → What causes my mistakes?`}
         </div>
 
         {/* RIGHT COLUMN: Long Vertical Notes Card */}
-        <div id="notes-card" className="rounded-2xl bg-surface-container border border-outline-variant p-6 sm:p-7 shadow-terra-card space-y-7 scroll-mt-20">
+        <div id="notes-card" className="w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-6 shadow-terra-card space-y-6 scroll-mt-20">
           {/* Header & Connection Ribbon */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
