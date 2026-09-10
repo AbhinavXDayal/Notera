@@ -18,33 +18,40 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
   isOpen,
   onClose,
   onComplete,
-  initialInterests = ["CAT"],
-  initialLevel = "Complete Beginner",
-  initialGoals = ["Complete Guidance"],
+  initialInterests,
+  initialLevel,
+  initialGoals,
 }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 3;
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const [selectedInterests, setSelectedInterests] =
-    useState<string[]>(initialInterests);
-  const [selectedLevel, setSelectedLevel] = useState<string>(initialLevel);
-  const [selectedGoals, setSelectedGoals] = useState<string[]>(initialGoals);
+  const [selectedInterests, setSelectedInterests] = useState<string[]>(["CAT"]);
+  const [selectedLevel, setSelectedLevel] = useState<string>(
+    "Complete Beginner",
+  );
+  const [selectedGoals, setSelectedGoals] = useState<string[]>([
+    "Complete Guidance",
+  ]);
 
-  // Sync initial values if reopened
+  // Sync state ONLY when the modal transitions from closed to open
   useEffect(() => {
     if (isOpen) {
       setCurrentStep(1);
       setIsTransitioning(false);
       setSelectedInterests(
-        initialInterests.length > 0 ? initialInterests : ["CAT"],
+        initialInterests && initialInterests.length > 0
+          ? initialInterests
+          : ["CAT"],
       );
       setSelectedLevel(initialLevel || "Complete Beginner");
       setSelectedGoals(
-        initialGoals.length > 0 ? initialGoals : ["Complete Guidance"],
+        initialGoals && initialGoals.length > 0
+          ? initialGoals
+          : ["Complete Guidance"],
       );
     }
-  }, [isOpen, initialInterests, initialLevel, initialGoals]);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -150,7 +157,6 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
     if (currentStep < totalSteps) {
       setCurrentStep((prev) => prev + 1);
     } else {
-      // Show transition
       setIsTransitioning(true);
       setTimeout(() => {
         onComplete({
@@ -158,7 +164,7 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
           level: selectedLevel,
           goals: selectedGoals,
         });
-      }, 1200);
+      }, 1000);
     }
   };
 
@@ -178,6 +184,7 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
         {/* Close Button */}
         {!isTransitioning && (
           <button
+            type="button"
             onClick={onClose}
             className="absolute top-6 right-6 text-secondary hover:text-on-surface p-1.5 rounded-full hover:bg-surface-container transition-all cursor-pointer"
             aria-label="Close"
@@ -423,4 +430,3 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
     </div>
   );
 };
-

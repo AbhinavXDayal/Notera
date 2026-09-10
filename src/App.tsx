@@ -148,9 +148,7 @@ export function App() {
         setActiveNoteChapterId(recommendation.targetChapterId);
       }
     } else if (recommendation.targetView === "field") {
-      setSelectedFieldId(
-        (recommendation.targetFieldId || "JEE") as FieldId,
-      );
+      setSelectedFieldId((recommendation.targetFieldId || "JEE") as FieldId);
       setCurrentView("field");
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -217,7 +215,8 @@ export function App() {
             <span className="w-2 h-2 rounded-full bg-tertiary animate-pulse flex-shrink-0" />
             <span>
               <strong className="text-on-surface">Welcome to Notera.</strong>{" "}
-              Personalize your study roadmaps and note recommendations in 3 quick questions.
+              Personalize your study roadmaps and note recommendations in 3
+              quick questions.
             </span>
           </div>
           <button
@@ -252,7 +251,8 @@ export function App() {
             {sortedFields.map((field) => {
               const isRecommended = Boolean(
                 preferences?.interests.some((i) => {
-                  if (i === "Computer Science" && field.id === "COMPSCI") return true;
+                  if (i === "Computer Science" && field.id === "COMPSCI")
+                    return true;
                   if (i === "Class 12" && field.id === "CLASS_12") return true;
                   if (i === "Class 10" && field.id === "CLASS_10") return true;
                   return i.toUpperCase() === field.id;
