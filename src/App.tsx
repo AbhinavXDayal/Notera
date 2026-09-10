@@ -267,8 +267,6 @@ export function App() {
                 onNavigateTab={(tab, chapterId) =>
                   handleNavigateCat(tab, chapterId)
                 }
-                recommendation={recommendation}
-                onOpenExamModal={() => setIsCatExamModalOpen(true)}
               />
             )}
 

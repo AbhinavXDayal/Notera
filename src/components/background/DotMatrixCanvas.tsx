@@ -138,7 +138,7 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [variant, mousePos.x, mousePos.y]);
+  }, [variant, mousePos?.x, mousePos?.y]);
 
   return (
     <canvas
