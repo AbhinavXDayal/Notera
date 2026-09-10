@@ -5,39 +5,39 @@
 @layer base {
   body {
     @apply bg-background text-on-surface font-body selection:bg-primary/20 selection:text-on-surface;
-    background-color: #181310;
+    background-color: #241D18;
   }
 }
 
-/* Rich dark mocha café library texture */
+/* Warm roasted mocha café library texture */
 .paper-texture {
-  background-color: #181310;
+  background-color: #241D18;
   background-image:
-    radial-gradient(rgba(201, 130, 76, 0.07) 0.5px, transparent 0.5px),
-    radial-gradient(rgba(217, 156, 102, 0.04) 0.5px, #181310 0.5px);
+    radial-gradient(rgba(212, 137, 80, 0.08) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(224, 166, 112, 0.05) 0.5px, #241D18 0.5px);
   background-size: 28px 28px;
   background-position:
     0 0,
     14px 14px;
 }
 
-/* Dark mocha custom scrollbar */
+/* Warm mocha custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #181310;
+  background: #241D18;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3e3027;
+  background: #48392F;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c9824c;
+  background: #D48950;
 }
 
 /* Smooth transitions */
@@ -119,5 +119,6 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

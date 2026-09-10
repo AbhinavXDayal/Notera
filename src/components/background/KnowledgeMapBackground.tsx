@@ -89,12 +89,12 @@ export const KnowledgeMapBackground: React.FC<KnowledgeMapBackgroundProps> = ({
       {/* 6. Foreground Warm Aroma Particles */}
       <CoffeeParticles variant={variant} parallaxOffset={parallaxOffset} />
 
-      {/* 7. Soft Ambient Dark Mocha Vignette for Library Atmosphere */}
+      {/* 7. Soft Ambient Warm Mocha Vignette for Library Atmosphere */}
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 85% 75% at 50% 25%, transparent 35%, rgba(24, 19, 16, 0.55) 75%, rgba(16, 12, 10, 0.92) 100%)",
+            "radial-gradient(ellipse 85% 75% at 50% 25%, transparent 35%, rgba(36, 29, 24, 0.55) 75%, rgba(26, 20, 16, 0.9) 100%)",
         }}
       />
     </div>

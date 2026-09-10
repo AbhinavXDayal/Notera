@@ -56,7 +56,7 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
       const cols = Math.ceil(width / dotSpacing) + 1;
       const rows = Math.ceil(height / dotSpacing) + 1;
 
-      // Draw darkish mocha dot matrix
+      // Draw warm mocha dot matrix
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           const x = c * dotSpacing;
@@ -83,20 +83,20 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
 
           if (alpha <= 0.005) continue;
 
-          // Darkish mocha palette: warm roasted caramel (#C9824C), toasted amber (#D99C66), soft cream highlight
+          // Warm mocha palette: radiant caramel (#D48950), toasted gold (#E0A670), warm cream highlight
           const isCaramel = (c + r * 2) % 7 === 0;
           const isGold = (c * 3 + r) % 11 === 0;
           const isCreamHighlight = (c * 5 + r * 7) % 23 === 0;
 
           if (isCreamHighlight && !isReading) {
-            ctx.fillStyle = `rgba(243, 235, 225, ${Math.min(alpha * 1.5, 0.4)})`;
+            ctx.fillStyle = `rgba(247, 239, 230, ${Math.min(alpha * 1.5, 0.45)})`;
           } else if (isGold && !isReading) {
-            ctx.fillStyle = `rgba(217, 156, 102, ${Math.min(alpha * 1.4, 0.45)})`;
+            ctx.fillStyle = `rgba(224, 166, 112, ${Math.min(alpha * 1.4, 0.45)})`;
           } else if (isCaramel && !isReading) {
-            ctx.fillStyle = `rgba(201, 130, 76, ${Math.min(alpha * 1.5, 0.5)})`;
+            ctx.fillStyle = `rgba(212, 137, 80, ${Math.min(alpha * 1.5, 0.5)})`;
           } else {
             // Soft warm mocha base dot
-            ctx.fillStyle = `rgba(145, 115, 95, ${Math.min(alpha * 1.2, 0.28)})`;
+            ctx.fillStyle = `rgba(165, 135, 115, ${Math.min(alpha * 1.2, 0.3)})`;
           }
 
           const dotSize =
@@ -113,7 +113,7 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
           // Delicate coordinate plus crosses at selected intersections on hero / roadmap
           if ((variant === "hero" || isRoadmap) && c % 6 === 0 && r % 6 === 0) {
             const crossAlpha = alpha * 1.8;
-            ctx.strokeStyle = `rgba(201, 130, 76, ${Math.min(crossAlpha, 0.35)})`;
+            ctx.strokeStyle = `rgba(212, 137, 80, ${Math.min(crossAlpha, 0.35)})`;
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(x - 3.5, y);
