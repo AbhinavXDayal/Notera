@@ -80,20 +80,11 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
         {/* LEFT COLUMN: Long Vertical Roadmap Card */}
         <div className="rounded-2xl bg-surface-container border border-outline-variant p-6 sm:p-7 shadow-terra-card space-y-8">
-          {/* Header & Intro */}
-          <div className="space-y-3">
+          {/* Header */}
+          <div>
             <h3 className="font-display text-2xl sm:text-3xl text-on-surface font-semibold">
               Roadmap
             </h3>
-            <p className="text-secondary text-xs sm:text-sm leading-relaxed font-light">
-              Based on recurring advice and preparation roadmaps shared on r/CATpreparation, the strongest common pattern is:
-            </p>
-            <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-3 rounded-lg leading-relaxed">
-              Understand → Build fundamentals → Practice consistently → Start mocks → Analyse deeply → Refine strategy → Peak for CAT
-            </div>
-            <p className="text-secondary text-xs leading-relaxed font-light">
-              A major recurring theme is not delaying DILR, maintaining daily VARC exposure, avoiding resource hoarding and treating mock analysis as seriously as mock-taking.
-            </p>
           </div>
 
           <div className="border-t border-outline-variant/60" />
