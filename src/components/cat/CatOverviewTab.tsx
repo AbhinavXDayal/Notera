@@ -19,7 +19,7 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
   onBackToPaths,
 }) => {
   return (
-    <div className="max-w-4xl mx-auto px-6 lg:px-12 py-10 space-y-6 fade-in">
+    <div className="max-w-lg mx-auto px-4 py-8 space-y-4 fade-in">
       {/* Back Navigation */}
       {onBackToPaths && (
         <div>
@@ -33,99 +33,45 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
         </div>
       )}
 
-      {/* Single Field Guide Blueprint Card */}
-      <div className="rounded-[18px] bg-surface-container border border-outline-variant p-8 sm:p-12 shadow-terra-card relative overflow-hidden space-y-10">
-        {/* Category Header Badge */}
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-surface border border-outline-variant text-[11px] font-mono uppercase tracking-widest text-tertiary">
-          <span>Field Guide Framework</span>
-          <span>•</span>
-          <span>Core Architecture</span>
-        </div>
-
-        {/* 1. Any Field Guide Section */}
-        <div className="space-y-4">
-          <h2 className="font-display text-2xl sm:text-3xl text-on-surface font-normal">
+      {/* Small Plain Text Card */}
+      <div className="rounded-2xl bg-surface-container border border-outline-variant p-6 sm:p-7 shadow-terra-card space-y-6">
+        {/* Section 1 */}
+        <div className="space-y-2">
+          <h3 className="font-display text-xl text-on-surface font-semibold">
             Any Field Guide
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-            <div className="p-4 rounded-xl bg-surface border border-outline-variant/80 text-sm font-medium text-on-surface shadow-sm flex items-center space-x-3">
-              <span className="w-2 h-2 rounded-full bg-primary" />
-              <span>Roadmap</span>
-            </div>
-            <div className="p-4 rounded-xl bg-surface border border-outline-variant/80 text-sm font-medium text-on-surface shadow-sm flex items-center space-x-3">
-              <span className="w-2 h-2 rounded-full bg-primary" />
-              <span>Fundamentals</span>
-            </div>
-            <div className="p-4 rounded-xl bg-surface border border-outline-variant/80 text-sm font-medium text-on-surface shadow-sm flex items-center space-x-3">
-              <span className="w-2 h-2 rounded-full bg-primary" />
-              <span>Theory &amp; Practical</span>
-            </div>
-            <div className="p-4 rounded-xl bg-surface border border-outline-variant/80 text-sm font-medium text-on-surface shadow-sm flex items-center space-x-3">
-              <span className="w-2 h-2 rounded-full bg-primary" />
-              <span>Notes / Docs</span>
-            </div>
+          </h3>
+          <div className="text-secondary text-sm leading-relaxed space-y-1">
+            <p>Roadmap</p>
+            <p>Fundamentals</p>
+            <p>Theory &amp; Practical</p>
+            <p>Notes / Docs</p>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-outline-variant/60" />
-
-        {/* 2. For Ex Section */}
-        <div className="space-y-4">
-          <h2 className="font-display text-2xl sm:text-3xl text-on-surface font-normal">
+        {/* Section 2 */}
+        <div className="space-y-2">
+          <h3 className="font-display text-xl text-on-surface font-semibold">
             For Ex
-          </h2>
-          <div className="space-y-2.5 pt-1">
-            <div className="p-3.5 rounded-xl bg-surface border border-outline-variant/80 text-sm text-on-surface font-mono flex items-center space-x-3">
-              <span className="text-primary font-bold">1.</span>
-              <span>Cs Roadmap</span>
-            </div>
-            <div className="p-3.5 rounded-xl bg-surface border border-outline-variant/80 text-sm text-on-surface font-mono flex items-center space-x-3">
-              <span className="text-primary font-bold">1.2</span>
-              <span>Computer Fundamentals</span>
-            </div>
-            <div className="p-3.5 rounded-xl bg-surface border border-outline-variant/80 text-sm text-on-surface font-mono flex items-center space-x-3">
-              <span className="text-primary font-bold">1.3</span>
-              <span>DSA - Programming Language</span>
-            </div>
-            <div className="p-3.5 rounded-xl bg-surface border border-outline-variant/80 text-sm text-on-surface font-mono flex items-center space-x-3">
-              <span className="text-primary font-bold">1.4</span>
-              <span>Field - App Development</span>
-            </div>
+          </h3>
+          <div className="text-secondary text-sm leading-relaxed space-y-1">
+            <p>1. Cs Roadmap</p>
+            <p>1.2 Computer Fundamentals</p>
+            <p>1.3 DSA - Programming Language</p>
+            <p>1.4 Field - App Development</p>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-outline-variant/60" />
-
-        {/* 3. For Each Section */}
-        <div className="space-y-4">
-          <h2 className="font-display text-2xl sm:text-3xl text-on-surface font-normal">
+        {/* Section 3 */}
+        <div className="space-y-2">
+          <h3 className="font-display text-xl text-on-surface font-semibold">
             For Each Section
-          </h2>
-          <ul className="space-y-3 pt-1 text-sm text-secondary font-medium">
-            <li className="flex items-center space-x-3">
-              <span className="text-primary font-bold text-lg leading-none">•</span>
-              <span className="text-on-surface">Roadmap</span>
-            </li>
-            <li className="flex items-center space-x-3">
-              <span className="text-primary font-bold text-lg leading-none">•</span>
-              <span className="text-on-surface">Fundamentals</span>
-            </li>
-            <li className="flex items-center space-x-3">
-              <span className="text-primary font-bold text-lg leading-none">•</span>
-              <span className="text-on-surface">Theory &amp; Practicals</span>
-            </li>
-            <li className="flex items-center space-x-3">
-              <span className="text-primary font-bold text-lg leading-none">•</span>
-              <span className="text-on-surface">Notes / Docs</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Subtle Watermark */}
-        <div className="absolute -right-6 -bottom-8 opacity-[0.03] pointer-events-none select-none">
-          <span className="font-display text-[160px] text-primary">GUIDE</span>
+          </h3>
+          <div className="text-secondary text-sm leading-relaxed space-y-1">
+            <p>• Roadmap</p>
+            <p>• Fundamentals</p>
+            <p>• Theory &amp; Practicals</p>
+            <p>• Notes / Docs</p>
+          </div>
         </div>
       </div>
     </div>
