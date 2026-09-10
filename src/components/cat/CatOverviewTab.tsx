@@ -1,5 +1,13 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import { ArrowLeft, ChevronDown, Sparkles, BookOpen, X } from "lucide-react";
+import {
+  ArrowLeft,
+  ChevronDown,
+  Sparkles,
+  BookOpen,
+  X,
+  GripHorizontal,
+  RotateCcw,
+} from "lucide-react";
 
 export type CatTabType =
   | "overview"
@@ -431,6 +439,16 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     roadmapToNotes?: { x1: number; y1: number; x2: number; y2: number };
   }>({});
 
+  // Drag state for moving the 3 sections freely on the board
+  const [cardOffsets, setCardOffsets] = useState<
+    Record<string, { x: number; y: number }>
+  >({
+    "field-guide": { x: 0, y: 0 },
+    roadmap: { x: 0, y: 0 },
+    notes: { x: 0, y: 0 },
+  });
+  const [draggingCard, setDraggingCard] = useState<string | null>(null);
+
   const updateCoordinates = useCallback(() => {
     if (!containerRef.current) return;
     const cRect = containerRef.current.getBoundingClientRect();
@@ -465,6 +483,53 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     }
   }, []);
 
+  const handleCardDragStart = (e: React.PointerEvent, cardId: string) => {
+    if ((e.target as HTMLElement).closest("button, a, input, select")) return;
+    e.preventDefault();
+    e.stopPropagation();
+
+    setDraggingCard(cardId);
+    const startX = e.clientX;
+    const startY = e.clientY;
+    const initial = cardOffsets[cardId] || { x: 0, y: 0 };
+
+    const onPointerMove = (moveEvt: PointerEvent) => {
+      const dx = moveEvt.clientX - startX;
+      const dy = moveEvt.clientY - startY;
+      setCardOffsets((prev) => ({
+        ...prev,
+        [cardId]: {
+          x: initial.x + dx,
+          y: initial.y + dy,
+        },
+      }));
+      updateCoordinates();
+    };
+
+    const onPointerUp = () => {
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", onPointerUp);
+      setDraggingCard(null);
+      updateCoordinates();
+    };
+
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerup", onPointerUp);
+  };
+
+  const handleResetOffsets = () => {
+    setCardOffsets({
+      "field-guide": { x: 0, y: 0 },
+      roadmap: { x: 0, y: 0 },
+      notes: { x: 0, y: 0 },
+    });
+    setTimeout(updateCoordinates, 50);
+  };
+
+  const hasMoved = Object.values(cardOffsets).some(
+    (o) => o.x !== 0 || o.y !== 0,
+  );
+
   useEffect(() => {
     updateCoordinates();
     const handleResize = () => updateCoordinates();
@@ -485,7 +550,7 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
       observer.disconnect();
       clearTimeout(timer);
     };
-  }, [updateCoordinates, openSections, openNoteCategories, activeStageId]);
+  }, [updateCoordinates, openSections, openNoteCategories, activeStageId, cardOffsets]);
 
   const toggleNoteCategory = (category: string) => {
     setOpenNoteCategories((prev) => ({
@@ -554,7 +619,33 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
 
   // 1. Field Guide Card Content
   const renderFieldGuideCard = () => (
-    <div className="relative w-full rounded-2xl bg-surface-container border border-outline-variant p-4 sm:p-5 shadow-terra-card">
+    <div
+      style={{
+        transform: `translate3d(${cardOffsets["field-guide"]?.x || 0}px, ${cardOffsets["field-guide"]?.y || 0}px, 0)`,
+        zIndex: draggingCard === "field-guide" ? 40 : 20,
+      }}
+      className={`relative w-full rounded-2xl bg-surface-container border border-outline-variant p-4 sm:p-5 shadow-terra-card transition-shadow duration-150 ${
+        draggingCard === "field-guide"
+          ? "shadow-[0_20px_50px_rgba(0,0,0,0.5)] ring-1 ring-primary/50"
+          : ""
+      }`}
+    >
+      {/* Drag Handle */}
+      <div
+        onPointerDown={(e) => handleCardDragStart(e, "field-guide")}
+        className="flex items-center justify-between px-3 py-1.5 mb-3 rounded-xl bg-surface/70 hover:bg-surface border border-outline-variant/60 hover:border-primary/50 cursor-grab active:cursor-grabbing text-xs select-none transition-all group"
+      >
+        <div className="flex items-center space-x-2 text-secondary group-hover:text-primary transition-colors">
+          <GripHorizontal className="w-3.5 h-3.5 text-primary/70 group-hover:text-primary transition-colors" />
+          <span className="font-mono text-[11px] font-semibold text-on-surface">
+            Field Guide Framework
+          </span>
+        </div>
+        <span className="text-[10px] font-mono text-secondary/60 group-hover:text-secondary transition-colors">
+          Drag section to move
+        </span>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 md:divide-x md:divide-outline-variant/50">
         {/* Section 1 */}
         <div className="relative space-y-1.5">
@@ -610,7 +701,33 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
 
   // 2. Roadmap Card Content
   const renderRoadmapCard = () => (
-    <div className="relative w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-6 shadow-terra-card space-y-6">
+    <div
+      style={{
+        transform: `translate3d(${cardOffsets["roadmap"]?.x || 0}px, ${cardOffsets["roadmap"]?.y || 0}px, 0)`,
+        zIndex: draggingCard === "roadmap" ? 40 : 20,
+      }}
+      className={`relative w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-6 shadow-terra-card space-y-6 transition-shadow duration-150 ${
+        draggingCard === "roadmap"
+          ? "shadow-[0_20px_50px_rgba(0,0,0,0.5)] ring-1 ring-primary/50"
+          : ""
+      }`}
+    >
+      {/* Drag Handle */}
+      <div
+        onPointerDown={(e) => handleCardDragStart(e, "roadmap")}
+        className="flex items-center justify-between px-3 py-1.5 -mt-1 mb-1 rounded-xl bg-surface/70 hover:bg-surface border border-outline-variant/60 hover:border-primary/50 cursor-grab active:cursor-grabbing text-xs select-none transition-all group"
+      >
+        <div className="flex items-center space-x-2 text-secondary group-hover:text-primary transition-colors">
+          <GripHorizontal className="w-3.5 h-3.5 text-primary/70 group-hover:text-primary transition-colors" />
+          <span className="font-mono text-[11px] font-semibold text-on-surface">
+            Roadmap
+          </span>
+        </div>
+        <span className="text-[10px] font-mono text-secondary/60 group-hover:text-secondary transition-colors">
+          Drag section to move
+        </span>
+      </div>
+
       {/* Top Connection Pin from Field Guide */}
       <div
         ref={anchorRoadmapTopRef}
@@ -1749,8 +1866,32 @@ ACCURACY → What causes my mistakes?`}
   const renderNotesCard = () => (
     <div
       id="notes-card"
-      className="relative w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-6 shadow-terra-card space-y-6 scroll-mt-20"
+      style={{
+        transform: `translate3d(${cardOffsets["notes"]?.x || 0}px, ${cardOffsets["notes"]?.y || 0}px, 0)`,
+        zIndex: draggingCard === "notes" ? 40 : 20,
+      }}
+      className={`relative w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-6 shadow-terra-card space-y-6 scroll-mt-20 transition-shadow duration-150 ${
+        draggingCard === "notes"
+          ? "shadow-[0_20px_50px_rgba(0,0,0,0.5)] ring-1 ring-primary/50"
+          : ""
+      }`}
     >
+      {/* Drag Handle */}
+      <div
+        onPointerDown={(e) => handleCardDragStart(e, "notes")}
+        className="flex items-center justify-between px-3 py-1.5 -mt-1 mb-1 rounded-xl bg-surface/70 hover:bg-surface border border-outline-variant/60 hover:border-primary/50 cursor-grab active:cursor-grabbing text-xs select-none transition-all group"
+      >
+        <div className="flex items-center space-x-2 text-secondary group-hover:text-primary transition-colors">
+          <GripHorizontal className="w-3.5 h-3.5 text-primary/70 group-hover:text-primary transition-colors" />
+          <span className="font-mono text-[11px] font-semibold text-on-surface">
+            Notes
+          </span>
+        </div>
+        <span className="text-[10px] font-mono text-secondary/60 group-hover:text-secondary transition-colors">
+          Drag section to move
+        </span>
+      </div>
+
       {/* Top Connection Pin from Field Guide */}
       <div
         ref={anchorNotesTopRef}
@@ -2141,9 +2282,9 @@ ACCURACY → What causes my mistakes?`}
 
   return (
     <div className="w-full px-3 sm:px-6 lg:px-8 py-6 space-y-6 fade-in">
-      {/* Top Header Row: Back Navigation */}
-      {onBackToPaths && (
-        <div className="flex items-center justify-between">
+      {/* Top Header Row: Back Navigation & Reset Layout Action */}
+      <div className="flex items-center justify-between gap-3">
+        {onBackToPaths ? (
           <button
             onClick={onBackToPaths}
             className="inline-flex items-center space-x-2 text-xs font-medium text-secondary hover:text-primary transition-colors cursor-pointer"
@@ -2151,8 +2292,22 @@ ACCURACY → What causes my mistakes?`}
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>All Paths</span>
           </button>
-        </div>
-      )}
+        ) : (
+          <div />
+        )}
+
+        {hasMoved && (
+          <button
+            type="button"
+            onClick={handleResetOffsets}
+            className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-surface/80 hover:bg-surface border border-outline-variant hover:border-primary text-xs font-mono text-secondary hover:text-primary transition-all cursor-pointer shadow-xs"
+            title="Snap sections back to standard grid"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span>Reset Layout</span>
+          </button>
+        )}
+      </div>
 
       {/* Unified 3-Section Knowledge Flow Container with Interactive Connecting Lines */}
       <div ref={containerRef} className="relative space-y-8">
