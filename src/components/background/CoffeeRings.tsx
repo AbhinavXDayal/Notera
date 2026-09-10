@@ -38,10 +38,10 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
           cx="100"
           cy="100"
           r="82"
-          stroke="#7a5435"
+          stroke="#8C5E3C"
           strokeWidth="3.5"
           strokeDasharray="40 12 80 8 30 15"
-          strokeOpacity="0.35"
+          strokeOpacity="0.25"
           filter="url(#ringGrain)"
         />
 
@@ -50,10 +50,10 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
           cx="100"
           cy="100"
           r="76"
-          stroke="#543720"
+          stroke="#70472B"
           strokeWidth="1.5"
           strokeDasharray="60 20 50 15"
-          strokeOpacity="0.25"
+          strokeOpacity="0.18"
         />
 
         {/* Delicate cup edge highlight */}
@@ -61,7 +61,7 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
           cx="99"
           cy="99"
           r="84"
-          stroke="#c68a4c"
+          stroke="#B8835A"
           strokeWidth="0.75"
           strokeDasharray="25 70 30 50"
           strokeOpacity="0.2"
@@ -80,25 +80,25 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
             cx="100"
             cy="100"
             r="78"
-            stroke="#664429"
+            stroke="#8C5E3C"
             strokeWidth="3"
             strokeDasharray="50 15 70 10 20 20"
-            strokeOpacity="0.3"
+            strokeOpacity="0.22"
           />
           <circle
             cx="100"
             cy="100"
             r="73"
-            stroke="#472e1c"
+            stroke="#70472B"
             strokeWidth="1.2"
             strokeDasharray="40 30 60 10"
-            strokeOpacity="0.2"
+            strokeOpacity="0.15"
           />
           <circle
             cx="101"
             cy="101"
             r="80"
-            stroke="#cfa164"
+            stroke="#B8835A"
             strokeWidth="0.5"
             strokeDasharray="20 80 40 40"
             strokeOpacity="0.18"

@@ -4,40 +4,40 @@
 
 @layer base {
   body {
-    @apply bg-background text-on-surface font-body selection:bg-primary/30 selection:text-on-surface;
-    background-color: #140f0c;
+    @apply bg-background text-on-surface font-body selection:bg-primary/20 selection:text-on-surface;
+    background-color: #EDE3D3;
   }
 }
 
-/* Dark coffee vintage library texture */
+/* Warm latte café library texture */
 .paper-texture {
-  background-color: #140f0c;
+  background-color: #EDE3D3;
   background-image:
-    radial-gradient(rgba(198, 138, 76, 0.04) 0.5px, transparent 0.5px),
-    radial-gradient(rgba(207, 161, 100, 0.03) 0.5px, #140f0c 0.5px);
+    radial-gradient(rgba(158, 100, 59, 0.05) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(184, 131, 90, 0.04) 0.5px, #EDE3D3 0.5px);
   background-size: 28px 28px;
   background-position:
     0 0,
     14px 14px;
 }
 
-/* Coffee custom scrollbar */
+/* Warm café custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #140f0c;
+  background: #EDE3D3;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #382920;
+  background: #CBB79E;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c68a4c;
+  background: #9E643B;
 }
 
 /* Smooth transitions */

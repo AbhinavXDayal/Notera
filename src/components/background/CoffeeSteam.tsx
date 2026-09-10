@@ -30,17 +30,17 @@ export const CoffeeSteam: React.FC<CoffeeSteamProps> = ({
       >
         <defs>
           <linearGradient id="steamGradient1" x1="0%" y1="100%" x2="0%" y2="0%">
-            <stop offset="0%" stopColor="#c68a4c" stopOpacity="0" />
-            <stop offset="30%" stopColor="#c68a4c" stopOpacity="0.25" />
-            <stop offset="70%" stopColor="#d8a870" stopOpacity="0.15" />
-            <stop offset="100%" stopColor="#f5eee6" stopOpacity="0" />
+            <stop offset="0%" stopColor="#9E643B" stopOpacity="0" />
+            <stop offset="30%" stopColor="#9E643B" stopOpacity="0.2" />
+            <stop offset="70%" stopColor="#B8835A" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#EDE3D3" stopOpacity="0" />
           </linearGradient>
 
           <linearGradient id="steamGradient2" x1="0%" y1="100%" x2="0%" y2="0%">
-            <stop offset="0%" stopColor="#966236" stopOpacity="0" />
-            <stop offset="40%" stopColor="#cfa164" stopOpacity="0.2" />
-            <stop offset="80%" stopColor="#c68a4c" stopOpacity="0.1" />
-            <stop offset="100%" stopColor="#e8ded3" stopOpacity="0" />
+            <stop offset="0%" stopColor="#7A5C4A" stopOpacity="0" />
+            <stop offset="40%" stopColor="#B8835A" stopOpacity="0.18" />
+            <stop offset="80%" stopColor="#9E643B" stopOpacity="0.08" />
+            <stop offset="100%" stopColor="#F7F1E8" stopOpacity="0" />
           </linearGradient>
 
           <filter id="steamBlur" x="-20%" y="-20%" width="140%" height="140%">

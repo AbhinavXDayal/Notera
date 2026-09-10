@@ -5,64 +5,64 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Deep Espresso & Dark Roasted Coffee Base
-        background: "#140f0c",
-        surface: "#1c1511",
-        "on-background": "#f7efe4",
-        "on-surface": "#f7efe4",
-        "on-surface-variant": "#c4b29e",
-        secondary: "#b3a08c",
-        "on-secondary": "#1c1511",
+        // Base Background: Warm Latte Beige & Cream
+        background: "#EDE3D3",
+        surface: "#F7F1E8",
+        "on-background": "#3B2A22",
+        "on-surface": "#3B2A22",
+        "on-surface-variant": "#5C4033",
+        secondary: "#6B5042",
+        "on-secondary": "#FCF8F2",
 
-        // Mocha & Dark Chocolate Containers
-        "surface-container": "#241b16",
-        "surface-container-low": "#1d1612",
-        "surface-container-high": "#2e221b",
-        "surface-container-highest": "#3a2b22",
-        "surface-container-lowest": "#120d0a",
-        "surface-variant": "#2a1f19",
-        "surface-bright": "#3c2c23",
-        "surface-dim": "#110c09",
+        // Containers & Cards: Warm Cream & Soft Mocha
+        "surface-container": "#F0E5D6",
+        "surface-container-low": "#F7F1E8",
+        "surface-container-high": "#E5D7C4",
+        "surface-container-highest": "#DBC7B0",
+        "surface-container-lowest": "#FAF6EE",
+        "surface-variant": "#E8D9C6",
+        "surface-bright": "#FAF6EE",
+        "surface-dim": "#E2D3BE",
 
-        // Rich Caramel & Roasted Amber Accents
-        primary: "#c68a4c",
-        "primary-hover": "#d89956",
-        "on-primary": "#16100b",
-        "primary-container": "#3d2815",
-        "on-primary-container": "#f8d8b4",
-        "primary-fixed": "#f0ceaa",
-        "primary-fixed-dim": "#d89956",
+        // Primary: Warm Caramel & Rich Roasted Coffee
+        primary: "#9E643B",
+        "primary-hover": "#87532E",
+        "on-primary": "#FCF8F2",
+        "primary-container": "#EAD5C3",
+        "on-primary-container": "#3B2A22",
+        "primary-fixed": "#DDBFA8",
+        "primary-fixed-dim": "#9E643B",
         "on-primary-fixed": "#241304",
-        "primary-tint": "#c68a4c",
-        "surface-tint": "#c68a4c",
-        "inverse-primary": "#d89956",
-        "inverse-surface": "#f7efe4",
+        "primary-tint": "#9E643B",
+        "surface-tint": "#9E643B",
+        "inverse-primary": "#EAD5C3",
+        "inverse-surface": "#3B2A22",
 
-        // Muted Gold & Honey Amber
-        tertiary: "#cfa164",
-        "tertiary-dark": "#b08145",
-        "tertiary-container": "#3a2b17",
-        "on-tertiary": "#16100b",
-        "on-tertiary-container": "#f4dfb8",
-        "tertiary-fixed": "#fae5be",
-        "tertiary-fixed-dim": "#cfa164",
+        // Tertiary: Honey Amber & Muted Gold
+        tertiary: "#B8835A",
+        "tertiary-dark": "#9A6842",
+        "tertiary-container": "#F0DFCE",
+        "on-tertiary": "#FCF8F2",
+        "on-tertiary-container": "#3B2A22",
+        "tertiary-fixed": "#F5E6D8",
+        "tertiary-fixed-dim": "#B8835A",
         "on-tertiary-fixed": "#251804",
 
-        // Outlines & Hairlines in Warm Mocha
-        outline: "#5e4839",
-        "outline-variant": "#382920",
-        hairline: "#34261e",
-        "hairline-dark": "#251b15",
+        // Outlines & Hairlines in Soft Mocha Latte
+        outline: "#B8A38D",
+        "outline-variant": "#D4C2AC",
+        hairline: "#DCCBB7",
+        "hairline-dark": "#CBB79E",
 
         // Secondary containers
-        "secondary-container": "#2d221b",
-        "on-secondary-container": "#e6d7c5",
-        "secondary-fixed": "#e6d7c5",
-        "secondary-fixed-dim": "#c4b29e",
+        "secondary-container": "#EADECF",
+        "on-secondary-container": "#3B2A22",
+        "secondary-fixed": "#E5D7C4",
+        "secondary-fixed-dim": "#DBC7B0",
 
         // Status
-        error: "#cf4945",
-        "on-error": "#ffffff",
+        error: "#B53834",
+        "on-error": "#FFFFFF",
       },
       fontFamily: {
         headline: ["Literata", "Georgia", "serif"],
@@ -73,8 +73,8 @@ export default {
         sans: ["Nunito Sans", "sans-serif"],
       },
       boxShadow: {
-        "terra-card": "0 8px 32px rgba(10, 7, 5, 0.55), 0 2px 6px rgba(10, 7, 5, 0.4)",
-        "terra-hover": "0 12px 40px rgba(198, 138, 76, 0.16), 0 4px 16px rgba(10, 7, 5, 0.65)",
+        "terra-card": "0 4px 20px rgba(59, 42, 34, 0.07), 0 1px 3px rgba(59, 42, 34, 0.05)",
+        "terra-hover": "0 10px 30px rgba(158, 100, 59, 0.14), 0 3px 10px rgba(59, 42, 34, 0.08)",
       },
     },
   },

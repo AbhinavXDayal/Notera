@@ -40,7 +40,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 15,
           y: 25,
           size: 10,
-          color: "#c68a4c",
+          color: "#9E643B",
           opacity: 0.22,
           duration: 22,
           delay: 0,
@@ -51,7 +51,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 82,
           y: 40,
           size: 12,
-          color: "#cfa164",
+          color: "#B8835A",
           opacity: 0.18,
           duration: 28,
           delay: 3,
@@ -62,7 +62,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 25,
           y: 75,
           size: 9,
-          color: "#c68a4c",
+          color: "#9E643B",
           opacity: 0.2,
           duration: 26,
           delay: 1,
@@ -73,7 +73,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 70,
           y: 80,
           size: 4,
-          color: "#cfa164",
+          color: "#B8835A",
           opacity: 0.25,
           duration: 20,
           delay: 5,
@@ -89,7 +89,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 10,
           y: 18,
           size: 11,
-          color: "#c68a4c",
+          color: "#9E643B",
           opacity: 0.3,
           duration: 24,
           delay: 0,
@@ -101,7 +101,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 26,
           y: 28,
           size: 12,
-          color: "#cfa164",
+          color: "#B8835A",
           opacity: 0.25,
           duration: 20,
           delay: 1.5,
@@ -113,7 +113,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 48,
           y: 20,
           size: 11,
-          color: "#c68a4c",
+          color: "#9E643B",
           opacity: 0.28,
           duration: 26,
           delay: 3,
@@ -125,7 +125,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 68,
           y: 32,
           size: 12,
-          color: "#cfa164",
+          color: "#B8835A",
           opacity: 0.25,
           duration: 22,
           delay: 2,
@@ -137,7 +137,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 88,
           y: 22,
           size: 13,
-          color: "#c68a4c",
+          color: "#9E643B",
           opacity: 0.32,
           duration: 28,
           delay: 4,
@@ -150,7 +150,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 18,
           y: 65,
           size: 14,
-          color: "#cfa164",
+          color: "#B8835A",
           opacity: 0.2,
           duration: 25,
           delay: 1,
@@ -162,7 +162,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 82,
           y: 60,
           size: 12,
-          color: "#c68a4c",
+          color: "#9E643B",
           opacity: 0.24,
           duration: 23,
           delay: 3.5,
@@ -374,9 +374,9 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
             x2="100%"
             y2="100%"
           >
-            <stop offset="0%" stopColor="#c68a4c" stopOpacity="0.05" />
-            <stop offset="50%" stopColor="#c68a4c" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#cfa164" stopOpacity="0.05" />
+            <stop offset="0%" stopColor="#9E643B" stopOpacity="0.05" />
+            <stop offset="50%" stopColor="#9E643B" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="#B8835A" stopOpacity="0.05" />
           </linearGradient>
           <linearGradient
             id="pathGradientGold"
@@ -385,9 +385,9 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
             x2="0%"
             y2="100%"
           >
-            <stop offset="0%" stopColor="#cfa164" stopOpacity="0.05" />
-            <stop offset="50%" stopColor="#cfa164" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#c68a4c" stopOpacity="0.05" />
+            <stop offset="0%" stopColor="#B8835A" stopOpacity="0.05" />
+            <stop offset="50%" stopColor="#B8835A" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#9E643B" stopOpacity="0.05" />
           </linearGradient>
         </defs>
 
