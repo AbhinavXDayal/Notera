@@ -24,7 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-outline-variant transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-        <div className="flex items-center space-x-6">
+        <div className="flex items-center">
           {/* Aesthetic Logo */}
           <button
             onClick={onNavigateHome}
@@ -33,9 +33,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Logo />
           </button>
-          <span className="text-xs uppercase tracking-[0.2em] text-secondary hidden sm:inline-block pl-2 border-l border-outline-variant font-mono">
-            The Knowledge Sanctuary
-          </span>
         </div>
 
         {/* Center Navigation Links */}
