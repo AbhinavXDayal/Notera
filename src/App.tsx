@@ -47,7 +47,9 @@ export function App() {
   // AUTOMATIC ONBOARDING PROMPT FOR NEW USERS
   useEffect(() => {
     try {
-      const hasDismissed = sessionStorage.getItem("notera_dismissed_welcome_onboarding");
+      const hasDismissed = sessionStorage.getItem(
+        "notera_dismissed_welcome_onboarding",
+      );
       if (!isOnboarded && !hasDismissed) {
         const timer = setTimeout(() => {
           setIsOnboardingOpen(true);
@@ -149,7 +151,9 @@ export function App() {
           <div className="flex items-center space-x-2 text-secondary text-center sm:text-left">
             <span className="w-2 h-2 rounded-full bg-tertiary animate-pulse flex-shrink-0" />
             <span>
-              <strong className="text-on-surface">New to Notera?</strong> Complete our 4-question diagnostic interview to calibrate your personalized roadmap &amp; notes.
+              <strong className="text-on-surface">New to Notera?</strong>{" "}
+              Complete our 4-question diagnostic interview to calibrate your
+              personalized roadmap &amp; notes.
             </span>
           </div>
           <button
