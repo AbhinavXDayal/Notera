@@ -1,13 +1,29 @@
 import React from "react";
-import { ArrowRight, Compass, Brain, Target, BookOpen } from "lucide-react";
-import type { CatTabType } from "./CatHeaderNav";
+import {
+  ArrowRight,
+  ArrowLeft,
+  Compass,
+  Brain,
+  Target,
+  BookOpen,
+} from "lucide-react";
+
+export type CatTabType =
+  | "overview"
+  | "journey"
+  | "subjects"
+  | "notes"
+  | "practice"
+  | "resources";
 
 interface CatOverviewTabProps {
   onNavigateTab?: (tab: CatTabType, chapterId?: string) => void;
+  onBackToPaths?: () => void;
 }
 
 export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
   onNavigateTab,
+  onBackToPaths,
 }) => {
   const tenets = [
     {
@@ -37,7 +53,17 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
   ];
 
   return (
-    <div className="max-w-5xl mx-auto px-6 lg:px-12 py-12 fade-in">
+    <div className="max-w-5xl mx-auto px-6 lg:px-12 py-10 fade-in">
+      {onBackToPaths && (
+        <button
+          onClick={onBackToPaths}
+          className="mb-6 inline-flex items-center space-x-2 text-xs font-medium text-secondary hover:text-primary transition-colors cursor-pointer"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>All Paths</span>
+        </button>
+      )}
+
       {/* Ideology Behind Learning Card */}
       <div className="rounded-[16px] bg-surface-container border-2 border-outline-variant p-8 sm:p-12 relative overflow-hidden shadow-terra-card">
         <div className="max-w-3xl space-y-6 relative z-10">
@@ -54,8 +80,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
           <p className="text-secondary text-base sm:text-lg leading-relaxed font-light">
             The Common Admission Test does not measure mechanical calculation
             speed or memorized trivia. It evaluates intellectual composure,
-            rigorous structural deconstruction, and the ability to make
-            optimal decisions under tight constraints.
+            rigorous structural deconstruction, and the ability to make optimal
+            decisions under tight constraints.
           </p>
 
           {/* Core Principles Grid */}

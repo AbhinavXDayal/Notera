@@ -5,9 +5,8 @@ import { HeroSection } from "./components/home/HeroSection";
 import { RecommendedHeroBanner } from "./components/home/RecommendedHeroBanner";
 import { CategoryCard } from "./components/home/CategoryCard";
 import { VisitorOnboardingModal } from "./components/onboarding/VisitorOnboardingModal";
-import { CatHeaderNav } from "./components/cat/CatHeaderNav";
-import type { CatTabType } from "./components/cat/CatHeaderNav";
 import { CatOverviewTab } from "./components/cat/CatOverviewTab";
+import type { CatTabType } from "./components/cat/CatOverviewTab";
 import { CatRoadmapTab } from "./components/cat/CatRoadmapTab";
 import { CatSubjectsTab } from "./components/cat/CatSubjectsTab";
 import { CatPracticeTab } from "./components/cat/CatPracticeTab";
@@ -256,17 +255,12 @@ export function App() {
         {/* VIEW 2: DEDICATED CAT UNIVERSE */}
         {currentView === "cat" && (
           <section className="min-h-screen fade-in pb-16">
-            <CatHeaderNav
-              activeTab={catTab}
-              onTabChange={setCatTab}
-              onBackToPaths={handleNavigateHome}
-            />
-
             {catTab === "overview" && (
               <CatOverviewTab
                 onNavigateTab={(tab, chapterId) =>
                   handleNavigateCat(tab, chapterId)
                 }
+                onBackToPaths={handleNavigateHome}
               />
             )}
 
