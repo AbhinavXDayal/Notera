@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { X, Check, Compass, Sparkles, ArrowRight } from "lucide-react";
 
 interface VisitorOnboardingModalProps {
@@ -18,36 +18,44 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
   isOpen,
   onClose,
   onComplete,
-  initialInterests = ["CAT"],
-  initialLevel = "Complete Beginner",
-  initialGoals = ["Complete Guidance"],
+  initialInterests,
+  initialLevel,
+  initialGoals,
 }) => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState<number>(1);
   const totalSteps = 3;
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
 
-  const [selectedInterests, setSelectedInterests] =
-    useState<string[]>(initialInterests);
-  const [selectedLevel, setSelectedLevel] = useState<string>(initialLevel);
-  const [selectedGoals, setSelectedGoals] = useState<string[]>(initialGoals);
+  const [selectedInterests, setSelectedInterests] = useState<string[]>(() =>
+    initialInterests && initialInterests.length > 0 ? initialInterests : ["CAT"]
+  );
+  const [selectedLevel, setSelectedLevel] = useState<string>(() =>
+    initialLevel || "Complete Beginner"
+  );
+  const [selectedGoals, setSelectedGoals] = useState<string[]>(() =>
+    initialGoals && initialGoals.length > 0 ? initialGoals : ["Complete Guidance"]
+  );
 
-  // Sync state when the modal transitions from closed to open
+  const prevIsOpenRef = useRef<boolean>(isOpen);
+
+  // Sync state ONLY when the modal transitions from closed (false) to open (true)
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && !prevIsOpenRef.current) {
       setCurrentStep(1);
       setIsTransitioning(false);
       setSelectedInterests(
         initialInterests && initialInterests.length > 0
           ? initialInterests
-          : ["CAT"],
+          : ["CAT"]
       );
       setSelectedLevel(initialLevel || "Complete Beginner");
       setSelectedGoals(
         initialGoals && initialGoals.length > 0
           ? initialGoals
-          : ["Complete Guidance"],
+          : ["Complete Guidance"]
       );
     }
+    prevIsOpenRef.current = isOpen;
   }, [isOpen, initialInterests, initialLevel, initialGoals]);
 
   if (!isOpen) return null;
@@ -80,7 +88,7 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
   // Dynamic Level Options based on Interest
   const getLevelOptions = () => {
     const isSchool = selectedInterests.some(
-      (i) => i === "Class 12" || i === "Class 10",
+      (i) => i === "Class 12" || i === "Class 10"
     );
     const isCompSci = selectedInterests.includes("Computer Science");
 
@@ -151,18 +159,40 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
   };
 
   const handleNext = () => {
-    if (currentStep < totalSteps) {
-      setCurrentStep((prev) => prev + 1);
-    } else {
-      // Show transition
+    console.log("Continue clicked", {
+      currentStep,
+      selectedInterests,
+      selectedLevel,
+      selectedGoals,
+    });
+
+    if (currentStep === 1) {
+      if (selectedInterests.length === 0) {
+        setSelectedInterests(["CAT"]);
+      }
+      setCurrentStep(2);
+      return;
+    }
+
+    if (currentStep === 2) {
+      if (!selectedLevel) {
+        setSelectedLevel("Complete Beginner");
+      }
+      setCurrentStep(3);
+      return;
+    }
+
+    if (currentStep >= 3) {
       setIsTransitioning(true);
       setTimeout(() => {
         onComplete({
-          interests: selectedInterests,
-          level: selectedLevel,
-          goals: selectedGoals,
+          interests:
+            selectedInterests.length > 0 ? selectedInterests : ["CAT"],
+          level: selectedLevel || "Complete Beginner",
+          goals:
+            selectedGoals.length > 0 ? selectedGoals : ["Complete Guidance"],
         });
-      }, 1200);
+      }, 1000);
     }
   };
 
@@ -175,8 +205,13 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
   const progressPercentage = (currentStep / totalSteps) * 100;
 
   return (
-    <div className="fixed inset-0 z-50 bg-on-surface/60 backdrop-blur-sm flex items-center justify-center p-4 transition-all duration-300">
-      <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
+    <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300">
+      {/* Click-away backdrop overlay */}
+      <div
+        className="fixed inset-0 cursor-default"
+        onClick={onClose}
+        aria-hidden="true"
+      />
 
       <div className="bg-surface border border-outline-variant rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative transition-all duration-300 z-10 fade-in">
         {/* Close Button */}
@@ -267,7 +302,7 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
                         onClick={() => toggleInterest(field)}
                         className={`p-3 rounded-xl border text-left flex items-center justify-between transition-all cursor-pointer ${
                           isSelected
-                            ? "border-primary bg-surface shadow-sm text-on-surface"
+                            ? "border-primary bg-surface-container shadow-sm text-on-surface ring-1 ring-primary/40"
                             : "border-outline-variant bg-surface-container hover:border-primary/50 text-secondary hover:text-on-surface"
                         }`}
                       >
@@ -305,12 +340,13 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
                   {getLevelOptions().map((opt) => {
                     const isSelected = selectedLevel === opt.title;
                     return (
-                      <div
+                      <button
                         key={opt.title}
+                        type="button"
                         onClick={() => setSelectedLevel(opt.title)}
-                        className={`p-3.5 rounded-xl border cursor-pointer flex items-center justify-between transition-all ${
+                        className={`w-full p-3.5 rounded-xl border cursor-pointer flex items-center justify-between transition-all text-left ${
                           isSelected
-                            ? "border-primary bg-surface shadow-sm"
+                            ? "border-primary bg-surface-container shadow-sm ring-1 ring-primary/40"
                             : "border-outline-variant bg-surface-container hover:border-primary/50"
                         }`}
                       >
@@ -326,12 +362,12 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
                           className={`w-4 h-4 rounded-full border flex items-center justify-center ${
                             isSelected
                               ? "border-primary bg-primary text-on-primary"
-                              : "border-secondary/50"
+                              : "border-outline-variant"
                           }`}
                         >
                           {isSelected && <Check className="w-3 h-3" />}
                         </span>
-                      </div>
+                      </button>
                     );
                   })}
                 </div>
@@ -368,7 +404,7 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
                         onClick={() => toggleGoal(focus)}
                         className={`p-3.5 rounded-xl border text-left flex items-center justify-between transition-all cursor-pointer ${
                           isSelected
-                            ? "border-primary bg-surface shadow-sm text-on-surface"
+                            ? "border-primary bg-surface-container shadow-sm text-on-surface ring-1 ring-primary/40"
                             : "border-outline-variant bg-surface-container hover:border-primary/50 text-secondary hover:text-on-surface"
                         }`}
                       >
@@ -396,7 +432,7 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
                   type="button"
                   onClick={handleBack}
                   disabled={currentStep === 1}
-                  className="text-xs font-semibold text-secondary hover:text-on-surface uppercase tracking-wider disabled:opacity-25 cursor-pointer disabled:cursor-not-allowed"
+                  className="text-xs font-semibold text-secondary hover:text-on-surface uppercase tracking-wider disabled:opacity-25 cursor-pointer disabled:cursor-not-allowed transition-colors"
                 >
                   ← Back
                 </button>
@@ -412,7 +448,7 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
               <button
                 type="button"
                 onClick={handleNext}
-                className="px-5 py-2.5 rounded-full bg-primary text-on-primary text-xs font-semibold hover:bg-primary-hover transition-all shadow-terra-card flex items-center space-x-1.5 cursor-pointer"
+                className="px-5 py-2.5 rounded-full bg-primary text-on-primary text-xs font-semibold hover:bg-primary-hover transition-all shadow-terra-card flex items-center space-x-1.5 cursor-pointer select-none active:scale-[0.98]"
               >
                 <span>
                   {currentStep === totalSteps

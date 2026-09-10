@@ -271,8 +271,10 @@ export function App() {
                   preferences?.interests.some((i) => {
                     if (i === "Computer Science" && field.id === "COMPSCI")
                       return true;
-                    if (i === "Class 12" && field.id === "CLASS_12") return true;
-                    if (i === "Class 10" && field.id === "CLASS_10") return true;
+                    if (i === "Class 12" && field.id === "CLASS_12")
+                      return true;
+                    if (i === "Class 10" && field.id === "CLASS_10")
+                      return true;
                     return i.toUpperCase() === field.id;
                   }),
                 );

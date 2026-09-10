@@ -37,20 +37,26 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
     const isRoadmap = variant === "roadmap";
 
     const dotSpacing = isRoadmap ? 36 : isReading ? 32 : isSubtle ? 30 : 28;
-    const baseAlpha = isReading ? 0.035 : isSubtle ? 0.06 : isRoadmap ? 0.1 : 0.085;
-    const glowRadius = isReading ? 0 : isSubtle ? 140 : 200;
-    const glowAlphaBoost = isReading ? 0 : isSubtle ? 0.08 : 0.14;
+    const baseAlpha = isReading
+      ? 0.04
+      : isSubtle
+        ? 0.08
+        : isRoadmap
+          ? 0.12
+          : 0.11;
+    const glowRadius = isReading ? 0 : isSubtle ? 150 : 220;
+    const glowAlphaBoost = isReading ? 0 : isSubtle ? 0.12 : 0.2;
 
     let time = 0;
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
-      time += 0.015;
+      time += 0.012;
 
       const cols = Math.ceil(width / dotSpacing) + 1;
       const rows = Math.ceil(height / dotSpacing) + 1;
 
-      // Draw dot matrix
+      // Draw coffee dot matrix
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           const x = c * dotSpacing;
@@ -65,7 +71,7 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
           const wave =
             isReading || isSubtle
               ? 0
-              : Math.sin(x * 0.004 + y * 0.004 + time) * 0.02;
+              : Math.sin(x * 0.0035 + y * 0.0035 + time) * 0.025;
 
           let alpha = baseAlpha + wave;
 
@@ -77,24 +83,28 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
 
           if (alpha <= 0.005) continue;
 
-          // Color palette: earthy forest green (#4a7c59) & warm amber (#705c30) on accents
-          const isAccent = (c + r * 2) % 7 === 0;
+          // Coffee palette: dark mocha brown, caramel (#c68a4c), muted gold (#cfa164), and warm cream
+          const isCaramel = (c + r * 2) % 7 === 0;
           const isGold = (c * 3 + r) % 11 === 0;
+          const isCreamHighlight = (c * 5 + r * 7) % 23 === 0;
 
-          if (isGold && !isReading) {
-            ctx.fillStyle = `rgba(112, 92, 48, ${Math.min(alpha * 1.3, 0.4)})`;
-          } else if (isAccent && !isReading) {
-            ctx.fillStyle = `rgba(74, 124, 89, ${Math.min(alpha * 1.4, 0.45)})`;
+          if (isCreamHighlight && !isReading) {
+            ctx.fillStyle = `rgba(247, 239, 228, ${Math.min(alpha * 1.5, 0.45)})`;
+          } else if (isGold && !isReading) {
+            ctx.fillStyle = `rgba(207, 161, 100, ${Math.min(alpha * 1.4, 0.5)})`;
+          } else if (isCaramel && !isReading) {
+            ctx.fillStyle = `rgba(198, 138, 76, ${Math.min(alpha * 1.5, 0.55)})`;
           } else {
-            ctx.fillStyle = `rgba(90, 104, 94, ${Math.min(alpha, 0.35)})`;
+            // Warm roasted mocha brown base dot
+            ctx.fillStyle = `rgba(94, 72, 57, ${Math.min(alpha * 1.2, 0.4)})`;
           }
 
           const dotSize =
             dist < glowRadius && glowRadius > 0
-              ? 1.2 + (1 - dist / glowRadius) * 0.6
-              : isAccent
-              ? 1.3
-              : 1.0;
+              ? 1.25 + (1 - dist / glowRadius) * 0.75
+              : isCaramel || isGold
+                ? 1.35
+                : 1.05;
 
           ctx.beginPath();
           ctx.arc(x, y, dotSize, 0, Math.PI * 2);
@@ -102,14 +112,14 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
 
           // Delicate coordinate plus crosses at selected intersections on hero / roadmap
           if ((variant === "hero" || isRoadmap) && c % 6 === 0 && r % 6 === 0) {
-            const crossAlpha = alpha * 1.6;
-            ctx.strokeStyle = `rgba(74, 124, 89, ${Math.min(crossAlpha, 0.25)})`;
-            ctx.lineWidth = 0.75;
+            const crossAlpha = alpha * 1.8;
+            ctx.strokeStyle = `rgba(198, 138, 76, ${Math.min(crossAlpha, 0.35)})`;
+            ctx.lineWidth = 0.8;
             ctx.beginPath();
-            ctx.moveTo(x - 3, y);
-            ctx.lineTo(x + 3, y);
-            ctx.moveTo(x, y - 3);
-            ctx.lineTo(x, y + 3);
+            ctx.moveTo(x - 3.5, y);
+            ctx.lineTo(x + 3.5, y);
+            ctx.moveTo(x, y - 3.5);
+            ctx.lineTo(x, y + 3.5);
             ctx.stroke();
           }
         }

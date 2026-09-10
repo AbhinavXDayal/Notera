@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { DotMatrixCanvas } from "./DotMatrixCanvas";
 import type { BackgroundVariant } from "./DotMatrixCanvas";
 import { ConstellationElements } from "./ConstellationElements";
+import { CoffeeBeans } from "./CoffeeBeans";
+import { CoffeeSteam } from "./CoffeeSteam";
+import { CoffeeRings } from "./CoffeeRings";
+import { CoffeeParticles } from "./CoffeeParticles";
 
 interface KnowledgeMapBackgroundProps {
   variant?: BackgroundVariant;
@@ -15,7 +19,10 @@ export const KnowledgeMapBackground: React.FC<KnowledgeMapBackgroundProps> = ({
     y: -1000,
   });
 
-  const [parallaxOffset, setParallaxOffset] = useState<{ x: number; y: number }>({
+  const [parallaxOffset, setParallaxOffset] = useState<{
+    x: number;
+    y: number;
+  }>({
     x: 0,
     y: 0,
   });
@@ -35,9 +42,9 @@ export const KnowledgeMapBackground: React.FC<KnowledgeMapBackgroundProps> = ({
 
       const cx = window.innerWidth / 2;
       const cy = window.innerHeight / 2;
-      // Gentle 4px max parallax offset
-      targetX = ((e.clientX - cx) / cx) * -5;
-      targetY = ((e.clientY - cy) / cy) * -5;
+      // Gentle restrained parallax offset (4px max)
+      targetX = ((e.clientX - cx) / cx) * -4;
+      targetY = ((e.clientY - cy) / cy) * -4;
     };
 
     const updateParallax = () => {
@@ -61,18 +68,33 @@ export const KnowledgeMapBackground: React.FC<KnowledgeMapBackgroundProps> = ({
       aria-hidden="true"
       className="fixed inset-0 pointer-events-none select-none z-0 overflow-hidden"
     >
-      {/* 1. Base Dot Matrix Canvas (High-Performance 60fps) */}
+      {/* 1. Deep Dot Matrix Canvas (High-Performance 60fps) */}
       <DotMatrixCanvas variant={variant} mousePos={mousePos} />
 
-      {/* 2. Floating Academic Constellations, Geometric Nodes & Filaments */}
-      <ConstellationElements variant={variant} parallaxOffset={parallaxOffset} />
+      {/* 2. Deep Study Desk Coffee Rings */}
+      <CoffeeRings variant={variant} parallaxOffset={parallaxOffset} />
 
-      {/* 3. Soft Ambient Vignette for Natural Academic Paper Lighting */}
+      {/* 3. Rising Warm Steam Filaments */}
+      <CoffeeSteam variant={variant} parallaxOffset={parallaxOffset} />
+
+      {/* 4. Floating Stylized Abstract Coffee Beans */}
+      <CoffeeBeans variant={variant} parallaxOffset={parallaxOffset} />
+
+      {/* 5. Floating Geometric Constellations & Knowledge Filaments */}
+      <ConstellationElements
+        variant={variant}
+        parallaxOffset={parallaxOffset}
+      />
+
+      {/* 6. Foreground Warm Aroma Particles */}
+      <CoffeeParticles variant={variant} parallaxOffset={parallaxOffset} />
+
+      {/* 7. Soft Ambient Espresso Vignette for Warm Library Lighting */}
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 85% 75% at 50% 25%, transparent 40%, rgba(250, 246, 240, 0.6) 80%, rgba(250, 246, 240, 0.95) 100%)",
+            "radial-gradient(ellipse 85% 75% at 50% 25%, transparent 35%, rgba(20, 15, 12, 0.65) 75%, rgba(20, 15, 12, 0.95) 100%)",
         }}
       />
     </div>

@@ -24,16 +24,14 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
   variant = "hero",
   parallaxOffset = { x: 0, y: 0 },
 }) => {
-  // Disable floating elements on reading mode to maximize study focus
-  if (variant === "reading") {
-    return null;
-  }
-
   const isHero = variant === "hero";
   const isRoadmap = variant === "roadmap";
 
-  // Deterministic set of elegant academic nodes
+  // Deterministic set of elegant academic nodes in coffee tones
   const nodes: NodeElement[] = useMemo(() => {
+    if (variant === "reading") {
+      return [];
+    }
     if (variant === "subtle") {
       return [
         {
@@ -42,8 +40,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 15,
           y: 25,
           size: 10,
-          color: "#4a7c59",
-          opacity: 0.18,
+          color: "#c68a4c",
+          opacity: 0.22,
           duration: 22,
           delay: 0,
         },
@@ -53,8 +51,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 82,
           y: 40,
           size: 12,
-          color: "#705c30",
-          opacity: 0.15,
+          color: "#cfa164",
+          opacity: 0.18,
           duration: 28,
           delay: 3,
         },
@@ -64,8 +62,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 25,
           y: 75,
           size: 9,
-          color: "#4a7c59",
-          opacity: 0.16,
+          color: "#c68a4c",
+          opacity: 0.2,
           duration: 26,
           delay: 1,
         },
@@ -75,8 +73,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 70,
           y: 80,
           size: 4,
-          color: "#705c30",
-          opacity: 0.22,
+          color: "#cfa164",
+          opacity: 0.25,
           duration: 20,
           delay: 5,
         },
@@ -91,8 +89,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 10,
           y: 18,
           size: 11,
-          color: "#4a7c59",
-          opacity: 0.25,
+          color: "#c68a4c",
+          opacity: 0.3,
           duration: 24,
           delay: 0,
           label: "01",
@@ -100,156 +98,170 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         {
           id: "road-2",
           type: "circle",
-          x: 35,
+          x: 26,
           y: 28,
           size: 12,
-          color: "#705c30",
-          opacity: 0.22,
-          duration: 30,
+          color: "#cfa164",
+          opacity: 0.25,
+          duration: 20,
+          delay: 1.5,
+          label: "02",
+        },
+        {
+          id: "road-3",
+          type: "diamond",
+          x: 48,
+          y: 20,
+          size: 11,
+          color: "#c68a4c",
+          opacity: 0.28,
+          duration: 26,
+          delay: 3,
+          label: "03",
+        },
+        {
+          id: "road-4",
+          type: "plus",
+          x: 68,
+          y: 32,
+          size: 12,
+          color: "#cfa164",
+          opacity: 0.25,
+          duration: 22,
           delay: 2,
           label: "04",
         },
         {
-          id: "road-3",
-          type: "square",
-          x: 65,
-          y: 20,
-          size: 10,
-          color: "#4a7c59",
-          opacity: 0.24,
-          duration: 26,
-          delay: 4,
-          label: "08",
-        },
-        {
-          id: "road-4",
+          id: "road-5",
           type: "diamond",
           x: 88,
-          y: 35,
-          size: 12,
-          color: "#705c30",
-          opacity: 0.28,
-          duration: 22,
-          delay: 1,
-          label: "14",
-        },
-        {
-          id: "road-5",
-          type: "plus",
-          x: 22,
-          y: 65,
-          size: 14,
-          color: "#4a7c59",
-          opacity: 0.18,
-          duration: 32,
-          delay: 3,
+          y: 22,
+          size: 13,
+          color: "#c68a4c",
+          opacity: 0.32,
+          duration: 28,
+          delay: 4,
+          label: "05",
         },
         {
           id: "road-6",
-          type: "circle",
-          x: 78,
-          y: 72,
-          size: 9,
-          color: "#705c30",
+          type: "glyph",
+          symbol: "∫",
+          x: 18,
+          y: 65,
+          size: 14,
+          color: "#cfa164",
           opacity: 0.2,
-          duration: 28,
-          delay: 6,
+          duration: 25,
+          delay: 1,
+        },
+        {
+          id: "road-7",
+          type: "glyph",
+          symbol: "✦",
+          x: 82,
+          y: 60,
+          size: 12,
+          color: "#c68a4c",
+          opacity: 0.24,
+          duration: 23,
+          delay: 3.5,
         },
       ];
     }
 
-    // Default Hero Variant (Rich, subtle academic constellations)
+    // Default Hero constellation
     return [
       {
         id: "hero-1",
-        type: "diamond",
-        x: 8,
-        y: 22,
-        size: 12,
-        color: "#4a7c59",
-        opacity: 0.28,
-        duration: 25,
-        delay: 0,
+        type: "glyph",
         symbol: "✦",
+        x: 8,
+        y: 16,
+        size: 14,
+        color: "#c68a4c",
+        opacity: 0.35,
+        duration: 20,
+        delay: 0,
       },
       {
         id: "hero-2",
-        type: "square",
-        x: 86,
-        y: 18,
-        size: 11,
-        color: "#705c30",
-        opacity: 0.22,
-        duration: 30,
+        type: "diamond",
+        x: 90,
+        y: 20,
+        size: 10,
+        color: "#cfa164",
+        opacity: 0.28,
+        duration: 24,
         delay: 2,
       },
       {
         id: "hero-3",
         type: "plus",
-        x: 20,
-        y: 60,
-        size: 13,
-        color: "#4a7c59",
-        opacity: 0.2,
-        duration: 28,
+        x: 4,
+        y: 48,
+        size: 12,
+        color: "#c68a4c",
+        opacity: 0.22,
+        duration: 26,
         delay: 4,
       },
       {
         id: "hero-4",
         type: "circle",
-        x: 80,
-        y: 65,
-        size: 14,
-        color: "#705c30",
-        opacity: 0.24,
+        x: 94,
+        y: 52,
+        size: 11,
+        color: "#cfa164",
+        opacity: 0.26,
         duration: 22,
         delay: 1,
       },
       {
         id: "hero-5",
-        type: "dot",
-        x: 48,
-        y: 14,
-        size: 5,
-        color: "#4a7c59",
-        opacity: 0.35,
-        duration: 18,
+        type: "glyph",
+        symbol: "∫",
+        x: 12,
+        y: 82,
+        size: 16,
+        color: "#c68a4c",
+        opacity: 0.25,
+        duration: 28,
         delay: 3,
       },
       {
         id: "hero-6",
-        type: "glyph",
-        x: 92,
-        y: 82,
-        size: 14,
-        color: "#705c30",
-        opacity: 0.18,
-        duration: 35,
+        type: "square",
+        x: 86,
+        y: 78,
+        size: 9,
+        color: "#cfa164",
+        opacity: 0.24,
+        duration: 25,
         delay: 5,
-        symbol: "∫",
       },
       {
         id: "hero-7",
-        type: "diamond",
-        x: 14,
-        y: 85,
-        size: 10,
-        color: "#4a7c59",
-        opacity: 0.22,
-        duration: 27,
-        delay: 2,
+        type: "glyph",
         symbol: "✦",
+        x: 52,
+        y: 12,
+        size: 11,
+        color: "#c68a4c",
+        opacity: 0.25,
+        duration: 21,
+        delay: 2.5,
       },
       {
         id: "hero-8",
-        type: "plus",
-        x: 62,
+        type: "dot",
+        x: 45,
         y: 88,
-        size: 11,
-        color: "#705c30",
-        opacity: 0.18,
-        duration: 33,
-        delay: 6,
+        size: 4.5,
+        color: "#cfa164",
+        opacity: 0.35,
+        duration: 19,
+        delay: 1.2,
       },
     ];
   }, [variant, isRoadmap]);
@@ -259,22 +271,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
       case "diamond":
         return (
           <div
-            className="flex items-center justify-center font-serif"
-            style={{
-              width: `${node.size * 1.6}px`,
-              height: `${node.size * 1.6}px`,
-              color: node.color,
-              opacity: node.opacity,
-            }}
-          >
-            <span className="text-xs select-none">✦</span>
-          </div>
-        );
-
-      case "square":
-        return (
-          <div
-            className="border border-current rounded-[2px]"
+            className="border transform rotate-45 transition-transform"
             style={{
               width: `${node.size}px`,
               height: `${node.size}px`,
@@ -283,70 +280,83 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
             }}
           />
         );
-
-      case "plus":
+      case "square":
         return (
           <div
-            className="flex items-center justify-center font-mono font-light select-none text-xs"
-            style={{
-              color: node.color,
-              opacity: node.opacity,
-            }}
-          >
-            +
-          </div>
-        );
-
-      case "circle":
-        return (
-          <div
-            className="rounded-full border border-dashed flex items-center justify-center"
+            className="border"
             style={{
               width: `${node.size}px`,
               height: `${node.size}px`,
               borderColor: node.color,
               opacity: node.opacity,
             }}
+          />
+        );
+      case "circle":
+        return (
+          <div
+            className="border rounded-full"
+            style={{
+              width: `${node.size}px`,
+              height: `${node.size}px`,
+              borderColor: node.color,
+              opacity: node.opacity,
+            }}
+          />
+        );
+      case "plus":
+        return (
+          <div
+            className="relative flex items-center justify-center font-mono font-light select-none"
+            style={{
+              width: `${node.size}px`,
+              height: `${node.size}px`,
+              color: node.color,
+              opacity: node.opacity,
+              fontSize: `${node.size * 1.3}px`,
+              lineHeight: 1,
+            }}
           >
-            <div
-              className="w-1 h-1 rounded-full bg-current"
-              style={{ color: node.color }}
-            />
+            +
           </div>
         );
-
       case "glyph":
         return (
           <div
-            className="font-display italic text-sm select-none"
+            className="select-none font-serif flex items-center justify-center"
             style={{
+              width: `${node.size * 1.2}px`,
+              height: `${node.size * 1.2}px`,
               color: node.color,
               opacity: node.opacity,
+              fontSize: `${node.size}px`,
             }}
           >
-            {node.symbol || "∫"}
+            {node.symbol || "✦"}
           </div>
         );
-
       case "dot":
       default:
         return (
           <div
-            className="rounded-full animate-pulse"
+            className="rounded-full"
             style={{
               width: `${node.size}px`,
               height: `${node.size}px`,
               backgroundColor: node.color,
               opacity: node.opacity,
+              boxShadow: `0 0 6px ${node.color}`,
             }}
           />
         );
     }
   };
 
+  if (variant === "reading") return null;
+
   return (
     <div
-      className="fixed inset-0 pointer-events-none z-0 overflow-hidden transition-transform duration-500 ease-out"
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden transition-transform duration-700 ease-out"
       style={{
         transform: `translate(${parallaxOffset.x}px, ${parallaxOffset.y}px)`,
       }}
@@ -357,15 +367,27 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <linearGradient id="pathGradientGreen" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#4a7c59" stopOpacity="0.05" />
-            <stop offset="50%" stopColor="#4a7c59" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#705c30" stopOpacity="0.05" />
+          <linearGradient
+            id="pathGradientCaramel"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" stopColor="#c68a4c" stopOpacity="0.05" />
+            <stop offset="50%" stopColor="#c68a4c" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#cfa164" stopOpacity="0.05" />
           </linearGradient>
-          <linearGradient id="pathGradientGold" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#705c30" stopOpacity="0.05" />
-            <stop offset="50%" stopColor="#705c30" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="#4a7c59" stopOpacity="0.05" />
+          <linearGradient
+            id="pathGradientGold"
+            x1="100%"
+            y1="0%"
+            x2="0%"
+            y2="100%"
+          >
+            <stop offset="0%" stopColor="#cfa164" stopOpacity="0.05" />
+            <stop offset="50%" stopColor="#cfa164" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="#c68a4c" stopOpacity="0.05" />
           </linearGradient>
         </defs>
 
@@ -375,7 +397,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
             <path
               d="M 50 180 C 180 120, 320 220, 500 160 S 750 140, 950 200"
               fill="none"
-              stroke="url(#pathGradientGreen)"
+              stroke="url(#pathGradientCaramel)"
               strokeWidth="0.85"
               strokeDasharray="4 6"
               className="animate-[dash_60s_linear_infinite]"
@@ -398,7 +420,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
             <path
               d="M 120 180 Q 400 280, 700 200 T 1300 320"
               fill="none"
-              stroke="url(#pathGradientGreen)"
+              stroke="url(#pathGradientCaramel)"
               strokeWidth="1"
               strokeDasharray="6 4"
             />
@@ -429,7 +451,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
             {/* Optional coordinate or step badge */}
             {node.label && (
               <span
-                className="absolute -top-3.5 -right-3 text-[9px] font-mono font-medium px-1 rounded border border-outline-variant/60 bg-surface/80"
+                className="absolute -top-3.5 -right-3 text-[9px] font-mono font-medium px-1 rounded border border-outline-variant/60 bg-surface-container/90"
                 style={{ color: node.color, opacity: node.opacity * 1.5 }}
               >
                 {node.label}

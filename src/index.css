@@ -4,39 +4,40 @@
 
 @layer base {
   body {
-    @apply bg-surface text-on-surface font-body;
+    @apply bg-background text-on-surface font-body selection:bg-primary/30 selection:text-on-surface;
+    background-color: #140f0c;
   }
 }
 
-/* Subtle natural organic texture overlay */
+/* Dark coffee vintage library texture */
 .paper-texture {
-  background-color: #faf6f0;
+  background-color: #140f0c;
   background-image:
-    radial-gradient(rgba(74, 124, 89, 0.05) 0.5px, transparent 0.5px),
-    radial-gradient(rgba(112, 92, 48, 0.04) 0.5px, #faf6f0 0.5px);
-  background-size: 24px 24px;
+    radial-gradient(rgba(198, 138, 76, 0.04) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(207, 161, 100, 0.03) 0.5px, #140f0c 0.5px);
+  background-size: 28px 28px;
   background-position:
     0 0,
-    12px 12px;
+    14px 14px;
 }
 
-/* Terra custom scrollbar */
+/* Coffee custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #faf6f0;
+  background: #140f0c;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d5cebe;
+  background: #382920;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4a7c59;
+  background: #c68a4c;
 }
 
 /* Smooth transitions */
@@ -55,22 +56,54 @@
   }
 }
 
-/* Ambient organic drift for background nodes */
-@keyframes floatingOrganic {
+/* Coffee steam rising animation */
+@keyframes coffeeSteamRising {
   0% {
-    transform: translate(0px, 0px) rotate(0deg);
+    opacity: 0;
+    transform: translateY(12px) scaleX(0.9) skewX(-2deg);
   }
-  33% {
-    transform: translate(8px, -12px) rotate(3deg);
+  25% {
+    opacity: 0.45;
   }
-  66% {
-    transform: translate(-6px, 8px) rotate(-2deg);
+  60% {
+    opacity: 0.3;
+    transform: translateY(-24px) scaleX(1.1) skewX(2deg);
   }
   100% {
-    transform: translate(4px, -6px) rotate(1deg);
+    opacity: 0;
+    transform: translateY(-60px) scaleX(1.25) skewX(-3deg);
   }
 }
 
+/* Subtle organic coffee bean drift */
+@keyframes coffeeBeanDrift {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  35% {
+    transform: translateY(-8px) rotate(4deg);
+  }
+  70% {
+    transform: translateY(4px) rotate(-3deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Coffee aroma particle pulse */
+@keyframes particlePulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.15);
+  }
+}
+
+/* Dashed lines animation */
 @keyframes dash {
   to {
     stroke-dashoffset: 1000;
