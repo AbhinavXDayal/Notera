@@ -21,7 +21,6 @@ import { FIELDS_DATA } from "./data/fields";
 import type { FieldCategory, FieldId } from "./types/field";
 import { useVisitorPreferences } from "./hooks/useVisitorPreferences";
 import { useRoadmapProgress } from "./hooks/useRoadmapProgress";
-import { ArrowRight } from "lucide-react";
 
 export function App() {
   const [currentView, setCurrentView] = useState<"home" | "cat" | "field">(
@@ -225,27 +224,6 @@ export function App() {
           onNavigateCat={handleNavigateCat}
           onOpenSearch={() => setIsSearchOpen(true)}
         />
-
-        {/* Subtle First-Time Visitor Banner (If not yet completed) */}
-        {!hasCompletedOnboarding && currentView === "home" && (
-          <div className="bg-surface-container/90 backdrop-blur-sm border-b border-outline-variant py-2 px-6 lg:px-12 text-xs flex flex-col sm:flex-row items-center justify-between gap-2 fade-in">
-            <div className="flex items-center space-x-2 text-secondary text-center sm:text-left">
-              <span className="w-2 h-2 rounded-full bg-tertiary animate-pulse flex-shrink-0" />
-              <span>
-                <strong className="text-on-surface">Welcome to Notera.</strong>{" "}
-                Personalize your study roadmaps and note recommendations in 3
-                quick questions.
-              </span>
-            </div>
-            <button
-              onClick={() => setIsVisitorOnboardingOpen(true)}
-              className="font-semibold text-primary hover:text-primary-hover flex items-center space-x-1 underline cursor-pointer flex-shrink-0"
-            >
-              <span>Personalize Path</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        )}
 
         {/* VIEW 1: UNIVERSAL DISCOVERY HOMEPAGE */}
         {currentView === "home" && (
