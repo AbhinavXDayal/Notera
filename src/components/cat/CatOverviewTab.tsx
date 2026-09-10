@@ -1,6 +1,5 @@
 import React from "react";
 import { ArrowLeft } from "lucide-react";
-import { CAT_ROADMAP_STAGES } from "../../data/catRoadmap";
 
 export type CatTabType =
   | "overview"
@@ -17,7 +16,6 @@ interface CatOverviewTabProps {
 }
 
 export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
-  onNavigateTab,
   onBackToPaths,
 }) => {
   return (
@@ -78,62 +76,436 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
       </div>
 
       {/* 2. Long Vertical Roadmap Card */}
-      <div className="rounded-2xl bg-surface-container border border-outline-variant p-6 sm:p-7 shadow-terra-card space-y-6">
-        <div className="space-y-1">
-          <h3 className="font-display text-2xl text-on-surface font-semibold">
+      <div className="rounded-2xl bg-surface-container border border-outline-variant p-6 sm:p-7 shadow-terra-card space-y-8">
+        {/* Header & Intro */}
+        <div className="space-y-3">
+          <h3 className="font-display text-2xl sm:text-3xl text-on-surface font-semibold">
             Roadmap
           </h3>
-          <p className="text-xs text-secondary font-mono uppercase tracking-wider">
-            CAT Preparation Journey
+          <p className="text-secondary text-xs sm:text-sm leading-relaxed font-light">
+            Based on recurring advice and preparation roadmaps shared on r/CATpreparation, the strongest common pattern is:
+          </p>
+          <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-3 rounded-lg leading-relaxed">
+            Understand → Build fundamentals → Practice consistently → Start mocks → Analyse deeply → Refine strategy → Peak for CAT
+          </div>
+          <p className="text-secondary text-xs leading-relaxed font-light">
+            A major recurring theme is not delaying DILR, maintaining daily VARC exposure, avoiding resource hoarding and treating mock analysis as seriously as mock-taking.
           </p>
         </div>
 
-        {/* Vertical Chronological Stages */}
-        <div className="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-[1.5px] before:bg-outline-variant">
-          {CAT_ROADMAP_STAGES.map((stage) => (
-            <div key={stage.id} className="relative group">
-              {/* Step indicator dot on timeline */}
-              <div className="absolute -left-6 top-1 w-2.5 h-2.5 rounded-full bg-surface border-2 border-primary group-hover:bg-primary transition-colors" />
+        <div className="border-t border-outline-variant/60" />
 
-              <div className="space-y-1">
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                  <span className="text-primary font-mono text-xs font-semibold">
-                    Stage {stage.stageNumber}
-                  </span>
-                  <span className="text-outline-variant text-[10px]">•</span>
-                  <span className="text-[11px] font-mono text-secondary">
-                    {stage.phase}
-                  </span>
-                  {stage.timeEstimate && (
-                    <>
-                      <span className="text-outline-variant text-[10px]">•</span>
-                      <span className="text-[10px] text-secondary/70">
-                        {stage.timeEstimate}
-                      </span>
-                    </>
-                  )}
-                </div>
+        {/* 01 — Understand the Journey */}
+        <div className="space-y-3">
+          <h4 className="font-display text-lg text-on-surface font-semibold">
+            01 — Understand the Journey
+          </h4>
+          <p className="text-xs text-secondary font-mono uppercase tracking-wider">
+            Before studying
+          </p>
+          <div className="text-secondary text-sm space-y-1">
+            <p>• What is CAT?</p>
+            <p>• QA, VARC &amp; DILR</p>
+            <p>• Exam pattern &amp; structure</p>
+            <p>• Percentile vs score</p>
+            <p>• Target colleges</p>
+            <p>• Understanding your goals</p>
+            <p>• Choosing your preparation approach</p>
+          </div>
+          <p className="text-xs text-primary font-medium pt-1">
+            Goal: Know what you're preparing for before collecting resources
+          </p>
+        </div>
 
-                <h4 className="text-sm font-medium text-on-surface group-hover:text-primary transition-colors">
-                  {stage.title}
-                </h4>
+        <div className="border-t border-outline-variant/60" />
 
-                <p className="text-xs text-secondary leading-relaxed font-light">
-                  {stage.subtitle || stage.description}
-                </p>
+        {/* 02 — Build Your Foundation */}
+        <div className="space-y-4">
+          <h4 className="font-display text-lg text-on-surface font-semibold">
+            02 — Build Your Foundation
+          </h4>
 
-                {onNavigateTab && (
-                  <button
-                    onClick={() => onNavigateTab("journey")}
-                    className="inline-flex items-center space-x-1 text-[11px] text-primary hover:underline pt-0.5 cursor-pointer"
-                  >
-                    <span>Explore Stage</span>
-                    <span className="text-xs">→</span>
-                  </button>
-                )}
-              </div>
+          <div className="space-y-1.5">
+            <p className="text-xs font-mono text-primary font-semibold uppercase">QA</p>
+            <p className="text-xs text-secondary font-light">Start rebuilding mathematical fundamentals:</p>
+            <div className="text-secondary text-sm space-y-0.5 pl-2">
+              <p>• Arithmetic basics</p>
+              <p>• Algebra basics</p>
+              <p>• Geometry basics</p>
+              <p>• Numbers</p>
+              <p>• Modern Math</p>
             </div>
-          ))}
+          </div>
+
+          <div className="space-y-1.5">
+            <p className="text-xs font-mono text-primary font-semibold uppercase">VARC</p>
+            <div className="text-secondary text-sm space-y-0.5 pl-2">
+              <p>• Build a daily reading habit</p>
+              <p>• Learn how Reading Comprehension works</p>
+              <p>• Understand summaries &amp; paragraph logic</p>
+              <p>• Develop comprehension before obsessing over vocabulary</p>
+            </div>
+          </div>
+
+          <div className="space-y-1.5">
+            <p className="text-xs font-mono text-primary font-semibold uppercase">DILR</p>
+            <p className="text-xs text-secondary font-light">Start immediately — don't postpone it</p>
+            <div className="text-secondary text-sm space-y-0.5 pl-2">
+              <p>• Basic DI</p>
+              <p>• Basic logical reasoning</p>
+              <p>• Tables &amp; charts</p>
+              <p>• Set selection</p>
+              <p>• Structured thinking</p>
+            </div>
+          </div>
+
+          <p className="text-[11px] text-secondary/80 italic pt-1">
+            Reddit preparation plans repeatedly emphasize starting DILR early rather than leaving it until after completing Quant.
+          </p>
+        </div>
+
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 03 — Complete the Core Syllabus */}
+        <div className="space-y-3">
+          <h4 className="font-display text-lg text-on-surface font-semibold">
+            03 — Complete the Core Syllabus
+          </h4>
+          <pre className="text-xs font-mono text-secondary bg-surface/70 border border-outline-variant p-3.5 rounded-lg overflow-x-auto leading-relaxed select-text">
+{`CAT CORE
+├── QA
+│   ├── Arithmetic
+│   ├── Algebra
+│   ├── Geometry
+│   ├── Number System
+│   └── Modern Math
+├── VARC
+│   ├── Reading Comprehension
+│   ├── Para Summary
+│   ├── Para Jumbles
+│   ├── Odd One Out
+│   └── Para Completion
+└── DILR
+    ├── Data Interpretation
+    ├── Logical Reasoning
+    ├── Mixed Sets
+    └── Set Selection`}
+          </pre>
+          <p className="text-xs text-primary font-medium pt-1">
+            Goal: Understand every major area before entering intensive mock preparation
+          </p>
+        </div>
+
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 04 — Practice & Application */}
+        <div className="space-y-4">
+          <div className="space-y-1">
+            <h4 className="font-display text-lg text-on-surface font-semibold">
+              04 — Practice &amp; Application
+            </h4>
+            <p className="text-xs text-secondary font-light">
+              This is where knowledge becomes CAT ability.
+            </p>
+          </div>
+
+          <div className="space-y-1.5">
+            <p className="text-xs font-mono text-primary font-semibold uppercase">QA</p>
+            <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
+              Concept ↓ Basic Questions ↓ Intermediate Questions ↓ CAT-Level Questions ↓ Mixed Practice
+            </p>
+          </div>
+
+          <div className="space-y-1.5">
+            <p className="text-xs font-mono text-primary font-semibold uppercase">VARC</p>
+            <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
+              Daily Reading ↓ RC Practice ↓ Question Analysis ↓ Accuracy Improvement
+            </p>
+          </div>
+
+          <div className="space-y-1.5">
+            <p className="text-xs font-mono text-primary font-semibold uppercase">DILR</p>
+            <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
+              Basic Sets ↓ Different Set Types ↓ Mixed Sets ↓ Timed Sets ↓ Set Selection Strategy
+            </p>
+          </div>
+
+          <p className="text-[11px] text-secondary/80 italic pt-1">
+            One detailed Reddit roadmap recommends consistent DILR volume and repeated practice rather than treating it as a theory-heavy subject.
+          </p>
+        </div>
+
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 05 — Sectional Strategy */}
+        <div className="space-y-4">
+          <div className="space-y-1">
+            <h4 className="font-display text-lg text-on-surface font-semibold">
+              05 — Sectional Strategy
+            </h4>
+            <p className="text-xs text-secondary font-light">
+              Once fundamentals are reasonably established:
+            </p>
+          </div>
+
+          <div className="space-y-1">
+            <p className="text-xs font-mono text-primary font-semibold uppercase">QA</p>
+            <div className="text-secondary text-sm space-y-0.5 pl-2">
+              <p>• Mixed-topic practice</p>
+              <p>• Speed vs accuracy</p>
+              <p>• Question selection</p>
+            </div>
+          </div>
+
+          <div className="space-y-1">
+            <p className="text-xs font-mono text-primary font-semibold uppercase">VARC</p>
+            <div className="text-secondary text-sm space-y-0.5 pl-2">
+              <p>• RC accuracy</p>
+              <p>• Reading strategy</p>
+              <p>• Eliminating wrong options</p>
+            </div>
+          </div>
+
+          <div className="space-y-1">
+            <p className="text-xs font-mono text-primary font-semibold uppercase">DILR</p>
+            <div className="text-secondary text-sm space-y-0.5 pl-2">
+              <p>• Choosing the right sets</p>
+              <p>• Leaving bad sets early</p>
+              <p>• Solving selected sets efficiently</p>
+            </div>
+          </div>
+
+          <p className="text-xs text-primary font-medium pt-1">
+            Goal: Stop thinking only about solving questions and start thinking about attempting CAT strategically
+          </p>
+        </div>
+
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 06 — Enter the Mock Phase */}
+        <div className="space-y-3">
+          <h4 className="font-display text-lg text-on-surface font-semibold">
+            06 — Enter the Mock Phase
+          </h4>
+          <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
+            LEARN ↓ PRACTICE ↓ SECTIONALS ↓ FULL MOCKS
+          </div>
+          <p className="text-sm text-on-surface font-medium">
+            Start mocks before you feel “perfectly ready.”
+          </p>
+          <p className="text-xs text-secondary leading-relaxed font-light">
+            The preparation discussions consistently emphasize that the mock phase is where aspirants learn their actual strengths, weaknesses, speed, stamina and exam strategy.
+          </p>
+        </div>
+
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 07 — Mock Analysis */}
+        <div className="space-y-3">
+          <h4 className="font-display text-lg text-on-surface font-semibold">
+            07 — Mock Analysis
+          </h4>
+          <p className="text-xs text-secondary leading-relaxed font-light">
+            This should be one of the biggest parts of your roadmap.
+          </p>
+          <p className="text-xs font-mono text-secondary">After every mock:</p>
+          <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-3 rounded-lg leading-relaxed">
+            MOCK ↓ Analyse Every Section ↓ Why was this wrong? ↓ Why did I skip this? ↓ Was my selection correct? ↓ Concept / Speed / Accuracy issue? ↓ Create Action Plan ↓ Next Mock
+          </div>
+          <p className="text-xs font-mono text-secondary pt-1">Track:</p>
+          <div className="text-secondary text-sm space-y-0.5 pl-2">
+            <p>• Wrong questions</p>
+            <p>• Skipped easy questions</p>
+            <p>• Time wasted</p>
+            <p>• Weak topics</p>
+            <p>• Bad question selection</p>
+            <p>• Repeated mistakes</p>
+          </div>
+          <p className="text-xs text-primary font-medium pt-1">
+            A mock without analysis is incomplete preparation
+          </p>
+        </div>
+
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 08 — Previous Year Questions */}
+        <div className="space-y-3">
+          <h4 className="font-display text-lg text-on-surface font-semibold">
+            08 — Previous Year Questions
+          </h4>
+          <p className="text-xs text-secondary leading-relaxed font-light">
+            Move increasingly toward actual CAT-level material.
+          </p>
+          <p className="text-xs font-mono text-secondary">Use PYQs to understand:</p>
+          <div className="text-secondary text-sm space-y-0.5 pl-2">
+            <p>• Real CAT difficulty</p>
+            <p>• Question patterns</p>
+            <p>• Examiner thinking</p>
+            <p>• Section behaviour</p>
+            <p>• Question selection</p>
+          </div>
+          <p className="text-[11px] text-secondary/80 italic pt-1">
+            Reddit roadmaps particularly stress solving and revisiting previous CAT papers during the later preparation stages.
+          </p>
+        </div>
+
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 09 — Build Your Personal CAT Strategy */}
+        <div className="space-y-3">
+          <h4 className="font-display text-lg text-on-surface font-semibold">
+            09 — Build Your Personal CAT Strategy
+          </h4>
+          <p className="text-xs text-secondary leading-relaxed font-light">
+            By now, every aspirant should have their own strategy.
+          </p>
+          <pre className="text-xs font-mono text-secondary bg-surface/70 border border-outline-variant p-3.5 rounded-lg overflow-x-auto leading-relaxed select-text">
+{`YOUR CAT STRATEGY
+QA       → Which questions do I attempt?
+VARC     → What is my reading approach?
+DILR     → How do I select sets?
+TIME     → Where do I stop wasting time?
+ACCURACY → What causes my mistakes?`}
+          </pre>
+          <p className="text-xs text-primary font-medium pt-1">
+            This is where preparation becomes personalized.
+          </p>
+        </div>
+
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 10 — Revision & Error Correction */}
+        <div className="space-y-3">
+          <h4 className="font-display text-lg text-on-surface font-semibold">
+            10 — Revision &amp; Error Correction
+          </h4>
+          <p className="text-xs font-mono text-secondary">Create:</p>
+          <div className="text-secondary text-sm space-y-1.5 pl-2">
+            <p><span className="text-primary font-medium">Formula Sheet:</span> QA formulas &amp; shortcuts</p>
+            <p><span className="text-primary font-medium">Mistake Book:</span> Repeated mistakes</p>
+            <p><span className="text-primary font-medium">DILR Archive:</span> Important sets to revisit</p>
+            <p><span className="text-primary font-medium">VARC Learning Notes:</span> Patterns in your errors</p>
+          </div>
+          <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
+            WEAKNESS ↓ IDENTIFY ↓ PRACTICE ↓ REVISIT ↓ MEASURE
+          </div>
+        </div>
+
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 11 — Intensive Mock Phase */}
+        <div className="space-y-3">
+          <h4 className="font-display text-lg text-on-surface font-semibold">
+            11 — Intensive Mock Phase
+          </h4>
+          <p className="text-xs font-mono text-secondary">Now focus shifts from learning new things to:</p>
+          <div className="text-secondary text-sm space-y-0.5 pl-2">
+            <p>• Speed</p>
+            <p>• Accuracy</p>
+            <p>• Stamina</p>
+            <p>• Selection</p>
+            <p>• Strategy</p>
+            <p>• Consistency</p>
+          </div>
+          <p className="text-[11px] text-secondary/80 italic pt-1">
+            The later-stage Reddit guidance strongly focuses on flexibility, mock temperament, reducing errors and learning how to approach the paper rather than endlessly adding new material.
+          </p>
+        </div>
+
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 12 — Final Month */}
+        <div className="space-y-3">
+          <h4 className="font-display text-lg text-on-surface font-semibold">
+            12 — Final Month
+          </h4>
+          <div className="text-xs font-mono text-primary font-semibold">
+            LESS CHAOS • MORE REVISION
+          </div>
+          <p className="text-xs font-mono text-secondary">Focus on:</p>
+          <div className="text-secondary text-sm space-y-0.5 pl-2">
+            <p>• Your strongest areas</p>
+            <p>• High-value weak areas</p>
+            <p>• Previous mistakes</p>
+            <p>• Mock analysis</p>
+            <p>• PYQs</p>
+            <p>• Formula revision</p>
+          </div>
+          <p className="text-xs font-mono text-secondary pt-1">Avoid suddenly collecting:</p>
+          <div className="text-secondary text-sm space-y-0.5 pl-2">
+            <p>• New courses</p>
+            <p>• 50 PDFs</p>
+            <p>• Random YouTube strategies</p>
+            <p>• Too many new resources</p>
+          </div>
+          <p className="text-[11px] text-secondary/80 italic pt-1">
+            A recurring community theme is to avoid resource hoarding and instead use a focused system consistently.
+          </p>
+        </div>
+
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 13 — CAT Exam Strategy */}
+        <div className="space-y-3">
+          <h4 className="font-display text-lg text-on-surface font-semibold">
+            13 — CAT Exam Strategy
+          </h4>
+          <p className="text-xs font-mono text-secondary">Before exam day, know:</p>
+          <div className="text-secondary text-sm space-y-0.5 pl-2">
+            <p>• Your section strategy</p>
+            <p>• How long you give a difficult question</p>
+            <p>• When to skip</p>
+            <p>• How you recover from a bad section</p>
+            <p>• How you handle panic</p>
+            <p>• Your pacing strategy</p>
+          </div>
+          <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
+            CALM ↓ SELECT ↓ SOLVE ↓ SKIP ↓ MOVE ON
+          </div>
+        </div>
+
+        <div className="border-t border-outline-variant/60" />
+
+        {/* 14 — Beyond CAT */}
+        <div className="space-y-3">
+          <h4 className="font-display text-lg text-on-surface font-semibold">
+            14 — Beyond CAT
+          </h4>
+          <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
+            CAT RESULT ↓ Shortlists ↓ WAT / GD / PI Preparation ↓ College Selection ↓ MBA Journey
+          </div>
+        </div>
+
+        <div className="border-t border-outline-variant/60" />
+
+        {/* The Notera CAT Journey Summary */}
+        <div className="space-y-3 pt-1">
+          <h4 className="font-display text-xl text-on-surface font-semibold">
+            The Notera CAT Journey
+          </h4>
+          <div className="grid grid-cols-1 gap-1.5 text-xs font-mono text-secondary">
+            {[
+              { num: "01", text: "Understand CAT" },
+              { num: "02", text: "Build Your Foundation" },
+              { num: "03", text: "Complete the Core Syllabus" },
+              { num: "04", text: "Practice & Apply" },
+              { num: "05", text: "Master Sectional Strategy" },
+              { num: "06", text: "Enter the Mock Phase" },
+              { num: "07", text: "Analyse & Learn" },
+              { num: "08", text: "Solve Previous Year Questions" },
+              { num: "09", text: "Build Your Personal Strategy" },
+              { num: "10", text: "Revise & Fix Weaknesses" },
+              { num: "11", text: "Intensive Mock Training" },
+              { num: "12", text: "Final Revision" },
+              { num: "13", text: "CAT Exam Day" },
+              { num: "14", text: "Interviews & MBA Journey" },
+            ].map((item) => (
+              <div key={item.num} className="flex items-center space-x-2.5 py-1.5 px-3 rounded-lg bg-surface/60 border border-outline-variant/60">
+                <span className="text-primary font-bold">{item.num}</span>
+                <span className="text-on-surface font-sans text-xs">{item.text}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
