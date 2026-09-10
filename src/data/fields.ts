@@ -7,10 +7,9 @@ export const FIELDS_DATA: FieldCategory[] = [
     subtitle: 'MBA & Leadership Entrance',
     symbol: 'C',
     description: 'Comprehensive mastery of Quantitative Aptitude, Verbal Ability & Reading Comprehension, and Data Interpretation & Logical Reasoning.',
-    featured: true,
-    tag: 'Featured',
     actionText: 'Enter CAT Universe',
     targetPath: '/cat',
+    available: true,
   },
   {
     id: 'JEE',
@@ -18,8 +17,9 @@ export const FIELDS_DATA: FieldCategory[] = [
     subtitle: 'Engineering Entrance',
     symbol: 'J',
     description: 'Physics, Chemistry, and Mathematics from classical mechanics to advanced analytical problem solving for IIT entrance.',
-    actionText: 'Explore Engineering',
+    actionText: 'Unavailable for now',
     targetPath: '/jee',
+    available: false,
   },
   {
     id: 'NEET',
@@ -27,8 +27,9 @@ export const FIELDS_DATA: FieldCategory[] = [
     subtitle: 'Medical Sciences',
     symbol: 'N',
     description: 'Cellular biology, human physiology, organic synthesis, and conceptual physical doctrines for national medical school.',
-    actionText: 'Explore Medical',
+    actionText: 'Unavailable for now',
     targetPath: '/neet',
+    available: false,
   },
   {
     id: 'UPSC',
@@ -36,8 +37,9 @@ export const FIELDS_DATA: FieldCategory[] = [
     subtitle: 'Civil Services',
     symbol: 'U',
     description: 'Modern Indian history, constitutional polity, ecological conservation, macroeconomic ethics, and essay mastery.',
-    actionText: 'Explore Civil Services',
+    actionText: 'Unavailable for now',
     targetPath: '/upsc',
+    available: false,
   },
   {
     id: 'CUET',
@@ -45,8 +47,9 @@ export const FIELDS_DATA: FieldCategory[] = [
     subtitle: 'University Entrance',
     symbol: 'C₂',
     description: 'Standardized aptitude benchmarks and undergraduate domain subjects across central universities.',
-    actionText: 'Explore Universities',
+    actionText: 'Unavailable for now',
     targetPath: '/cuet',
+    available: false,
   },
   {
     id: 'CLASS_12',
@@ -54,8 +57,9 @@ export const FIELDS_DATA: FieldCategory[] = [
     subtitle: 'Senior Secondary Boards',
     symbol: 'XII',
     description: 'NCERT canonical deconstruction, step-marking rubrics, formula codices, and board exam blueprints.',
-    actionText: 'Explore Boards',
+    actionText: 'Unavailable for now',
     targetPath: '/class-12',
+    available: false,
   },
   {
     id: 'CLASS_10',
@@ -63,8 +67,9 @@ export const FIELDS_DATA: FieldCategory[] = [
     subtitle: 'Foundational Boards',
     symbol: 'X',
     description: 'Crucial bridge from foundational arithmetic and natural sciences into higher analytical scholarship.',
-    actionText: 'Explore Fundamentals',
+    actionText: 'Unavailable for now',
     targetPath: '/class-10',
+    available: false,
   },
   {
     id: 'COMPSCI',
@@ -72,8 +77,8 @@ export const FIELDS_DATA: FieldCategory[] = [
     subtitle: 'Algorithms & Systems',
     symbol: '</>',
     description: 'Data structures, computational complexity, distributed systems architecture, and engineering craftsmanship.',
-    actionText: 'Explore Engineering',
+    actionText: 'Unavailable for now',
     targetPath: '/compsci',
+    available: false,
   },
 ];
-

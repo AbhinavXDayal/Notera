@@ -18,6 +18,7 @@ export interface FieldCategory {
   tag?: string;
   actionText: string;
   targetPath: string;
+  available?: boolean;
 }
 
 export interface SubjectModule {
@@ -71,4 +72,3 @@ export interface FieldGuideData {
     desc: string;
   }[];
 }
-

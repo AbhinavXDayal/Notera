@@ -79,6 +79,9 @@ export function App() {
   };
 
   const handleSelectField = (field: FieldCategory) => {
+    if (field.available === false && field.id !== "CAT") {
+      return;
+    }
     if (field.id === "CAT") {
       if (!isOnboarded) {
         setIsOnboardingOpen(true);
@@ -98,9 +101,12 @@ export function App() {
     if (fieldId === "CAT") {
       handleSelectField(FIELDS_DATA[0]);
     } else {
-      setSelectedFieldId(fieldId);
-      setCurrentView("field");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      const found = FIELDS_DATA.find((f) => f.id === fieldId);
+      if (found && found.available !== false) {
+        setSelectedFieldId(fieldId);
+        setCurrentView("field");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     }
   };
 

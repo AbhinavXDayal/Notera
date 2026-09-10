@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowDown } from "lucide-react";
 
 interface HeroSectionProps {
+  onDirectCatPortal?: () => void;
   onExploreArchiveIndex?: () => void;
 }
 
@@ -28,6 +29,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               to begin?
             </span>
           </h1>
+
+          <p className="text-secondary text-base sm:text-lg max-w-xl font-normal leading-relaxed">
+            Choose your exam, subject or learning path. Start from wherever you
+            are — without clutter, noisy gamification, or overwhelming catalogs.
+          </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <button
