@@ -7,6 +7,9 @@ import {
   Target,
   BookOpen,
 } from "lucide-react";
+import { FieldGuideSection } from "../field-guide/FieldGuideSection";
+import { CAT_FIELD_GUIDE } from "../../data/fieldGuideConfigs";
+import type { FieldGuideModule } from "../../types/fieldGuide";
 
 export type CatTabType =
   | "overview"
@@ -19,11 +22,13 @@ export type CatTabType =
 interface CatOverviewTabProps {
   onNavigateTab?: (tab: CatTabType, chapterId?: string) => void;
   onBackToPaths?: () => void;
+  onOpenFundamentals?: () => void;
 }
 
 export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
   onNavigateTab,
   onBackToPaths,
+  onOpenFundamentals,
 }) => {
   const tenets = [
     {
@@ -52,19 +57,38 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     },
   ];
 
+  const handleSelectModule = (module: FieldGuideModule) => {
+    if (module.id === "roadmap") {
+      onNavigateTab?.("journey");
+    } else if (module.id === "fundamentals") {
+      if (onOpenFundamentals) {
+        onOpenFundamentals();
+      } else {
+        onNavigateTab?.("subjects");
+      }
+    } else if (module.id === "theory-practical") {
+      onNavigateTab?.("subjects");
+    } else if (module.id === "notes-docs") {
+      onNavigateTab?.("resources");
+    }
+  };
+
   return (
-    <div className="max-w-5xl mx-auto px-6 lg:px-12 py-10 fade-in">
+    <div className="max-w-5xl mx-auto px-6 lg:px-12 py-10 space-y-12 fade-in">
+      {/* Back to All Paths */}
       {onBackToPaths && (
-        <button
-          onClick={onBackToPaths}
-          className="mb-6 inline-flex items-center space-x-2 text-xs font-medium text-secondary hover:text-primary transition-colors cursor-pointer"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>All Paths</span>
-        </button>
+        <div>
+          <button
+            onClick={onBackToPaths}
+            className="inline-flex items-center space-x-2 text-xs font-medium text-secondary hover:text-primary transition-colors cursor-pointer"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>All Paths</span>
+          </button>
+        </div>
       )}
 
-      {/* Ideology Behind Learning Card */}
+      {/* 1. Ideology Behind Learning Section */}
       <div className="rounded-[16px] bg-surface-container border-2 border-outline-variant p-8 sm:p-12 relative overflow-hidden shadow-terra-card">
         <div className="max-w-3xl space-y-6 relative z-10">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-tertiary/15 text-tertiary font-mono text-[11px] font-semibold uppercase tracking-wider">
@@ -133,6 +157,12 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
           <span className="font-display text-[180px] text-primary">CAT</span>
         </div>
       </div>
+
+      {/* 2. The CAT Field Guide Framework Section */}
+      <FieldGuideSection
+        config={CAT_FIELD_GUIDE}
+        onSelectModule={handleSelectModule}
+      />
     </div>
   );
 };

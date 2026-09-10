@@ -14,6 +14,7 @@ import { CatExamInfoModal } from "./components/cat/CatExamInfoModal";
 import { NotesLayout } from "./components/notes/NotesLayout";
 import { ResourceLibraryView } from "./components/resources/ResourceLibraryView";
 import { FieldGuideView } from "./components/field/FieldGuideView";
+import { GuideNavigation } from "./components/field-guide/GuideNavigation";
 import { KnowledgeMapBackground } from "./components/background/KnowledgeMapBackground";
 
 import { FIELDS_DATA } from "./data/fields";
@@ -255,12 +256,34 @@ export function App() {
         {/* VIEW 2: DEDICATED CAT UNIVERSE */}
         {currentView === "cat" && (
           <section className="min-h-screen fade-in pb-16">
+            {catTab !== "overview" && (
+              <GuideNavigation
+                fieldTitle="CAT"
+                currentSectionTitle={
+                  catTab === "journey"
+                    ? "01 — CAT Roadmap"
+                    : catTab === "subjects"
+                      ? "03 — Theory & Practical"
+                      : catTab === "notes"
+                        ? "04 — Notes / Docs"
+                        : catTab === "resources"
+                          ? "04 — PDF Library & Resources"
+                          : catTab === "practice"
+                            ? "Practice & Mocks"
+                            : undefined
+                }
+                onBackToOverview={() => setCatTab("overview")}
+                onBackToAllPaths={handleNavigateHome}
+              />
+            )}
+
             {catTab === "overview" && (
               <CatOverviewTab
                 onNavigateTab={(tab, chapterId) =>
                   handleNavigateCat(tab, chapterId)
                 }
                 onBackToPaths={handleNavigateHome}
+                onOpenFundamentals={() => setIsCatExamModalOpen(true)}
               />
             )}
 
