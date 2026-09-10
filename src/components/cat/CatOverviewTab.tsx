@@ -1,5 +1,14 @@
-import React from "react";
-import { ArrowLeft, ChevronDown, Sparkles, BookOpen, X } from "lucide-react";
+import React, { useState } from "react";
+import {
+  ArrowLeft,
+  ChevronDown,
+  Sparkles,
+  BookOpen,
+  X,
+  LayoutGrid,
+  List,
+} from "lucide-react";
+import { CatRoadmapCanvas } from "./CatRoadmapCanvas";
 
 export type CatTabType =
   | "overview"
@@ -393,9 +402,7 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     "summary",
   ];
 
-  const [openSections, setOpenSections] = React.useState<
-    Record<string, boolean>
-  >(() => {
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>(() => {
     const initial: Record<string, boolean> = {};
     sectionIds.forEach((id) => {
       initial[id] = true;
@@ -403,13 +410,14 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     return initial;
   });
 
+  // Track view mode: "canvas" (Excalidraw board) or "list" (traditional vertical list)
+  const [roadmapViewMode, setRoadmapViewMode] = useState<"canvas" | "list">("canvas");
+
   // Track active connected roadmap stage for Notes synchronization
-  const [activeStageId, setActiveStageId] = React.useState<string | null>("02");
+  const [activeStageId, setActiveStageId] = useState<string | null>("02");
 
   // Track accordion state in the Notes card
-  const [openNoteCategories, setOpenNoteCategories] = React.useState<
-    Record<string, boolean>
-  >({
+  const [openNoteCategories, setOpenNoteCategories] = useState<Record<string, boolean>>({
     qa: true,
     varc: true,
     dilr: true,
@@ -425,7 +433,6 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
 
   const handleStageSelect = (id: string) => {
     setActiveStageId(id);
-    // Auto-expand categories in Notes card that contain notes for this stage
     const linkedIds = STAGE_NOTES_MAP[id] || [];
     const hasQA = QA_NOTES.some((n) => linkedIds.includes(n.id));
     const hasVARC = VARC_NOTES.some((n) => linkedIds.includes(n.id));
@@ -468,6 +475,22 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     } else {
       setActiveStageId("01");
     }
+  };
+
+  const expandAll = () => {
+    const updated: Record<string, boolean> = {};
+    sectionIds.forEach((id) => {
+      updated[id] = true;
+    });
+    setOpenSections(updated);
+  };
+
+  const collapseAll = () => {
+    const updated: Record<string, boolean> = {};
+    sectionIds.forEach((id) => {
+      updated[id] = false;
+    });
+    setOpenSections(updated);
   };
 
   const activeLinkedNoteIds = activeStageId
@@ -541,236 +564,278 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
 
       {/* 2 & 3. Side-by-Side Dual Column: Roadmap (Left) & Notes (Right) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-        {/* LEFT COLUMN: Long Vertical Roadmap Card */}
-        <div className="rounded-2xl bg-surface-container border border-outline-variant p-6 sm:p-7 shadow-terra-card space-y-8">
-          {/* Header */}
-          <div className="flex items-center justify-between">
+        {/* LEFT COLUMN: Roadmap Card (Canvas / List Switchable) */}
+        <div className="rounded-2xl bg-surface-container border border-outline-variant p-6 sm:p-7 shadow-terra-card space-y-6">
+          {/* Header & Mode Switcher */}
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <h3 className="font-display text-2xl sm:text-3xl text-on-surface font-semibold">
                 Roadmap
               </h3>
             </div>
-            <button
-              type="button"
-              onClick={toggleAll}
-              className="text-xs font-mono text-primary hover:text-on-surface border border-outline-variant/80 hover:border-primary px-3 py-1.5 rounded-lg bg-surface/60 transition-all cursor-pointer whitespace-nowrap ml-2"
-            >
-              {isAllExpanded ? "Collapse All" : "Expand All"}
-            </button>
+
+            <div className="flex items-center space-x-2">
+              {/* View Switcher: Canvas vs List */}
+              <div className="flex items-center bg-surface border border-outline-variant rounded-lg p-0.5">
+                <button
+                  type="button"
+                  onClick={() => setRoadmapViewMode("canvas")}
+                  className={`inline-flex items-center space-x-1 px-2.5 py-1 rounded-md text-xs font-medium transition-all cursor-pointer ${
+                    roadmapViewMode === "canvas"
+                      ? "bg-primary text-on-primary shadow-sm"
+                      : "text-secondary hover:text-on-surface hover:bg-surface-container"
+                  }`}
+                >
+                  <LayoutGrid className="w-3.5 h-3.5" />
+                  <span>Canvas Board</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setRoadmapViewMode("list")}
+                  className={`inline-flex items-center space-x-1 px-2.5 py-1 rounded-md text-xs font-medium transition-all cursor-pointer ${
+                    roadmapViewMode === "list"
+                      ? "bg-primary text-on-primary shadow-sm"
+                      : "text-secondary hover:text-on-surface hover:bg-surface-container"
+                  }`}
+                >
+                  <List className="w-3.5 h-3.5" />
+                  <span>List View</span>
+                </button>
+              </div>
+
+              {roadmapViewMode === "list" && (
+                <button
+                  type="button"
+                  onClick={toggleAll}
+                  className="text-xs font-mono text-primary hover:text-on-surface border border-outline-variant/80 hover:border-primary px-3 py-1.5 rounded-lg bg-surface/60 transition-all cursor-pointer whitespace-nowrap"
+                >
+                  {isAllExpanded ? "Collapse All" : "Expand All"}
+                </button>
+              )}
+            </div>
           </div>
 
           <div className="border-t border-outline-variant/60" />
 
-          {/* 01 — Understand the Journey */}
-          <div
-            className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "01"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("01")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  01 — Understand the Journey
-                </h4>
-                {activeStageId === "01" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
-                )}
-              </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["01"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
-            {openSections["01"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <p className="text-xs text-secondary font-mono uppercase tracking-wider">
-                  Before studying
-                </p>
-                <div className="text-secondary text-sm space-y-1">
-                  <p>• What is CAT?</p>
-                  <p>• QA, VARC &amp; DILR</p>
-                  <p>• Exam pattern &amp; structure</p>
-                  <p>• Percentile vs score</p>
-                  <p>• Target colleges</p>
-                  <p>• Understanding your goals</p>
-                  <p>• Choosing your preparation approach</p>
-                </div>
-                <div className="flex items-center justify-between pt-1">
-                  <p className="text-xs text-primary font-medium">
-                    Goal: Know what you're preparing for before collecting
-                    resources
-                  </p>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("01");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="border-t border-outline-variant/60" />
-
-          {/* 02 — Build Your Foundation */}
-          <div
-            className={`space-y-4 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "02"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("02")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  02 — Build Your Foundation
-                </h4>
-                {activeStageId === "02" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
-                )}
-              </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["02"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
-
-            {openSections["02"] && (
-              <div className="space-y-4 pt-1 fade-in">
-                <div className="space-y-1.5">
-                  <p className="text-xs font-mono text-primary font-semibold uppercase">
-                    QA
-                  </p>
-                  <p className="text-xs text-secondary font-light">
-                    Start rebuilding mathematical fundamentals:
-                  </p>
-                  <div className="text-secondary text-sm space-y-0.5 pl-2">
-                    <p>• Arithmetic basics</p>
-                    <p>• Algebra basics</p>
-                    <p>• Geometry basics</p>
-                    <p>• Numbers</p>
-                    <p>• Modern Math</p>
+          {/* Render Mode: Excalidraw Canvas Board vs List */}
+          {roadmapViewMode === "canvas" ? (
+            <CatRoadmapCanvas
+              activeStageId={activeStageId}
+              onSelectStage={handleStageSelect}
+              openSections={openSections}
+              onToggleSection={toggleSection}
+              onExpandAll={expandAll}
+              onCollapseAll={collapseAll}
+              isAllExpanded={isAllExpanded}
+            />
+          ) : (
+            <div className="space-y-6">
+              {/* 01 — Understand the Journey */}
+              <div
+                className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "01"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("01")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      01 — Understand the Journey
+                    </h4>
+                    {activeStageId === "01" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
                   </div>
-                </div>
-
-                <div className="space-y-1.5">
-                  <p className="text-xs font-mono text-primary font-semibold uppercase">
-                    VARC
-                  </p>
-                  <div className="text-secondary text-sm space-y-0.5 pl-2">
-                    <p>• Build a daily reading habit</p>
-                    <p>• Learn how Reading Comprehension works</p>
-                    <p>• Understand summaries &amp; paragraph logic</p>
-                    <p>
-                      • Develop comprehension before obsessing over vocabulary
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["01"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+                {openSections["01"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <p className="text-xs text-secondary font-mono uppercase tracking-wider">
+                      Before studying
                     </p>
+                    <div className="text-secondary text-sm space-y-1">
+                      <p>• What is CAT?</p>
+                      <p>• QA, VARC &amp; DILR</p>
+                      <p>• Exam pattern &amp; structure</p>
+                      <p>• Percentile vs score</p>
+                      <p>• Target colleges</p>
+                      <p>• Understanding your goals</p>
+                      <p>• Choosing your preparation approach</p>
+                    </div>
+                    <div className="flex items-center justify-between pt-1">
+                      <p className="text-xs text-primary font-medium">
+                        Goal: Know what you're preparing for before collecting resources
+                      </p>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("01");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
+                    </div>
                   </div>
-                </div>
-
-                <div className="space-y-1.5">
-                  <p className="text-xs font-mono text-primary font-semibold uppercase">
-                    DILR
-                  </p>
-                  <p className="text-xs text-secondary font-light">
-                    Start immediately — don't postpone it
-                  </p>
-                  <div className="text-secondary text-sm space-y-0.5 pl-2">
-                    <p>• Basic DI</p>
-                    <p>• Basic logical reasoning</p>
-                    <p>• Tables &amp; charts</p>
-                    <p>• Set selection</p>
-                    <p>• Structured thinking</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between pt-1">
-                  <p className="text-[11px] text-secondary/80 italic">
-                    Reddit preparation plans repeatedly emphasize starting DILR
-                    early.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("02");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="border-t border-outline-variant/60" />
-
-          {/* 03 — Complete the Core Syllabus */}
-          <div
-            className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "03"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("03")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  03 — Complete the Core Syllabus
-                </h4>
-                {activeStageId === "03" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
                 )}
               </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["03"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
 
-            {openSections["03"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <pre className="text-xs font-mono text-secondary bg-surface/70 border border-outline-variant p-3.5 rounded-lg overflow-x-auto leading-relaxed select-text">
-                  {`CAT CORE
+              <div className="border-t border-outline-variant/60" />
+
+              {/* 02 — Build Your Foundation */}
+              <div
+                className={`space-y-4 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "02"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("02")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      02 — Build Your Foundation
+                    </h4>
+                    {activeStageId === "02" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["02"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {openSections["02"] && (
+                  <div className="space-y-4 pt-1 fade-in">
+                    <div className="space-y-1.5">
+                      <p className="text-xs font-mono text-primary font-semibold uppercase">
+                        QA
+                      </p>
+                      <p className="text-xs text-secondary font-light">
+                        Start rebuilding mathematical fundamentals:
+                      </p>
+                      <div className="text-secondary text-sm space-y-0.5 pl-2">
+                        <p>• Arithmetic basics</p>
+                        <p>• Algebra basics</p>
+                        <p>• Geometry basics</p>
+                        <p>• Numbers</p>
+                        <p>• Modern Math</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <p className="text-xs font-mono text-primary font-semibold uppercase">
+                        VARC
+                      </p>
+                      <div className="text-secondary text-sm space-y-0.5 pl-2">
+                        <p>• Build a daily reading habit</p>
+                        <p>• Learn how Reading Comprehension works</p>
+                        <p>• Understand summaries &amp; paragraph logic</p>
+                        <p>• Develop comprehension before obsessing over vocabulary</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <p className="text-xs font-mono text-primary font-semibold uppercase">
+                        DILR
+                      </p>
+                      <p className="text-xs text-secondary font-light">
+                        Start immediately — don't postpone it
+                      </p>
+                      <div className="text-secondary text-sm space-y-0.5 pl-2">
+                        <p>• Basic DI</p>
+                        <p>• Basic logical reasoning</p>
+                        <p>• Tables &amp; charts</p>
+                        <p>• Set selection</p>
+                        <p>• Structured thinking</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-1">
+                      <p className="text-[11px] text-secondary/80 italic">
+                        Reddit preparation plans repeatedly emphasize starting DILR early.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("02");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="border-t border-outline-variant/60" />
+
+              {/* 03 — Complete the Core Syllabus */}
+              <div
+                className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "03"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("03")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      03 — Complete the Core Syllabus
+                    </h4>
+                    {activeStageId === "03" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["03"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {openSections["03"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <pre className="text-xs font-mono text-secondary bg-surface/70 border border-outline-variant p-3.5 rounded-lg overflow-x-auto leading-relaxed select-text">
+                      {`CAT CORE
 ├── QA
 │   ├── Arithmetic
 │   ├── Algebra
@@ -788,902 +853,877 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     ├── Logical Reasoning
     ├── Mixed Sets
     └── Set Selection`}
-                </pre>
-                <div className="flex items-center justify-between pt-1">
-                  <p className="text-xs text-primary font-medium">
-                    Goal: Understand every major area before entering intensive
-                    mock preparation
-                  </p>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("03");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="border-t border-outline-variant/60" />
-
-          {/* 04 — Practice & Application */}
-          <div
-            className={`space-y-4 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "04"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("04")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2 text-left">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  04 — Practice &amp; Application
-                </h4>
-                {activeStageId === "04" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
-                )}
-              </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["04"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
-
-            {openSections["04"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <p className="text-xs text-secondary font-light">
-                  This is where knowledge becomes CAT ability.
-                </p>
-                <div className="space-y-1.5">
-                  <p className="text-xs font-mono text-primary font-semibold uppercase">
-                    QA
-                  </p>
-                  <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
-                    Concept ↓ Basic Questions ↓ Intermediate Questions ↓
-                    CAT-Level Questions ↓ Mixed Practice
-                  </p>
-                </div>
-
-                <div className="space-y-1.5">
-                  <p className="text-xs font-mono text-primary font-semibold uppercase">
-                    VARC
-                  </p>
-                  <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
-                    Daily Reading ↓ RC Practice ↓ Question Analysis ↓ Accuracy
-                    Improvement
-                  </p>
-                </div>
-
-                <div className="space-y-1.5">
-                  <p className="text-xs font-mono text-primary font-semibold uppercase">
-                    DILR
-                  </p>
-                  <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
-                    Basic Sets ↓ Different Set Types ↓ Mixed Sets ↓ Timed Sets ↓
-                    Set Selection Strategy
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between pt-1">
-                  <p className="text-[11px] text-secondary/80 italic">
-                    Consistent DILR volume and repeated practice builds
-                    instinct.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("04");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="border-t border-outline-variant/60" />
-
-          {/* 05 — Sectional Strategy */}
-          <div
-            className={`space-y-4 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "05"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("05")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2 text-left">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  05 — Sectional Strategy
-                </h4>
-                {activeStageId === "05" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
-                )}
-              </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["05"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
-
-            {openSections["05"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <p className="text-xs text-secondary font-light">
-                  Once fundamentals are reasonably established:
-                </p>
-
-                <div className="space-y-1">
-                  <p className="text-xs font-mono text-primary font-semibold uppercase">
-                    QA
-                  </p>
-                  <div className="text-secondary text-sm space-y-0.5 pl-2">
-                    <p>• Mixed-topic practice</p>
-                    <p>• Speed vs accuracy</p>
-                    <p>• Question selection</p>
+                    </pre>
+                    <div className="flex items-center justify-between pt-1">
+                      <p className="text-xs text-primary font-medium">
+                        Goal: Understand every major area before entering intensive mock preparation
+                      </p>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("03");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
+                    </div>
                   </div>
-                </div>
+                )}
+              </div>
 
-                <div className="space-y-1">
-                  <p className="text-xs font-mono text-primary font-semibold uppercase">
-                    VARC
-                  </p>
-                  <div className="text-secondary text-sm space-y-0.5 pl-2">
-                    <p>• RC accuracy</p>
-                    <p>• Reading strategy</p>
-                    <p>• Eliminating wrong options</p>
+              <div className="border-t border-outline-variant/60" />
+
+              {/* 04 — Practice & Application */}
+              <div
+                className={`space-y-4 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "04"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("04")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2 text-left">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      04 — Practice &amp; Application
+                    </h4>
+                    {activeStageId === "04" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
                   </div>
-                </div>
-
-                <div className="space-y-1">
-                  <p className="text-xs font-mono text-primary font-semibold uppercase">
-                    DILR
-                  </p>
-                  <div className="text-secondary text-sm space-y-0.5 pl-2">
-                    <p>• Choosing the right sets</p>
-                    <p>• Leaving bad sets early</p>
-                    <p>• Solving selected sets efficiently</p>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["04"] ? "rotate-180" : ""
+                      }`}
+                    />
                   </div>
-                </div>
+                </button>
 
-                <div className="flex items-center justify-between pt-1">
-                  <p className="text-xs text-primary font-medium">
-                    Goal: Attempt CAT strategically rather than just solving
-                    questions
-                  </p>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("05");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
+                {openSections["04"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <p className="text-xs text-secondary font-light">
+                      This is where knowledge becomes CAT ability.
+                    </p>
+                    <div className="space-y-1.5">
+                      <p className="text-xs font-mono text-primary font-semibold uppercase">
+                        QA
+                      </p>
+                      <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
+                        Concept ↓ Basic Questions ↓ Intermediate Questions ↓ CAT-Level Questions ↓ Mixed Practice
+                      </p>
+                    </div>
 
-          <div className="border-t border-outline-variant/60" />
+                    <div className="space-y-1.5">
+                      <p className="text-xs font-mono text-primary font-semibold uppercase">
+                        VARC
+                      </p>
+                      <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
+                        Daily Reading ↓ RC Practice ↓ Question Analysis ↓ Accuracy Improvement
+                      </p>
+                    </div>
 
-          {/* 06 — Enter the Mock Phase */}
-          <div
-            className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "06"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("06")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  06 — Enter the Mock Phase
-                </h4>
-                {activeStageId === "06" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
+                    <div className="space-y-1.5">
+                      <p className="text-xs font-mono text-primary font-semibold uppercase">
+                        DILR
+                      </p>
+                      <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
+                        Basic Sets ↓ Different Set Types ↓ Mixed Sets ↓ Timed Sets ↓ Set Selection Strategy
+                      </p>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-1">
+                      <p className="text-[11px] text-secondary/80 italic">
+                        Consistent DILR volume and repeated practice builds instinct.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("04");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
+                    </div>
+                  </div>
                 )}
               </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["06"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
 
-            {openSections["06"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
-                  LEARN ↓ PRACTICE ↓ SECTIONALS ↓ FULL MOCKS
-                </div>
-                <p className="text-sm text-on-surface font-medium">
-                  Start mocks before you feel “perfectly ready.”
-                </p>
-                <p className="text-xs text-secondary leading-relaxed font-light">
-                  The mock phase is where aspirants learn their actual
-                  strengths, weaknesses, speed, stamina and exam strategy.
-                </p>
-                <div className="flex justify-end pt-1">
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("06");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
+              <div className="border-t border-outline-variant/60" />
 
-          <div className="border-t border-outline-variant/60" />
+              {/* 05 — Sectional Strategy */}
+              <div
+                className={`space-y-4 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "05"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("05")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2 text-left">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      05 — Sectional Strategy
+                    </h4>
+                    {activeStageId === "05" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["05"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
 
-          {/* 07 — Mock Analysis */}
-          <div
-            className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "07"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("07")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  07 — Mock Analysis
-                </h4>
-                {activeStageId === "07" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
+                {openSections["05"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <p className="text-xs text-secondary font-light">
+                      Once fundamentals are reasonably established:
+                    </p>
+
+                    <div className="space-y-1">
+                      <p className="text-xs font-mono text-primary font-semibold uppercase">
+                        QA
+                      </p>
+                      <div className="text-secondary text-sm space-y-0.5 pl-2">
+                        <p>• Mixed-topic practice</p>
+                        <p>• Speed vs accuracy</p>
+                        <p>• Question selection</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p className="text-xs font-mono text-primary font-semibold uppercase">
+                        VARC
+                      </p>
+                      <div className="text-secondary text-sm space-y-0.5 pl-2">
+                        <p>• RC accuracy</p>
+                        <p>• Reading strategy</p>
+                        <p>• Eliminating wrong options</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p className="text-xs font-mono text-primary font-semibold uppercase">
+                        DILR
+                      </p>
+                      <div className="text-secondary text-sm space-y-0.5 pl-2">
+                        <p>• Choosing the right sets</p>
+                        <p>• Leaving bad sets early</p>
+                        <p>• Solving selected sets efficiently</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-1">
+                      <p className="text-xs text-primary font-medium">
+                        Goal: Attempt CAT strategically rather than just solving questions
+                      </p>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("05");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
+                    </div>
+                  </div>
                 )}
               </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["07"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
 
-            {openSections["07"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <p className="text-xs text-secondary leading-relaxed font-light">
-                  This should be one of the biggest parts of your roadmap.
-                </p>
-                <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-3 rounded-lg leading-relaxed">
-                  MOCK ↓ Analyse Every Section ↓ Why was this wrong? ↓ Why did I
-                  skip this? ↓ Was my selection correct? ↓ Create Action Plan ↓
-                  Next Mock
-                </div>
-                <div className="text-secondary text-sm space-y-0.5 pl-2">
-                  <p>• Wrong questions &amp; Skipped easy questions</p>
-                  <p>• Time wasted &amp; Bad selection</p>
-                  <p>• Repeated mistakes &amp; Weak topics</p>
-                </div>
-                <div className="flex items-center justify-between pt-1">
-                  <p className="text-xs text-primary font-medium">
-                    A mock without analysis is incomplete preparation
-                  </p>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("07");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
+              <div className="border-t border-outline-variant/60" />
 
-          <div className="border-t border-outline-variant/60" />
+              {/* 06 — Enter the Mock Phase */}
+              <div
+                className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "06"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("06")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      06 — Enter the Mock Phase
+                    </h4>
+                    {activeStageId === "06" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["06"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
 
-          {/* 08 — Previous Year Questions */}
-          <div
-            className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "08"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("08")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  08 — Previous Year Questions
-                </h4>
-                {activeStageId === "08" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
+                {openSections["06"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
+                      LEARN ↓ PRACTICE ↓ SECTIONALS ↓ FULL MOCKS
+                    </div>
+                    <p className="text-sm text-on-surface font-medium">
+                      Start mocks before you feel “perfectly ready.”
+                    </p>
+                    <p className="text-xs text-secondary leading-relaxed font-light">
+                      The mock phase is where aspirants learn their actual strengths, weaknesses, speed, stamina and exam strategy.
+                    </p>
+                    <div className="flex justify-end pt-1">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("06");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
+                    </div>
+                  </div>
                 )}
               </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["08"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
 
-            {openSections["08"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <p className="text-xs text-secondary leading-relaxed font-light">
-                  Move increasingly toward actual CAT-level material.
-                </p>
-                <div className="text-secondary text-sm space-y-0.5 pl-2">
-                  <p>• Real CAT difficulty &amp; question patterns</p>
-                  <p>• Examiner thinking &amp; section behaviour</p>
-                  <p>• Optimal question selection</p>
-                </div>
-                <div className="flex items-center justify-between pt-1">
-                  <p className="text-[11px] text-secondary/80 italic">
-                    Revisiting previous CAT papers crystallizes exam
-                    temperament.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("08");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
+              <div className="border-t border-outline-variant/60" />
 
-          <div className="border-t border-outline-variant/60" />
+              {/* 07 — Mock Analysis */}
+              <div
+                className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "07"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("07")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      07 — Mock Analysis
+                    </h4>
+                    {activeStageId === "07" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["07"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
 
-          {/* 09 — Build Your Personal CAT Strategy */}
-          <div
-            className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "09"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("09")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  09 — Build Your Personal CAT Strategy
-                </h4>
-                {activeStageId === "09" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
+                {openSections["07"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <p className="text-xs text-secondary leading-relaxed font-light">
+                      This should be one of the biggest parts of your roadmap.
+                    </p>
+                    <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-3 rounded-lg leading-relaxed">
+                      MOCK ↓ Analyse Every Section ↓ Why was this wrong? ↓ Why did I skip this? ↓ Was my selection correct? ↓ Create Action Plan ↓ Next Mock
+                    </div>
+                    <div className="text-secondary text-sm space-y-0.5 pl-2">
+                      <p>• Wrong questions &amp; Skipped easy questions</p>
+                      <p>• Time wasted &amp; Bad selection</p>
+                      <p>• Repeated mistakes &amp; Weak topics</p>
+                    </div>
+                    <div className="flex items-center justify-between pt-1">
+                      <p className="text-xs text-primary font-medium">
+                        A mock without analysis is incomplete preparation
+                      </p>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("07");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
+                    </div>
+                  </div>
                 )}
               </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["09"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
 
-            {openSections["09"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <pre className="text-xs font-mono text-secondary bg-surface/70 border border-outline-variant p-3.5 rounded-lg overflow-x-auto leading-relaxed select-text">
-                  {`YOUR CAT STRATEGY
+              <div className="border-t border-outline-variant/60" />
+
+              {/* 08 — Previous Year Questions */}
+              <div
+                className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "08"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("08")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      08 — Previous Year Questions
+                    </h4>
+                    {activeStageId === "08" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["08"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {openSections["08"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <p className="text-xs text-secondary leading-relaxed font-light">
+                      Move increasingly toward actual CAT-level material.
+                    </p>
+                    <div className="text-secondary text-sm space-y-0.5 pl-2">
+                      <p>• Real CAT difficulty &amp; question patterns</p>
+                      <p>• Examiner thinking &amp; section behaviour</p>
+                      <p>• Optimal question selection</p>
+                    </div>
+                    <div className="flex items-center justify-between pt-1">
+                      <p className="text-[11px] text-secondary/80 italic">
+                        Revisiting previous CAT papers crystallizes exam temperament.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("08");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="border-t border-outline-variant/60" />
+
+              {/* 09 — Build Your Personal CAT Strategy */}
+              <div
+                className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "09"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("09")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      09 — Build Your Personal CAT Strategy
+                    </h4>
+                    {activeStageId === "09" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["09"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {openSections["09"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <pre className="text-xs font-mono text-secondary bg-surface/70 border border-outline-variant p-3.5 rounded-lg overflow-x-auto leading-relaxed select-text">
+                      {`YOUR CAT STRATEGY
 QA       → Which questions do I attempt?
 VARC     → What is my reading approach?
 DILR     → How do I select sets?
 TIME     → Where do I stop wasting time?
 ACCURACY → What causes my mistakes?`}
-                </pre>
-                <div className="flex items-center justify-between pt-1">
-                  <p className="text-xs text-primary font-medium">
-                    This is where preparation becomes personalized.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("09");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="border-t border-outline-variant/60" />
-
-          {/* 10 — Revision & Error Correction */}
-          <div
-            className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "10"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("10")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  10 — Revision &amp; Error Correction
-                </h4>
-                {activeStageId === "10" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
-                )}
-              </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["10"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
-
-            {openSections["10"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <div className="text-secondary text-sm space-y-1.5 pl-2">
-                  <p>
-                    <span className="text-primary font-medium">
-                      Formula Sheet:
-                    </span>{" "}
-                    QA formulas &amp; shortcuts
-                  </p>
-                  <p>
-                    <span className="text-primary font-medium">
-                      Mistake Book:
-                    </span>{" "}
-                    Repeated mistakes
-                  </p>
-                  <p>
-                    <span className="text-primary font-medium">
-                      DILR Archive:
-                    </span>{" "}
-                    Important sets to revisit
-                  </p>
-                  <p>
-                    <span className="text-primary font-medium">
-                      VARC Notes:
-                    </span>{" "}
-                    Patterns in errors
-                  </p>
-                </div>
-                <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
-                  WEAKNESS ↓ IDENTIFY ↓ PRACTICE ↓ REVISIT ↓ MEASURE
-                </div>
-                <div className="flex justify-end pt-1">
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("10");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="border-t border-outline-variant/60" />
-
-          {/* 11 — Intensive Mock Phase */}
-          <div
-            className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "11"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("11")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  11 — Intensive Mock Phase
-                </h4>
-                {activeStageId === "11" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
-                )}
-              </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["11"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
-
-            {openSections["11"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <div className="text-secondary text-sm space-y-0.5 pl-2">
-                  <p>• Speed &amp; Accuracy</p>
-                  <p>• Stamina &amp; Temperament</p>
-                  <p>• Selection &amp; Consistency</p>
-                </div>
-                <div className="flex items-center justify-between pt-1">
-                  <p className="text-[11px] text-secondary/80 italic">
-                    Focus shifts to reducing errors and peak performance
-                    execution.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("11");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="border-t border-outline-variant/60" />
-
-          {/* 12 — Final Month */}
-          <div
-            className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "12"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("12")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  12 — Final Month
-                </h4>
-                {activeStageId === "12" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
-                )}
-              </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["12"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
-
-            {openSections["12"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <div className="text-xs font-mono text-primary font-semibold">
-                  LESS CHAOS • MORE REVISION
-                </div>
-                <div className="text-secondary text-sm space-y-0.5 pl-2">
-                  <p>• Strongest areas &amp; high-value weak spots</p>
-                  <p>• Previous mistakes &amp; Mock analysis</p>
-                  <p>• PYQs &amp; Formula revision</p>
-                </div>
-                <div className="flex items-center justify-between pt-1">
-                  <p className="text-[11px] text-secondary/80 italic">
-                    Avoid hoarding new resources; trust your established system.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("12");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="border-t border-outline-variant/60" />
-
-          {/* 13 — CAT Exam Strategy */}
-          <div
-            className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "13"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("13")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  13 — CAT Exam Strategy
-                </h4>
-                {activeStageId === "13" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
-                )}
-              </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["13"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
-
-            {openSections["13"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <div className="text-secondary text-sm space-y-0.5 pl-2">
-                  <p>• Section timing &amp; skip rules</p>
-                  <p>• Pacing &amp; panic recovery protocols</p>
-                </div>
-                <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
-                  CALM ↓ SELECT ↓ SOLVE ↓ SKIP ↓ MOVE ON
-                </div>
-                <div className="flex justify-end pt-1">
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("13");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="border-t border-outline-variant/60" />
-
-          {/* 14 — Beyond CAT */}
-          <div
-            className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "14"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("14")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  14 — Beyond CAT
-                </h4>
-                {activeStageId === "14" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
-                )}
-              </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["14"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
-
-            {openSections["14"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
-                  CAT RESULT ↓ Shortlists ↓ WAT / GD / PI Preparation ↓ College
-                  Selection ↓ MBA Journey
-                </div>
-                <div className="flex justify-end pt-1">
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("14");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Notes →</span>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="border-t border-outline-variant/60" />
-
-          {/* The Notera CAT Journey Summary */}
-          <div
-            className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
-              activeStageId === "summary"
-                ? "bg-primary/5 border border-primary/40 shadow-sm"
-                : "border border-transparent hover:border-outline-variant/40"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => toggleSection("summary")}
-              className="w-full flex items-center justify-between text-left group cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <h4 className="font-display text-xl text-on-surface group-hover:text-primary transition-colors font-semibold">
-                  The Notera CAT Journey
-                </h4>
-                {activeStageId === "summary" && (
-                  <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                    <Sparkles className="w-2.5 h-2.5" />
-                    <span>CONNECTED</span>
-                  </span>
-                )}
-              </div>
-              <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    openSections["summary"] ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-            </button>
-
-            {openSections["summary"] && (
-              <div className="space-y-3 pt-1 fade-in">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs font-mono text-secondary">
-                  {[
-                    { num: "01", text: "Understand CAT" },
-                    { num: "02", text: "Build Your Foundation" },
-                    { num: "03", text: "Complete the Core Syllabus" },
-                    { num: "04", text: "Practice & Apply" },
-                    { num: "05", text: "Master Sectional Strategy" },
-                    { num: "06", text: "Enter the Mock Phase" },
-                    { num: "07", text: "Analyse & Learn" },
-                    { num: "08", text: "Solve Previous Year Questions" },
-                    { num: "09", text: "Build Your Personal Strategy" },
-                    { num: "10", text: "Revise & Fix Weaknesses" },
-                    { num: "11", text: "Intensive Mock Training" },
-                    { num: "12", text: "Final Revision" },
-                    { num: "13", text: "CAT Exam Day" },
-                    { num: "14", text: "Interviews & MBA Journey" },
-                  ].map((item) => (
-                    <div
-                      key={item.num}
-                      onClick={() => handleStageSelect(item.num)}
-                      className={`flex items-center space-x-2 py-1.5 px-2.5 rounded-lg border transition-all cursor-pointer ${
-                        activeStageId === item.num
-                          ? "bg-primary/15 border-primary text-on-surface"
-                          : "bg-surface/60 border-outline-variant/60 hover:border-primary/50"
-                      }`}
-                    >
-                      <span className="text-primary font-bold">{item.num}</span>
-                      <span className="text-on-surface font-sans text-xs">
-                        {item.text}
-                      </span>
+                    </pre>
+                    <div className="flex items-center justify-between pt-1">
+                      <p className="text-xs text-primary font-medium">
+                        This is where preparation becomes personalized.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("09");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
                     </div>
-                  ))}
-                </div>
-                <div className="flex justify-end pt-1">
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStageSelect("summary");
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap"
-                  >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View All Notes →</span>
-                  </button>
-                </div>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+
+              <div className="border-t border-outline-variant/60" />
+
+              {/* 10 — Revision & Error Correction */}
+              <div
+                className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "10"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("10")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      10 — Revision &amp; Error Correction
+                    </h4>
+                    {activeStageId === "10" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["10"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {openSections["10"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <div className="text-secondary text-sm space-y-1.5 pl-2">
+                      <p>
+                        <span className="text-primary font-medium">Formula Sheet:</span> QA formulas &amp; shortcuts
+                      </p>
+                      <p>
+                        <span className="text-primary font-medium">Mistake Book:</span> Repeated mistakes
+                      </p>
+                      <p>
+                        <span className="text-primary font-medium">DILR Archive:</span> Important sets to revisit
+                      </p>
+                      <p>
+                        <span className="text-primary font-medium">VARC Notes:</span> Patterns in errors
+                      </p>
+                    </div>
+                    <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
+                      WEAKNESS ↓ IDENTIFY ↓ PRACTICE ↓ REVISIT ↓ MEASURE
+                    </div>
+                    <div className="flex justify-end pt-1">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("10");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="border-t border-outline-variant/60" />
+
+              {/* 11 — Intensive Mock Phase */}
+              <div
+                className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "11"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("11")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      11 — Intensive Mock Phase
+                    </h4>
+                    {activeStageId === "11" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["11"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {openSections["11"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <div className="text-secondary text-sm space-y-0.5 pl-2">
+                      <p>• Speed &amp; Accuracy</p>
+                      <p>• Stamina &amp; Temperament</p>
+                      <p>• Selection &amp; Consistency</p>
+                    </div>
+                    <div className="flex items-center justify-between pt-1">
+                      <p className="text-[11px] text-secondary/80 italic">
+                        Focus shifts to reducing errors and peak performance execution.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("11");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="border-t border-outline-variant/60" />
+
+              {/* 12 — Final Month */}
+              <div
+                className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "12"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("12")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      12 — Final Month
+                    </h4>
+                    {activeStageId === "12" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["12"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {openSections["12"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <div className="text-xs font-mono text-primary font-semibold">
+                      LESS CHAOS • MORE REVISION
+                    </div>
+                    <div className="text-secondary text-sm space-y-0.5 pl-2">
+                      <p>• Strongest areas &amp; high-value weak spots</p>
+                      <p>• Previous mistakes &amp; Mock analysis</p>
+                      <p>• PYQs &amp; Formula revision</p>
+                    </div>
+                    <div className="flex items-center justify-between pt-1">
+                      <p className="text-[11px] text-secondary/80 italic">
+                        Avoid hoarding new resources; trust your established system.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("12");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="border-t border-outline-variant/60" />
+
+              {/* 13 — CAT Exam Strategy */}
+              <div
+                className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "13"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("13")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      13 — CAT Exam Strategy
+                    </h4>
+                    {activeStageId === "13" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["13"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {openSections["13"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <div className="text-secondary text-sm space-y-0.5 pl-2">
+                      <p>• Section timing &amp; skip rules</p>
+                      <p>• Pacing &amp; panic recovery protocols</p>
+                    </div>
+                    <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
+                      CALM ↓ SELECT ↓ SOLVE ↓ SKIP ↓ MOVE ON
+                    </div>
+                    <div className="flex justify-end pt-1">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("13");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="border-t border-outline-variant/60" />
+
+              {/* 14 — Beyond CAT */}
+              <div
+                className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "14"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("14")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2">
+                    <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      14 — Beyond CAT
+                    </h4>
+                    {activeStageId === "14" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["14"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {openSections["14"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
+                      CAT RESULT ↓ Shortlists ↓ WAT / GD / PI Preparation ↓ College Selection ↓ MBA Journey
+                    </div>
+                    <div className="flex justify-end pt-1">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("14");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View Notes →</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="border-t border-outline-variant/60" />
+
+              {/* The Notera CAT Journey Summary */}
+              <div
+                className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
+                  activeStageId === "summary"
+                    ? "bg-primary/5 border border-primary/40 shadow-sm"
+                    : "border border-transparent hover:border-outline-variant/40"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleSection("summary")}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center space-x-2">
+                    <h4 className="font-display text-xl text-on-surface group-hover:text-primary transition-colors font-semibold">
+                      The Notera CAT Journey
+                    </h4>
+                    {activeStageId === "summary" && (
+                      <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>CONNECTED</span>
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        openSections["summary"] ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {openSections["summary"] && (
+                  <div className="space-y-3 pt-1 fade-in">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs font-mono text-secondary">
+                      {[
+                        { num: "01", text: "Understand CAT" },
+                        { num: "02", text: "Build Your Foundation" },
+                        { num: "03", text: "Complete the Core Syllabus" },
+                        { num: "04", text: "Practice & Apply" },
+                        { num: "05", text: "Master Sectional Strategy" },
+                        { num: "06", text: "Enter the Mock Phase" },
+                        { num: "07", text: "Analyse & Learn" },
+                        { num: "08", text: "Solve Previous Year Questions" },
+                        { num: "09", text: "Build Your Personal Strategy" },
+                        { num: "10", text: "Revise & Fix Weaknesses" },
+                        { num: "11", text: "Intensive Mock Training" },
+                        { num: "12", text: "Final Revision" },
+                        { num: "13", text: "CAT Exam Day" },
+                        { num: "14", text: "Interviews & MBA Journey" },
+                      ].map((item) => (
+                        <div
+                          key={item.num}
+                          onClick={() => handleStageSelect(item.num)}
+                          className={`flex items-center space-x-2 py-1.5 px-2.5 rounded-lg border transition-all cursor-pointer ${
+                            activeStageId === item.num
+                              ? "bg-primary/15 border-primary text-on-surface"
+                              : "bg-surface/60 border-outline-variant/60 hover:border-primary/50"
+                          }`}
+                        >
+                          <span className="text-primary font-bold">{item.num}</span>
+                          <span className="text-on-surface font-sans text-xs">
+                            {item.text}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex justify-end pt-1">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleStageSelect("summary");
+                        }}
+                        className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>View All Notes →</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* RIGHT COLUMN: Long Vertical Notes Card */}
-        <div
-          id="notes-card"
-          className="rounded-2xl bg-surface-container border border-outline-variant p-6 sm:p-7 shadow-terra-card space-y-7 scroll-mt-20"
-        >
+        <div id="notes-card" className="rounded-2xl bg-surface-container border border-outline-variant p-6 sm:p-7 shadow-terra-card space-y-7 scroll-mt-20">
           {/* Header & Connection Ribbon */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
@@ -1695,8 +1735,7 @@ ACCURACY → What causes my mistakes?`}
               </span>
             </div>
             <p className="text-secondary text-xs sm:text-sm leading-relaxed font-light">
-              Core first-principles theory, analytical frameworks, and rapid
-              revision sheets for every CAT topic.
+              Core first-principles theory, analytical frameworks, and rapid revision sheets for every CAT topic.
             </p>
 
             {/* Active Connected Stage Sync Banner */}
@@ -1727,9 +1766,7 @@ ACCURACY → What causes my mistakes?`}
               </div>
             ) : (
               <div className="text-xs font-mono text-secondary bg-surface/60 border border-outline-variant p-2.5 rounded-lg flex items-center justify-between">
-                <span>
-                  Click any Roadmap stage on left to filter connected notes
-                </span>
+                <span>Click any Roadmap stage on left to filter connected notes</span>
                 <span className="text-primary font-medium">Showing All</span>
               </div>
             )}
@@ -1748,17 +1785,11 @@ ACCURACY → What causes my mistakes?`}
                 <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
                   Quantitative Aptitude (QA)
                 </h4>
-                {activeStageId &&
-                  QA_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
-                    <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
-                      {
-                        QA_NOTES.filter((n) =>
-                          activeLinkedNoteIds.includes(n.id),
-                        ).length
-                      }{" "}
-                      LINKED
-                    </span>
-                  )}
+                {activeStageId && QA_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
+                  <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
+                    {QA_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id)).length} LINKED
+                  </span>
+                )}
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-[11px] font-mono text-secondary bg-surface border border-outline-variant px-2 py-0.5 rounded">
@@ -1831,19 +1862,11 @@ ACCURACY → What causes my mistakes?`}
                 <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
                   Verbal Ability &amp; RC (VARC)
                 </h4>
-                {activeStageId &&
-                  VARC_NOTES.some((n) =>
-                    activeLinkedNoteIds.includes(n.id),
-                  ) && (
-                    <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
-                      {
-                        VARC_NOTES.filter((n) =>
-                          activeLinkedNoteIds.includes(n.id),
-                        ).length
-                      }{" "}
-                      LINKED
-                    </span>
-                  )}
+                {activeStageId && VARC_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
+                  <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
+                    {VARC_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id)).length} LINKED
+                  </span>
+                )}
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-[11px] font-mono text-secondary bg-surface border border-outline-variant px-2 py-0.5 rounded">
@@ -1916,19 +1939,11 @@ ACCURACY → What causes my mistakes?`}
                 <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
                   Data Interpretation &amp; LR (DILR)
                 </h4>
-                {activeStageId &&
-                  DILR_NOTES.some((n) =>
-                    activeLinkedNoteIds.includes(n.id),
-                  ) && (
-                    <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
-                      {
-                        DILR_NOTES.filter((n) =>
-                          activeLinkedNoteIds.includes(n.id),
-                        ).length
-                      }{" "}
-                      LINKED
-                    </span>
-                  )}
+                {activeStageId && DILR_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
+                  <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
+                    {DILR_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id)).length} LINKED
+                  </span>
+                )}
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-[11px] font-mono text-secondary bg-surface border border-outline-variant px-2 py-0.5 rounded">
@@ -2001,19 +2016,11 @@ ACCURACY → What causes my mistakes?`}
                 <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
                   Master Revision Codices
                 </h4>
-                {activeStageId &&
-                  CODEX_NOTES.some((n) =>
-                    activeLinkedNoteIds.includes(n.id),
-                  ) && (
-                    <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
-                      {
-                        CODEX_NOTES.filter((n) =>
-                          activeLinkedNoteIds.includes(n.id),
-                        ).length
-                      }{" "}
-                      LINKED
-                    </span>
-                  )}
+                {activeStageId && CODEX_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
+                  <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
+                    {CODEX_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id)).length} LINKED
+                  </span>
+                )}
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-[11px] font-mono text-secondary bg-surface border border-outline-variant px-2 py-0.5 rounded">
