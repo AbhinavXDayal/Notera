@@ -275,7 +275,13 @@ const STAGE_TITLES: Record<string, string> = {
 };
 
 const STAGE_NOTES_MAP: Record<string, string[]> = {
-  "01": ["varc-rc-deconstruction", "dilr-selection", "codex-varc", "codex-qa", "codex-dilr"],
+  "01": [
+    "varc-rc-deconstruction",
+    "dilr-selection",
+    "codex-varc",
+    "codex-qa",
+    "codex-dilr",
+  ],
   "02": [
     "speed-math",
     "percentages-multipliers",
@@ -325,12 +331,7 @@ const STAGE_NOTES_MAP: Record<string, string[]> = {
     "dilr-selection",
     "codex-qa",
   ],
-  "07": [
-    "codex-varc",
-    "codex-dilr",
-    "codex-qa",
-    "dilr-selection",
-  ],
+  "07": ["codex-varc", "codex-dilr", "codex-qa", "dilr-selection"],
   "08": [
     "algebra-foundations",
     "modern-math",
@@ -347,11 +348,7 @@ const STAGE_NOTES_MAP: Record<string, string[]> = {
     "speed-math",
     "codex-varc",
   ],
-  "10": [
-    "codex-qa",
-    "codex-dilr",
-    "codex-varc",
-  ],
+  "10": ["codex-qa", "codex-dilr", "codex-varc"],
   "11": [
     "speed-math",
     "percentages-multipliers",
@@ -360,22 +357,9 @@ const STAGE_NOTES_MAP: Record<string, string[]> = {
     "codex-qa",
     "codex-dilr",
   ],
-  "12": [
-    "codex-qa",
-    "codex-dilr",
-    "codex-varc",
-  ],
-  "13": [
-    "dilr-selection",
-    "speed-math",
-    "codex-varc",
-    "codex-qa",
-  ],
-  "14": [
-    "codex-varc",
-    "varc-central-theme",
-    "varc-summary",
-  ],
+  "12": ["codex-qa", "codex-dilr", "codex-varc"],
+  "13": ["dilr-selection", "speed-math", "codex-varc", "codex-qa"],
+  "14": ["codex-varc", "varc-central-theme", "varc-summary"],
   summary: [
     "speed-math",
     "percentages-multipliers",
@@ -409,7 +393,9 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     "summary",
   ];
 
-  const [openSections, setOpenSections] = React.useState<Record<string, boolean>>(() => {
+  const [openSections, setOpenSections] = React.useState<
+    Record<string, boolean>
+  >(() => {
     const initial: Record<string, boolean> = {};
     sectionIds.forEach((id) => {
       initial[id] = true;
@@ -421,7 +407,9 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
   const [activeStageId, setActiveStageId] = React.useState<string | null>("02");
 
   // Track accordion state in the Notes card
-  const [openNoteCategories, setOpenNoteCategories] = React.useState<Record<string, boolean>>({
+  const [openNoteCategories, setOpenNoteCategories] = React.useState<
+    Record<string, boolean>
+  >({
     qa: true,
     varc: true,
     dilr: true,
@@ -482,7 +470,9 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     }
   };
 
-  const activeLinkedNoteIds = activeStageId ? STAGE_NOTES_MAP[activeStageId] || [] : [];
+  const activeLinkedNoteIds = activeStageId
+    ? STAGE_NOTES_MAP[activeStageId] || []
+    : [];
 
   const handleNoteClick = (note: NoteItem) => {
     if (note.category === "codex") {
@@ -557,11 +547,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
           <div className="flex items-center justify-between">
             <div>
               <h3 className="font-display text-2xl sm:text-3xl text-on-surface font-semibold">
-                CAT Roadmap
+                Roadmap
               </h3>
-              <p className="text-xs text-secondary mt-0.5">
-                Toggle any stage to connect &amp; reveal relevant study notes on the right
-              </p>
             </div>
             <button
               type="button"
@@ -622,7 +609,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
                 </div>
                 <div className="flex items-center justify-between pt-1">
                   <p className="text-xs text-primary font-medium">
-                    Goal: Know what you're preparing for before collecting resources
+                    Goal: Know what you're preparing for before collecting
+                    resources
                   </p>
                   <button
                     type="button"
@@ -701,7 +689,9 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
                     <p>• Build a daily reading habit</p>
                     <p>• Learn how Reading Comprehension works</p>
                     <p>• Understand summaries &amp; paragraph logic</p>
-                    <p>• Develop comprehension before obsessing over vocabulary</p>
+                    <p>
+                      • Develop comprehension before obsessing over vocabulary
+                    </p>
                   </div>
                 </div>
 
@@ -723,7 +713,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
 
                 <div className="flex items-center justify-between pt-1">
                   <p className="text-[11px] text-secondary/80 italic">
-                    Reddit preparation plans repeatedly emphasize starting DILR early.
+                    Reddit preparation plans repeatedly emphasize starting DILR
+                    early.
                   </p>
                   <button
                     type="button"
@@ -800,7 +791,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
                 </pre>
                 <div className="flex items-center justify-between pt-1">
                   <p className="text-xs text-primary font-medium">
-                    Goal: Understand every major area before entering intensive mock preparation
+                    Goal: Understand every major area before entering intensive
+                    mock preparation
                   </p>
                   <button
                     type="button"
@@ -863,7 +855,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
                     QA
                   </p>
                   <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
-                    Concept ↓ Basic Questions ↓ Intermediate Questions ↓ CAT-Level Questions ↓ Mixed Practice
+                    Concept ↓ Basic Questions ↓ Intermediate Questions ↓
+                    CAT-Level Questions ↓ Mixed Practice
                   </p>
                 </div>
 
@@ -872,7 +865,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
                     VARC
                   </p>
                   <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
-                    Daily Reading ↓ RC Practice ↓ Question Analysis ↓ Accuracy Improvement
+                    Daily Reading ↓ RC Practice ↓ Question Analysis ↓ Accuracy
+                    Improvement
                   </p>
                 </div>
 
@@ -881,13 +875,15 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
                     DILR
                   </p>
                   <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
-                    Basic Sets ↓ Different Set Types ↓ Mixed Sets ↓ Timed Sets ↓ Set Selection Strategy
+                    Basic Sets ↓ Different Set Types ↓ Mixed Sets ↓ Timed Sets ↓
+                    Set Selection Strategy
                   </p>
                 </div>
 
                 <div className="flex items-center justify-between pt-1">
                   <p className="text-[11px] text-secondary/80 italic">
-                    Consistent DILR volume and repeated practice builds instinct.
+                    Consistent DILR volume and repeated practice builds
+                    instinct.
                   </p>
                   <button
                     type="button"
@@ -981,7 +977,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
 
                 <div className="flex items-center justify-between pt-1">
                   <p className="text-xs text-primary font-medium">
-                    Goal: Attempt CAT strategically rather than just solving questions
+                    Goal: Attempt CAT strategically rather than just solving
+                    questions
                   </p>
                   <button
                     type="button"
@@ -1043,7 +1040,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
                   Start mocks before you feel “perfectly ready.”
                 </p>
                 <p className="text-xs text-secondary leading-relaxed font-light">
-                  The mock phase is where aspirants learn their actual strengths, weaknesses, speed, stamina and exam strategy.
+                  The mock phase is where aspirants learn their actual
+                  strengths, weaknesses, speed, stamina and exam strategy.
                 </p>
                 <div className="flex justify-end pt-1">
                   <button
@@ -1103,7 +1101,9 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
                   This should be one of the biggest parts of your roadmap.
                 </p>
                 <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-3 rounded-lg leading-relaxed">
-                  MOCK ↓ Analyse Every Section ↓ Why was this wrong? ↓ Why did I skip this? ↓ Was my selection correct? ↓ Create Action Plan ↓ Next Mock
+                  MOCK ↓ Analyse Every Section ↓ Why was this wrong? ↓ Why did I
+                  skip this? ↓ Was my selection correct? ↓ Create Action Plan ↓
+                  Next Mock
                 </div>
                 <div className="text-secondary text-sm space-y-0.5 pl-2">
                   <p>• Wrong questions &amp; Skipped easy questions</p>
@@ -1177,7 +1177,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
                 </div>
                 <div className="flex items-center justify-between pt-1">
                   <p className="text-[11px] text-secondary/80 italic">
-                    Revisiting previous CAT papers crystallizes exam temperament.
+                    Revisiting previous CAT papers crystallizes exam
+                    temperament.
                   </p>
                   <button
                     type="button"
@@ -1299,16 +1300,28 @@ ACCURACY → What causes my mistakes?`}
               <div className="space-y-3 pt-1 fade-in">
                 <div className="text-secondary text-sm space-y-1.5 pl-2">
                   <p>
-                    <span className="text-primary font-medium">Formula Sheet:</span> QA formulas &amp; shortcuts
+                    <span className="text-primary font-medium">
+                      Formula Sheet:
+                    </span>{" "}
+                    QA formulas &amp; shortcuts
                   </p>
                   <p>
-                    <span className="text-primary font-medium">Mistake Book:</span> Repeated mistakes
+                    <span className="text-primary font-medium">
+                      Mistake Book:
+                    </span>{" "}
+                    Repeated mistakes
                   </p>
                   <p>
-                    <span className="text-primary font-medium">DILR Archive:</span> Important sets to revisit
+                    <span className="text-primary font-medium">
+                      DILR Archive:
+                    </span>{" "}
+                    Important sets to revisit
                   </p>
                   <p>
-                    <span className="text-primary font-medium">VARC Notes:</span> Patterns in errors
+                    <span className="text-primary font-medium">
+                      VARC Notes:
+                    </span>{" "}
+                    Patterns in errors
                   </p>
                 </div>
                 <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
@@ -1375,7 +1388,8 @@ ACCURACY → What causes my mistakes?`}
                 </div>
                 <div className="flex items-center justify-between pt-1">
                   <p className="text-[11px] text-secondary/80 italic">
-                    Focus shifts to reducing errors and peak performance execution.
+                    Focus shifts to reducing errors and peak performance
+                    execution.
                   </p>
                   <button
                     type="button"
@@ -1557,7 +1571,8 @@ ACCURACY → What causes my mistakes?`}
             {openSections["14"] && (
               <div className="space-y-3 pt-1 fade-in">
                 <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
-                  CAT RESULT ↓ Shortlists ↓ WAT / GD / PI Preparation ↓ College Selection ↓ MBA Journey
+                  CAT RESULT ↓ Shortlists ↓ WAT / GD / PI Preparation ↓ College
+                  Selection ↓ MBA Journey
                 </div>
                 <div className="flex justify-end pt-1">
                   <button
@@ -1665,7 +1680,10 @@ ACCURACY → What causes my mistakes?`}
         </div>
 
         {/* RIGHT COLUMN: Long Vertical Notes Card */}
-        <div id="notes-card" className="rounded-2xl bg-surface-container border border-outline-variant p-6 sm:p-7 shadow-terra-card space-y-7 scroll-mt-20">
+        <div
+          id="notes-card"
+          className="rounded-2xl bg-surface-container border border-outline-variant p-6 sm:p-7 shadow-terra-card space-y-7 scroll-mt-20"
+        >
           {/* Header & Connection Ribbon */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
@@ -1677,7 +1695,8 @@ ACCURACY → What causes my mistakes?`}
               </span>
             </div>
             <p className="text-secondary text-xs sm:text-sm leading-relaxed font-light">
-              Core first-principles theory, analytical frameworks, and rapid revision sheets for every CAT topic.
+              Core first-principles theory, analytical frameworks, and rapid
+              revision sheets for every CAT topic.
             </p>
 
             {/* Active Connected Stage Sync Banner */}
@@ -1708,7 +1727,9 @@ ACCURACY → What causes my mistakes?`}
               </div>
             ) : (
               <div className="text-xs font-mono text-secondary bg-surface/60 border border-outline-variant p-2.5 rounded-lg flex items-center justify-between">
-                <span>Click any Roadmap stage on left to filter connected notes</span>
+                <span>
+                  Click any Roadmap stage on left to filter connected notes
+                </span>
                 <span className="text-primary font-medium">Showing All</span>
               </div>
             )}
@@ -1727,11 +1748,17 @@ ACCURACY → What causes my mistakes?`}
                 <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
                   Quantitative Aptitude (QA)
                 </h4>
-                {activeStageId && QA_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
-                  <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
-                    {QA_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id)).length} LINKED
-                  </span>
-                )}
+                {activeStageId &&
+                  QA_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
+                    <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
+                      {
+                        QA_NOTES.filter((n) =>
+                          activeLinkedNoteIds.includes(n.id),
+                        ).length
+                      }{" "}
+                      LINKED
+                    </span>
+                  )}
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-[11px] font-mono text-secondary bg-surface border border-outline-variant px-2 py-0.5 rounded">
@@ -1804,11 +1831,19 @@ ACCURACY → What causes my mistakes?`}
                 <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
                   Verbal Ability &amp; RC (VARC)
                 </h4>
-                {activeStageId && VARC_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
-                  <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
-                    {VARC_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id)).length} LINKED
-                  </span>
-                )}
+                {activeStageId &&
+                  VARC_NOTES.some((n) =>
+                    activeLinkedNoteIds.includes(n.id),
+                  ) && (
+                    <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
+                      {
+                        VARC_NOTES.filter((n) =>
+                          activeLinkedNoteIds.includes(n.id),
+                        ).length
+                      }{" "}
+                      LINKED
+                    </span>
+                  )}
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-[11px] font-mono text-secondary bg-surface border border-outline-variant px-2 py-0.5 rounded">
@@ -1881,11 +1916,19 @@ ACCURACY → What causes my mistakes?`}
                 <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
                   Data Interpretation &amp; LR (DILR)
                 </h4>
-                {activeStageId && DILR_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
-                  <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
-                    {DILR_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id)).length} LINKED
-                  </span>
-                )}
+                {activeStageId &&
+                  DILR_NOTES.some((n) =>
+                    activeLinkedNoteIds.includes(n.id),
+                  ) && (
+                    <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
+                      {
+                        DILR_NOTES.filter((n) =>
+                          activeLinkedNoteIds.includes(n.id),
+                        ).length
+                      }{" "}
+                      LINKED
+                    </span>
+                  )}
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-[11px] font-mono text-secondary bg-surface border border-outline-variant px-2 py-0.5 rounded">
@@ -1958,11 +2001,19 @@ ACCURACY → What causes my mistakes?`}
                 <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
                   Master Revision Codices
                 </h4>
-                {activeStageId && CODEX_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
-                  <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
-                    {CODEX_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id)).length} LINKED
-                  </span>
-                )}
+                {activeStageId &&
+                  CODEX_NOTES.some((n) =>
+                    activeLinkedNoteIds.includes(n.id),
+                  ) && (
+                    <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
+                      {
+                        CODEX_NOTES.filter((n) =>
+                          activeLinkedNoteIds.includes(n.id),
+                        ).length
+                      }{" "}
+                      LINKED
+                    </span>
+                  )}
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-[11px] font-mono text-secondary bg-surface border border-outline-variant px-2 py-0.5 rounded">
