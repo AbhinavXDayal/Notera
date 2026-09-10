@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Search } from "lucide-react";
 import { Logo } from "./Logo";
 import type { FieldId } from "../../types/field";
@@ -23,8 +23,37 @@ export const Navbar: React.FC<NavbarProps> = ({
   onNavigateHome,
   onOpenSearch,
 }) => {
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show navbar near the very top of the page
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
+        // Scrolling DOWN -> Hide header
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        // Scrolling UP -> Reveal header
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = Math.max(0, currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-outline-variant transition-all duration-300">
+    <header
+      className={`sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-outline-variant transition-transform duration-300 ease-in-out ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
         <div className="flex items-center">
           {/* Aesthetic Logo */}

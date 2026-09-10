@@ -15,7 +15,7 @@ export const GuideNavigation: React.FC<GuideNavigationProps> = ({
   onBackToAllPaths,
 }) => {
   return (
-    <div className="bg-surface-container border-b border-outline-variant py-3 px-6 lg:px-12 sticky top-16 z-30 flex items-center justify-between text-xs overflow-x-auto">
+    <div className="bg-surface-container border-b border-outline-variant py-3 px-6 lg:px-12 sticky top-0 z-30 flex items-center justify-between text-xs overflow-x-auto">
       <div className="flex items-center space-x-4 min-w-max">
         {onBackToAllPaths && (
           <button
