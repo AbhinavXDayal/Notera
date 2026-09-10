@@ -32,7 +32,7 @@ export function App() {
     "percentages-multipliers",
   );
 
-  // Modals
+  // Modals (all closed by default - zero automatic popups)
   const [isVisitorOnboardingOpen, setIsVisitorOnboardingOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCatExamModalOpen, setIsCatExamModalOpen] = useState(false);
@@ -61,23 +61,6 @@ export function App() {
     }
     return "subtle";
   }, [currentView, catTab]);
-
-  // Automatic onboarding prompt for new visitors
-  useEffect(() => {
-    try {
-      const hasDismissed = sessionStorage.getItem(
-        "notera_dismissed_visitor_onboarding",
-      );
-      if (!hasCompletedOnboarding && !hasDismissed) {
-        const timer = setTimeout(() => {
-          setIsVisitorOnboardingOpen(true);
-        }, 750);
-        return () => clearTimeout(timer);
-      }
-    } catch {
-      // Ignore storage errors in restricted contexts
-    }
-  }, [hasCompletedOnboarding]);
 
   // Keyboard shortcut for search (Cmd+K / Ctrl+K)
   useEffect(() => {
