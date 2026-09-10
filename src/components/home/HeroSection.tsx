@@ -2,12 +2,10 @@ import React from "react";
 import { ArrowDown } from "lucide-react";
 
 interface HeroSectionProps {
-  onDirectCatPortal: () => void;
   onExploreArchiveIndex?: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
-  onDirectCatPortal,
   onExploreArchiveIndex,
 }) => {
   const scrollToPaths = () => {
@@ -18,7 +16,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-20 border-b border-outline-variant">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-7 space-y-6">
+        <div className="lg:col-span-7 space-y-8">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant text-xs uppercase tracking-widest text-tertiary font-mono">
             <span className="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
             <span>Digital Library &amp; Academic Cartography</span>
@@ -31,25 +29,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </span>
           </h1>
 
-          <p className="text-secondary text-base sm:text-lg max-w-xl font-normal leading-relaxed">
-            Choose your exam, subject or learning path. Start from wherever you
-            are — without clutter, noisy gamification, or overwhelming catalogs.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-4 pt-3">
+          <div className="flex flex-wrap items-center gap-4 pt-2">
             <button
               onClick={scrollToPaths}
               className="px-6 py-3 rounded-full bg-primary text-on-primary text-sm font-semibold hover:bg-primary-hover transition-all shadow-terra-card flex items-center space-x-2 cursor-pointer"
             >
               <span>Select a Learning Path</span>
               <ArrowDown className="w-4 h-4" />
-            </button>
-
-            <button
-              onClick={onDirectCatPortal}
-              className="px-5 py-3 rounded-full border border-outline-variant hover:border-primary text-sm text-on-surface hover:bg-surface-container transition-all cursor-pointer"
-            >
-              Direct CAT Portal
             </button>
           </div>
         </div>

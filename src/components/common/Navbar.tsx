@@ -28,7 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Aesthetic Logo */}
           <button
             onClick={onNavigateHome}
-            className="text-left focus:outline-none"
+            className="text-left focus:outline-none cursor-pointer"
             aria-label="Notera Home"
           >
             <Logo />

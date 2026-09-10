@@ -45,9 +45,7 @@ export function App() {
   // AUTOMATIC ONBOARDING PROMPT FOR NEW USERS
   useEffect(() => {
     try {
-      const hasDismissed = sessionStorage.getItem(
-        "notera_dismissed_welcome_onboarding",
-      );
+      const hasDismissed = sessionStorage.getItem("notera_dismissed_welcome_onboarding");
       if (!isOnboarded && !hasDismissed) {
         const timer = setTimeout(() => {
           setIsOnboardingOpen(true);
@@ -168,15 +166,7 @@ export function App() {
       {currentView === "home" && (
         <main className="fade-in">
           {/* Hero */}
-          <HeroSection
-            onDirectCatPortal={() => {
-              if (!isOnboarded) {
-                setIsOnboardingOpen(true);
-              } else {
-                handleNavigateCat("overview");
-              }
-            }}
-          />
+          <HeroSection />
 
           {/* Path Exploration Section */}
           <section className="max-w-7xl mx-auto px-6 lg:px-12 py-20" id="paths">
