@@ -5,16 +5,16 @@
 @layer base {
   body {
     @apply bg-background text-on-surface font-body selection:bg-primary/20 selection:text-on-surface;
-    background-color: #EDE3D3;
+    background-color: #ede3d3;
   }
 }
 
 /* Warm latte café library texture */
 .paper-texture {
-  background-color: #EDE3D3;
+  background-color: #ede3d3;
   background-image:
     radial-gradient(rgba(158, 100, 59, 0.05) 0.5px, transparent 0.5px),
-    radial-gradient(rgba(184, 131, 90, 0.04) 0.5px, #EDE3D3 0.5px);
+    radial-gradient(rgba(184, 131, 90, 0.04) 0.5px, #ede3d3 0.5px);
   background-size: 28px 28px;
   background-position:
     0 0,
@@ -28,16 +28,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #EDE3D3;
+  background: #ede3d3;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBB79E;
+  background: #cbb79e;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9E643B;
+  background: #9e643b;
 }
 
 /* Smooth transitions */
@@ -93,7 +93,8 @@
 
 /* Coffee aroma particle pulse */
 @keyframes particlePulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.2;
     transform: scale(0.85);
   }

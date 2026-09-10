@@ -1,6 +1,5 @@
 import React from "react";
 import { ArrowLeft } from "lucide-react";
-import type { PersonalizedRecommendation } from "../../types/preferences";
 
 export type CatTabType =
   | "overview"
@@ -14,16 +13,12 @@ interface CatHeaderNavProps {
   activeTab: CatTabType;
   onTabChange: (tab: CatTabType) => void;
   onBackToPaths: () => void;
-  recommendation: PersonalizedRecommendation;
-  onRetakeOnboarding: () => void;
 }
 
 export const CatHeaderNav: React.FC<CatHeaderNavProps> = ({
   activeTab,
   onTabChange,
   onBackToPaths,
-  recommendation,
-  onRetakeOnboarding,
 }) => {
   const tabs: { id: CatTabType; label: string }[] = [
     { id: "overview", label: "Home" },
@@ -67,19 +62,6 @@ export const CatHeaderNav: React.FC<CatHeaderNavProps> = ({
             );
           })}
         </div>
-      </div>
-
-      <div className="hidden md:flex items-center space-x-3 text-secondary">
-        <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-        <span className="font-mono text-[11px]">
-          {recommendation.statusBadge}
-        </span>
-        <button
-          onClick={onRetakeOnboarding}
-          className="underline text-[10px] text-tertiary hover:text-primary transition-colors cursor-pointer"
-        >
-          Adjust diagnostic
-        </button>
       </div>
     </div>
   );

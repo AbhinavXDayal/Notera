@@ -73,8 +73,10 @@ export default {
         sans: ["Nunito Sans", "sans-serif"],
       },
       boxShadow: {
-        "terra-card": "0 4px 20px rgba(59, 42, 34, 0.07), 0 1px 3px rgba(59, 42, 34, 0.05)",
-        "terra-hover": "0 10px 30px rgba(158, 100, 59, 0.14), 0 3px 10px rgba(59, 42, 34, 0.08)",
+        "terra-card":
+          "0 4px 20px rgba(59, 42, 34, 0.07), 0 1px 3px rgba(59, 42, 34, 0.05)",
+        "terra-hover":
+          "0 10px 30px rgba(158, 100, 59, 0.14), 0 3px 10px rgba(59, 42, 34, 0.08)",
       },
     },
   },
