@@ -17,9 +17,9 @@ export const FIELDS_DATA: FieldCategory[] = [
     subtitle: 'Algorithms & Systems',
     symbol: '</>',
     description: 'Data structures, computational complexity, distributed systems architecture, and engineering craftsmanship.',
-    actionText: 'Enter CompSci Universe',
+    actionText: 'Locked (In Development)',
     targetPath: '/compsci',
-    available: true,
+    available: false,
   },
 ];
 

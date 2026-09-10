@@ -1,6 +1,6 @@
 import React from "react";
 import type { FieldCategory } from "../../types/field";
-import { Sparkles } from "lucide-react";
+import { Sparkles, Lock } from "lucide-react";
 
 interface CategoryCardProps {
   field: FieldCategory;
@@ -42,8 +42,9 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
 
       {!isAvailable && (
         <div className="absolute top-3.5 right-3.5">
-          <span className="inline-flex items-center justify-center px-2 py-0.5 rounded text-[9px] font-mono tracking-wider bg-surface border border-outline-variant text-secondary/70 uppercase font-medium">
-            Unavailable
+          <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded text-[9px] font-mono tracking-wider bg-surface border border-outline-variant text-secondary/80 uppercase font-medium">
+            <Lock className="w-2.5 h-2.5 text-secondary" />
+            <span>Locked</span>
           </span>
         </div>
       )}

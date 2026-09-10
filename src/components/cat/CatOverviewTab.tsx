@@ -1,11 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import {
-  ArrowLeft,
-  ChevronDown,
-  Sparkles,
-  BookOpen,
-  X,
-} from "lucide-react";
+import { ArrowLeft, ChevronDown, Sparkles, BookOpen, X } from "lucide-react";
 
 export type CatTabType =
   | "overview"
@@ -399,19 +393,23 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     "summary",
   ];
 
-  const [openSections, setOpenSections] = useState<Record<string, boolean>>(() => {
-    const initial: Record<string, boolean> = {};
-    sectionIds.forEach((id) => {
-      initial[id] = true;
-    });
-    return initial;
-  });
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>(
+    () => {
+      const initial: Record<string, boolean> = {};
+      sectionIds.forEach((id) => {
+        initial[id] = true;
+      });
+      return initial;
+    },
+  );
 
   // Track active connected roadmap stage for Notes synchronization
   const [activeStageId, setActiveStageId] = useState<string | null>("02");
 
   // Track accordion state in the Notes card
-  const [openNoteCategories, setOpenNoteCategories] = useState<Record<string, boolean>>({
+  const [openNoteCategories, setOpenNoteCategories] = useState<
+    Record<string, boolean>
+  >({
     qa: true,
     varc: true,
     dilr: true,
@@ -457,7 +455,12 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
       setLineCoords({
         fgToRoadmap: { x1: fgLeft.x, y1: fgLeft.y, x2: rmTop.x, y2: rmTop.y },
         fgToNotes: { x1: fgRight.x, y1: fgRight.y, x2: ntTop.x, y2: ntTop.y },
-        roadmapToNotes: { x1: rmRight.x, y1: rmRight.y, x2: ntLeft.x, y2: ntLeft.y },
+        roadmapToNotes: {
+          x1: rmRight.x,
+          y1: rmRight.y,
+          x2: ntLeft.x,
+          y2: ntLeft.y,
+        },
       });
     }
   }, []);
@@ -786,7 +789,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
 
             <div className="flex items-center justify-between pt-1">
               <p className="text-[11px] text-secondary/80 italic">
-                Reddit preparation plans repeatedly emphasize starting DILR early.
+                Reddit preparation plans repeatedly emphasize starting DILR
+                early.
               </p>
               <button
                 type="button"
@@ -863,7 +867,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             </pre>
             <div className="flex items-center justify-between pt-1">
               <p className="text-xs text-primary font-medium">
-                Goal: Understand every major area before entering intensive mock preparation
+                Goal: Understand every major area before entering intensive mock
+                preparation
               </p>
               <button
                 type="button"
@@ -926,7 +931,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
                 QA
               </p>
               <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
-                Concept ↓ Basic Questions ↓ Intermediate Questions ↓ CAT-Level Questions ↓ Mixed Practice
+                Concept ↓ Basic Questions ↓ Intermediate Questions ↓ CAT-Level
+                Questions ↓ Mixed Practice
               </p>
             </div>
 
@@ -935,7 +941,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
                 VARC
               </p>
               <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
-                Daily Reading ↓ RC Practice ↓ Question Analysis ↓ Accuracy Improvement
+                Daily Reading ↓ RC Practice ↓ Question Analysis ↓ Accuracy
+                Improvement
               </p>
             </div>
 
@@ -944,7 +951,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
                 DILR
               </p>
               <p className="text-xs text-secondary font-mono leading-relaxed bg-surface/50 p-2 rounded border border-outline-variant/60">
-                Basic Sets ↓ Different Set Types ↓ Mixed Sets ↓ Timed Sets ↓ Set Selection Strategy
+                Basic Sets ↓ Different Set Types ↓ Mixed Sets ↓ Timed Sets ↓ Set
+                Selection Strategy
               </p>
             </div>
 
@@ -1044,7 +1052,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
 
             <div className="flex items-center justify-between pt-1">
               <p className="text-xs text-primary font-medium">
-                Goal: Attempt CAT strategically rather than just solving questions
+                Goal: Attempt CAT strategically rather than just solving
+                questions
               </p>
               <button
                 type="button"
@@ -1106,7 +1115,8 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
               Start mocks before you feel “perfectly ready.”
             </p>
             <p className="text-xs text-secondary leading-relaxed font-light">
-              The mock phase is where aspirants learn their actual strengths, weaknesses, speed, stamina and exam strategy.
+              The mock phase is where aspirants learn their actual strengths,
+              weaknesses, speed, stamina and exam strategy.
             </p>
             <div className="flex justify-end pt-1">
               <button
@@ -1166,7 +1176,9 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
               This should be one of the biggest parts of your roadmap.
             </p>
             <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-3 rounded-lg leading-relaxed">
-              MOCK ↓ Analyse Every Section ↓ Why was this wrong? ↓ Why did I skip this? ↓ Was my selection correct? ↓ Create Action Plan ↓ Next Mock
+              MOCK ↓ Analyse Every Section ↓ Why was this wrong? ↓ Why did I
+              skip this? ↓ Was my selection correct? ↓ Create Action Plan ↓ Next
+              Mock
             </div>
             <div className="text-secondary text-sm space-y-0.5 pl-2">
               <p>• Wrong questions &amp; Skipped easy questions</p>
@@ -1362,16 +1374,20 @@ ACCURACY → What causes my mistakes?`}
           <div className="space-y-3 pt-1 fade-in">
             <div className="text-secondary text-sm space-y-1.5 pl-2">
               <p>
-                <span className="text-primary font-medium">Formula Sheet:</span> QA formulas &amp; shortcuts
+                <span className="text-primary font-medium">Formula Sheet:</span>{" "}
+                QA formulas &amp; shortcuts
               </p>
               <p>
-                <span className="text-primary font-medium">Mistake Book:</span> Repeated mistakes
+                <span className="text-primary font-medium">Mistake Book:</span>{" "}
+                Repeated mistakes
               </p>
               <p>
-                <span className="text-primary font-medium">DILR Archive:</span> Important sets to revisit
+                <span className="text-primary font-medium">DILR Archive:</span>{" "}
+                Important sets to revisit
               </p>
               <p>
-                <span className="text-primary font-medium">VARC Notes:</span> Patterns in errors
+                <span className="text-primary font-medium">VARC Notes:</span>{" "}
+                Patterns in errors
               </p>
             </div>
             <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
@@ -1620,7 +1636,8 @@ ACCURACY → What causes my mistakes?`}
         {openSections["14"] && (
           <div className="space-y-3 pt-1 fade-in">
             <div className="text-xs font-mono text-primary bg-surface/60 border border-outline-variant p-2.5 rounded-lg">
-              CAT RESULT ↓ Shortlists ↓ WAT / GD / PI Preparation ↓ College Selection ↓ MBA Journey
+              CAT RESULT ↓ Shortlists ↓ WAT / GD / PI Preparation ↓ College
+              Selection ↓ MBA Journey
             </div>
             <div className="flex justify-end pt-1">
               <button
@@ -1756,7 +1773,8 @@ ACCURACY → What causes my mistakes?`}
           </span>
         </div>
         <p className="text-secondary text-xs sm:text-sm leading-relaxed font-light">
-          Core first-principles theory, analytical frameworks, and rapid revision sheets for every CAT topic.
+          Core first-principles theory, analytical frameworks, and rapid
+          revision sheets for every CAT topic.
         </p>
 
         {/* Active Connected Stage Sync Banner */}
@@ -1787,7 +1805,9 @@ ACCURACY → What causes my mistakes?`}
           </div>
         ) : (
           <div className="text-xs font-mono text-secondary bg-surface/60 border border-outline-variant p-2.5 rounded-lg flex items-center justify-between">
-            <span>Click any Roadmap stage on left to filter connected notes</span>
+            <span>
+              Click any Roadmap stage on left to filter connected notes
+            </span>
             <span className="text-primary font-medium">Showing All</span>
           </div>
         )}
@@ -1806,11 +1826,16 @@ ACCURACY → What causes my mistakes?`}
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               Quantitative Aptitude (QA)
             </h4>
-            {activeStageId && QA_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
-              <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
-                {QA_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id)).length} LINKED
-              </span>
-            )}
+            {activeStageId &&
+              QA_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
+                <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
+                  {
+                    QA_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id))
+                      .length
+                  }{" "}
+                  LINKED
+                </span>
+              )}
           </div>
           <div className="flex items-center space-x-2">
             <span className="text-[11px] font-mono text-secondary bg-surface border border-outline-variant px-2 py-0.5 rounded">
@@ -1883,11 +1908,16 @@ ACCURACY → What causes my mistakes?`}
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               Verbal Ability &amp; RC (VARC)
             </h4>
-            {activeStageId && VARC_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
-              <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
-                {VARC_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id)).length} LINKED
-              </span>
-            )}
+            {activeStageId &&
+              VARC_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
+                <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
+                  {
+                    VARC_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id))
+                      .length
+                  }{" "}
+                  LINKED
+                </span>
+              )}
           </div>
           <div className="flex items-center space-x-2">
             <span className="text-[11px] font-mono text-secondary bg-surface border border-outline-variant px-2 py-0.5 rounded">
@@ -1960,11 +1990,16 @@ ACCURACY → What causes my mistakes?`}
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               Data Interpretation &amp; LR (DILR)
             </h4>
-            {activeStageId && DILR_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
-              <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
-                {DILR_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id)).length} LINKED
-              </span>
-            )}
+            {activeStageId &&
+              DILR_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
+                <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
+                  {
+                    DILR_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id))
+                      .length
+                  }{" "}
+                  LINKED
+                </span>
+              )}
           </div>
           <div className="flex items-center space-x-2">
             <span className="text-[11px] font-mono text-secondary bg-surface border border-outline-variant px-2 py-0.5 rounded">
@@ -2037,11 +2072,17 @@ ACCURACY → What causes my mistakes?`}
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               Master Revision Codices
             </h4>
-            {activeStageId && CODEX_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
-              <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
-                {CODEX_NOTES.filter((n) => activeLinkedNoteIds.includes(n.id)).length} LINKED
-              </span>
-            )}
+            {activeStageId &&
+              CODEX_NOTES.some((n) => activeLinkedNoteIds.includes(n.id)) && (
+                <span className="text-[10px] font-mono text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded font-bold">
+                  {
+                    CODEX_NOTES.filter((n) =>
+                      activeLinkedNoteIds.includes(n.id),
+                    ).length
+                  }{" "}
+                  LINKED
+                </span>
+              )}
           </div>
           <div className="flex items-center space-x-2">
             <span className="text-[11px] font-mono text-secondary bg-surface border border-outline-variant px-2 py-0.5 rounded">
@@ -2116,142 +2157,162 @@ ACCURACY → What causes my mistakes?`}
       {/* Unified 3-Section Knowledge Flow Container with Interactive Connecting Lines */}
       <div ref={containerRef} className="relative space-y-8">
         {/* Dynamic SVG Connecting Lines Layer */}
-        {lineCoords.fgToRoadmap && lineCoords.fgToNotes && lineCoords.roadmapToNotes && (
-          <svg
-            className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none z-10"
-            aria-hidden="true"
-          >
-            <defs>
-              <marker
-                id="conn-arrow"
-                viewBox="0 0 10 10"
-                refX="7"
-                refY="5"
-                markerWidth="6"
-                markerHeight="6"
-                orient="auto-start-reverse"
-              >
-                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#D8C3A5" />
-              </marker>
-              <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#EFE6DB" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#D8C3A5" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#B5A28E" stopOpacity="0.8" />
-              </linearGradient>
-            </defs>
+        {lineCoords.fgToRoadmap &&
+          lineCoords.fgToNotes &&
+          lineCoords.roadmapToNotes && (
+            <svg
+              className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none z-10"
+              aria-hidden="true"
+            >
+              <defs>
+                <marker
+                  id="conn-arrow"
+                  viewBox="0 0 10 10"
+                  refX="7"
+                  refY="5"
+                  markerWidth="6"
+                  markerHeight="6"
+                  orient="auto-start-reverse"
+                >
+                  <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#D8C3A5" />
+                </marker>
+                <linearGradient
+                  id="connGrad"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stopColor="#EFE6DB" stopOpacity="0.8" />
+                  <stop offset="50%" stopColor="#D8C3A5" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#B5A28E" stopOpacity="0.8" />
+                </linearGradient>
+              </defs>
 
-            {/* 1. Field Guide Left -> Roadmap Top Curve */}
-            {(() => {
-              const { x1, y1, x2, y2 } = lineCoords.fgToRoadmap!;
-              const midY = (y1 + y2) / 2;
-              const pathD = `M ${x1} ${y1} C ${x1} ${midY}, ${x2} ${midY}, ${x2} ${y2}`;
-              return (
-                <g>
-                  <path
-                    d={pathD}
-                    fill="none"
-                    stroke="#D8C3A5"
-                    strokeWidth="6"
-                    strokeOpacity="0.12"
-                  />
-                  <path
-                    d={pathD}
-                    fill="none"
-                    stroke="url(#connGrad)"
-                    strokeWidth="2"
-                    strokeDasharray="6 4"
-                    markerEnd="url(#conn-arrow)"
-                  />
-                  <circle r="3" fill="#FAF5EE">
-                    <animateMotion path={pathD} dur="3.5s" repeatCount="indefinite" />
-                  </circle>
-                </g>
-              );
-            })()}
-
-            {/* 2. Field Guide Right -> Notes Top Curve */}
-            {(() => {
-              const { x1, y1, x2, y2 } = lineCoords.fgToNotes!;
-              const midY = (y1 + y2) / 2;
-              const pathD = `M ${x1} ${y1} C ${x1} ${midY}, ${x2} ${midY}, ${x2} ${y2}`;
-              return (
-                <g>
-                  <path
-                    d={pathD}
-                    fill="none"
-                    stroke="#D8C3A5"
-                    strokeWidth="6"
-                    strokeOpacity="0.12"
-                  />
-                  <path
-                    d={pathD}
-                    fill="none"
-                    stroke="url(#connGrad)"
-                    strokeWidth="2"
-                    strokeDasharray="6 4"
-                    markerEnd="url(#conn-arrow)"
-                  />
-                  <circle r="3" fill="#FAF5EE">
-                    <animateMotion path={pathD} dur="3.5s" repeatCount="indefinite" />
-                  </circle>
-                </g>
-              );
-            })()}
-
-            {/* 3. Roadmap Right -> Notes Left Horizontal Connector */}
-            {(() => {
-              const { x1, y1, x2, y2 } = lineCoords.roadmapToNotes!;
-              const midX = (x1 + x2) / 2;
-              const pathD = `M ${x1} ${y1} C ${midX} ${y1}, ${midX} ${y2}, ${x2} ${y2}`;
-              return (
-                <g>
-                  <path
-                    d={pathD}
-                    fill="none"
-                    stroke="#D8C3A5"
-                    strokeWidth="6"
-                    strokeOpacity="0.15"
-                  />
-                  <path
-                    d={pathD}
-                    fill="none"
-                    stroke="url(#connGrad)"
-                    strokeWidth="2"
-                    strokeDasharray="5 3"
-                    className="animate-pulse"
-                  />
-                  <circle r="3.5" fill="#FAF5EE">
-                    <animateMotion path={pathD} dur="2.2s" repeatCount="indefinite" />
-                  </circle>
-                  {/* Central Sync Badge */}
-                  <g transform={`translate(${midX}, ${(y1 + y2) / 2})`}>
-                    <rect
-                      x="-32"
-                      y="-9"
-                      width="64"
-                      height="18"
-                      rx="9"
-                      fill="#2A201A"
-                      stroke="#6B5647"
-                      strokeWidth="1"
+              {/* 1. Field Guide Left -> Roadmap Top Curve */}
+              {(() => {
+                const { x1, y1, x2, y2 } = lineCoords.fgToRoadmap!;
+                const midY = (y1 + y2) / 2;
+                const pathD = `M ${x1} ${y1} C ${x1} ${midY}, ${x2} ${midY}, ${x2} ${y2}`;
+                return (
+                  <g>
+                    <path
+                      d={pathD}
+                      fill="none"
+                      stroke="#D8C3A5"
+                      strokeWidth="6"
+                      strokeOpacity="0.12"
                     />
-                    <text
-                      x="0"
-                      y="3.5"
-                      textAnchor="middle"
-                      fill="#D8C3A5"
-                      fontSize="9"
-                      fontFamily="monospace"
-                      fontWeight="700"
-                    >
-                      SYNCED
-                    </text>
+                    <path
+                      d={pathD}
+                      fill="none"
+                      stroke="url(#connGrad)"
+                      strokeWidth="2"
+                      strokeDasharray="6 4"
+                      markerEnd="url(#conn-arrow)"
+                    />
+                    <circle r="3" fill="#FAF5EE">
+                      <animateMotion
+                        path={pathD}
+                        dur="3.5s"
+                        repeatCount="indefinite"
+                      />
+                    </circle>
                   </g>
-                </g>
-              );
-            })()}
-          </svg>
-        )}
+                );
+              })()}
+
+              {/* 2. Field Guide Right -> Notes Top Curve */}
+              {(() => {
+                const { x1, y1, x2, y2 } = lineCoords.fgToNotes!;
+                const midY = (y1 + y2) / 2;
+                const pathD = `M ${x1} ${y1} C ${x1} ${midY}, ${x2} ${midY}, ${x2} ${y2}`;
+                return (
+                  <g>
+                    <path
+                      d={pathD}
+                      fill="none"
+                      stroke="#D8C3A5"
+                      strokeWidth="6"
+                      strokeOpacity="0.12"
+                    />
+                    <path
+                      d={pathD}
+                      fill="none"
+                      stroke="url(#connGrad)"
+                      strokeWidth="2"
+                      strokeDasharray="6 4"
+                      markerEnd="url(#conn-arrow)"
+                    />
+                    <circle r="3" fill="#FAF5EE">
+                      <animateMotion
+                        path={pathD}
+                        dur="3.5s"
+                        repeatCount="indefinite"
+                      />
+                    </circle>
+                  </g>
+                );
+              })()}
+
+              {/* 3. Roadmap Right -> Notes Left Horizontal Connector */}
+              {(() => {
+                const { x1, y1, x2, y2 } = lineCoords.roadmapToNotes!;
+                const midX = (x1 + x2) / 2;
+                const pathD = `M ${x1} ${y1} C ${midX} ${y1}, ${midX} ${y2}, ${x2} ${y2}`;
+                return (
+                  <g>
+                    <path
+                      d={pathD}
+                      fill="none"
+                      stroke="#D8C3A5"
+                      strokeWidth="6"
+                      strokeOpacity="0.15"
+                    />
+                    <path
+                      d={pathD}
+                      fill="none"
+                      stroke="url(#connGrad)"
+                      strokeWidth="2"
+                      strokeDasharray="5 3"
+                      className="animate-pulse"
+                    />
+                    <circle r="3.5" fill="#FAF5EE">
+                      <animateMotion
+                        path={pathD}
+                        dur="2.2s"
+                        repeatCount="indefinite"
+                      />
+                    </circle>
+                    {/* Central Sync Badge */}
+                    <g transform={`translate(${midX}, ${(y1 + y2) / 2})`}>
+                      <rect
+                        x="-32"
+                        y="-9"
+                        width="64"
+                        height="18"
+                        rx="9"
+                        fill="#2A201A"
+                        stroke="#6B5647"
+                        strokeWidth="1"
+                      />
+                      <text
+                        x="0"
+                        y="3.5"
+                        textAnchor="middle"
+                        fill="#D8C3A5"
+                        fontSize="9"
+                        fontFamily="monospace"
+                        fontWeight="700"
+                      >
+                        SYNCED
+                      </text>
+                    </g>
+                  </g>
+                );
+              })()}
+            </svg>
+          )}
 
         {/* 1. Field Guide Framework Card (Top Full Width) */}
         {renderFieldGuideCard()}
