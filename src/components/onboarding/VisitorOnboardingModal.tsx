@@ -27,13 +27,17 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
 
   const [selectedInterests, setSelectedInterests] = useState<string[]>(() =>
-    initialInterests && initialInterests.length > 0 ? initialInterests : ["CAT"]
+    initialInterests && initialInterests.length > 0
+      ? initialInterests
+      : ["CAT"],
   );
-  const [selectedLevel, setSelectedLevel] = useState<string>(() =>
-    initialLevel || "Complete Beginner"
+  const [selectedLevel, setSelectedLevel] = useState<string>(
+    () => initialLevel || "Complete Beginner",
   );
   const [selectedGoals, setSelectedGoals] = useState<string[]>(() =>
-    initialGoals && initialGoals.length > 0 ? initialGoals : ["Complete Guidance"]
+    initialGoals && initialGoals.length > 0
+      ? initialGoals
+      : ["Complete Guidance"],
   );
 
   const prevIsOpenRef = useRef<boolean>(isOpen);
@@ -46,13 +50,13 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
       setSelectedInterests(
         initialInterests && initialInterests.length > 0
           ? initialInterests
-          : ["CAT"]
+          : ["CAT"],
       );
       setSelectedLevel(initialLevel || "Complete Beginner");
       setSelectedGoals(
         initialGoals && initialGoals.length > 0
           ? initialGoals
-          : ["Complete Guidance"]
+          : ["Complete Guidance"],
       );
     }
     prevIsOpenRef.current = isOpen;
@@ -88,7 +92,7 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
   // Dynamic Level Options based on Interest
   const getLevelOptions = () => {
     const isSchool = selectedInterests.some(
-      (i) => i === "Class 12" || i === "Class 10"
+      (i) => i === "Class 12" || i === "Class 10",
     );
     const isCompSci = selectedInterests.includes("Computer Science");
 
@@ -186,8 +190,7 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
       setIsTransitioning(true);
       setTimeout(() => {
         onComplete({
-          interests:
-            selectedInterests.length > 0 ? selectedInterests : ["CAT"],
+          interests: selectedInterests.length > 0 ? selectedInterests : ["CAT"],
           level: selectedLevel || "Complete Beginner",
           goals:
             selectedGoals.length > 0 ? selectedGoals : ["Complete Guidance"],
@@ -283,36 +286,34 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
-                  {[
-                    "CAT",
-                    "Computer Science",
-                    "Just Exploring",
-                  ].map((field) => {
-                    const isSelected = selectedInterests.includes(field);
-                    return (
-                      <button
-                        key={field}
-                        type="button"
-                        onClick={() => toggleInterest(field)}
-                        className={`p-3 rounded-xl border text-left flex items-center justify-between transition-all cursor-pointer ${
-                          isSelected
-                            ? "border-primary bg-surface-container shadow-sm text-on-surface ring-1 ring-primary/40"
-                            : "border-outline-variant bg-surface-container hover:border-primary/50 text-secondary hover:text-on-surface"
-                        }`}
-                      >
-                        <span className="text-xs font-medium">{field}</span>
-                        <span
-                          className={`w-4 h-4 rounded border flex items-center justify-center text-[10px] transition-colors ${
+                  {["CAT", "Computer Science", "Just Exploring"].map(
+                    (field) => {
+                      const isSelected = selectedInterests.includes(field);
+                      return (
+                        <button
+                          key={field}
+                          type="button"
+                          onClick={() => toggleInterest(field)}
+                          className={`p-3 rounded-xl border text-left flex items-center justify-between transition-all cursor-pointer ${
                             isSelected
-                              ? "border-primary bg-primary text-on-primary"
-                              : "border-outline-variant"
+                              ? "border-primary bg-surface-container shadow-sm text-on-surface ring-1 ring-primary/40"
+                              : "border-outline-variant bg-surface-container hover:border-primary/50 text-secondary hover:text-on-surface"
                           }`}
                         >
-                          {isSelected && <Check className="w-3 h-3" />}
-                        </span>
-                      </button>
-                    );
-                  })}
+                          <span className="text-xs font-medium">{field}</span>
+                          <span
+                            className={`w-4 h-4 rounded border flex items-center justify-center text-[10px] transition-colors ${
+                              isSelected
+                                ? "border-primary bg-primary text-on-primary"
+                                : "border-outline-variant"
+                            }`}
+                          >
+                            {isSelected && <Check className="w-3 h-3" />}
+                          </span>
+                        </button>
+                      );
+                    },
+                  )}
                 </div>
               </div>
             )}
@@ -445,9 +446,7 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
                 className="px-5 py-2.5 rounded-full bg-primary text-on-primary text-xs font-semibold hover:bg-primary-hover transition-all shadow-terra-card flex items-center space-x-1.5 cursor-pointer select-none active:scale-[0.98]"
               >
                 <span>
-                  {currentStep === totalSteps
-                    ? "Generate My Path"
-                    : "Continue"}
+                  {currentStep === totalSteps ? "Generate My Path" : "Continue"}
                 </span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
@@ -458,4 +457,3 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
     </div>
   );
 };
-

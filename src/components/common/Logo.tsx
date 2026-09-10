@@ -114,11 +114,11 @@ export const Logo: React.FC<LogoProps> = ({
         <div className="flex flex-col">
           <div className="flex items-center space-x-1.5">
             <span
-              className={`font-display ${textSizes} tracking-[-0.01em] font-normal text-on-surface transition-colors duration-300 group-hover:text-primary leading-none`}
+              className={`font-display ${textSizes} tracking-[-0.015em] font-normal text-on-surface transition-colors duration-300 group-hover:text-primary leading-none`}
             >
               Notera
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-primary/70 group-hover:bg-primary transition-colors" />
+            <span className="w-1.5 h-1.5 rounded-full bg-primary/80 group-hover:bg-primary group-hover:shadow-[0_0_8px_rgba(216,195,165,0.8)] transition-all duration-300" />
           </div>
 
           {showTagline && (
