@@ -15,6 +15,7 @@ import { CatExamInfoModal } from "./components/cat/CatExamInfoModal";
 import { NotesLayout } from "./components/notes/NotesLayout";
 import { ResourceLibraryView } from "./components/resources/ResourceLibraryView";
 import { FieldGuideView } from "./components/field/FieldGuideView";
+import { KnowledgeMapBackground } from "./components/background/KnowledgeMapBackground";
 
 import { FIELDS_DATA } from "./data/fields";
 import type { FieldCategory, FieldId } from "./types/field";
@@ -49,6 +50,18 @@ export function App() {
   // Interactive CAT Roadmap check state
   const { completedStages, completedActions, toggleStage, toggleAction } =
     useRoadmapProgress();
+
+  // Dynamic Background Variant per section
+  const backgroundVariant = useMemo(() => {
+    if (currentView === "home") return "hero";
+    if (currentView === "cat") {
+      if (catTab === "journey") return "roadmap";
+      if (catTab === "notes") return "reading";
+      if (catTab === "resources") return "subtle";
+      return "subtle";
+    }
+    return "subtle";
+  }, [currentView, catTab]);
 
   // Automatic onboarding prompt for new visitors
   useEffect(() => {
@@ -198,144 +211,152 @@ export function App() {
   }, [preferences]);
 
   return (
-    <div className="min-h-screen bg-surface text-on-surface font-body selection:bg-primary/20 selection:text-on-surface">
-      {/* Persistent Editorial Navigation */}
-      <Navbar
-        currentView={currentView}
-        activeFieldId={selectedFieldId}
-        onNavigateHome={handleNavigateHome}
-        onNavigateCat={handleNavigateCat}
-        onOpenSearch={() => setIsSearchOpen(true)}
-      />
+    <div className="min-h-screen bg-surface text-on-surface font-body selection:bg-primary/20 selection:text-on-surface relative">
+      {/* Dynamic Knowledge Map Background Layer (Dot Matrix, Floating Nodes & Constellations) */}
+      <KnowledgeMapBackground variant={backgroundVariant} />
 
-      {/* Subtle First-Time Visitor Banner (If not yet completed) */}
-      {!hasCompletedOnboarding && currentView === "home" && (
-        <div className="bg-surface-container border-b border-outline-variant py-2 px-6 lg:px-12 text-xs flex flex-col sm:flex-row items-center justify-between gap-2 fade-in">
-          <div className="flex items-center space-x-2 text-secondary text-center sm:text-left">
-            <span className="w-2 h-2 rounded-full bg-tertiary animate-pulse flex-shrink-0" />
-            <span>
-              <strong className="text-on-surface">Welcome to Notera.</strong>{" "}
-              Personalize your study roadmaps and note recommendations in 3
-              quick questions.
-            </span>
-          </div>
-          <button
-            onClick={() => setIsVisitorOnboardingOpen(true)}
-            className="font-semibold text-primary hover:text-primary-hover flex items-center space-x-1 underline cursor-pointer flex-shrink-0"
-          >
-            <span>Personalize Path</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
-      )}
-
-      {/* VIEW 1: UNIVERSAL DISCOVERY HOMEPAGE */}
-      {currentView === "home" && (
-        <main className="max-w-7xl mx-auto px-6 lg:px-12 py-6 fade-in">
-          {/* Personalized Recommendation Hero Banner for Returning/Calibrated Visitors */}
-          {hasCompletedOnboarding && (
-            <RecommendedHeroBanner
-              recommendation={recommendation}
-              onCtaClick={handleRecommendationCta}
-              onSecondaryClick={handleSecondaryLinkClick}
-              onUpdatePreferences={() => setIsVisitorOnboardingOpen(true)}
-              onResetPreferences={resetPreferences}
-            />
-          )}
-
-          {/* Streamlined Header */}
-          <HeroSection />
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {sortedFields.map((field) => {
-              const isRecommended = Boolean(
-                preferences?.interests.some((i) => {
-                  if (i === "Computer Science" && field.id === "COMPSCI")
-                    return true;
-                  if (i === "Class 12" && field.id === "CLASS_12") return true;
-                  if (i === "Class 10" && field.id === "CLASS_10") return true;
-                  return i.toUpperCase() === field.id;
-                }),
-              );
-
-              return (
-                <CategoryCard
-                  key={field.id}
-                  field={field}
-                  onSelect={handleSelectField}
-                  isRecommended={isRecommended}
-                />
-              );
-            })}
-          </div>
-        </main>
-      )}
-
-      {/* VIEW 2: DEDICATED CAT UNIVERSE */}
-      {currentView === "cat" && (
-        <section className="min-h-screen fade-in pb-16">
-          <CatHeaderNav
-            activeTab={catTab}
-            onTabChange={setCatTab}
-            onBackToPaths={handleNavigateHome}
-            recommendation={recommendation}
-            onRetakeOnboarding={() => setIsVisitorOnboardingOpen(true)}
-          />
-
-          {catTab === "overview" && (
-            <CatOverviewTab
-              onNavigateTab={(tab, chapterId) =>
-                handleNavigateCat(tab, chapterId)
-              }
-              recommendation={recommendation}
-              onOpenExamModal={() => setIsCatExamModalOpen(true)}
-            />
-          )}
-
-          {catTab === "journey" && (
-            <CatRoadmapTab
-              completedStages={completedStages}
-              completedActions={completedActions}
-              onToggleStage={toggleStage}
-              onToggleAction={toggleAction}
-              onNavigateNotes={(noteId) => handleNavigateCat("notes", noteId)}
-            />
-          )}
-
-          {catTab === "subjects" && (
-            <CatSubjectsTab
-              onNavigateNotes={(chapterId) =>
-                handleNavigateCat("notes", chapterId)
-              }
-              onNavigateLibrary={() => setCatTab("resources")}
-            />
-          )}
-
-          {catTab === "notes" && (
-            <NotesLayout
-              initialChapterId={activeNoteChapterId}
-              onNavigatePractice={() => setCatTab("practice")}
-            />
-          )}
-
-          {catTab === "resources" && <ResourceLibraryView initialField="CAT" />}
-
-          {catTab === "practice" && <CatPracticeTab />}
-        </section>
-      )}
-
-      {/* VIEW 3: FIELD GUIDE FOR OTHER FIELDS (JEE, NEET, UPSC, etc.) */}
-      {currentView === "field" && (
-        <FieldGuideView
-          fieldId={selectedFieldId}
-          onBackToPaths={handleNavigateHome}
-          onSelectCatPortal={() => {
-            setCurrentView("cat");
-            setCatTab("overview");
-          }}
+      {/* Main Interactive Website Layer */}
+      <div className="relative z-10">
+        {/* Persistent Editorial Navigation */}
+        <Navbar
+          currentView={currentView}
+          activeFieldId={selectedFieldId}
+          onNavigateHome={handleNavigateHome}
+          onNavigateCat={handleNavigateCat}
+          onOpenSearch={() => setIsSearchOpen(true)}
         />
-      )}
+
+        {/* Subtle First-Time Visitor Banner (If not yet completed) */}
+        {!hasCompletedOnboarding && currentView === "home" && (
+          <div className="bg-surface-container/90 backdrop-blur-sm border-b border-outline-variant py-2 px-6 lg:px-12 text-xs flex flex-col sm:flex-row items-center justify-between gap-2 fade-in">
+            <div className="flex items-center space-x-2 text-secondary text-center sm:text-left">
+              <span className="w-2 h-2 rounded-full bg-tertiary animate-pulse flex-shrink-0" />
+              <span>
+                <strong className="text-on-surface">Welcome to Notera.</strong>{" "}
+                Personalize your study roadmaps and note recommendations in 3
+                quick questions.
+              </span>
+            </div>
+            <button
+              onClick={() => setIsVisitorOnboardingOpen(true)}
+              className="font-semibold text-primary hover:text-primary-hover flex items-center space-x-1 underline cursor-pointer flex-shrink-0"
+            >
+              <span>Personalize Path</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
+
+        {/* VIEW 1: UNIVERSAL DISCOVERY HOMEPAGE */}
+        {currentView === "home" && (
+          <main className="max-w-7xl mx-auto px-6 lg:px-12 py-6 fade-in">
+            {/* Personalized Recommendation Hero Banner for Returning/Calibrated Visitors */}
+            {hasCompletedOnboarding && (
+              <RecommendedHeroBanner
+                recommendation={recommendation}
+                onCtaClick={handleRecommendationCta}
+                onSecondaryClick={handleSecondaryLinkClick}
+                onUpdatePreferences={() => setIsVisitorOnboardingOpen(true)}
+                onResetPreferences={resetPreferences}
+              />
+            )}
+
+            {/* Streamlined Header */}
+            <HeroSection />
+
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {sortedFields.map((field) => {
+                const isRecommended = Boolean(
+                  preferences?.interests.some((i) => {
+                    if (i === "Computer Science" && field.id === "COMPSCI")
+                      return true;
+                    if (i === "Class 12" && field.id === "CLASS_12") return true;
+                    if (i === "Class 10" && field.id === "CLASS_10") return true;
+                    return i.toUpperCase() === field.id;
+                  }),
+                );
+
+                return (
+                  <CategoryCard
+                    key={field.id}
+                    field={field}
+                    onSelect={handleSelectField}
+                    isRecommended={isRecommended}
+                  />
+                );
+              })}
+            </div>
+          </main>
+        )}
+
+        {/* VIEW 2: DEDICATED CAT UNIVERSE */}
+        {currentView === "cat" && (
+          <section className="min-h-screen fade-in pb-16">
+            <CatHeaderNav
+              activeTab={catTab}
+              onTabChange={setCatTab}
+              onBackToPaths={handleNavigateHome}
+              recommendation={recommendation}
+              onRetakeOnboarding={() => setIsVisitorOnboardingOpen(true)}
+            />
+
+            {catTab === "overview" && (
+              <CatOverviewTab
+                onNavigateTab={(tab, chapterId) =>
+                  handleNavigateCat(tab, chapterId)
+                }
+                recommendation={recommendation}
+                onOpenExamModal={() => setIsCatExamModalOpen(true)}
+              />
+            )}
+
+            {catTab === "journey" && (
+              <CatRoadmapTab
+                completedStages={completedStages}
+                completedActions={completedActions}
+                onToggleStage={toggleStage}
+                onToggleAction={toggleAction}
+                onNavigateNotes={(noteId) => handleNavigateCat("notes", noteId)}
+              />
+            )}
+
+            {catTab === "subjects" && (
+              <CatSubjectsTab
+                onNavigateNotes={(chapterId) =>
+                  handleNavigateCat("notes", chapterId)
+                }
+                onNavigateLibrary={() => setCatTab("resources")}
+              />
+            )}
+
+            {catTab === "notes" && (
+              <NotesLayout
+                initialChapterId={activeNoteChapterId}
+                onNavigatePractice={() => setCatTab("practice")}
+              />
+            )}
+
+            {catTab === "resources" && (
+              <ResourceLibraryView initialField="CAT" />
+            )}
+
+            {catTab === "practice" && <CatPracticeTab />}
+          </section>
+        )}
+
+        {/* VIEW 3: FIELD GUIDE FOR OTHER FIELDS (JEE, NEET, UPSC, etc.) */}
+        {currentView === "field" && (
+          <FieldGuideView
+            fieldId={selectedFieldId}
+            onBackToPaths={handleNavigateHome}
+            onSelectCatPortal={() => {
+              setCurrentView("cat");
+              setCatTab("overview");
+            }}
+          />
+        )}
+      </div>
 
       {/* 3-Question Visitor Onboarding & Preference Modal */}
       <VisitorOnboardingModal

@@ -18,23 +18,20 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
   isOpen,
   onClose,
   onComplete,
-  initialInterests,
-  initialLevel,
-  initialGoals,
+  initialInterests = ["CAT"],
+  initialLevel = "Complete Beginner",
+  initialGoals = ["Complete Guidance"],
 }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 3;
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const [selectedInterests, setSelectedInterests] = useState<string[]>(["CAT"]);
-  const [selectedLevel, setSelectedLevel] = useState<string>(
-    "Complete Beginner",
-  );
-  const [selectedGoals, setSelectedGoals] = useState<string[]>([
-    "Complete Guidance",
-  ]);
+  const [selectedInterests, setSelectedInterests] =
+    useState<string[]>(initialInterests);
+  const [selectedLevel, setSelectedLevel] = useState<string>(initialLevel);
+  const [selectedGoals, setSelectedGoals] = useState<string[]>(initialGoals);
 
-  // Sync state ONLY when the modal transitions from closed to open
+  // Sync state when the modal transitions from closed to open
   useEffect(() => {
     if (isOpen) {
       setCurrentStep(1);
@@ -51,7 +48,7 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
           : ["Complete Guidance"],
       );
     }
-  }, [isOpen]);
+  }, [isOpen, initialInterests, initialLevel, initialGoals]);
 
   if (!isOpen) return null;
 
@@ -157,6 +154,7 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
     if (currentStep < totalSteps) {
       setCurrentStep((prev) => prev + 1);
     } else {
+      // Show transition
       setIsTransitioning(true);
       setTimeout(() => {
         onComplete({
@@ -164,7 +162,7 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
           level: selectedLevel,
           goals: selectedGoals,
         });
-      }, 1000);
+      }, 1200);
     }
   };
 
@@ -430,3 +428,4 @@ export const VisitorOnboardingModal: React.FC<VisitorOnboardingModalProps> = ({
     </div>
   );
 };
+
