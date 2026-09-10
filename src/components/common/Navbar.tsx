@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <nav className="hidden md:flex items-center space-x-8 text-sm font-medium text-secondary tracking-wide">
           <button
             onClick={onNavigateHome}
-            className={`py-1 transition-colors relative ${
+            className={`py-1 transition-colors relative cursor-pointer ${
               currentView === "home"
                 ? 'text-primary font-semibold after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary'
                 : "hover:text-primary"
@@ -55,32 +55,16 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
           <button
             onClick={() => onNavigateCat("journey")}
-            className="hover:text-primary transition-colors py-1 text-left"
+            className="hover:text-primary transition-colors py-1 text-left cursor-pointer"
           >
             Roadmaps
           </button>
           <button
             onClick={() => onNavigateCat("notes")}
-            className="hover:text-primary transition-colors py-1 text-left"
+            className="hover:text-primary transition-colors py-1 text-left cursor-pointer"
           >
             Notes
           </button>
-          <a
-            href="#manifesto"
-            onClick={(e) => {
-              if (currentView !== "home") {
-                e.preventDefault();
-                onNavigateHome();
-                setTimeout(() => {
-                  const el = document.getElementById("manifesto");
-                  el?.scrollIntoView({ behavior: "smooth" });
-                }, 100);
-              }
-            }}
-            className="hover:text-primary transition-colors py-1"
-          >
-            About
-          </a>
         </nav>
 
         {/* Right Action Items & Search */}
@@ -100,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={onOpenSearch}
-            className="sm:hidden p-2 text-secondary hover:text-primary"
+            className="sm:hidden p-2 text-secondary hover:text-primary cursor-pointer"
             aria-label="Search"
           >
             <Search className="w-5 h-5" />

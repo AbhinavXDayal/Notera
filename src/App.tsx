@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { Navbar } from "./components/common/Navbar";
-import { Footer } from "./components/common/Footer";
 import { SearchModal } from "./components/common/SearchModal";
 import { SignInModal } from "./components/common/SignInModal";
 import { HeroSection } from "./components/home/HeroSection";
 import { CategoryCard } from "./components/home/CategoryCard";
-import { Manifesto } from "./components/home/Manifesto";
 import { OnboardingModal } from "./components/onboarding/OnboardingModal";
 import { CatHeaderNav } from "./components/cat/CatHeaderNav";
 import type { CatTabType } from "./components/cat/CatHeaderNav";
@@ -47,9 +45,7 @@ export function App() {
   // AUTOMATIC ONBOARDING PROMPT FOR NEW USERS
   useEffect(() => {
     try {
-      const hasDismissed = sessionStorage.getItem(
-        "notera_dismissed_welcome_onboarding",
-      );
+      const hasDismissed = sessionStorage.getItem("notera_dismissed_welcome_onboarding");
       if (!isOnboarded && !hasDismissed) {
         const timer = setTimeout(() => {
           setIsOnboardingOpen(true);
@@ -134,7 +130,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-surface text-on-surface font-body selection:bg-primary/20 selection:text-on-surface">
+    <div className="min-h-screen bg-surface text-on-surface font-body selection:bg-primary/20 selection:text-on-surface pb-16">
       {/* Persistent Editorial Navigation */}
       <Navbar
         currentView={currentView}
@@ -151,9 +147,7 @@ export function App() {
           <div className="flex items-center space-x-2 text-secondary text-center sm:text-left">
             <span className="w-2 h-2 rounded-full bg-tertiary animate-pulse flex-shrink-0" />
             <span>
-              <strong className="text-on-surface">New to Notera?</strong>{" "}
-              Complete our 4-question diagnostic interview to calibrate your
-              personalized roadmap &amp; notes.
+              <strong className="text-on-surface">New to Notera?</strong> Complete our 4-question diagnostic interview to calibrate your personalized roadmap &amp; notes.
             </span>
           </div>
           <button
@@ -208,9 +202,6 @@ export function App() {
               ))}
             </div>
           </section>
-
-          {/* Editorial Philosophy Manifesto */}
-          <Manifesto />
         </main>
       )}
 
@@ -278,9 +269,6 @@ export function App() {
           }}
         />
       )}
-
-      {/* Persistent Editorial Footer */}
-      <Footer />
 
       {/* Onboarding Questionnaire Modal */}
       <OnboardingModal
