@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import {
   ArrowLeft,
   ChevronDown,
   Sparkles,
   BookOpen,
   X,
-  LayoutGrid,
-  List,
 } from "lucide-react";
-import { CatOverviewCanvas } from "./CatOverviewCanvas";
 
 export type CatTabType =
   | "overview"
@@ -410,9 +407,6 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     return initial;
   });
 
-  // Top level view mode: "canvas" (Excalidraw board connecting cards) vs "standard" (classic layout)
-  const [viewMode, setViewMode] = useState<"standard" | "canvas">("standard");
-
   // Track active connected roadmap stage for Notes synchronization
   const [activeStageId, setActiveStageId] = useState<string | null>("02");
 
@@ -423,6 +417,72 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     dilr: true,
     codex: true,
   });
+
+  // Refs for calculating connecting lines between the 3 sections
+  const containerRef = useRef<HTMLDivElement>(null);
+  const anchorFieldGuideLeftRef = useRef<HTMLDivElement>(null);
+  const anchorFieldGuideRightRef = useRef<HTMLDivElement>(null);
+  const anchorRoadmapTopRef = useRef<HTMLDivElement>(null);
+  const anchorRoadmapRightRef = useRef<HTMLDivElement>(null);
+  const anchorNotesTopRef = useRef<HTMLDivElement>(null);
+  const anchorNotesLeftRef = useRef<HTMLDivElement>(null);
+
+  const [lineCoords, setLineCoords] = useState<{
+    fgToRoadmap?: { x1: number; y1: number; x2: number; y2: number };
+    fgToNotes?: { x1: number; y1: number; x2: number; y2: number };
+    roadmapToNotes?: { x1: number; y1: number; x2: number; y2: number };
+  }>({});
+
+  const updateCoordinates = useCallback(() => {
+    if (!containerRef.current) return;
+    const cRect = containerRef.current.getBoundingClientRect();
+
+    const getCenter = (el: HTMLElement | null) => {
+      if (!el) return null;
+      const rect = el.getBoundingClientRect();
+      return {
+        x: rect.left + rect.width / 2 - cRect.left,
+        y: rect.top + rect.height / 2 - cRect.top,
+      };
+    };
+
+    const fgLeft = getCenter(anchorFieldGuideLeftRef.current);
+    const fgRight = getCenter(anchorFieldGuideRightRef.current);
+    const rmTop = getCenter(anchorRoadmapTopRef.current);
+    const rmRight = getCenter(anchorRoadmapRightRef.current);
+    const ntTop = getCenter(anchorNotesTopRef.current);
+    const ntLeft = getCenter(anchorNotesLeftRef.current);
+
+    if (fgLeft && rmTop && fgRight && ntTop && rmRight && ntLeft) {
+      setLineCoords({
+        fgToRoadmap: { x1: fgLeft.x, y1: fgLeft.y, x2: rmTop.x, y2: rmTop.y },
+        fgToNotes: { x1: fgRight.x, y1: fgRight.y, x2: ntTop.x, y2: ntTop.y },
+        roadmapToNotes: { x1: rmRight.x, y1: rmRight.y, x2: ntLeft.x, y2: ntLeft.y },
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    updateCoordinates();
+    const handleResize = () => updateCoordinates();
+    window.addEventListener("resize", handleResize);
+
+    const observer = new ResizeObserver(() => {
+      updateCoordinates();
+    });
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    const timer = setTimeout(updateCoordinates, 100);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      observer.disconnect();
+      clearTimeout(timer);
+    };
+  }, [updateCoordinates, openSections, openNoteCategories, activeStageId]);
 
   const toggleNoteCategory = (category: string) => {
     setOpenNoteCategories((prev) => ({
@@ -491,10 +551,10 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
 
   // 1. Field Guide Card Content
   const renderFieldGuideCard = () => (
-    <div className="w-full rounded-2xl bg-surface-container border border-outline-variant p-4 sm:p-5 shadow-terra-card">
+    <div className="relative w-full rounded-2xl bg-surface-container border border-outline-variant p-4 sm:p-5 shadow-terra-card">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 md:divide-x md:divide-outline-variant/50">
         {/* Section 1 */}
-        <div className="space-y-1.5">
+        <div className="relative space-y-1.5">
           <h4 className="font-display text-base sm:text-lg text-on-surface font-semibold">
             Any Field Guide
           </h4>
@@ -504,6 +564,11 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <p>• Theory &amp; Practical</p>
             <p>• Notes / Docs</p>
           </div>
+          {/* Left Connection Pin to Roadmap */}
+          <div
+            ref={anchorFieldGuideLeftRef}
+            className="hidden lg:block absolute -bottom-5 sm:-bottom-6 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-primary border-2 border-surface shadow-[0_0_8px_rgba(216,195,165,0.7)] z-20"
+          />
         </div>
 
         {/* Section 2 */}
@@ -520,7 +585,7 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
         </div>
 
         {/* Section 3 */}
-        <div className="space-y-1.5 md:pl-6 pt-3 md:pt-0 border-t md:border-t-0 border-outline-variant/40">
+        <div className="relative space-y-1.5 md:pl-6 pt-3 md:pt-0 border-t md:border-t-0 border-outline-variant/40">
           <h4 className="font-display text-base sm:text-lg text-on-surface font-semibold">
             For Each Section
           </h4>
@@ -530,6 +595,11 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <p>• Theory &amp; Practicals</p>
             <p>• Notes / Docs</p>
           </div>
+          {/* Right Connection Pin to Notes */}
+          <div
+            ref={anchorFieldGuideRightRef}
+            className="hidden lg:block absolute -bottom-5 sm:-bottom-6 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-primary border-2 border-surface shadow-[0_0_8px_rgba(216,195,165,0.7)] z-20"
+          />
         </div>
       </div>
     </div>
@@ -537,7 +607,18 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
 
   // 2. Roadmap Card Content
   const renderRoadmapCard = () => (
-    <div className="w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-6 shadow-terra-card space-y-6">
+    <div className="relative w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-6 shadow-terra-card space-y-6">
+      {/* Top Connection Pin from Field Guide */}
+      <div
+        ref={anchorRoadmapTopRef}
+        className="hidden lg:block absolute -top-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-primary border-2 border-surface shadow-[0_0_8px_rgba(216,195,165,0.7)] z-20"
+      />
+      {/* Right Connector Pin to Notes Card */}
+      <div
+        ref={anchorRoadmapRightRef}
+        className="hidden lg:block absolute top-28 -right-1.5 w-2.5 h-2.5 rounded-full bg-primary border-2 border-surface shadow-[0_0_8px_rgba(216,195,165,0.7)] z-20"
+      />
+
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -1649,7 +1730,21 @@ ACCURACY → What causes my mistakes?`}
 
   // 3. Notes Card Content
   const renderNotesCard = () => (
-    <div id="notes-card" className="w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-6 shadow-terra-card space-y-6 scroll-mt-20">
+    <div
+      id="notes-card"
+      className="relative w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-6 shadow-terra-card space-y-6 scroll-mt-20"
+    >
+      {/* Top Connection Pin from Field Guide */}
+      <div
+        ref={anchorNotesTopRef}
+        className="hidden lg:block absolute -top-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-primary border-2 border-surface shadow-[0_0_8px_rgba(216,195,165,0.7)] z-20"
+      />
+      {/* Left Connector Pin from Roadmap */}
+      <div
+        ref={anchorNotesLeftRef}
+        className="hidden lg:block absolute top-28 -left-1.5 w-2.5 h-2.5 rounded-full bg-primary border-2 border-surface shadow-[0_0_8px_rgba(216,195,165,0.7)] z-20"
+      />
+
       {/* Header & Connection Ribbon */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
@@ -2005,9 +2100,9 @@ ACCURACY → What causes my mistakes?`}
 
   return (
     <div className="w-full px-3 sm:px-6 lg:px-8 py-6 space-y-6 fade-in">
-      {/* Top Header Row: Back Navigation & Excalidraw View Mode Switcher */}
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        {onBackToPaths ? (
+      {/* Top Header Row: Back Navigation */}
+      {onBackToPaths && (
+        <div className="flex items-center justify-between">
           <button
             onClick={onBackToPaths}
             className="inline-flex items-center space-x-2 text-xs font-medium text-secondary hover:text-primary transition-colors cursor-pointer"
@@ -2015,59 +2110,158 @@ ACCURACY → What causes my mistakes?`}
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>All Paths</span>
           </button>
-        ) : (
-          <div />
-        )}
-
-        {/* View Mode Switcher */}
-        <div className="flex items-center bg-surface border border-outline-variant rounded-lg p-0.5">
-          <button
-            type="button"
-            onClick={() => setViewMode("standard")}
-            className={`inline-flex items-center space-x-1 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
-              viewMode === "standard"
-                ? "bg-primary text-on-primary shadow-sm font-semibold"
-                : "text-secondary hover:text-on-surface hover:bg-surface-container"
-            }`}
-          >
-            <List className="w-3.5 h-3.5" />
-            <span>Standard View</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setViewMode("canvas")}
-            className={`inline-flex items-center space-x-1 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
-              viewMode === "canvas"
-                ? "bg-primary text-on-primary shadow-sm font-semibold"
-                : "text-secondary hover:text-on-surface hover:bg-surface-container"
-            }`}
-          >
-            <LayoutGrid className="w-3.5 h-3.5" />
-            <span>Canvas Board</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Render View Mode */}
-      {viewMode === "canvas" ? (
-        <CatOverviewCanvas
-          fieldGuideCard={renderFieldGuideCard()}
-          roadmapCard={renderRoadmapCard()}
-          notesCard={renderNotesCard()}
-          activeStageId={activeStageId}
-        />
-      ) : (
-        <div className="space-y-6">
-          {/* 1. Field Guide Framework Card (Compact & Full Width) */}
-          {renderFieldGuideCard()}
-
-          {/* 2 & 3. Side-by-Side Dual Column: Roadmap (Left) & Notes (Right) */}
-          <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            {renderRoadmapCard()}
-            {renderNotesCard()}
-          </div>
         </div>
       )}
+
+      {/* Unified 3-Section Knowledge Flow Container with Interactive Connecting Lines */}
+      <div ref={containerRef} className="relative space-y-8">
+        {/* Dynamic SVG Connecting Lines Layer */}
+        {lineCoords.fgToRoadmap && lineCoords.fgToNotes && lineCoords.roadmapToNotes && (
+          <svg
+            className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none z-10"
+            aria-hidden="true"
+          >
+            <defs>
+              <marker
+                id="conn-arrow"
+                viewBox="0 0 10 10"
+                refX="7"
+                refY="5"
+                markerWidth="6"
+                markerHeight="6"
+                orient="auto-start-reverse"
+              >
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#D8C3A5" />
+              </marker>
+              <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#EFE6DB" stopOpacity="0.8" />
+                <stop offset="50%" stopColor="#D8C3A5" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#B5A28E" stopOpacity="0.8" />
+              </linearGradient>
+            </defs>
+
+            {/* 1. Field Guide Left -> Roadmap Top Curve */}
+            {(() => {
+              const { x1, y1, x2, y2 } = lineCoords.fgToRoadmap!;
+              const midY = (y1 + y2) / 2;
+              const pathD = `M ${x1} ${y1} C ${x1} ${midY}, ${x2} ${midY}, ${x2} ${y2}`;
+              return (
+                <g>
+                  <path
+                    d={pathD}
+                    fill="none"
+                    stroke="#D8C3A5"
+                    strokeWidth="6"
+                    strokeOpacity="0.12"
+                  />
+                  <path
+                    d={pathD}
+                    fill="none"
+                    stroke="url(#connGrad)"
+                    strokeWidth="2"
+                    strokeDasharray="6 4"
+                    markerEnd="url(#conn-arrow)"
+                  />
+                  <circle r="3" fill="#FAF5EE">
+                    <animateMotion path={pathD} dur="3.5s" repeatCount="indefinite" />
+                  </circle>
+                </g>
+              );
+            })()}
+
+            {/* 2. Field Guide Right -> Notes Top Curve */}
+            {(() => {
+              const { x1, y1, x2, y2 } = lineCoords.fgToNotes!;
+              const midY = (y1 + y2) / 2;
+              const pathD = `M ${x1} ${y1} C ${x1} ${midY}, ${x2} ${midY}, ${x2} ${y2}`;
+              return (
+                <g>
+                  <path
+                    d={pathD}
+                    fill="none"
+                    stroke="#D8C3A5"
+                    strokeWidth="6"
+                    strokeOpacity="0.12"
+                  />
+                  <path
+                    d={pathD}
+                    fill="none"
+                    stroke="url(#connGrad)"
+                    strokeWidth="2"
+                    strokeDasharray="6 4"
+                    markerEnd="url(#conn-arrow)"
+                  />
+                  <circle r="3" fill="#FAF5EE">
+                    <animateMotion path={pathD} dur="3.5s" repeatCount="indefinite" />
+                  </circle>
+                </g>
+              );
+            })()}
+
+            {/* 3. Roadmap Right -> Notes Left Horizontal Connector */}
+            {(() => {
+              const { x1, y1, x2, y2 } = lineCoords.roadmapToNotes!;
+              const midX = (x1 + x2) / 2;
+              const pathD = `M ${x1} ${y1} C ${midX} ${y1}, ${midX} ${y2}, ${x2} ${y2}`;
+              return (
+                <g>
+                  <path
+                    d={pathD}
+                    fill="none"
+                    stroke="#D8C3A5"
+                    strokeWidth="6"
+                    strokeOpacity="0.15"
+                  />
+                  <path
+                    d={pathD}
+                    fill="none"
+                    stroke="url(#connGrad)"
+                    strokeWidth="2"
+                    strokeDasharray="5 3"
+                    className="animate-pulse"
+                  />
+                  <circle r="3.5" fill="#FAF5EE">
+                    <animateMotion path={pathD} dur="2.2s" repeatCount="indefinite" />
+                  </circle>
+                  {/* Central Sync Badge */}
+                  <g transform={`translate(${midX}, ${(y1 + y2) / 2})`}>
+                    <rect
+                      x="-32"
+                      y="-9"
+                      width="64"
+                      height="18"
+                      rx="9"
+                      fill="#2A201A"
+                      stroke="#6B5647"
+                      strokeWidth="1"
+                    />
+                    <text
+                      x="0"
+                      y="3.5"
+                      textAnchor="middle"
+                      fill="#D8C3A5"
+                      fontSize="9"
+                      fontFamily="monospace"
+                      fontWeight="700"
+                    >
+                      SYNCED
+                    </text>
+                  </g>
+                </g>
+              );
+            })()}
+          </svg>
+        )}
+
+        {/* 1. Field Guide Framework Card (Top Full Width) */}
+        {renderFieldGuideCard()}
+
+        {/* 2 & 3. Dual Columns: Roadmap (Left) & Notes (Right) */}
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {renderRoadmapCard()}
+          {renderNotesCard()}
+        </div>
+      </div>
     </div>
   );
 };

@@ -46,7 +46,13 @@ export const Logo: React.FC<LogoProps> = ({
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <linearGradient id="noteraBeige" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="noteraBeige"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#EFE6DB" />
               <stop offset="50%" stopColor="#D8C3A5" />
               <stop offset="100%" stopColor="#B5A28E" />

@@ -53,7 +53,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header
       className={`sticky top-0 z-40 backdrop-blur-xl bg-[#2b211a]/85 border-b border-outline-variant/40 shadow-[0_4px_24px_rgba(0,0,0,0.18)] transition-all duration-300 ease-in-out ${
-        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
+        isVisible
+          ? "translate-y-0 opacity-100"
+          : "-translate-y-full opacity-0 pointer-events-none"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-14 sm:h-16 flex items-center justify-between gap-4">
@@ -122,7 +124,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             aria-label="Open global search"
           >
             <div className="bg-[#372b23]/70 hover:bg-[#46382f]/90 border border-outline-variant/50 group-hover:border-primary/50 rounded-full pl-9 pr-2.5 py-1.5 text-xs text-secondary/80 group-hover:text-on-surface transition-all duration-300 w-52 sm:w-60 hover:w-64 focus-within:w-64 flex items-center justify-between shadow-inner group-hover:shadow-[0_0_16px_rgba(216,195,165,0.12)]">
-              <span className="truncate pr-2 font-normal">Search notes, PDFs, topics...</span>
+              <span className="truncate pr-2 font-normal">
+                Search notes, PDFs, topics...
+              </span>
               <kbd className="text-[10px] font-mono font-medium bg-[#2a201a]/90 group-hover:bg-[#231a15] border border-outline-variant/60 group-hover:border-primary/40 px-1.5 py-0.5 rounded text-primary/80 shadow-xs shrink-0 transition-colors">
                 ⌘K
               </kbd>
@@ -143,4 +147,3 @@ export const Navbar: React.FC<NavbarProps> = ({
     </header>
   );
 };
-
