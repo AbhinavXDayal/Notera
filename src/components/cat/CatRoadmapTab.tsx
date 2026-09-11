@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import { CAT_ROADMAP_STAGES } from "../../data/catRoadmap";
 import { JourneyStageAccordion } from "./journey/JourneyStageAccordion";
 import { Stage01Topics } from "./journey/Stage01Topics";
-import {
-  Sparkles,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import { Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 
 interface CatRoadmapTabProps {
   completedStages: number[];

@@ -5,16 +5,10 @@ import { HeroSection } from "./components/home/HeroSection";
 import { RecommendedHeroBanner } from "./components/home/RecommendedHeroBanner";
 import { CategoryCard } from "./components/home/CategoryCard";
 import { VisitorOnboardingModal } from "./components/onboarding/VisitorOnboardingModal";
-import { CatOverviewTab } from "./components/cat/CatOverviewTab";
+import { CatLearningWorkspace } from "./components/cat/CatLearningWorkspace";
 import type { CatTabType } from "./components/cat/CatOverviewTab";
-import { CatRoadmapTab } from "./components/cat/CatRoadmapTab";
-import { CatSubjectsTab } from "./components/cat/CatSubjectsTab";
-import { CatPracticeTab } from "./components/cat/CatPracticeTab";
 import { CatExamInfoModal } from "./components/cat/CatExamInfoModal";
-import { NotesLayout } from "./components/notes/NotesLayout";
-import { ResourceLibraryView } from "./components/resources/ResourceLibraryView";
 import { FieldGuideView } from "./components/field/FieldGuideView";
-import { GuideNavigation } from "./components/field-guide/GuideNavigation";
 import { KnowledgeMapBackground } from "./components/background/KnowledgeMapBackground";
 
 import { FIELDS_DATA } from "./data/fields";
@@ -253,72 +247,27 @@ export function App() {
           </main>
         )}
 
-        {/* VIEW 2: DEDICATED CAT UNIVERSE */}
+        {/* VIEW 2: DEDICATED UNIFIED CAT LEARNING WORKSPACE */}
         {currentView === "cat" && (
-          <section className="min-h-screen fade-in pb-16">
-            {catTab !== "overview" && (
-              <GuideNavigation
-                fieldTitle="CAT"
-                currentSectionTitle={
-                  catTab === "journey"
-                    ? "01 — CAT Roadmap"
-                    : catTab === "subjects"
-                      ? "03 — Theory & Practical"
-                      : catTab === "notes"
-                        ? "04 — Notes / Docs"
-                        : catTab === "resources"
-                          ? "04 — PDF Library & Resources"
-                          : catTab === "practice"
-                            ? "Practice & Mocks"
-                            : undefined
-                }
-                onBackToOverview={() => setCatTab("overview")}
-                onBackToAllPaths={handleNavigateHome}
-              />
-            )}
-
-            {catTab === "overview" && (
-              <CatOverviewTab
-                onNavigateTab={(tab, chapterId) =>
-                  handleNavigateCat(tab, chapterId)
-                }
-                onBackToPaths={handleNavigateHome}
-                onOpenFundamentals={() => setIsCatExamModalOpen(true)}
-              />
-            )}
-
-            {catTab === "journey" && (
-              <CatRoadmapTab
-                completedStages={completedStages}
-                completedActions={completedActions}
-                onToggleStage={toggleStage}
-                onToggleAction={toggleAction}
-                onNavigateNotes={(noteId) => handleNavigateCat("notes", noteId)}
-              />
-            )}
-
-            {catTab === "subjects" && (
-              <CatSubjectsTab
-                onNavigateNotes={(chapterId) =>
-                  handleNavigateCat("notes", chapterId)
-                }
-                onNavigateLibrary={() => setCatTab("resources")}
-              />
-            )}
-
-            {catTab === "notes" && (
-              <NotesLayout
-                initialChapterId={activeNoteChapterId}
-                onNavigatePractice={() => setCatTab("practice")}
-              />
-            )}
-
-            {catTab === "resources" && (
-              <ResourceLibraryView initialField="CAT" />
-            )}
-
-            {catTab === "practice" && <CatPracticeTab />}
-          </section>
+          <CatLearningWorkspace
+            initialTab={
+              catTab === "fundamentals"
+                ? "fundamentals"
+                : catTab === "subjects" || catTab === "theory-practical"
+                  ? "theory-practical"
+                  : catTab === "notes" ||
+                      catTab === "notes-docs" ||
+                      catTab === "resources"
+                    ? "notes-docs"
+                    : "roadmap"
+            }
+            initialChapterId={activeNoteChapterId}
+            completedStages={completedStages}
+            completedActions={completedActions}
+            onToggleStage={toggleStage}
+            onToggleAction={toggleAction}
+            onBackToPaths={handleNavigateHome}
+          />
         )}
 
         {/* VIEW 3: FIELD GUIDE FOR OTHER FIELDS (JEE, NEET, UPSC, etc.) */}

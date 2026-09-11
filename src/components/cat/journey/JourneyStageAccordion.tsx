@@ -187,7 +187,9 @@ export const JourneyStageAccordion: React.FC<JourneyStageAccordionProps> = ({
               )}
 
               <span className="text-primary font-mono text-xs font-medium group-hover/header:translate-x-0.5 transition-transform flex items-center space-x-1">
-                <span>{isExpanded ? "Close Stage ↑" : "Click to Explore ↓"}</span>
+                <span>
+                  {isExpanded ? "Close Stage ↑" : "Click to Explore ↓"}
+                </span>
               </span>
             </div>
           )}
@@ -202,7 +204,9 @@ export const JourneyStageAccordion: React.FC<JourneyStageAccordionProps> = ({
                 <div className="flex items-center justify-between pb-2 border-b border-outline-variant/40">
                   <span className="text-xs font-mono uppercase tracking-wider text-tertiary font-semibold flex items-center space-x-1.5">
                     <Sparkles className="w-3.5 h-3.5" />
-                    <span>Learning Topics • Click any topic to expand inline</span>
+                    <span>
+                      Learning Topics • Click any topic to expand inline
+                    </span>
                   </span>
                   <span className="text-[11px] font-mono text-secondary">
                     Accordion View
@@ -250,8 +254,8 @@ export const JourneyStageAccordion: React.FC<JourneyStageAccordionProps> = ({
                 {stage.pitfallsToAvoid && stage.pitfallsToAvoid.length > 0 && (
                   <div className="space-y-2 bg-error/5 border border-error/20 p-4 rounded-xl">
                     <span className="text-xs font-mono uppercase tracking-wider text-error font-semibold flex items-center gap-1.5">
-                      <AlertTriangle className="w-3.5 h-3.5" /> Frequent Strategic
-                      Traps
+                      <AlertTriangle className="w-3.5 h-3.5" /> Frequent
+                      Strategic Traps
                     </span>
                     <ul className="space-y-1 text-xs text-on-surface/90">
                       {stage.pitfallsToAvoid.map((pitfall, idx) => (
@@ -303,7 +307,9 @@ export const JourneyStageAccordion: React.FC<JourneyStageAccordionProps> = ({
                           <CheckCircle2 className="w-3.5 h-3.5 text-on-primary" />
                         )}
                       </div>
-                      <span className="text-xs leading-snug">{action.text}</span>
+                      <span className="text-xs leading-snug">
+                        {action.text}
+                      </span>
                     </button>
                   );
                 })}
@@ -347,7 +353,9 @@ export const JourneyStageAccordion: React.FC<JourneyStageAccordionProps> = ({
                 >
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>
-                    {isCompleted ? "Certified Completed" : "Mark Stage Complete"}
+                    {isCompleted
+                      ? "Certified Completed"
+                      : "Mark Stage Complete"}
                   </span>
                 </button>
 

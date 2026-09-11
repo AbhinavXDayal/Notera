@@ -1,30 +1,31 @@
 # Graph Report - Notera  (2026-09-11)
 
 ## Corpus Check
-- 76 files · ~43,847 words
+- 79 files · ~45,854 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 307 nodes · 556 edges · 18 communities (13 shown, 3 thin omitted)
+- 315 nodes · 581 edges · 19 communities (14 shown, 3 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 1.0)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2655e849`
+- Built from commit: `4024cb91`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- App.tsx
+- react
 - useVisitorPreferences.ts
 - EducationalResource
 - KnowledgeMapBackground.tsx
 - compilerOptions
 - NotesLayout.tsx
-- field.ts
+- lucide-react
+- SearchModal.tsx
 - compilerOptions
 - package.json
-- react
+- CatRoadmapTab.tsx
 - FieldGuideSection.tsx
 - .oxlintrc.json
 - Dedicated CAT Universe
@@ -33,37 +34,37 @@
 - workflows/graphify.md
 
 ## God Nodes (most connected - your core abstractions)
-1. `react` - 48 edges
-2. `lucide-react` - 28 edges
+1. `react` - 51 edges
+2. `lucide-react` - 31 edges
 3. `compilerOptions` - 18 edges
 4. `compilerOptions` - 15 edges
 5. `BackgroundVariant` - 13 edges
 6. `EducationalResource` - 12 edges
 7. `StorageService` - 11 edges
 8. `FieldId` - 8 edges
-9. `STAGE_01_DATA` - 6 edges
+9. `STAGE_01_DATA` - 7 edges
 10. `PersonalizedRecommendation` - 6 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `App()` --calls--> `useVisitorPreferences()`  [EXTRACTED]
-  src/App.tsx → src/hooks/useVisitorPreferences.ts
-- `CoffeeBeansProps` --references--> `BackgroundVariant`  [EXTRACTED]
-  src/components/background/CoffeeBeans.tsx → src/components/background/DotMatrixCanvas.tsx
-- `CoffeeParticlesProps` --references--> `BackgroundVariant`  [EXTRACTED]
-  src/components/background/CoffeeParticles.tsx → src/components/background/DotMatrixCanvas.tsx
-- `CoffeeRingsProps` --references--> `BackgroundVariant`  [EXTRACTED]
-  src/components/background/CoffeeRings.tsx → src/components/background/DotMatrixCanvas.tsx
-- `CoffeeSteamProps` --references--> `BackgroundVariant`  [EXTRACTED]
-  src/components/background/CoffeeSteam.tsx → src/components/background/DotMatrixCanvas.tsx
+- `NavbarProps` --references--> `FieldId`  [EXTRACTED]
+  src/components/common/Navbar.tsx → src/types/field.ts
+- `FieldGuideViewProps` --references--> `FieldId`  [EXTRACTED]
+  src/components/field/FieldGuideView.tsx → src/types/field.ts
+- `CategoryCardProps` --references--> `FieldCategory`  [EXTRACTED]
+  src/components/home/CategoryCard.tsx → src/types/field.ts
+- `RecommendedHeroBannerProps` --references--> `PersonalizedRecommendation`  [EXTRACTED]
+  src/components/home/RecommendedHeroBanner.tsx → src/types/preferences.ts
+- `CatRoadmapDetailModalProps` --references--> `RoadmapStage`  [EXTRACTED]
+  src/components/cat/CatRoadmapDetailModal.tsx → src/types/roadmap.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (18 total, 3 thin omitted)
+## Communities (19 total, 3 thin omitted)
 
-### Community 0 - "App.tsx"
-Cohesion: 0.08
-Nodes (25): App(), CatExamInfoModal(), CatOverviewTab(), CatOverviewTabProps, CatTabType, CODEX_NOTES, DILR_NOTES, NoteItem (+17 more)
+### Community 0 - "react"
+Cohesion: 0.07
+Nodes (30): react, App(), KnowledgeMapBackground(), CatExamInfoModal(), CatExamInfoModalProps, CatOverviewTab(), CatOverviewTabProps, CatTabType (+22 more)
 
 ### Community 1 - "useVisitorPreferences.ts"
 Cohesion: 0.26
@@ -74,8 +75,8 @@ Cohesion: 0.15
 Nodes (12): CatSubjectsTab(), CatSubjectsTabProps, SearchModal(), ResourceCard(), ResourceCardProps, ResourceLibraryViewProps, CAT_RESOURCES, ALL_RESOURCES (+4 more)
 
 ### Community 3 - "KnowledgeMapBackground.tsx"
-Cohesion: 0.15
-Nodes (19): BeanData, CoffeeBeans(), CoffeeBeansProps, HERO_BEANS, SUBTLE_BEANS, CoffeeParticles(), CoffeeParticlesProps, CoffeeRings() (+11 more)
+Cohesion: 0.16
+Nodes (18): BeanData, CoffeeBeans(), CoffeeBeansProps, HERO_BEANS, SUBTLE_BEANS, CoffeeParticles(), CoffeeParticlesProps, CoffeeRings() (+10 more)
 
 ### Community 4 - "compilerOptions"
 Cohesion: 0.10
@@ -85,9 +86,13 @@ Nodes (19): compilerOptions, allowArbitraryExtensions, allowImportingTsExtension
 Cohesion: 0.15
 Nodes (16): NoteContent(), NoteContentProps, NotesLayout(), NotesLayoutProps, TableOfContents(), TableOfContentsProps, TopicSelector(), TopicSelectorProps (+8 more)
 
-### Community 7 - "field.ts"
+### Community 6 - "lucide-react"
 Cohesion: 0.15
-Nodes (13): FooterProps, Logo(), LogoProps, Navbar(), NavbarProps, FieldGuideView(), FieldGuideViewProps, CAT_SUBJECTS (+5 more)
+Nodes (19): lucide-react, CallPredictorCard(), GoalPlanningSection(), JourneySection(), JourneySectionProps, JourneyStageLayout(), JourneyStageLayoutProps, JourneyTopicAccordion() (+11 more)
+
+### Community 7 - "SearchModal.tsx"
+Cohesion: 0.13
+Nodes (16): CatHeaderNavProps, CatTabType, NavbarProps, SearchModalProps, FieldGuideView(), FieldGuideViewProps, CategoryCard(), CategoryCardProps (+8 more)
 
 ### Community 8 - "compilerOptions"
 Cohesion: 0.12
@@ -97,9 +102,9 @@ Nodes (16): compilerOptions, allowImportingTsExtensions, erasableSyntaxOnly, lib
 Cohesion: 0.06
 Nodes (35): dependencies, lucide-react, react, react-dom, devDependencies, autoprefixer, oxlint, postcss (+27 more)
 
-### Community 10 - "react"
-Cohesion: 0.08
-Nodes (33): lucide-react, react, CatExamInfoModalProps, CatHeaderNavProps, CatTabType, CatRoadmapDetailModal(), CatRoadmapDetailModalProps, CatRoadmapTab() (+25 more)
+### Community 10 - "CatRoadmapTab.tsx"
+Cohesion: 0.17
+Nodes (11): CatRoadmapDetailModalProps, CatRoadmapTab(), CatRoadmapTabProps, JourneyStageAccordion(), JourneyStageAccordionProps, Stage01Topics(), CAT_ROADMAP_STAGES, ActionItem (+3 more)
 
 ### Community 11 - "FieldGuideSection.tsx"
 Cohesion: 0.30
@@ -114,24 +119,24 @@ Cohesion: 0.40
 Nodes (5): Dedicated CAT Universe, 14-Stage Chronological Roadmap, Notera Educational Platform, Obsidian & Beige Design System, 10-Point Notes Architecture
 
 ## Knowledge Gaps
-- **118 isolated node(s):** `$schema`, `plugins`, `react/rules-of-hooks`, `react/only-export-components`, `name` (+113 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 129 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **121 isolated node(s):** `CatRoadmapTabProps`, `JourneyStageAccordionProps`, `JourneyTopicAccordionProps`, `Stage01TopicsProps`, `CatOverviewTabProps` (+116 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 133 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `react` to `App.tsx`, `useVisitorPreferences.ts`, `EducationalResource`, `KnowledgeMapBackground.tsx`, `NotesLayout.tsx`, `field.ts`, `package.json`, `FieldGuideSection.tsx`?**
-  _High betweenness centrality (0.364) - this node is a cross-community bridge._
-- **Why does `lucide-react` connect `react` to `App.tsx`, `useVisitorPreferences.ts`, `EducationalResource`, `NotesLayout.tsx`, `field.ts`, `package.json`, `FieldGuideSection.tsx`?**
-  _High betweenness centrality (0.109) - this node is a cross-community bridge._
-- **What connects `$schema`, `plugins`, `react/rules-of-hooks` to the rest of the system?**
-  _118 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `App.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.08199643493761141 - nodes in this community are weakly interconnected._
-- **Should `KnowledgeMapBackground.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.1476923076923077 - nodes in this community are weakly interconnected._
+- **Why does `react` connect `react` to `useVisitorPreferences.ts`, `EducationalResource`, `KnowledgeMapBackground.tsx`, `NotesLayout.tsx`, `lucide-react`, `SearchModal.tsx`, `package.json`, `CatRoadmapTab.tsx`, `FieldGuideSection.tsx`?**
+  _High betweenness centrality (0.377) - this node is a cross-community bridge._
+- **Why does `lucide-react` connect `lucide-react` to `react`, `useVisitorPreferences.ts`, `EducationalResource`, `NotesLayout.tsx`, `SearchModal.tsx`, `package.json`, `CatRoadmapTab.tsx`, `FieldGuideSection.tsx`?**
+  _High betweenness centrality (0.119) - this node is a cross-community bridge._
+- **What connects `CatRoadmapTabProps`, `JourneyStageAccordionProps`, `JourneyTopicAccordionProps` to the rest of the system?**
+  _121 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `react` be split into smaller, more focused modules?**
+  _Cohesion score 0.07053140096618357 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.1 - nodes in this community are weakly interconnected._
 - **Should `NotesLayout.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.14624505928853754 - nodes in this community are weakly interconnected._
+- **Should `lucide-react` be split into smaller, more focused modules?**
+  _Cohesion score 0.14838709677419354 - nodes in this community are weakly interconnected._

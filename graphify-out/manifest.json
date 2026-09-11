@@ -18,10 +18,10 @@
     "semantic_hash": "c735540bb63936a123bc867d950c9f69"
   },
   "src/App.tsx": {
-    "mtime": 1789076124.863966,
-    "seen": 1789161781.5473251,
-    "ast_hash": "c851ccbf0981af1e4da7f6e6479314fe",
-    "semantic_hash": "c851ccbf0981af1e4da7f6e6479314fe"
+    "mtime": 1789163012.1551573,
+    "seen": 1789163050.2703311,
+    "ast_hash": "90ba9f749b23dcc96300794e3cf373c2",
+    "semantic_hash": ""
   },
   "src/components/background/CoffeeBeans.tsx": {
     "mtime": 1789162415.7292957,
@@ -78,9 +78,9 @@
     "semantic_hash": "b3f3001bdf083e9b95d25f977e6483a8"
   },
   "src/components/cat/CatOverviewTab.tsx": {
-    "mtime": 1789162273.444316,
-    "seen": 1789162394.5680573,
-    "ast_hash": "70934bdb677474855ecaae0c5d103245",
+    "mtime": 1789162961.7963,
+    "seen": 1789163050.2703779,
+    "ast_hash": "6ef4aaf0e8909fc1ffacb448535cc3dd",
     "semantic_hash": ""
   },
   "src/components/cat/CatPracticeTab.tsx": {
@@ -96,9 +96,9 @@
     "semantic_hash": "ef6a703e70cee85d3469037058bda7f9"
   },
   "src/components/cat/CatRoadmapTab.tsx": {
-    "mtime": 1789162680.6499217,
-    "seen": 1789162703.614997,
-    "ast_hash": "12de39f293ca7dcf8ab1be5d238cf65b",
+    "mtime": 1789162726.7179022,
+    "seen": 1789163050.2703896,
+    "ast_hash": "9384217a0d00f5cebdae9daa83d26128",
     "semantic_hash": ""
   },
   "src/components/cat/CatSubjectsTab.tsx": {
@@ -570,21 +570,39 @@
     "semantic_hash": ""
   },
   "src/components/cat/journey/JourneyStageAccordion.tsx": {
-    "mtime": 1789162644.2088995,
-    "seen": 1789162703.615011,
-    "ast_hash": "b2544285874ec5731fc10c8789ae94e3",
+    "mtime": 1789162726.8465154,
+    "seen": 1789163050.2704144,
+    "ast_hash": "a877d14489a4588c56ca8d50027f05a5",
     "semantic_hash": ""
   },
   "src/components/cat/journey/JourneyTopicAccordion.tsx": {
-    "mtime": 1789162622.2684164,
-    "seen": 1789162703.615017,
+    "mtime": 1789162726.729427,
+    "seen": 1789163050.270422,
     "ast_hash": "343c6b9589acb3d8e541874510734f9d",
     "semantic_hash": ""
   },
   "src/components/cat/journey/Stage01Topics.tsx": {
-    "mtime": 1789162631.382748,
-    "seen": 1789162703.6150277,
+    "mtime": 1789162726.7669773,
+    "seen": 1789163050.2705355,
     "ast_hash": "6f5ec57df3e3ef8b007af7a2d4877387",
+    "semantic_hash": ""
+  },
+  "src/components/cat/CatLearningWorkspace.tsx": {
+    "mtime": 1789162938.5797763,
+    "seen": 1789163050.2703743,
+    "ast_hash": "5e1c3f8ec50189cb2d92634140c563e2",
+    "semantic_hash": ""
+  },
+  "src/components/cat/views/CatFundamentalsView.tsx": {
+    "mtime": 1789162995.0001216,
+    "seen": 1789163050.2705462,
+    "ast_hash": "d279847190438741d4a4a3b5a84dfd4b",
+    "semantic_hash": ""
+  },
+  "src/components/cat/views/CatNotesDocsView.tsx": {
+    "mtime": 1789162997.9301965,
+    "seen": 1789163050.27055,
+    "ast_hash": "69c0188865d3281c129ebf8281cd603b",
     "semantic_hash": ""
   }
 }
