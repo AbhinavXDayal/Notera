@@ -807,7 +807,7 @@
       "file_type": "code",
       "norm_label": "catoverviewtabprops",
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L12"
+      "source_location": "L19"
     },
     {
       "id": "src_components_cat_catoverviewtab_cattabtype",
@@ -820,7 +820,7 @@
       "file_type": "code",
       "norm_label": "cattabtype",
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L4"
+      "source_location": "L11"
     },
     {
       "id": "src_components_cat_catoverviewtab_noteitem",
@@ -833,7 +833,7 @@
       "file_type": "code",
       "norm_label": "noteitem",
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L18"
+      "source_location": "L25"
     },
     {
       "id": "src_components_common_navbar_navbarprops",
@@ -1563,7 +1563,7 @@
       "file_type": "code",
       "norm_label": "catoverviewtab()",
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L374"
+      "source_location": "L381"
     },
     {
       "id": "src_components_cat_catpracticetab_catpracticetab",
@@ -2849,7 +2849,7 @@
       "file_type": "code",
       "norm_label": "codex_notes",
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L232"
+      "source_location": "L239"
     },
     {
       "id": "src_components_cat_catoverviewtab_dilr_notes",
@@ -2860,7 +2860,7 @@
       "file_type": "code",
       "norm_label": "dilr_notes",
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L180"
+      "source_location": "L187"
     },
     {
       "id": "src_components_cat_catoverviewtab_qa_notes",
@@ -2871,7 +2871,7 @@
       "file_type": "code",
       "norm_label": "qa_notes",
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L27"
+      "source_location": "L34"
     },
     {
       "id": "src_components_cat_catoverviewtab_stage_notes_map",
@@ -2882,7 +2882,7 @@
       "file_type": "code",
       "norm_label": "stage_notes_map",
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L277"
+      "source_location": "L284"
     },
     {
       "id": "src_components_cat_catoverviewtab_stage_titles",
@@ -2893,7 +2893,7 @@
       "file_type": "code",
       "norm_label": "stage_titles",
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L259"
+      "source_location": "L266"
     },
     {
       "id": "src_components_cat_catoverviewtab_varc_notes",
@@ -2904,7 +2904,7 @@
       "file_type": "code",
       "norm_label": "varc_notes",
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L128"
+      "source_location": "L135"
     },
     {
       "id": "src_components_common_navbar",
@@ -8679,13 +8679,13 @@
     },
     {
       "source": "src_components_cat_catoverviewtab",
-      "target": "src_components_cat_catoverviewtab_catoverviewtabprops",
+      "target": "src_components_cat_catoverviewtab_cattabtype",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L12",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -8696,18 +8696,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L128",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catoverviewtab",
-      "target": "src_components_cat_catoverviewtab_noteitem",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L18",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -8718,7 +8707,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L180",
+      "source_location": "L187",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cat_catoverviewtab",
+      "target": "src_components_cat_catoverviewtab_catoverviewtabprops",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -8729,7 +8729,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L232",
+      "source_location": "L239",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cat_catoverviewtab",
+      "target": "src_components_cat_catoverviewtab_noteitem",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -8740,18 +8751,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L259",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catoverviewtab",
-      "target": "src_components_cat_catoverviewtab_qa_notes",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L27",
+      "source_location": "L266",
       "weight": 1.0
     },
     {
@@ -8762,7 +8762,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L277",
+      "source_location": "L284",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cat_catoverviewtab",
+      "target": "src_components_cat_catoverviewtab_qa_notes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -8773,18 +8784,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L374",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catoverviewtab",
-      "target": "src_components_cat_catoverviewtab_cattabtype",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L4",
+      "source_location": "L381",
       "weight": 1.0
     },
     {
@@ -10521,5 +10521,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "581cbd74587b8c6ae81b04cb20b5853b2a538df5"
+  "built_at_commit": "69346d582bcd55900454c3961b541a86b2157696"
 }

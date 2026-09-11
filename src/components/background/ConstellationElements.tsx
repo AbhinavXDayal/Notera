@@ -40,7 +40,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 15,
           y: 25,
           size: 10,
-          color: "#5EA876",
+          color: "#385A42",
           opacity: 0.25,
           duration: 22,
           delay: 0,
@@ -73,7 +73,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 70,
           y: 80,
           size: 4,
-          color: "#5EA876",
+          color: "#385A42",
           opacity: 0.28,
           duration: 20,
           delay: 5,
@@ -89,7 +89,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 10,
           y: 18,
           size: 11,
-          color: "#5EA876",
+          color: "#385A42",
           opacity: 0.32,
           duration: 24,
           delay: 0,
@@ -125,7 +125,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 68,
           y: 32,
           size: 12,
-          color: "#5EA876",
+          color: "#385A42",
           opacity: 0.28,
           duration: 22,
           delay: 2,
@@ -162,7 +162,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           x: 82,
           y: 60,
           size: 12,
-          color: "#5EA876",
+          color: "#385A42",
           opacity: 0.26,
           duration: 23,
           delay: 3.5,
@@ -179,7 +179,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         x: 8,
         y: 16,
         size: 14,
-        color: "#5EA876",
+        color: "#385A42",
         opacity: 0.38,
         duration: 20,
         delay: 0,
@@ -212,7 +212,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         x: 94,
         y: 52,
         size: 11,
-        color: "#5EA876",
+        color: "#385A42",
         opacity: 0.28,
         duration: 22,
         delay: 1,
@@ -247,7 +247,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
         x: 52,
         y: 12,
         size: 11,
-        color: "#5EA876",
+        color: "#385A42",
         opacity: 0.28,
         duration: 21,
         delay: 2.5,
@@ -374,8 +374,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
             x2="100%"
             y2="100%"
           >
-            <stop offset="0%" stopColor="#5EA876" stopOpacity="0.05" />
-            <stop offset="50%" stopColor="#5EA876" stopOpacity="0.25" />
+            <stop offset="0%" stopColor="#385A42" stopOpacity="0.05" />
+            <stop offset="50%" stopColor="#385A42" stopOpacity="0.25" />
             <stop offset="100%" stopColor="#D6B265" stopOpacity="0.05" />
           </linearGradient>
           <linearGradient
@@ -387,7 +387,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           >
             <stop offset="0%" stopColor="#A89F91" stopOpacity="0.05" />
             <stop offset="50%" stopColor="#A89F91" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="#5EA876" stopOpacity="0.05" />
+            <stop offset="100%" stopColor="#385A42" stopOpacity="0.05" />
           </linearGradient>
         </defs>
 

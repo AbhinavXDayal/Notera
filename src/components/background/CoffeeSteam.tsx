@@ -30,16 +30,16 @@ export const CoffeeSteam: React.FC<CoffeeSteamProps> = ({
       >
         <defs>
           <linearGradient id="steamGradient1" x1="0%" y1="100%" x2="0%" y2="0%">
-            <stop offset="0%" stopColor="#5EA876" stopOpacity="0" />
-            <stop offset="30%" stopColor="#5EA876" stopOpacity="0.18" />
-            <stop offset="70%" stopColor="#7E9987" stopOpacity="0.1" />
+            <stop offset="0%" stopColor="#385A42" stopOpacity="0" />
+            <stop offset="30%" stopColor="#385A42" stopOpacity="0.18" />
+            <stop offset="70%" stopColor="#54735E" stopOpacity="0.1" />
             <stop offset="100%" stopColor="#181A19" stopOpacity="0" />
           </linearGradient>
 
           <linearGradient id="steamGradient2" x1="0%" y1="100%" x2="0%" y2="0%">
             <stop offset="0%" stopColor="#A89F91" stopOpacity="0" />
             <stop offset="40%" stopColor="#D6B265" stopOpacity="0.16" />
-            <stop offset="80%" stopColor="#7E9987" stopOpacity="0.08" />
+            <stop offset="80%" stopColor="#54735E" stopOpacity="0.08" />
             <stop offset="100%" stopColor="#181A19" stopOpacity="0" />
           </linearGradient>
 

@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { ArrowLeft, ChevronDown, Sparkles, BookOpen, X, Compass } from "lucide-react";
+import {
+  ArrowLeft,
+  ChevronDown,
+  Sparkles,
+  BookOpen,
+  X,
+  Compass,
+} from "lucide-react";
 
 export type CatTabType =
   | "overview"
@@ -1672,10 +1679,7 @@ ACCURACY → What causes my mistakes?`}
 
   // 3. Notes Content
   const renderNotesContent = () => (
-    <div
-      id="notes-card"
-      className="w-full space-y-6 scroll-mt-20"
-    >
+    <div id="notes-card" className="w-full space-y-6 scroll-mt-20">
       {/* Header & Connection Ribbon */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">

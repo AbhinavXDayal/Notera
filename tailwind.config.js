@@ -27,18 +27,18 @@ export default {
         "surface-bright": "#383E38",
         "surface-dim": "#1C1E1C",
 
-        // Primary: Soft Luminous Forest Sage Green (#5EA876)
-        primary: "#5EA876",
-        "primary-hover": "#72B989",
-        "on-primary": "#0E1A12",
-        "primary-container": "#243B2B",
-        "on-primary-container": "#D2ECD9",
-        "primary-fixed": "#243B2B",
-        "primary-fixed-dim": "#5EA876",
-        "on-primary-fixed": "#D2ECD9",
-        "primary-tint": "#5EA876",
-        "surface-tint": "#5EA876",
-        "inverse-primary": "#4A7C59",
+        // Primary: Dark Dullish Forest Green (#385A42)
+        primary: "#385A42",
+        "primary-hover": "#446B4F",
+        "on-primary": "#EDF2EC",
+        "primary-container": "#25382B",
+        "on-primary-container": "#C5D8CC",
+        "primary-fixed": "#25382B",
+        "primary-fixed-dim": "#385A42",
+        "on-primary-fixed": "#EDF2EC",
+        "primary-tint": "#385A42",
+        "surface-tint": "#385A42",
+        "inverse-primary": "#557D61",
         "inverse-surface": "#E6EBE4",
 
         // Secondary: Warm Taupe Earth (#A89F91)
@@ -80,7 +80,7 @@ export default {
         "terra-card":
           "0 2px 12px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.2)",
         "terra-hover":
-          "0 8px 24px rgba(94, 168, 118, 0.18), 0 2px 8px rgba(0, 0, 0, 0.3)",
+          "0 8px 24px rgba(56, 90, 66, 0.25), 0 2px 8px rgba(0, 0, 0, 0.3)",
       },
     },
   },
