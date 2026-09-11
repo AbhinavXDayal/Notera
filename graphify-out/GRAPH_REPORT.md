@@ -1,7 +1,7 @@
 # Graph Report - Notera  (2026-09-11)
 
 ## Corpus Check
-- 76 files · ~43,840 words
+- 76 files · ~43,847 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `af1f08ca`
+- Built from commit: `2655e849`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

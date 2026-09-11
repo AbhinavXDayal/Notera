@@ -93,14 +93,14 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
           const isTaupeHighlight = (c + r) % 29 === 0;
 
           if (isTaupeHighlight && !isReading) {
-            ctx.fillStyle = `rgba(107, 99, 88, ${Math.min(alpha * 1.4, 0.4)})`;
+            ctx.fillStyle = `rgba(168, 159, 145, ${Math.min(alpha * 1.4, 0.4)})`;
           } else if (isWarmOchre && !isReading) {
-            ctx.fillStyle = `rgba(196, 166, 106, ${Math.min(alpha * 1.5, 0.45)})`;
+            ctx.fillStyle = `rgba(214, 178, 101, ${Math.min(alpha * 1.5, 0.45)})`;
           } else if (isForestSage && !isReading) {
-            ctx.fillStyle = `rgba(74, 124, 89, ${Math.min(alpha * 1.6, 0.5)})`;
+            ctx.fillStyle = `rgba(94, 168, 118, ${Math.min(alpha * 1.6, 0.5)})`;
           } else {
-            // Soft calming sage base dot
-            ctx.fillStyle = `rgba(120, 140, 125, ${Math.min(alpha * 1.2, 0.3)})`;
+            // Soft calming slate-sage base dot
+            ctx.fillStyle = `rgba(90, 100, 92, ${Math.min(alpha * 1.2, 0.3)})`;
           }
 
           const dotSize =
@@ -117,7 +117,7 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
           // Delicate coordinate plus crosses in soft sage on hero / roadmap
           if ((variant === "hero" || isRoadmap) && c % 6 === 0 && r % 6 === 0) {
             const crossAlpha = alpha * 1.8;
-            ctx.strokeStyle = `rgba(74, 124, 89, ${Math.min(crossAlpha, 0.35)})`;
+            ctx.strokeStyle = `rgba(94, 168, 118, ${Math.min(crossAlpha, 0.35)})`;
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(x - 3.5, y);

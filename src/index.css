@@ -12,7 +12,7 @@
 
   body {
     @apply bg-background text-on-surface font-body selection:bg-primary/20 selection:text-primary;
-    background-color: #e5eae3;
+    background-color: #181a19;
     overflow-x: hidden;
   }
 
@@ -26,12 +26,12 @@
   }
 }
 
-/* Calming botanical sage texture with subtle earth stipple */
+/* Calming botanical sage texture with subtle earth stipple on soft dark background */
 .paper-texture {
-  background-color: #e5eae3;
+  background-color: #181a19;
   background-image:
-    radial-gradient(rgba(74, 124, 89, 0.08) 0.5px, transparent 0.5px),
-    radial-gradient(rgba(107, 99, 88, 0.04) 0.5px, #e5eae3 0.5px);
+    radial-gradient(rgba(94, 168, 118, 0.07) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(214, 178, 101, 0.03) 0.5px, #181a19 0.5px);
   background-size: 28px 28px;
   background-position:
     0 0,
@@ -45,17 +45,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #e5eae3;
+  background: #181a19;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd3c8;
+  background: #3a4039;
   border-radius: 9999px;
   transition: background-color 0.2s ease-out;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4a7c59;
+  background: #5ea876;
 }
 
 /* Silky smooth entrance transitions */
