@@ -53,4 +53,3 @@ export const JourneySection: React.FC<JourneySectionProps> = ({
     </section>
   );
 };
-

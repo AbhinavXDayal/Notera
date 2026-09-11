@@ -24,44 +24,44 @@
     "semantic_hash": "c851ccbf0981af1e4da7f6e6479314fe"
   },
   "src/components/background/CoffeeBeans.tsx": {
-    "mtime": 1789162205.0748672,
-    "seen": 1789162244.1966152,
+    "mtime": 1789162365.914921,
+    "seen": 1789162394.5680437,
     "ast_hash": "0cad98fc16e694fc1bd71621d56f940f",
     "semantic_hash": ""
   },
   "src/components/background/CoffeeParticles.tsx": {
-    "mtime": 1789162165.7420063,
-    "seen": 1789162244.1966202,
-    "ast_hash": "f0f55ee76049c12d4ac2c2e3ef243283",
+    "mtime": 1789162365.770551,
+    "seen": 1789162394.5680459,
+    "ast_hash": "ff7172ba525dbec71bb56abeebd62823",
     "semantic_hash": ""
   },
   "src/components/background/CoffeeRings.tsx": {
-    "mtime": 1789162174.8686898,
-    "seen": 1789162244.1966264,
+    "mtime": 1789162365.741917,
+    "seen": 1789162394.568047,
     "ast_hash": "2c1c51bd050662ea0a50f9a11fe52db7",
     "semantic_hash": ""
   },
   "src/components/background/CoffeeSteam.tsx": {
-    "mtime": 1789162169.7955818,
-    "seen": 1789162244.1966302,
+    "mtime": 1789162365.7263556,
+    "seen": 1789162394.5680485,
     "ast_hash": "e34976ab8017f92c3de4f7a7ce11ce44",
     "semantic_hash": ""
   },
   "src/components/background/ConstellationElements.tsx": {
-    "mtime": 1789162192.442913,
-    "seen": 1789162244.1966333,
+    "mtime": 1789162365.869725,
+    "seen": 1789162394.56805,
     "ast_hash": "0647319d35b8a205e817951a055b8ea0",
     "semantic_hash": ""
   },
   "src/components/background/DotMatrixCanvas.tsx": {
-    "mtime": 1789162141.91882,
-    "seen": 1789162244.1966348,
+    "mtime": 1789162365.8249283,
+    "seen": 1789162394.568051,
     "ast_hash": "d88bb4a0c92be3fa819c2f7c8f24e052",
     "semantic_hash": ""
   },
   "src/components/background/KnowledgeMapBackground.tsx": {
-    "mtime": 1789162134.2094243,
-    "seen": 1789162244.1966796,
+    "mtime": 1789162365.8873024,
+    "seen": 1789162394.5680525,
     "ast_hash": "51231b04d1646031fa416b0c6c6e2b21",
     "semantic_hash": ""
   },
@@ -78,8 +78,8 @@
     "semantic_hash": "b3f3001bdf083e9b95d25f977e6483a8"
   },
   "src/components/cat/CatOverviewTab.tsx": {
-    "mtime": 1789162223.7779634,
-    "seen": 1789162244.1966908,
+    "mtime": 1789162273.444316,
+    "seen": 1789162394.5680573,
     "ast_hash": "70934bdb677474855ecaae0c5d103245",
     "semantic_hash": ""
   },
@@ -96,9 +96,9 @@
     "semantic_hash": "ef6a703e70cee85d3469037058bda7f9"
   },
   "src/components/cat/CatRoadmapTab.tsx": {
-    "mtime": 1789162223.7784889,
-    "seen": 1789162244.1966991,
-    "ast_hash": "084afc883345abe1fa100d415029d1f3",
+    "mtime": 1789162273.444316,
+    "seen": 1789162394.5680614,
+    "ast_hash": "f1f07e4db601a7ea01b53c2c8b49b03d",
     "semantic_hash": ""
   },
   "src/components/cat/CatSubjectsTab.tsx": {
@@ -126,10 +126,10 @@
     "semantic_hash": "cc2c77ab9b65dd87ca6faa081db607a8"
   },
   "src/components/common/Navbar.tsx": {
-    "mtime": 1789161643.4528422,
-    "seen": 1789161781.5473785,
-    "ast_hash": "ab625ef6de962ebacd0a4b1cbca68a32",
-    "semantic_hash": "ab625ef6de962ebacd0a4b1cbca68a32"
+    "mtime": 1789162352.9082355,
+    "seen": 1789162394.5680797,
+    "ast_hash": "4aa633a6f0855b7b7ac197ddea5d5742",
+    "semantic_hash": ""
   },
   "src/components/common/SearchModal.tsx": {
     "mtime": 1789059768.7917564,
@@ -240,8 +240,8 @@
     "semantic_hash": "57f5e5863a3ff15ea6c4837ea6fc3813"
   },
   "src/data/catRoadmap.ts": {
-    "mtime": 1789162223.7790706,
-    "seen": 1789162244.1968036,
+    "mtime": 1789162272.1029887,
+    "seen": 1789162394.5681088,
     "ast_hash": "f8156db47623503519608633564be791",
     "semantic_hash": ""
   },
@@ -354,8 +354,8 @@
     "semantic_hash": "ad65b8c003edec418ebbb0f3a2860d90"
   },
   "tailwind.config.js": {
-    "mtime": 1789162122.23741,
-    "seen": 1789162244.1968791,
+    "mtime": 1789162365.6137595,
+    "seen": 1789162394.5681355,
     "ast_hash": "12d9f04976ae4d56aa426d9732b3e9d4",
     "semantic_hash": ""
   },
@@ -516,56 +516,56 @@
     "semantic_hash": ""
   },
   "src/components/cat/journey/CallPredictorCard.tsx": {
-    "mtime": 1789162105.9851496,
-    "seen": 1789162244.196705,
-    "ast_hash": "600e246cca100fc9c783582fec2c96ac",
+    "mtime": 1789162273.444316,
+    "seen": 1789162394.5680645,
+    "ast_hash": "77e2da23d4cd7009fa10238270430d72",
     "semantic_hash": ""
   },
   "src/components/cat/journey/GoalPlanningSection.tsx": {
-    "mtime": 1789162106.0296376,
-    "seen": 1789162244.1967075,
-    "ast_hash": "9679cd054d65efac4a8acf16cbf45160",
+    "mtime": 1789162273.7250834,
+    "seen": 1789162394.5680664,
+    "ast_hash": "96a253ff8c827f8b04718146bd580582",
     "semantic_hash": ""
   },
   "src/components/cat/journey/JourneySection.tsx": {
-    "mtime": 1789162106.0296376,
-    "seen": 1789162244.1967103,
-    "ast_hash": "fe55944caf342aa4e5adf8671c9b14e8",
+    "mtime": 1789162273.5539975,
+    "seen": 1789162394.5680676,
+    "ast_hash": "718f6be0fc05ed5d2e8c6596efc82a3a",
     "semantic_hash": ""
   },
   "src/components/cat/journey/JourneyStageLayout.tsx": {
-    "mtime": 1789162106.0296376,
-    "seen": 1789162244.1967127,
-    "ast_hash": "4c575b3a94c8aacdf794fca7800d6610",
+    "mtime": 1789162273.444316,
+    "seen": 1789162394.5680692,
+    "ast_hash": "0fe5da2683789ded52fb036c55ec5a53",
     "semantic_hash": ""
   },
   "src/components/cat/journey/PreparationApproach.tsx": {
-    "mtime": 1789162106.0296376,
-    "seen": 1789162244.196715,
-    "ast_hash": "fd7f6f7f42b7211e7964a3626cffeef7",
+    "mtime": 1789162273.444316,
+    "seen": 1789162394.5680704,
+    "ast_hash": "40302fe475308b328dbfe049762b253d",
     "semantic_hash": ""
   },
   "src/components/cat/journey/ScorePercentileExplorer.tsx": {
-    "mtime": 1789162199.3941412,
-    "seen": 1789162244.1967173,
-    "ast_hash": "8a8e93cd0c4a6f2b799e61691760d26a",
+    "mtime": 1789162273.6007442,
+    "seen": 1789162394.5680716,
+    "ast_hash": "9cdc017306546c0362e7dfd9f0c5fe43",
     "semantic_hash": ""
   },
   "src/components/cat/journey/SectionPillarCard.tsx": {
-    "mtime": 1789162106.0966256,
-    "seen": 1789162244.1967196,
-    "ast_hash": "9383aecd4f8c1c3c11f702a51bec7d19",
+    "mtime": 1789162273.5635512,
+    "seen": 1789162394.5680728,
+    "ast_hash": "7fabc126e7446fd0687d360e5a1cb45d",
     "semantic_hash": ""
   },
   "src/components/cat/journey/Stage01UnderstandJourney.tsx": {
-    "mtime": 1789162106.1236076,
-    "seen": 1789162244.1967216,
-    "ast_hash": "794ae38e2feba5c44527d1701132c093",
+    "mtime": 1789162273.640284,
+    "seen": 1789162394.568074,
+    "ast_hash": "a07bf2bcd2829a3c889731237bd7ed07",
     "semantic_hash": ""
   },
   "src/data/catJourneyData.ts": {
-    "mtime": 1789162106.1412883,
-    "seen": 1789162244.1967857,
+    "mtime": 1789162272.0909925,
+    "seen": 1789162394.5681045,
     "ast_hash": "16b82c1257a027b39574e82532b583a6",
     "semantic_hash": ""
   }

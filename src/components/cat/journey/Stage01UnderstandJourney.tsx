@@ -22,10 +22,9 @@ interface Stage01UnderstandJourneyProps {
   onBackToTimeline?: () => void;
 }
 
-export const Stage01UnderstandJourney: React.FC<Stage01UnderstandJourneyProps> = ({
-  onNavigateNextStage,
-  onBackToTimeline,
-}) => {
+export const Stage01UnderstandJourney: React.FC<
+  Stage01UnderstandJourneyProps
+> = ({ onNavigateNextStage, onBackToTimeline }) => {
   const {
     stageNumber,
     badge,
@@ -159,7 +158,9 @@ export const Stage01UnderstandJourney: React.FC<Stage01UnderstandJourneyProps> =
           <div className="bg-surface border border-outline-variant/60 rounded-xl p-4 flex items-start space-x-3 text-xs text-secondary leading-relaxed">
             <Info className="w-4 h-4 text-tertiary shrink-0 mt-0.5" />
             <span>
-              <strong className="text-on-surface">Annual Pattern Notice: </strong>
+              <strong className="text-on-surface">
+                Annual Pattern Notice:{" "}
+              </strong>
               {examPattern.notice}
             </span>
           </div>
@@ -230,7 +231,9 @@ export const Stage01UnderstandJourney: React.FC<Stage01UnderstandJourneyProps> =
 
                 {/* Profile Focus */}
                 <div className="pt-2 text-xs text-secondary leading-relaxed border-t border-outline-variant/60">
-                  <strong className="text-on-surface">Profile Criteria: </strong>
+                  <strong className="text-on-surface">
+                    Profile Criteria:{" "}
+                  </strong>
                   {tier.profileFocus}
                 </div>
               </div>
@@ -299,4 +302,3 @@ export const Stage01UnderstandJourney: React.FC<Stage01UnderstandJourneyProps> =
     </JourneyStageLayout>
   );
 };
-

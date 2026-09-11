@@ -25,8 +25,8 @@ export const CoffeeParticles: React.FC<CoffeeParticlesProps> = ({
     for (let i = 0; i < 20; i++) {
       list.push({
         id: i,
-        left: (i * 17 + 7) % 94 + 3,
-        top: (i * 23 + 13) % 90 + 5,
+        left: ((i * 17 + 7) % 94) + 3,
+        top: ((i * 23 + 13) % 90) + 5,
         size: (i % 3) + 2,
         color: colors[i % colors.length],
         duration: 4 + (i % 5) * 1.5,

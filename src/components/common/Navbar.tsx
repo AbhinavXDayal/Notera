@@ -20,7 +20,6 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  currentView = "home",
   onNavigateHome,
   onOpenSearch,
 }) => {
@@ -58,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-14 sm:h-16 flex items-center justify-between gap-4">
-        {/* Left: Brand Logo & Contextual Badge */}
+        {/* Left: Brand Logo */}
         <div className="flex items-center space-x-3 sm:space-x-4">
           <button
             onClick={onNavigateHome}
@@ -67,23 +66,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Logo size="sm" />
           </button>
-
-          {/* Contextual Active Universe Badge */}
-          {currentView === "cat" ? (
-            <div className="hidden sm:flex items-center space-x-2 pl-3 border-l border-outline-variant/40">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium tracking-wide bg-surface-container-high/60 backdrop-blur-sm border border-primary/20 text-primary shadow-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                CAT Universe
-              </span>
-            </div>
-          ) : currentView === "field" ? (
-            <div className="hidden sm:flex items-center space-x-2 pl-3 border-l border-outline-variant/40">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium tracking-wide bg-surface-container-high/60 backdrop-blur-sm border border-primary/20 text-primary shadow-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                Computer Science
-              </span>
-            </div>
-          ) : null}
         </div>
 
         {/* Right Action Items & Sleek Search Pill */}

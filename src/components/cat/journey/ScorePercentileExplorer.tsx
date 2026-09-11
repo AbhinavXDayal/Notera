@@ -1,6 +1,12 @@
 import React, { useState, useMemo } from "react";
 import { STAGE_01_DATA } from "../../../data/catJourneyData";
-import { Calculator, Sparkles, TrendingUp, Info, RotateCcw } from "lucide-react";
+import {
+  Calculator,
+  Sparkles,
+  TrendingUp,
+  Info,
+  RotateCcw,
+} from "lucide-react";
 
 export const ScorePercentileExplorer: React.FC = () => {
   const [varcScore, setVarcScore] = useState<number>(30);
@@ -93,7 +99,9 @@ export const ScorePercentileExplorer: React.FC = () => {
         <div className="bg-surface/50 border border-outline-variant/60 rounded-lg p-3.5 flex items-start space-x-3 text-xs text-secondary leading-relaxed">
           <Info className="w-4 h-4 text-tertiary shrink-0 mt-0.5" />
           <div>
-            <span className="text-on-surface font-medium">Why normalization matters: </span>
+            <span className="text-on-surface font-medium">
+              Why normalization matters:{" "}
+            </span>
             {STAGE_01_DATA.scoreVsPercentile.normalizationNote}
           </div>
         </div>
@@ -114,13 +122,16 @@ export const ScorePercentileExplorer: React.FC = () => {
               Notera CAT Score Estimator
             </h4>
             <p className="text-xs text-secondary mt-0.5">
-              Adjust section scores below to explore how raw marks translate into estimated percentile bands.
+              Adjust section scores below to explore how raw marks translate
+              into estimated percentile bands.
             </p>
           </div>
 
           {/* Benchmark Preset Pills */}
           <div className="flex flex-wrap items-center gap-1.5 font-mono text-[11px]">
-            <span className="text-secondary text-[10px] uppercase mr-1">Presets:</span>
+            <span className="text-secondary text-[10px] uppercase mr-1">
+              Presets:
+            </span>
             <button
               type="button"
               onClick={() => applyPreset(36, 27, 27)}
@@ -158,7 +169,10 @@ export const ScorePercentileExplorer: React.FC = () => {
           {/* VARC Input */}
           <div className="bg-surface-container p-4 rounded-xl border border-outline-variant space-y-3">
             <div className="flex items-center justify-between">
-              <label htmlFor="varc-input" className="font-mono text-xs font-semibold text-primary">
+              <label
+                htmlFor="varc-input"
+                className="font-mono text-xs font-semibold text-primary"
+              >
                 VARC Score (Max 72)
               </label>
               <span className="text-xs font-mono font-bold text-on-surface bg-surface px-2 py-0.5 rounded border border-outline-variant">
@@ -172,18 +186,23 @@ export const ScorePercentileExplorer: React.FC = () => {
               max={72}
               value={varcScore}
               onChange={(e) => setVarcScore(Number(e.target.value))}
-              className="w-full accent-primary bg-outline-variant h-1.5 rounded-lg cursor-pointer"
+              className="w-full accent-[#D8C3A5] bg-outline-variant h-1.5 rounded-lg cursor-pointer"
             />
             <div className="flex items-center justify-between text-[11px] text-secondary font-mono">
               <span>Sectional Est:</span>
-              <span className="text-primary font-medium">{sectionalEstimates.varc}</span>
+              <span className="text-primary font-medium">
+                {sectionalEstimates.varc}
+              </span>
             </div>
           </div>
 
           {/* DILR Input */}
           <div className="bg-surface-container p-4 rounded-xl border border-outline-variant space-y-3">
             <div className="flex items-center justify-between">
-              <label htmlFor="dilr-input" className="font-mono text-xs font-semibold text-primary">
+              <label
+                htmlFor="dilr-input"
+                className="font-mono text-xs font-semibold text-primary"
+              >
                 DILR Score (Max 60)
               </label>
               <span className="text-xs font-mono font-bold text-on-surface bg-surface px-2 py-0.5 rounded border border-outline-variant">
@@ -197,18 +216,23 @@ export const ScorePercentileExplorer: React.FC = () => {
               max={60}
               value={dilrScore}
               onChange={(e) => setDilrScore(Number(e.target.value))}
-              className="w-full accent-primary bg-outline-variant h-1.5 rounded-lg cursor-pointer"
+              className="w-full accent-[#D8C3A5] bg-outline-variant h-1.5 rounded-lg cursor-pointer"
             />
             <div className="flex items-center justify-between text-[11px] text-secondary font-mono">
               <span>Sectional Est:</span>
-              <span className="text-primary font-medium">{sectionalEstimates.dilr}</span>
+              <span className="text-primary font-medium">
+                {sectionalEstimates.dilr}
+              </span>
             </div>
           </div>
 
           {/* QA Input */}
           <div className="bg-surface-container p-4 rounded-xl border border-outline-variant space-y-3">
             <div className="flex items-center justify-between">
-              <label htmlFor="qa-input" className="font-mono text-xs font-semibold text-primary">
+              <label
+                htmlFor="qa-input"
+                className="font-mono text-xs font-semibold text-primary"
+              >
                 QA Score (Max 66)
               </label>
               <span className="text-xs font-mono font-bold text-on-surface bg-surface px-2 py-0.5 rounded border border-outline-variant">
@@ -222,11 +246,13 @@ export const ScorePercentileExplorer: React.FC = () => {
               max={66}
               value={qaScore}
               onChange={(e) => setQaScore(Number(e.target.value))}
-              className="w-full accent-primary bg-outline-variant h-1.5 rounded-lg cursor-pointer"
+              className="w-full accent-[#D8C3A5] bg-outline-variant h-1.5 rounded-lg cursor-pointer"
             />
             <div className="flex items-center justify-between text-[11px] text-secondary font-mono">
               <span>Sectional Est:</span>
-              <span className="text-primary font-medium">{sectionalEstimates.qa}</span>
+              <span className="text-primary font-medium">
+                {sectionalEstimates.qa}
+              </span>
             </div>
           </div>
         </div>
@@ -243,17 +269,21 @@ export const ScorePercentileExplorer: React.FC = () => {
                 <span className="font-display text-4xl sm:text-5xl font-bold text-on-surface">
                   {totalScore}
                 </span>
-                <span className="text-sm font-mono text-secondary">/ 198 marks</span>
+                <span className="text-sm font-mono text-secondary">
+                  / 198 marks
+                </span>
               </div>
               <p className="text-xs text-secondary mt-1">
-                Accuracy equivalent to approx. {Math.round((totalScore / 3))} net correct questions.
+                Accuracy equivalent to approx. {Math.round(totalScore / 3)} net
+                correct questions.
               </p>
             </div>
 
             {/* Right: Estimated Percentile Range */}
             <div className="bg-surface/80 border border-outline-variant p-4 rounded-lg space-y-1 sm:text-right">
               <span className="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold flex sm:justify-end items-center gap-1">
-                <Sparkles className="w-3 h-3 text-primary" /> Estimated Percentile Range
+                <Sparkles className="w-3 h-3 text-primary" /> Estimated
+                Percentile Range
               </span>
               <div className="font-display text-2xl sm:text-3xl font-bold text-primary">
                 ~ {estimateResult.percentileRange}
@@ -279,4 +309,3 @@ export const ScorePercentileExplorer: React.FC = () => {
     </div>
   );
 };
-

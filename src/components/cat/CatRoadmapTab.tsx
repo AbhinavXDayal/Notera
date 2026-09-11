@@ -3,7 +3,13 @@ import { CAT_ROADMAP_STAGES } from "../../data/catRoadmap";
 import type { RoadmapStage } from "../../types/roadmap";
 import { CatRoadmapDetailModal } from "./CatRoadmapDetailModal";
 import { Stage01UnderstandJourney } from "./journey/Stage01UnderstandJourney";
-import { CheckCircle2, ChevronRight, Clock, BookOpen, ListTree } from "lucide-react";
+import {
+  CheckCircle2,
+  ChevronRight,
+  Clock,
+  BookOpen,
+  ListTree,
+} from "lucide-react";
 
 interface CatRoadmapTabProps {
   completedStages: number[];
@@ -216,7 +222,9 @@ export const CatRoadmapTab: React.FC<CatRoadmapTabProps> = ({
                   </div>
 
                   <div className="hidden sm:flex items-center text-xs font-semibold text-primary group-hover:translate-x-1 transition-transform flex-shrink-0 pt-2">
-                    <span>{stage.id === 1 ? "Open Guide" : "Explore Stage"}</span>
+                    <span>
+                      {stage.id === 1 ? "Open Guide" : "Explore Stage"}
+                    </span>
                     <ChevronRight className="w-4 h-4" />
                   </div>
                 </div>

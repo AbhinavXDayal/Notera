@@ -6,7 +6,9 @@ interface SectionPillarCardProps {
   pillar: JourneyPillar;
 }
 
-export const SectionPillarCard: React.FC<SectionPillarCardProps> = ({ pillar }) => {
+export const SectionPillarCard: React.FC<SectionPillarCardProps> = ({
+  pillar,
+}) => {
   const getIcon = () => {
     switch (pillar.id) {
       case "varc":
@@ -60,7 +62,10 @@ export const SectionPillarCard: React.FC<SectionPillarCardProps> = ({ pillar }) 
           </span>
           <ul className="space-y-1.5 text-xs text-on-surface/90">
             {pillar.focusPoints.map((point, idx) => (
-              <li key={idx} className="flex items-start space-x-2 leading-relaxed">
+              <li
+                key={idx}
+                className="flex items-start space-x-2 leading-relaxed"
+              >
                 <span className="text-primary font-bold mt-0.5">•</span>
                 <span>{point}</span>
               </li>
@@ -81,4 +86,3 @@ export const SectionPillarCard: React.FC<SectionPillarCardProps> = ({ pillar }) 
     </div>
   );
 };
-

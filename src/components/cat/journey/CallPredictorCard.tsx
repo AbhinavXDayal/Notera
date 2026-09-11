@@ -1,6 +1,11 @@
 import React from "react";
 import { STAGE_01_DATA } from "../../../data/catJourneyData";
-import { UserCheck, ExternalLink, ShieldAlert, CheckCircle2 } from "lucide-react";
+import {
+  UserCheck,
+  ExternalLink,
+  ShieldAlert,
+  CheckCircle2,
+} from "lucide-react";
 
 export const CallPredictorCard: React.FC = () => {
   const { callPredictor } = STAGE_01_DATA.targetColleges;
@@ -61,11 +66,12 @@ export const CallPredictorCard: React.FC = () => {
       <div className="bg-surface/50 border border-outline-variant/50 rounded-lg p-3 flex items-start space-x-2.5 text-[11px] text-secondary leading-relaxed">
         <ShieldAlert className="w-4 h-4 text-tertiary shrink-0 mt-0.5" />
         <span>
-          <strong className="text-on-surface">External Planning Tool Disclaimer: </strong>
+          <strong className="text-on-surface">
+            External Planning Tool Disclaimer:{" "}
+          </strong>
           {callPredictor.disclaimer}
         </span>
       </div>
     </div>
   );
 };
-

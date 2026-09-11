@@ -56,7 +56,10 @@ export const PreparationApproach: React.FC = () => {
               </span>
               <ul className="space-y-1.5 text-xs text-on-surface/90">
                 {approach.idealFor.map((item, idx) => (
-                  <li key={idx} className="flex items-start space-x-2 leading-relaxed">
+                  <li
+                    key={idx}
+                    className="flex items-start space-x-2 leading-relaxed"
+                  >
                     <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
@@ -94,4 +97,3 @@ export const PreparationApproach: React.FC = () => {
     </div>
   );
 };
-

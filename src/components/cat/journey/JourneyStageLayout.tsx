@@ -48,7 +48,9 @@ export const JourneyStageLayout: React.FC<JourneyStageLayoutProps> = ({
           <div className="flex items-center space-x-2 font-mono text-xs text-secondary">
             <span className="hidden sm:inline">14-Step Journey</span>
             <span className="hidden sm:inline">/</span>
-            <span className="text-primary font-semibold">Stage {stageNumber}</span>
+            <span className="text-primary font-semibold">
+              Stage {stageNumber}
+            </span>
           </div>
         </div>
 
@@ -99,4 +101,3 @@ export const JourneyStageLayout: React.FC<JourneyStageLayoutProps> = ({
     </div>
   );
 };
-
