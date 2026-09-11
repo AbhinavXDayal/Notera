@@ -1,7 +1,7 @@
 # Graph Report - Notera  (2026-09-11)
 
 ## Corpus Check
-- 79 files · ~45,860 words
+- 79 files · ~45,855 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `62fcb4a6`
+- Built from commit: `581cbd74`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -46,8 +46,6 @@
 10. `PersonalizedRecommendation` - 6 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `App()` --calls--> `useVisitorPreferences()`  [EXTRACTED]
-  src/App.tsx → src/hooks/useVisitorPreferences.ts
 - `RecommendedHeroBannerProps` --references--> `PersonalizedRecommendation`  [EXTRACTED]
   src/components/home/RecommendedHeroBanner.tsx → src/types/preferences.ts
 - `CatRoadmapDetailModalProps` --references--> `RoadmapStage`  [EXTRACTED]
@@ -56,6 +54,8 @@
   src/components/cat/journey/JourneyStageAccordion.tsx → src/types/roadmap.ts
 - `GuideCardProps` --references--> `FieldGuideModule`  [EXTRACTED]
   src/components/field-guide/GuideCard.tsx → src/types/fieldGuide.ts
+- `ResourceCardProps` --references--> `EducationalResource`  [EXTRACTED]
+  src/components/resources/ResourceCard.tsx → src/types/resource.ts
 
 ## Import Cycles
 - None detected.

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowLeft, ChevronDown, Sparkles, BookOpen, X } from "lucide-react";
+import { ArrowLeft, ChevronDown, Sparkles, BookOpen, X, Compass } from "lucide-react";
 
 export type CatTabType =
   | "overview"
@@ -401,6 +401,11 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
       });
       return initial;
     },
+  );
+
+  // Active centered view switcher: 'roadmap' or 'notes'
+  const [activeViewMode, setActiveViewMode] = useState<"roadmap" | "notes">(
+    "roadmap",
   );
 
   // Track active connected roadmap stage for Notes synchronization
@@ -2066,11 +2071,58 @@ ACCURACY → What causes my mistakes?`}
       {/* 1. Field Guide Framework Card (Top Full Width) */}
       {renderFieldGuideCard()}
 
-      {/* 2 & 3. Single Unified Container for Roadmap (Left) & Notes (Right) */}
-      <div className="w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-7 shadow-terra-card">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
-          {renderRoadmapContent()}
-          {renderNotesContent()}
+      {/* 2 & 3. Single Unified Container with Centered Switcher (Roadmap | Notes) */}
+      <div className="w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-7 shadow-terra-card space-y-6">
+        {/* Centered Roadmap & Notes Toggle Buttons */}
+        <div className="flex items-center justify-center pt-1">
+          <div className="inline-flex items-center p-1 rounded-xl bg-surface border border-outline-variant shadow-xs">
+            <button
+              type="button"
+              onClick={() => setActiveViewMode("roadmap")}
+              className={`inline-flex items-center space-x-2 px-6 sm:px-8 py-2 rounded-lg font-mono text-xs sm:text-sm font-medium transition-all cursor-pointer ${
+                activeViewMode === "roadmap"
+                  ? "bg-primary text-on-primary font-bold shadow-xs"
+                  : "text-secondary hover:text-on-surface hover:bg-surface-container"
+              }`}
+            >
+              <Compass className="w-4 h-4" />
+              <span>Roadmap</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveViewMode("notes")}
+              className={`inline-flex items-center space-x-2 px-6 sm:px-8 py-2 rounded-lg font-mono text-xs sm:text-sm font-medium transition-all cursor-pointer ${
+                activeViewMode === "notes"
+                  ? "bg-primary text-on-primary font-bold shadow-xs"
+                  : "text-secondary hover:text-on-surface hover:bg-surface-container"
+              }`}
+            >
+              <BookOpen className="w-4 h-4" />
+              <span>Notes</span>
+              <span
+                className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
+                  activeViewMode === "notes"
+                    ? "bg-on-primary/20 text-on-primary"
+                    : "bg-surface-container text-secondary"
+                }`}
+              >
+                31 Chapters
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {/* Display only the active button's section */}
+        <div className="pt-2">
+          {activeViewMode === "roadmap" ? (
+            <div className="fade-in max-w-4xl mx-auto">
+              {renderRoadmapContent()}
+            </div>
+          ) : (
+            <div className="fade-in max-w-4xl mx-auto">
+              {renderNotesContent()}
+            </div>
+          )}
         </div>
       </div>
     </div>
