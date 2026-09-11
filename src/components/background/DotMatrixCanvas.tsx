@@ -45,7 +45,8 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
     window.addEventListener("resize", handleResize);
 
     // Warm Café Theme Dot Configuration (Warm Beige & Crema Highlights)
-    const dotSpacing = variant === "hero" ? 28 : variant === "reading" ? 34 : 30;
+    const dotSpacing =
+      variant === "hero" ? 28 : variant === "reading" ? 34 : 30;
     const isReading = variant === "reading";
     const isRoadmap = variant === "roadmap";
 
@@ -73,7 +74,11 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
 
           // Subtle organic pulsing wave
           const wave = Math.sin(time + x * 0.005 + y * 0.004);
-          const baseAlpha = isReading ? 0.07 : variant === "minimal" ? 0.09 : 0.14;
+          const baseAlpha = isReading
+            ? 0.07
+            : variant === "minimal"
+              ? 0.09
+              : 0.14;
           let alpha = baseAlpha + wave * 0.03;
 
           // Mouse proximity boost

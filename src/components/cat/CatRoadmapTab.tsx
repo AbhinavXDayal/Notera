@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { CAT_ROADMAP_STAGES } from "../../data/catRoadmap";
 import type { RoadmapStage } from "../../types/roadmap";
 import { CatRoadmapDetailModal } from "./CatRoadmapDetailModal";
-import { CheckCircle2, ChevronRight, Clock } from "lucide-react";
+import { Stage01UnderstandJourney } from "./journey/Stage01UnderstandJourney";
+import { CheckCircle2, ChevronRight, Clock, BookOpen, ListTree } from "lucide-react";
 
 interface CatRoadmapTabProps {
   completedStages: number[];
@@ -10,6 +11,7 @@ interface CatRoadmapTabProps {
   onToggleStage: (stageId: number) => void;
   onToggleAction: (actionId: string) => void;
   onNavigateNotes: (noteId: string) => void;
+  initialStageId?: number;
 }
 
 export const CatRoadmapTab: React.FC<CatRoadmapTabProps> = ({
@@ -18,7 +20,12 @@ export const CatRoadmapTab: React.FC<CatRoadmapTabProps> = ({
   onToggleStage,
   onToggleAction,
   onNavigateNotes,
+  initialStageId,
 }) => {
+  // If user opens stage 1 explicitly, or defaults to stage-01 for guided journey orientation
+  const [activeView, setActiveView] = useState<"stage-01" | "timeline">(
+    initialStageId === 1 ? "stage-01" : "stage-01",
+  );
   const [selectedStage, setSelectedStage] = useState<RoadmapStage | null>(null);
 
   const completedCount = completedStages.length;
@@ -26,28 +33,89 @@ export const CatRoadmapTab: React.FC<CatRoadmapTabProps> = ({
     (completedCount / CAT_ROADMAP_STAGES.length) * 100,
   );
 
+  const handleStageCardClick = (stage: RoadmapStage) => {
+    if (stage.id === 1) {
+      setActiveView("stage-01");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      setSelectedStage(stage);
+    }
+  };
+
+  const handleAdvanceToStage02 = () => {
+    setActiveView("timeline");
+    // Open Stage 02 modal
+    const stage02 = CAT_ROADMAP_STAGES.find((s) => s.id === 2);
+    if (stage02) {
+      setSelectedStage(stage02);
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // If in Stage 01 deep-dive view, render the comprehensive Stage 01 page
+  if (activeView === "stage-01") {
+    return (
+      <div className="space-y-6 fade-in">
+        {/* Stage 01 Full Component */}
+        <Stage01UnderstandJourney
+          onNavigateNextStage={handleAdvanceToStage02}
+          onBackToTimeline={() => {
+            setActiveView("timeline");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        />
+      </div>
+    );
+  }
+
+  // Full 14-Stage Roadmap Timeline View
   return (
-    <div className="max-w-7xl mx-auto px-6 lg:px-12 py-10 space-y-8 fade-in">
-      {/* Roadmap Header */}
-      <div className="border-b border-outline-variant pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-        <div>
-          <span className="text-xs uppercase font-mono tracking-widest text-tertiary">
-            Chronological Curriculum
-          </span>
-          <h2 className="font-display text-4xl text-on-surface font-normal mt-1">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-8 space-y-8 fade-in">
+      {/* Roadmap Header & View Mode Switcher */}
+      <div className="border-b border-outline-variant pb-6 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div className="space-y-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-xs uppercase font-mono tracking-widest text-tertiary">
+              Chronological Curriculum
+            </span>
+            <span className="text-xs text-secondary">•</span>
+            {/* View Switcher Pills */}
+            <div className="inline-flex items-center p-0.5 rounded-lg bg-surface-container border border-outline-variant font-mono text-xs">
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveView("stage-01");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-md text-secondary hover:text-primary transition-colors cursor-pointer"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>01 — Understand the Journey</span>
+              </button>
+              <button
+                type="button"
+                className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-md bg-surface text-primary font-semibold shadow-xs"
+              >
+                <ListTree className="w-3.5 h-3.5" />
+                <span>All 14 Stages</span>
+              </button>
+            </div>
+          </div>
+
+          <h2 className="font-display text-3xl sm:text-4xl text-on-surface font-normal">
             The 14-Stage Mastery Architecture
           </h2>
-          <p className="text-secondary text-sm max-w-2xl mt-1">
+          <p className="text-secondary text-xs sm:text-sm max-w-2xl leading-relaxed">
             Every stage builds directly on the prior. A student never wonders
             whether to take a mock or read theory first.
           </p>
         </div>
 
         {/* Journey Progress Pill */}
-        <div className="bg-surface-container border border-outline-variant rounded-[12px] p-3.5 min-w-[220px] space-y-2">
+        <div className="bg-surface-container border border-outline-variant rounded-xl p-4 min-w-[240px] space-y-2 shadow-terra-card">
           <div className="flex items-center justify-between text-xs">
             <span className="font-mono text-tertiary uppercase font-semibold">
-              Your Roadmap Progress
+              Roadmap Progress
             </span>
             <span className="font-mono font-bold text-primary">
               {progressPercent}%
@@ -59,13 +127,13 @@ export const CatRoadmapTab: React.FC<CatRoadmapTabProps> = ({
               style={{ width: `${progressPercent}%` }}
             />
           </div>
-          <div className="text-[11px] text-secondary flex justify-between">
+          <div className="text-[11px] text-secondary flex justify-between font-mono">
             <span>
-              {completedCount} of {CAT_ROADMAP_STAGES.length} Stages Certified
+              {completedCount} of {CAT_ROADMAP_STAGES.length} Certified
             </span>
             <span>
               {completedStages.length === 0
-                ? "Just Started"
+                ? "Starting Stage 01"
                 : `${14 - completedCount} Left`}
             </span>
           </div>
@@ -99,8 +167,8 @@ export const CatRoadmapTab: React.FC<CatRoadmapTabProps> = ({
 
               {/* Card Container */}
               <div
-                onClick={() => setSelectedStage(stage)}
-                className={`p-6 rounded-[12px] transition-all space-y-2.5 shadow-terra-card cursor-pointer transform hover:-translate-y-0.5 ${
+                onClick={() => handleStageCardClick(stage)}
+                className={`p-6 rounded-xl transition-all space-y-3 shadow-terra-card cursor-pointer transform hover:-translate-y-0.5 ${
                   isDone
                     ? "border border-primary/40 bg-surface opacity-90"
                     : isCurrentActive
@@ -125,7 +193,7 @@ export const CatRoadmapTab: React.FC<CatRoadmapTabProps> = ({
 
                   <div className="flex items-center space-x-3 text-xs">
                     <span className="flex items-center space-x-1 text-secondary font-mono">
-                      <Clock className="w-3 h-3" />
+                      <Clock className="w-3 h-3 text-tertiary" />
                       <span>{stage.timeEstimate}</span>
                     </span>
                     <span className="text-xs px-2.5 py-0.5 rounded-full bg-surface-container border border-outline-variant font-mono text-secondary">
@@ -148,18 +216,20 @@ export const CatRoadmapTab: React.FC<CatRoadmapTabProps> = ({
                   </div>
 
                   <div className="hidden sm:flex items-center text-xs font-semibold text-primary group-hover:translate-x-1 transition-transform flex-shrink-0 pt-2">
-                    <span>Explore Stage</span>
+                    <span>{stage.id === 1 ? "Open Guide" : "Explore Stage"}</span>
                     <ChevronRight className="w-4 h-4" />
                   </div>
                 </div>
 
                 {/* Sub-action checklist preview */}
-                <div className="pt-3 border-t border-outline-variant/60 flex flex-wrap items-center justify-between gap-2 text-xs text-secondary">
+                <div className="pt-3 border-t border-outline-variant/60 flex flex-wrap items-center justify-between gap-2 text-xs text-secondary font-mono">
                   <span>
                     {stage.actionChecklist.length} Actionable Milestones
                   </span>
-                  <span className="text-primary font-medium underline">
-                    Click to view doctrine &amp; checklist →
+                  <span className="text-primary font-medium">
+                    {stage.id === 1
+                      ? "Read 7-Section Orientation Guide →"
+                      : "View doctrine & checklist →"}
                   </span>
                 </div>
               </div>
@@ -168,7 +238,7 @@ export const CatRoadmapTab: React.FC<CatRoadmapTabProps> = ({
         })}
       </div>
 
-      {/* Stage Deep Dive Modal */}
+      {/* Stage Deep Dive Modal for Stages 02-14 */}
       <CatRoadmapDetailModal
         stage={selectedStage}
         isOpen={!!selectedStage}

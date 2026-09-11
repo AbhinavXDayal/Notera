@@ -4,27 +4,27 @@ export const CAT_ROADMAP_STAGES: RoadmapStage[] = [
   {
     id: 1,
     stageNumber: '01',
-    title: 'Understand the CAT Blueprint',
-    subtitle: 'Exam pattern, negative marking economics, and raw-to-percentile dynamics',
-    phase: 'Orientation',
+    title: 'Understand the Journey',
+    subtitle: 'Exam pattern, negative marking economics, score vs percentile, and strategic orientation',
+    phase: 'Before Studying',
     timeEstimate: '1–2 Days',
-    badge: 'Stage 01 • Immediate Focus',
-    description: 'Examine the fundamental architecture of CAT: 66 questions, 120 minutes (40 mins/section), negative marking economics (+3/-1), percentile calculations, and how scoring ~50% raw marks consistently secures 99+ percentile.',
+    badge: 'BEFORE STUDYING',
+    description: 'Before opening books, solving questions or buying courses, understand what CAT actually is, how the exam works and where you want the journey to take you.',
     detailedGuidance: [
       'CAT is not a knowledge test; it is an elimination and decision-making test under strict time scarcity.',
       'Understand section order: VARC (40m) → DILR (40m) → QA (40m). Section switching is strictly barred.',
-      'Study past 5-year score vs. percentile trends: 75/198 marks ≈ 99 %ile, 60/198 ≈ 95 %ile.',
-      'Familiarize yourself with Non-MCQ (TITA - Type In The Answer) questions which carry no negative marking.'
+      'Study score vs. percentile dynamics: scoring ~50% raw marks consistently yields 99+ percentile.',
+      'Familiarize yourself with MCQ marking (+3/-1) and TITA questions carrying zero negative penalty.'
     ],
     keyMindsets: [
-      'Question selection is more critical than question solving.',
+      'CAT is not only about solving more questions. It is also about selecting the right questions and making good decisions under time pressure.',
       'Leaving a dangerous question in under 30 seconds is a net gain of 3+ marks.'
     ],
     actionChecklist: [
-      { id: 'c1-1', text: 'Read the complete CAT Structure & Scoring Guide' },
-      { id: 'c1-2', text: 'Review previous year raw score vs percentile charts' },
-      { id: 'c1-3', text: 'Understand IIM composite score weightages (10th/12th/Grad/CAT)' },
-      { id: 'c1-4', text: 'Set up an error logging system / study journal' }
+      { id: 'c1-1', text: 'Read the complete 7-Section Journey Orientation Guide' },
+      { id: 'c1-2', text: 'Run score simulations using the Notera CAT Score Estimator' },
+      { id: 'c1-3', text: 'Review Target College Tiers (Dream, High Target, Realistic)' },
+      { id: 'c1-4', text: 'Select preparation approach: Self-Study, Coaching, or Hybrid' }
     ],
     resources: [
       { title: 'The CAT Architecture Blueprint', type: 'Note', actionNoteId: 'cat-blueprint' },

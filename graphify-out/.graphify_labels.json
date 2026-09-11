@@ -1,0 +1,22 @@
+{
+  "0": "App.tsx",
+  "1": "CatRoadmapTab.tsx",
+  "2": "EducationalResource",
+  "3": "KnowledgeMapBackground.tsx",
+  "4": "compilerOptions",
+  "5": "NotesLayout.tsx",
+  "6": "devDependencies",
+  "7": "SearchModal.tsx",
+  "8": "compilerOptions",
+  "9": "package.json",
+  "10": "useVisitorPreferences.ts",
+  "11": "FieldGuideSection.tsx",
+  "12": "plugins",
+  "13": "Dedicated CAT Universe",
+  "14": "tsconfig.json",
+  "15": "postcss.config.js",
+  "16": "tailwind.config.js",
+  "17": "rules/graphify.md",
+  "18": "vite.config.ts",
+  "19": "workflows/graphify.md"
+}

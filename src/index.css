@@ -12,22 +12,26 @@
 
   body {
     @apply bg-background text-on-surface font-body selection:bg-primary/20 selection:text-on-surface;
-    background-color: #0F0E0D;
+    background-color: #0f0e0d;
     overflow-x: hidden;
   }
 
   /* Smooth interactive transitions */
-  a, button, input, select, textarea {
+  a,
+  button,
+  input,
+  select,
+  textarea {
     @apply transition-colors duration-200 ease-out;
   }
 }
 
 /* Refined obsidian mineral texture with delicate beige stipple */
 .paper-texture {
-  background-color: #0F0E0D;
+  background-color: #0f0e0d;
   background-image:
     radial-gradient(rgba(216, 195, 165, 0.06) 0.5px, transparent 0.5px),
-    radial-gradient(rgba(235, 224, 210, 0.03) 0.5px, #0F0E0D 0.5px);
+    radial-gradient(rgba(235, 224, 210, 0.03) 0.5px, #0f0e0d 0.5px);
   background-size: 28px 28px;
   background-position:
     0 0,
@@ -41,17 +45,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0F0E0D;
+  background: #0f0e0d;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #302C28;
+  background: #302c28;
   border-radius: 9999px;
   transition: background-color 0.2s ease-out;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D8C3A5;
+  background: #d8c3a5;
 }
 
 /* Silky smooth entrance transitions */

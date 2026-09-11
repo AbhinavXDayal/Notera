@@ -594,21 +594,33 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
               <p>• Understanding your goals</p>
               <p>• Choosing your preparation approach</p>
             </div>
-            <div className="flex items-center justify-between pt-1">
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
               <p className="text-xs text-primary font-medium">
                 Goal: Know what you're preparing for before collecting resources
               </p>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleStageSelect("01");
-                }}
-                className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer ml-2 whitespace-nowrap"
-              >
-                <BookOpen className="w-3 h-3" />
-                <span>View Notes →</span>
-              </button>
+              <div className="flex items-center space-x-2">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onNavigateTab?.("journey");
+                  }}
+                  className="inline-flex items-center space-x-1 text-[11px] font-mono text-on-primary bg-primary hover:bg-primary-hover px-2.5 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap font-medium"
+                >
+                  <span>Open Stage 01 Guide →</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleStageSelect("01");
+                  }}
+                  className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap"
+                >
+                  <BookOpen className="w-3 h-3" />
+                  <span>View Notes →</span>
+                </button>
+              </div>
             </div>
           </div>
         )}
