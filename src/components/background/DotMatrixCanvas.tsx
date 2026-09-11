@@ -94,8 +94,8 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
           } else if (isBeigeOat && !isReading) {
             ctx.fillStyle = `rgba(216, 195, 165, ${Math.min(alpha * 1.5, 0.5)})`;
           } else {
-            // Soft warm mocha base dot
-            ctx.fillStyle = `rgba(180, 155, 136, ${Math.min(alpha * 1.2, 0.32)})`;
+            // Soft obsidian mineral base dot
+            ctx.fillStyle = `rgba(160, 150, 140, ${Math.min(alpha * 1.1, 0.28)})`;
           }
 
           const dotSize =

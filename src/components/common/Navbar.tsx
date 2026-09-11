@@ -93,11 +93,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="relative hidden sm:flex items-center group cursor-pointer text-left focus:outline-none"
             aria-label="Open global search"
           >
-            <div className="bg-[#372b23]/50 hover:bg-[#46382f]/70 backdrop-blur-sm border border-outline-variant/40 group-hover:border-primary/50 rounded-full pl-9 pr-2.5 py-1.5 text-xs text-secondary/80 group-hover:text-on-surface transition-all duration-300 w-52 sm:w-60 hover:w-64 focus-within:w-64 flex items-center justify-between shadow-xs group-hover:shadow-[0_0_16px_rgba(216,195,165,0.12)]">
+            <div className="bg-surface-container-low/60 hover:bg-surface-container/80 backdrop-blur-sm border border-outline-variant/40 group-hover:border-primary/50 rounded-full pl-9 pr-2.5 py-1.5 text-xs text-secondary/80 group-hover:text-on-surface transition-all duration-300 w-52 sm:w-60 hover:w-64 focus-within:w-64 flex items-center justify-between shadow-xs group-hover:shadow-[0_0_16px_rgba(216,195,165,0.14)]">
               <span className="truncate pr-2 font-normal">
                 Search notes, PDFs, topics...
               </span>
-              <kbd className="text-[10px] font-mono font-medium bg-[#2a201a]/80 group-hover:bg-[#231a15] border border-outline-variant/60 group-hover:border-primary/40 px-1.5 py-0.5 rounded text-primary/80 shadow-xs shrink-0 transition-colors">
+              <kbd className="text-[10px] font-mono font-medium bg-surface-container-lowest/90 group-hover:bg-surface-container-lowest border border-outline-variant/60 group-hover:border-primary/40 px-1.5 py-0.5 rounded text-primary/80 shadow-xs shrink-0 transition-colors">
                 ⌘K
               </kbd>
             </div>

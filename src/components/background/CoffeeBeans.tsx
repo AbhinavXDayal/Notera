@@ -171,9 +171,9 @@ export const CoffeeBeans: React.FC<CoffeeBeansProps> = ({
                 x2="100%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor="#8C5E3C" />
-                <stop offset="50%" stopColor="#70472B" />
-                <stop offset="100%" stopColor="#5C3820" />
+                <stop offset="0%" stopColor="#38302A" />
+                <stop offset="50%" stopColor="#25201C" />
+                <stop offset="100%" stopColor="#171412" />
               </linearGradient>
               <linearGradient
                 id={`beanCrease-${bean.id}`}
@@ -182,9 +182,9 @@ export const CoffeeBeans: React.FC<CoffeeBeansProps> = ({
                 x2="100%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor="#B8835A" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#3B2A22" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#B8835A" stopOpacity="0.6" />
+                <stop offset="0%" stopColor="#D8C3A5" stopOpacity="0.7" />
+                <stop offset="50%" stopColor="#1A1614" stopOpacity="0.95" />
+                <stop offset="100%" stopColor="#D8C3A5" stopOpacity="0.5" />
               </linearGradient>
             </defs>
 
@@ -195,7 +195,7 @@ export const CoffeeBeans: React.FC<CoffeeBeansProps> = ({
               rx="10"
               ry="14"
               fill={`url(#beanGrad-${bean.id})`}
-              stroke="#8C5E3C"
+              stroke="#433A33"
               strokeWidth="0.75"
             />
 

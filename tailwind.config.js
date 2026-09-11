@@ -5,63 +5,63 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Base Background: Warm Medium-Dark Roasted Mocha & Velvety Cocoa
-        background: "#322720",
-        surface: "#3D3027",
-        "on-background": "#FAF3EC",
-        "on-surface": "#FAF3EC",
-        "on-surface-variant": "#E2D5C8",
-        secondary: "#CEBEAF",
-        "on-secondary": "#241A14",
+        // Base Background: Sleek Deep Obsidian Mineral
+        background: "#0F0E0D",
+        surface: "#161514",
+        "on-background": "#F5EFE6",
+        "on-surface": "#F5EFE6",
+        "on-surface-variant": "#DDD2C4",
+        secondary: "#C2B29F",
+        "on-secondary": "#161514",
 
-        // Containers & Cards: Warm Layered Mocha Surfaces
-        "surface-container": "#46382F",
-        "surface-container-low": "#372B23",
-        "surface-container-high": "#514137",
-        "surface-container-highest": "#5C4B40",
-        "surface-container-lowest": "#2A201A",
-        "surface-variant": "#4B3D34",
-        "surface-bright": "#57473D",
-        "surface-dim": "#2E231D",
+        // Containers & Cards: Layered Obsidian Mineral Surfaces
+        "surface-container": "#1B1A18",
+        "surface-container-low": "#131211",
+        "surface-container-high": "#242220",
+        "surface-container-highest": "#2D2B28",
+        "surface-container-lowest": "#0B0A09",
+        "surface-variant": "#201E1C",
+        "surface-bright": "#2A2825",
+        "surface-dim": "#11100F",
 
         // Primary: Refined Warm Beige & Light Oat (Zero Orange)
         primary: "#D8C3A5",
-        "primary-hover": "#E5D5C0",
-        "on-primary": "#2A2018",
-        "primary-container": "#45382E",
-        "on-primary-container": "#F7F2EB",
-        "primary-fixed": "#E8DDD0",
+        "primary-hover": "#E6D6C2",
+        "on-primary": "#161514",
+        "primary-container": "#262320",
+        "on-primary-container": "#FAF5EE",
+        "primary-fixed": "#EAE0D3",
         "primary-fixed-dim": "#D8C3A5",
-        "on-primary-fixed": "#2A2018",
+        "on-primary-fixed": "#161514",
         "primary-tint": "#D8C3A5",
         "surface-tint": "#D8C3A5",
-        "inverse-primary": "#45382E",
-        "inverse-surface": "#FAF3EC",
+        "inverse-primary": "#262320",
+        "inverse-surface": "#FAF5EE",
 
         // Tertiary: Soft Almond Beige & Creamy Latte Crema
-        tertiary: "#CDBCA8",
-        "tertiary-dark": "#B5A28E",
-        "tertiary-container": "#42352B",
-        "on-tertiary": "#2A2018",
+        tertiary: "#C9B7A1",
+        "tertiary-dark": "#A89681",
+        "tertiary-container": "#23201D",
+        "on-tertiary": "#161514",
         "on-tertiary-container": "#FAF5EE",
         "tertiary-fixed": "#EFE6DB",
-        "tertiary-fixed-dim": "#CDBCA8",
-        "on-tertiary-fixed": "#2A2018",
+        "tertiary-fixed-dim": "#C9B7A1",
+        "on-tertiary-fixed": "#161514",
 
-        // Outlines & Hairlines in Warm Mocha
-        outline: "#6B5647",
-        "outline-variant": "#544236",
-        hairline: "#48372C",
-        "hairline-dark": "#382A21",
+        // Outlines & Hairlines in Sleek Obsidian
+        outline: "#433E39",
+        "outline-variant": "#302C28",
+        hairline: "#282522",
+        "hairline-dark": "#1C1A18",
 
         // Secondary containers
-        "secondary-container": "#44352C",
-        "on-secondary-container": "#FAF3EC",
-        "secondary-fixed": "#524136",
-        "secondary-fixed-dim": "#3F3027",
+        "secondary-container": "#22201E",
+        "on-secondary-container": "#FAF5EE",
+        "secondary-fixed": "#2E2B27",
+        "secondary-fixed-dim": "#22201D",
 
         // Status
-        error: "#E56350",
+        error: "#E06D5E",
         "on-error": "#FFFFFF",
       },
       fontFamily: {
@@ -74,9 +74,9 @@ export default {
       },
       boxShadow: {
         "terra-card":
-          "0 4px 20px rgba(0, 0, 0, 0.28), 0 1px 3px rgba(0, 0, 0, 0.18)",
+          "0 4px 24px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4)",
         "terra-hover":
-          "0 10px 30px rgba(0, 0, 0, 0.42), 0 3px 10px rgba(216, 195, 165, 0.22)",
+          "0 12px 36px rgba(0, 0, 0, 0.75), 0 3px 12px rgba(216, 195, 165, 0.14)",
       },
     },
   },

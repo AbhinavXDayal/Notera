@@ -12,7 +12,7 @@
 
   body {
     @apply bg-background text-on-surface font-body selection:bg-primary/20 selection:text-on-surface;
-    background-color: #322720;
+    background-color: #0F0E0D;
     overflow-x: hidden;
   }
 
@@ -22,12 +22,12 @@
   }
 }
 
-/* Warm roasted mocha café library texture with beige stipple */
+/* Refined obsidian mineral texture with delicate beige stipple */
 .paper-texture {
-  background-color: #322720;
+  background-color: #0F0E0D;
   background-image:
-    radial-gradient(rgba(216, 195, 165, 0.08) 0.5px, transparent 0.5px),
-    radial-gradient(rgba(235, 224, 210, 0.05) 0.5px, #322720 0.5px);
+    radial-gradient(rgba(216, 195, 165, 0.06) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(235, 224, 210, 0.03) 0.5px, #0F0E0D 0.5px);
   background-size: 28px 28px;
   background-position:
     0 0,
@@ -41,11 +41,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #322720;
+  background: #0F0E0D;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #544236;
+  background: #302C28;
   border-radius: 9999px;
   transition: background-color 0.2s ease-out;
 }

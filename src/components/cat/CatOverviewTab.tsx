@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  ArrowLeft,
-  ChevronDown,
-  Sparkles,
-  BookOpen,
-  X,
-} from "lucide-react";
+import { ArrowLeft, ChevronDown, Sparkles, BookOpen, X } from "lucide-react";
 
 export type CatTabType =
   | "overview"
