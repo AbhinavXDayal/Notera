@@ -49,10 +49,10 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
           cx="100"
           cy="100"
           r="82"
-          stroke="#2E2925"
+          stroke="#6B6358"
           strokeWidth="3.5"
           strokeDasharray="40 12 80 8 30 15"
-          strokeOpacity="0.3"
+          strokeOpacity="0.25"
           filter="url(#ringGrain)"
         />
 
@@ -61,18 +61,18 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
           cx="100"
           cy="100"
           r="76"
-          stroke="#221E1B"
+          stroke="#4A7C59"
           strokeWidth="1.5"
           strokeDasharray="60 20 50 15"
-          strokeOpacity="0.22"
+          strokeOpacity="0.18"
         />
 
-        {/* Delicate cup edge highlight in warm beige */}
+        {/* Delicate cup edge highlight in warm ochre */}
         <circle
           cx="99"
           cy="99"
           r="84"
-          stroke="#D8C3A5"
+          stroke="#C4A66A"
           strokeWidth="0.75"
           strokeDasharray="25 70 30 50"
           strokeOpacity="0.22"
@@ -91,28 +91,28 @@ export const CoffeeRings: React.FC<CoffeeRingsProps> = ({
             cx="100"
             cy="100"
             r="78"
-            stroke="#2E2925"
+            stroke="#6B6358"
             strokeWidth="3"
             strokeDasharray="50 15 70 10 20 20"
-            strokeOpacity="0.28"
+            strokeOpacity="0.22"
           />
           <circle
             cx="100"
             cy="100"
             r="73"
-            stroke="#221E1B"
+            stroke="#4A7C59"
             strokeWidth="1.2"
             strokeDasharray="40 30 60 10"
-            strokeOpacity="0.18"
+            strokeOpacity="0.15"
           />
           <circle
             cx="101"
             cy="101"
             r="80"
-            stroke="#D8C3A5"
+            stroke="#C4A66A"
             strokeWidth="0.5"
             strokeDasharray="20 80 40 40"
-            strokeOpacity="0.2"
+            strokeOpacity="0.18"
           />
         </svg>
       )}

@@ -471,3 +471,4 @@ export const STAGE_01_DATA = {
     nextStageId: 2,
   },
 };
+

@@ -5,63 +5,67 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Base Background: Sleek Deep Obsidian Mineral
-        background: "#0F0E0D",
-        surface: "#161514",
-        "on-background": "#F5EFE6",
-        "on-surface": "#F5EFE6",
-        "on-surface-variant": "#DDD2C4",
-        secondary: "#C2B29F",
-        "on-secondary": "#161514",
+        // Base Background & Canvas: Calming Pale Sage Linen
+        background: "#E5EAE3",
+        surface: "#EEF2EC",
+        "on-background": "#1F2420",
+        "on-surface": "#1F2420",
+        "on-surface-variant": "#4A4E4A",
+        secondary: "#6B6358",
+        "on-secondary": "#FFFFFF",
 
-        // Containers & Cards: Layered Obsidian Mineral Surfaces
-        "surface-container": "#1B1A18",
-        "surface-container-low": "#131211",
-        "surface-container-high": "#242220",
-        "surface-container-highest": "#2D2B28",
-        "surface-container-lowest": "#0B0A09",
-        "surface-variant": "#201E1C",
-        "surface-bright": "#2A2825",
-        "surface-dim": "#11100F",
+        // Neutral
+        neutral: "#4A4E4A",
 
-        // Primary: Refined Warm Beige & Light Oat (Zero Orange)
-        primary: "#D8C3A5",
-        "primary-hover": "#E6D6C2",
-        "on-primary": "#161514",
-        "primary-container": "#262320",
-        "on-primary-container": "#FAF5EE",
-        "primary-fixed": "#EAE0D3",
-        "primary-fixed-dim": "#D8C3A5",
-        "on-primary-fixed": "#161514",
-        "primary-tint": "#D8C3A5",
-        "surface-tint": "#D8C3A5",
-        "inverse-primary": "#262320",
-        "inverse-surface": "#FAF5EE",
+        // Containers & Cards: Crisp Layered Sage-Cream Surfaces
+        "surface-container": "#F5F8F4",
+        "surface-container-low": "#E9EFE7",
+        "surface-container-high": "#FAFCF9",
+        "surface-container-highest": "#FFFFFF",
+        "surface-container-lowest": "#DFE5DD",
+        "surface-variant": "#E2E8E0",
+        "surface-bright": "#FFFFFF",
+        "surface-dim": "#D8DFD5",
 
-        // Tertiary: Soft Almond Beige & Creamy Latte Crema
-        tertiary: "#C9B7A1",
-        "tertiary-dark": "#A89681",
-        "tertiary-container": "#23201D",
-        "on-tertiary": "#161514",
-        "on-tertiary-container": "#FAF5EE",
-        "tertiary-fixed": "#EFE6DB",
-        "tertiary-fixed-dim": "#C9B7A1",
-        "on-tertiary-fixed": "#161514",
+        // Primary: Forest Sage Green (#4A7C59)
+        primary: "#4A7C59",
+        "primary-hover": "#3B6748",
+        "on-primary": "#FFFFFF",
+        "primary-container": "#D7E6DB",
+        "on-primary-container": "#12331D",
+        "primary-fixed": "#D7E6DB",
+        "primary-fixed-dim": "#4A7C59",
+        "on-primary-fixed": "#12331D",
+        "primary-tint": "#4A7C59",
+        "surface-tint": "#4A7C59",
+        "inverse-primary": "#A3CFB0",
+        "inverse-surface": "#1F2420",
 
-        // Outlines & Hairlines in Sleek Obsidian
-        outline: "#433E39",
-        "outline-variant": "#302C28",
-        hairline: "#282522",
-        "hairline-dark": "#1C1A18",
+        // Secondary: Warm Taupe Earth (#6B6358)
+        "secondary-hover": "#585147",
+        "secondary-container": "#EAE5DF",
+        "on-secondary-container": "#26221C",
+        "secondary-fixed": "#EAE5DF",
+        "secondary-fixed-dim": "#6B6358",
 
-        // Secondary containers
-        "secondary-container": "#22201E",
-        "on-secondary-container": "#FAF5EE",
-        "secondary-fixed": "#2E2B27",
-        "secondary-fixed-dim": "#22201D",
+        // Tertiary: Warm Ochre & Antique Gold (#C4A66A)
+        tertiary: "#C4A66A",
+        "tertiary-dark": "#A4854B",
+        "tertiary-container": "#F6EDDC",
+        "on-tertiary": "#2B200A",
+        "on-tertiary-container": "#3D2E12",
+        "tertiary-fixed": "#F6EDDC",
+        "tertiary-fixed-dim": "#C4A66A",
+        "on-tertiary-fixed": "#2B200A",
+
+        // Outlines & Hairlines in Soft Sage Slate
+        outline: "#CBD3C8",
+        "outline-variant": "#DCE3DA",
+        hairline: "#E2E8E0",
+        "hairline-dark": "#CBD3C8",
 
         // Status
-        error: "#E06D5E",
+        error: "#B83A3A",
         "on-error": "#FFFFFF",
       },
       fontFamily: {
@@ -74,9 +78,9 @@ export default {
       },
       boxShadow: {
         "terra-card":
-          "0 4px 24px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4)",
+          "0 2px 12px rgba(44, 56, 46, 0.06), 0 1px 3px rgba(44, 56, 46, 0.04)",
         "terra-hover":
-          "0 12px 36px rgba(0, 0, 0, 0.75), 0 3px 12px rgba(216, 195, 165, 0.14)",
+          "0 8px 24px rgba(74, 124, 89, 0.14), 0 2px 8px rgba(44, 56, 46, 0.06)",
       },
     },
   },

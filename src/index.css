@@ -11,8 +11,8 @@
   }
 
   body {
-    @apply bg-background text-on-surface font-body selection:bg-primary/20 selection:text-on-surface;
-    background-color: #0f0e0d;
+    @apply bg-background text-on-surface font-body selection:bg-primary/20 selection:text-primary;
+    background-color: #E5EAE3;
     overflow-x: hidden;
   }
 
@@ -26,12 +26,12 @@
   }
 }
 
-/* Refined obsidian mineral texture with delicate beige stipple */
+/* Calming botanical sage texture with subtle earth stipple */
 .paper-texture {
-  background-color: #0f0e0d;
+  background-color: #E5EAE3;
   background-image:
-    radial-gradient(rgba(216, 195, 165, 0.06) 0.5px, transparent 0.5px),
-    radial-gradient(rgba(235, 224, 210, 0.03) 0.5px, #0f0e0d 0.5px);
+    radial-gradient(rgba(74, 124, 89, 0.08) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(107, 99, 88, 0.04) 0.5px, #E5EAE3 0.5px);
   background-size: 28px 28px;
   background-position:
     0 0,
@@ -45,17 +45,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f0e0d;
+  background: #E5EAE3;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #302c28;
+  background: #CBD3C8;
   border-radius: 9999px;
   transition: background-color 0.2s ease-out;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d8c3a5;
+  background: #4A7C59;
 }
 
 /* Silky smooth entrance transitions */

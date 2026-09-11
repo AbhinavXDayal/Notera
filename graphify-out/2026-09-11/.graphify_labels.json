@@ -1,1 +1,23 @@
-{"0": "App Root & Navigation Coordinator", "1": "CAT Examination & Header Modals", "2": "Curriculum Subjects & Resource Library", "3": "Knowledge Map Canvas & Background Physics", "4": "TypeScript App Configuration", "5": "Digital Notes Layout & Reading Engine", "6": "Build Tools & Dev Dependencies", "7": "Shared Layout, Logo & Footer", "8": "Vite Node Compiler Configuration", "9": "Core NPM Dependencies & Icons", "10": "Personalized Recommendation Engine", "11": "Field Guide & Exam Blueprint Views", "12": "Linter & Code Quality Rules", "13": "Notera Educational Architecture & Platform Concepts", "14": "TypeScript Workspace Configuration", "15": "PostCSS Pipeline Configuration", "16": "Tailwind Theme & Styling Tokens", "17": "Tailwind CSS Utility Engine", "18": "Vite Bundler Configuration"}
+{
+  "0": "App.tsx",
+  "1": "CatRoadmapTab.tsx",
+  "2": "EducationalResource",
+  "3": "KnowledgeMapBackground.tsx",
+  "4": "compilerOptions",
+  "5": "NotesLayout.tsx",
+  "6": "devDependencies",
+  "7": "SearchModal.tsx",
+  "8": "compilerOptions",
+  "9": "package.json",
+  "10": "react",
+  "11": "FieldGuideSection.tsx",
+  "12": "plugins",
+  "13": "Dedicated CAT Universe",
+  "14": "tsconfig.json",
+  "15": "postcss.config.js",
+  "16": "tailwind.config.js",
+  "17": "rules/graphify.md",
+  "18": "vite.config.ts",
+  "19": "workflows/graphify.md",
+  "20": "CatOverviewTab.tsx"
+}

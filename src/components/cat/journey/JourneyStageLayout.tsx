@@ -99,3 +99,4 @@ export const JourneyStageLayout: React.FC<JourneyStageLayoutProps> = ({
     </div>
   );
 };
+

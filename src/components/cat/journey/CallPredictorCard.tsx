@@ -68,3 +68,4 @@ export const CallPredictorCard: React.FC = () => {
     </div>
   );
 };
+

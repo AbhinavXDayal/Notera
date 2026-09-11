@@ -299,3 +299,4 @@ export const Stage01UnderstandJourney: React.FC<Stage01UnderstandJourneyProps> =
     </JourneyStageLayout>
   );
 };
+

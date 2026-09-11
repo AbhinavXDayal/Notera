@@ -78,10 +78,10 @@
     "semantic_hash": "b3f3001bdf083e9b95d25f977e6483a8"
   },
   "src/components/cat/CatOverviewTab.tsx": {
-    "mtime": 1789161499.2631533,
-    "seen": 1789161781.5473552,
-    "ast_hash": "855923e5583b454f7ab6bd141159b401",
-    "semantic_hash": "855923e5583b454f7ab6bd141159b401"
+    "mtime": 1789162043.76832,
+    "seen": 1789162085.7832227,
+    "ast_hash": "63703f48c15245df34fe0f16afb2986f",
+    "semantic_hash": ""
   },
   "src/components/cat/CatPracticeTab.tsx": {
     "mtime": 1789057093.9254532,
@@ -96,10 +96,10 @@
     "semantic_hash": "ef6a703e70cee85d3469037058bda7f9"
   },
   "src/components/cat/CatRoadmapTab.tsx": {
-    "mtime": 1789057093.9254532,
-    "seen": 1789161781.547364,
-    "ast_hash": "82ee0e5d2b70131c991a1d4aad1b029d",
-    "semantic_hash": "82ee0e5d2b70131c991a1d4aad1b029d"
+    "mtime": 1789162023.7514887,
+    "seen": 1789162085.7832284,
+    "ast_hash": "8aa5bd7029093c3fdcf52de6fed7bd59",
+    "semantic_hash": ""
   },
   "src/components/cat/CatSubjectsTab.tsx": {
     "mtime": 1789059768.7917564,
@@ -240,10 +240,10 @@
     "semantic_hash": "57f5e5863a3ff15ea6c4837ea6fc3813"
   },
   "src/data/catRoadmap.ts": {
-    "mtime": 1789057091.975095,
-    "seen": 1789161781.5474365,
-    "ast_hash": "fbb84b5d7f839b89c1d7013e4f24f6b7",
-    "semantic_hash": "fbb84b5d7f839b89c1d7013e4f24f6b7"
+    "mtime": 1789162011.43871,
+    "seen": 1789162085.7832778,
+    "ast_hash": "138fc527fedefc612fb75700033ed1c3",
+    "semantic_hash": ""
   },
   "src/data/catSubjects.ts": {
     "mtime": 1789057093.6709762,
@@ -388,5 +388,185 @@
     "seen": 1789161781.54751,
     "ast_hash": "8ce313dfe6745ecaef824acdd51ae7a3",
     "semantic_hash": "8ce313dfe6745ecaef824acdd51ae7a3"
+  },
+  ".agents/rules/graphify.md": {
+    "mtime": 1789161840.702143,
+    "seen": 1789161861.5470731,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": ""
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1789161841.3233733,
+    "seen": 1789161861.547075,
+    "ast_hash": "a831cf3669f1e6ab85d8a80ebe655f99",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1789058021.9881756,
+    "seen": 1789161861.5470784,
+    "ast_hash": "69c24ffb2e2049f7b90a2a13d44b2990",
+    "semantic_hash": ""
+  },
+  "public/resources/cat/dilr/matrix-deduction-logic-workbook.pdf": {
+    "mtime": 1789059478.5327773,
+    "seen": 1789161861.5470796,
+    "ast_hash": "9a9f69ba700ac4f99676c3140cc5f869",
+    "semantic_hash": ""
+  },
+  "public/resources/cat/dilr/tournaments-seeding-algorithms-guide.pdf": {
+    "mtime": 1789059478.53388,
+    "seen": 1789161861.547081,
+    "ast_hash": "2b4e1ad2683712b2e735e27cc852fcfd",
+    "semantic_hash": ""
+  },
+  "public/resources/cat/dilr/visual-di-trend-grids.pdf": {
+    "mtime": 1789059478.5350697,
+    "seen": 1789161861.547082,
+    "ast_hash": "f7dabc95321093a8b0accc46af53fb3a",
+    "semantic_hash": ""
+  },
+  "public/resources/cat/qa/algebra/algebra-roots-quadratics-codex.pdf": {
+    "mtime": 1789059478.5266025,
+    "seen": 1789161861.5470834,
+    "ast_hash": "eda988aac1043202abaaf0b5da7e7706",
+    "semantic_hash": ""
+  },
+  "public/resources/cat/qa/arithmetic/percentages-multipliers-handbook.pdf": {
+    "mtime": 1789059478.522532,
+    "seen": 1789161861.5470843,
+    "ast_hash": "505c612ff89a55cf0975fa1285c874f7",
+    "semantic_hash": ""
+  },
+  "public/resources/cat/qa/geometry/geometry-theorems-cheat-sheet.pdf": {
+    "mtime": 1789059478.5272102,
+    "seen": 1789161861.5470853,
+    "ast_hash": "f0389249a237bbfb4d81d985e985247e",
+    "semantic_hash": ""
+  },
+  "public/resources/cat/qa/modern-math/pnc-probability-frameworks.pdf": {
+    "mtime": 1789059478.5294452,
+    "seen": 1789161861.5470862,
+    "ast_hash": "2d52e4115c91371377b8d95dd71e356d",
+    "semantic_hash": ""
+  },
+  "public/resources/cat/qa/numbers/number-systems-remainder-theorems.pdf": {
+    "mtime": 1789059478.5283086,
+    "seen": 1789161861.5470877,
+    "ast_hash": "097044a237581378de36dbc42c736ea8",
+    "semantic_hash": ""
+  },
+  "public/resources/cat/strategy/cat-official-blueprint-percentiles.pdf": {
+    "mtime": 1789059478.5356205,
+    "seen": 1789161861.5470886,
+    "ast_hash": "b78a8af650b35100331d69f1bdbaa907",
+    "semantic_hash": ""
+  },
+  "public/resources/cat/strategy/sectional-sprint-triage-protocol.pdf": {
+    "mtime": 1789059478.536163,
+    "seen": 1789161861.5470896,
+    "ast_hash": "0c6b528a0f91460ad2b1a77373b14ac6",
+    "semantic_hash": ""
+  },
+  "public/resources/cat/varc/parajumbles-mandatory-pairs-codex.pdf": {
+    "mtime": 1789059478.532233,
+    "seen": 1789161861.547091,
+    "ast_hash": "9934f511963d57729f72a3d664d5380f",
+    "semantic_hash": ""
+  },
+  "public/resources/cat/varc/rc-structural-deconstruction-guide.pdf": {
+    "mtime": 1789059478.5305717,
+    "seen": 1789161861.5470922,
+    "ast_hash": "81e93b60c9f2541f52bff7f4994b2c3e",
+    "semantic_hash": ""
+  },
+  "public/resources/cat/varc/tone-mapping-assumption-elimination.pdf": {
+    "mtime": 1789059478.5311239,
+    "seen": 1789161861.5470932,
+    "ast_hash": "b09d123f1353628b467d60a3e89897a4",
+    "semantic_hash": ""
+  },
+  "public/favicon.svg": {
+    "mtime": 1789058016.877585,
+    "seen": 1789161861.5470946,
+    "ast_hash": "8fe60e139ff498a60b943d9472921d6a",
+    "semantic_hash": ""
+  },
+  "public/icons.svg": {
+    "mtime": 1789056398.9983437,
+    "seen": 1789161861.5470955,
+    "ast_hash": "3b4fcfcf393eca4d264dca4a4663bc37",
+    "semantic_hash": ""
+  },
+  "src/assets/hero.png": {
+    "mtime": 1789056399.0135248,
+    "seen": 1789161861.5470972,
+    "ast_hash": "aead493361b27e7510691c5d7072dfc1",
+    "semantic_hash": ""
+  },
+  "src/assets/react.svg": {
+    "mtime": 1789056399.0170386,
+    "seen": 1789161861.5470982,
+    "ast_hash": "f0402b67b6ce880f65666bb49e841696",
+    "semantic_hash": ""
+  },
+  "src/assets/vite.svg": {
+    "mtime": 1789056399.0252357,
+    "seen": 1789161861.547099,
+    "ast_hash": "9960a24288958394ac50e57ff638b036",
+    "semantic_hash": ""
+  },
+  "src/components/cat/journey/CallPredictorCard.tsx": {
+    "mtime": 1789161963.0052042,
+    "seen": 1789162085.7832317,
+    "ast_hash": "71639bbfa41b7da41026d00739bbba19",
+    "semantic_hash": ""
+  },
+  "src/components/cat/journey/GoalPlanningSection.tsx": {
+    "mtime": 1789161973.7217486,
+    "seen": 1789162085.7832332,
+    "ast_hash": "96a253ff8c827f8b04718146bd580582",
+    "semantic_hash": ""
+  },
+  "src/components/cat/journey/JourneySection.tsx": {
+    "mtime": 1789161941.4884763,
+    "seen": 1789162085.7832348,
+    "ast_hash": "718f6be0fc05ed5d2e8c6596efc82a3a",
+    "semantic_hash": ""
+  },
+  "src/components/cat/journey/JourneyStageLayout.tsx": {
+    "mtime": 1789161984.694821,
+    "seen": 1789162085.7832358,
+    "ast_hash": "1ba1b536b330a39f23552b1f6cd98163",
+    "semantic_hash": ""
+  },
+  "src/components/cat/journey/PreparationApproach.tsx": {
+    "mtime": 1789161978.6152835,
+    "seen": 1789162085.7832372,
+    "ast_hash": "792b3f7e7302aa6411e88a679a5fd9d3",
+    "semantic_hash": ""
+  },
+  "src/components/cat/journey/ScorePercentileExplorer.tsx": {
+    "mtime": 1789161957.7774928,
+    "seen": 1789162085.7832384,
+    "ast_hash": "4fee7c45c14171b8792a3cfd70b44274",
+    "semantic_hash": ""
+  },
+  "src/components/cat/journey/SectionPillarCard.tsx": {
+    "mtime": 1789161946.417675,
+    "seen": 1789162085.7832396,
+    "ast_hash": "6b89cbcb54ea1ad8185839c8c81b9e78",
+    "semantic_hash": ""
+  },
+  "src/components/cat/journey/Stage01UnderstandJourney.tsx": {
+    "mtime": 1789161994.4922369,
+    "seen": 1789162085.783241,
+    "ast_hash": "a68f3ce7828b6b00d0c06c7252ca9162",
+    "semantic_hash": ""
+  },
+  "src/data/catJourneyData.ts": {
+    "mtime": 1789161936.7627313,
+    "seen": 1789162085.7832735,
+    "ast_hash": "43c02ae258085e4b3dbfa79980f8b566",
+    "semantic_hash": ""
   }
 }

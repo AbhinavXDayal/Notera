@@ -94,3 +94,4 @@ export const PreparationApproach: React.FC = () => {
     </div>
   );
 };
+

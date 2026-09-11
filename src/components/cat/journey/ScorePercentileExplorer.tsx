@@ -172,7 +172,7 @@ export const ScorePercentileExplorer: React.FC = () => {
               max={72}
               value={varcScore}
               onChange={(e) => setVarcScore(Number(e.target.value))}
-              className="w-full accent-[#D8C3A5] bg-outline-variant h-1.5 rounded-lg cursor-pointer"
+              className="w-full accent-primary bg-outline-variant h-1.5 rounded-lg cursor-pointer"
             />
             <div className="flex items-center justify-between text-[11px] text-secondary font-mono">
               <span>Sectional Est:</span>
@@ -197,7 +197,7 @@ export const ScorePercentileExplorer: React.FC = () => {
               max={60}
               value={dilrScore}
               onChange={(e) => setDilrScore(Number(e.target.value))}
-              className="w-full accent-[#D8C3A5] bg-outline-variant h-1.5 rounded-lg cursor-pointer"
+              className="w-full accent-primary bg-outline-variant h-1.5 rounded-lg cursor-pointer"
             />
             <div className="flex items-center justify-between text-[11px] text-secondary font-mono">
               <span>Sectional Est:</span>
@@ -222,7 +222,7 @@ export const ScorePercentileExplorer: React.FC = () => {
               max={66}
               value={qaScore}
               onChange={(e) => setQaScore(Number(e.target.value))}
-              className="w-full accent-[#D8C3A5] bg-outline-variant h-1.5 rounded-lg cursor-pointer"
+              className="w-full accent-primary bg-outline-variant h-1.5 rounded-lg cursor-pointer"
             />
             <div className="flex items-center justify-between text-[11px] text-secondary font-mono">
               <span>Sectional Est:</span>
@@ -279,3 +279,4 @@ export const ScorePercentileExplorer: React.FC = () => {
     </div>
   );
 };
+

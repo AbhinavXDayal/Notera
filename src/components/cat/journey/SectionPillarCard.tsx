@@ -81,3 +81,4 @@ export const SectionPillarCard: React.FC<SectionPillarCardProps> = ({ pillar }) 
     </div>
   );
 };
+

@@ -87,26 +87,26 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
             alpha += proximity * 0.28;
           }
 
-          // Dynamic warm beige and cream accent colors on constellation patterns
-          const isBeigeOat = (c * 3 + r * 5) % 19 === 0;
-          const isCreamAlmond = (c * 7 + r * 2) % 23 === 0;
-          const isIvoryHighlight = (c + r) % 29 === 0;
+          // Dynamic botanical sage, ochre and taupe accent colors on constellation patterns
+          const isForestSage = (c * 3 + r * 5) % 19 === 0;
+          const isWarmOchre = (c * 7 + r * 2) % 23 === 0;
+          const isTaupeHighlight = (c + r) % 29 === 0;
 
-          if (isIvoryHighlight && !isReading) {
-            ctx.fillStyle = `rgba(250, 245, 238, ${Math.min(alpha * 1.5, 0.45)})`;
-          } else if (isCreamAlmond && !isReading) {
-            ctx.fillStyle = `rgba(229, 213, 192, ${Math.min(alpha * 1.4, 0.45)})`;
-          } else if (isBeigeOat && !isReading) {
-            ctx.fillStyle = `rgba(216, 195, 165, ${Math.min(alpha * 1.5, 0.5)})`;
+          if (isTaupeHighlight && !isReading) {
+            ctx.fillStyle = `rgba(107, 99, 88, ${Math.min(alpha * 1.4, 0.4)})`;
+          } else if (isWarmOchre && !isReading) {
+            ctx.fillStyle = `rgba(196, 166, 106, ${Math.min(alpha * 1.5, 0.45)})`;
+          } else if (isForestSage && !isReading) {
+            ctx.fillStyle = `rgba(74, 124, 89, ${Math.min(alpha * 1.6, 0.5)})`;
           } else {
-            // Soft obsidian mineral base dot
-            ctx.fillStyle = `rgba(160, 150, 140, ${Math.min(alpha * 1.1, 0.28)})`;
+            // Soft calming sage base dot
+            ctx.fillStyle = `rgba(120, 140, 125, ${Math.min(alpha * 1.2, 0.3)})`;
           }
 
           const dotSize =
             dist < glowRadius && glowRadius > 0
               ? 1.25 + (1 - dist / glowRadius) * 0.75
-              : isBeigeOat || isCreamAlmond
+              : isForestSage || isWarmOchre
                 ? 1.35
                 : 1.05;
 
@@ -114,10 +114,10 @@ export const DotMatrixCanvas: React.FC<DotMatrixCanvasProps> = ({
           ctx.arc(x, y, dotSize, 0, Math.PI * 2);
           ctx.fill();
 
-          // Delicate coordinate plus crosses in soft beige on hero / roadmap
+          // Delicate coordinate plus crosses in soft sage on hero / roadmap
           if ((variant === "hero" || isRoadmap) && c % 6 === 0 && r % 6 === 0) {
             const crossAlpha = alpha * 1.8;
-            ctx.strokeStyle = `rgba(216, 195, 165, ${Math.min(crossAlpha, 0.35)})`;
+            ctx.strokeStyle = `rgba(74, 124, 89, ${Math.min(crossAlpha, 0.35)})`;
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(x - 3.5, y);
