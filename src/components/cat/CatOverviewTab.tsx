@@ -527,9 +527,9 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     </div>
   );
 
-  // 2. Roadmap Card Content
-  const renderRoadmapCard = () => (
-    <div className="w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-6 shadow-terra-card space-y-6">
+  // 2. Roadmap Content
+  const renderRoadmapContent = () => (
+    <div className="w-full space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -1665,11 +1665,11 @@ ACCURACY → What causes my mistakes?`}
     </div>
   );
 
-  // 3. Notes Card Content
-  const renderNotesCard = () => (
+  // 3. Notes Content
+  const renderNotesContent = () => (
     <div
       id="notes-card"
-      className="w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-6 shadow-terra-card space-y-6 scroll-mt-20"
+      className="w-full space-y-6 scroll-mt-20"
     >
       {/* Header & Connection Ribbon */}
       <div className="space-y-3">
@@ -2066,10 +2066,12 @@ ACCURACY → What causes my mistakes?`}
       {/* 1. Field Guide Framework Card (Top Full Width) */}
       {renderFieldGuideCard()}
 
-      {/* 2 & 3. Dual Columns: Roadmap (Left) & Notes (Right) */}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
-        {renderRoadmapCard()}
-        {renderNotesCard()}
+      {/* 2 & 3. Single Unified Container for Roadmap (Left) & Notes (Right) */}
+      <div className="w-full rounded-2xl bg-surface-container border border-outline-variant p-5 sm:p-7 shadow-terra-card">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+          {renderRoadmapContent()}
+          {renderNotesContent()}
+        </div>
       </div>
     </div>
   );
