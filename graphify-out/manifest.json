@@ -18,9 +18,9 @@
     "semantic_hash": "c735540bb63936a123bc867d950c9f69"
   },
   "src/App.tsx": {
-    "mtime": 1789163012.1551573,
-    "seen": 1789163050.2703311,
-    "ast_hash": "90ba9f749b23dcc96300794e3cf373c2",
+    "mtime": 1789163131.5605795,
+    "seen": 1789163223.936646,
+    "ast_hash": "c851ccbf0981af1e4da7f6e6479314fe",
     "semantic_hash": ""
   },
   "src/components/background/CoffeeBeans.tsx": {
@@ -78,9 +78,9 @@
     "semantic_hash": "b3f3001bdf083e9b95d25f977e6483a8"
   },
   "src/components/cat/CatOverviewTab.tsx": {
-    "mtime": 1789162961.7963,
-    "seen": 1789163050.2703779,
-    "ast_hash": "6ef4aaf0e8909fc1ffacb448535cc3dd",
+    "mtime": 1789163131.5615792,
+    "seen": 1789163223.936667,
+    "ast_hash": "70934bdb677474855ecaae0c5d103245",
     "semantic_hash": ""
   },
   "src/components/cat/CatPracticeTab.tsx": {
@@ -585,24 +585,6 @@
     "mtime": 1789162726.7669773,
     "seen": 1789163050.2705355,
     "ast_hash": "6f5ec57df3e3ef8b007af7a2d4877387",
-    "semantic_hash": ""
-  },
-  "src/components/cat/CatLearningWorkspace.tsx": {
-    "mtime": 1789162938.5797763,
-    "seen": 1789163050.2703743,
-    "ast_hash": "5e1c3f8ec50189cb2d92634140c563e2",
-    "semantic_hash": ""
-  },
-  "src/components/cat/views/CatFundamentalsView.tsx": {
-    "mtime": 1789162995.0001216,
-    "seen": 1789163050.2705462,
-    "ast_hash": "d279847190438741d4a4a3b5a84dfd4b",
-    "semantic_hash": ""
-  },
-  "src/components/cat/views/CatNotesDocsView.tsx": {
-    "mtime": 1789162997.9301965,
-    "seen": 1789163050.27055,
-    "ast_hash": "69c0188865d3281c129ebf8281cd603b",
     "semantic_hash": ""
   }
 }

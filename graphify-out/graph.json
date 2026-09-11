@@ -4,84 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "id": "src_components_cat_catexaminfomodal_catexaminfomodalprops",
-      "label": "CatExamInfoModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "catexaminfomodalprops",
-      "source_file": "src/components/cat/CatExamInfoModal.tsx",
-      "source_location": "L5"
-    },
-    {
-      "id": "src_components_common_footer_footerprops",
-      "label": "FooterProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "footerprops",
-      "source_file": "src/components/common/Footer.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_common_logo_logoprops",
-      "label": "LogoProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "logoprops",
-      "source_file": "src/components/common/Logo.tsx",
-      "source_location": "L3"
-    },
-    {
-      "id": "src_components_common_modal_modalprops",
-      "label": "ModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "modalprops",
-      "source_file": "src/components/common/Modal.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_common_navbar_navbarprops",
-      "label": "NavbarProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "navbarprops",
-      "source_file": "src/components/common/Navbar.tsx",
-      "source_location": "L6"
-    },
-    {
-      "id": "src_components_field_guide_guidenavigation_guidenavigationprops",
-      "label": "GuideNavigationProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "guidenavigationprops",
-      "source_file": "src/components/field-guide/GuideNavigation.tsx",
-      "source_location": "L4"
-    },
-    {
       "id": "src_components_home_recommendedherobanner_recommendedherobannerprops",
       "label": "RecommendedHeroBannerProps",
       "_callable": true,
@@ -160,13 +82,52 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_cat_catexaminfomodal_catexaminfomodalprops",
+      "label": "CatExamInfoModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "catexaminfomodalprops",
+      "source_file": "src/components/cat/CatExamInfoModal.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "src_components_cat_catheadernav_catheadernavprops",
+      "label": "CatHeaderNavProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "catheadernavprops",
+      "source_file": "src/components/cat/CatHeaderNav.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_components_cat_catheadernav_cattabtype",
+      "label": "CatTabType",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "cattabtype",
+      "source_file": "src/components/cat/CatHeaderNav.tsx",
+      "source_location": "L4"
+    },
+    {
       "id": "src_components_cat_catroadmapdetailmodal_catroadmapdetailmodalprops",
       "label": "CatRoadmapDetailModalProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "catroadmapdetailmodalprops",
       "source_file": "src/components/cat/CatRoadmapDetailModal.tsx",
@@ -179,7 +140,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "catroadmaptabprops",
       "source_file": "src/components/cat/CatRoadmapTab.tsx",
@@ -192,11 +153,63 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "journeystageaccordionprops",
       "source_file": "src/components/cat/journey/JourneyStageAccordion.tsx",
       "source_location": "L15"
+    },
+    {
+      "id": "src_components_common_footer_footerprops",
+      "label": "FooterProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "footerprops",
+      "source_file": "src/components/common/Footer.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_components_common_logo_logoprops",
+      "label": "LogoProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "logoprops",
+      "source_file": "src/components/common/Logo.tsx",
+      "source_location": "L3"
+    },
+    {
+      "id": "src_components_common_modal_modalprops",
+      "label": "ModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "modalprops",
+      "source_file": "src/components/common/Modal.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_components_common_searchmodal_searchmodalprops",
+      "label": "SearchModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "searchmodalprops",
+      "source_file": "src/components/common/SearchModal.tsx",
+      "source_location": "L19"
     },
     {
       "id": "src_types_roadmap_actionitem",
@@ -205,7 +218,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "actionitem",
       "source_file": "src/types/roadmap.ts",
@@ -218,7 +231,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "roadmapresource",
       "source_file": "src/types/roadmap.ts",
@@ -231,7 +244,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "roadmapstage",
       "source_file": "src/types/roadmap.ts",
@@ -244,7 +257,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "stagestatus",
       "source_file": "src/types/roadmap.ts",
@@ -537,32 +550,6 @@
       "source_location": "L10"
     },
     {
-      "id": "src_components_cat_views_catnotesdocsview_catnotesdocsviewprops",
-      "label": "CatNotesDocsViewProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "NotesLayout.tsx",
-      "file_type": "code",
-      "norm_label": "catnotesdocsviewprops",
-      "source_file": "src/components/cat/views/CatNotesDocsView.tsx",
-      "source_location": "L293"
-    },
-    {
-      "id": "src_components_cat_views_catnotesdocsview_noteitem",
-      "label": "NoteItem",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "NotesLayout.tsx",
-      "file_type": "code",
-      "norm_label": "noteitem",
-      "source_file": "src/components/cat/views/CatNotesDocsView.tsx",
-      "source_location": "L12"
-    },
-    {
       "id": "src_components_notes_notecontent_notecontentprops",
       "label": "NoteContentProps",
       "_callable": true,
@@ -810,58 +797,6 @@
       "source_location": "L21"
     },
     {
-      "id": "src_components_cat_catheadernav_catheadernavprops",
-      "label": "CatHeaderNavProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "catheadernavprops",
-      "source_file": "src/components/cat/CatHeaderNav.tsx",
-      "source_location": "L12"
-    },
-    {
-      "id": "src_components_cat_catheadernav_cattabtype",
-      "label": "CatTabType",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "cattabtype",
-      "source_file": "src/components/cat/CatHeaderNav.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "src_components_cat_catlearningworkspace_catlearningworkspaceprops",
-      "label": "CatLearningWorkspaceProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "catlearningworkspaceprops",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L14"
-    },
-    {
-      "id": "src_components_cat_catlearningworkspace_catworkspacetab",
-      "label": "CatWorkspaceTab",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "catworkspacetab",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L8"
-    },
-    {
       "id": "src_components_cat_catoverviewtab_catoverviewtabprops",
       "label": "CatOverviewTabProps",
       "_callable": true,
@@ -872,7 +807,7 @@
       "file_type": "code",
       "norm_label": "catoverviewtabprops",
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L16"
+      "source_location": "L12"
     },
     {
       "id": "src_components_cat_catoverviewtab_cattabtype",
@@ -888,30 +823,30 @@
       "source_location": "L4"
     },
     {
-      "id": "src_components_cat_views_catfundamentalsview_catfundamentalsviewprops",
-      "label": "CatFundamentalsViewProps",
+      "id": "src_components_cat_catoverviewtab_noteitem",
+      "label": "NoteItem",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 7,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "catfundamentalsviewprops",
-      "source_file": "src/components/cat/views/CatFundamentalsView.tsx",
-      "source_location": "L13"
+      "norm_label": "noteitem",
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L18"
     },
     {
-      "id": "src_components_common_searchmodal_searchmodalprops",
-      "label": "SearchModalProps",
+      "id": "src_components_common_navbar_navbarprops",
+      "label": "NavbarProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 7,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "searchmodalprops",
-      "source_file": "src/components/common/SearchModal.tsx",
-      "source_location": "L19"
+      "norm_label": "navbarprops",
+      "source_file": "src/components/common/Navbar.tsx",
+      "source_location": "L6"
     },
     {
       "id": "src_components_field_fieldguideview_fieldguideviewprops",
@@ -925,6 +860,19 @@
       "norm_label": "fieldguideviewprops",
       "source_file": "src/components/field/FieldGuideView.tsx",
       "source_location": "L6"
+    },
+    {
+      "id": "src_components_field_guide_guidenavigation_guidenavigationprops",
+      "label": "GuideNavigationProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "guidenavigationprops",
+      "source_file": "src/components/field-guide/GuideNavigation.tsx",
+      "source_location": "L4"
     },
     {
       "id": "src_components_home_categorycard_categorycardprops",
@@ -1018,90 +966,6 @@
       "source_location": "L24"
     },
     {
-      "id": "src_components_cat_catpracticetab_catpracticetab",
-      "label": "CatPracticeTab()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "catpracticetab()",
-      "source_file": "src/components/cat/CatPracticeTab.tsx",
-      "source_location": "L13"
-    },
-    {
-      "id": "src_components_common_footer_footer",
-      "label": "Footer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "footer()",
-      "source_file": "src/components/common/Footer.tsx",
-      "source_location": "L8"
-    },
-    {
-      "id": "src_components_common_logo_logo",
-      "label": "Logo()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "logo()",
-      "source_file": "src/components/common/Logo.tsx",
-      "source_location": "L10"
-    },
-    {
-      "id": "src_components_common_modal_modal",
-      "label": "Modal()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "modal()",
-      "source_file": "src/components/common/Modal.tsx",
-      "source_location": "L13"
-    },
-    {
-      "id": "src_components_common_navbar_navbar",
-      "label": "Navbar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "navbar()",
-      "source_file": "src/components/common/Navbar.tsx",
-      "source_location": "L22"
-    },
-    {
-      "id": "src_components_field_guide_guidenavigation_guidenavigation",
-      "label": "GuideNavigation()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "guidenavigation()",
-      "source_file": "src/components/field-guide/GuideNavigation.tsx",
-      "source_location": "L11"
-    },
-    {
-      "id": "src_components_home_manifesto_manifesto",
-      "label": "Manifesto()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "manifesto()",
-      "source_file": "src/components/home/Manifesto.tsx",
-      "source_location": "L3"
-    },
-    {
       "id": "src_components_home_recommendedherobanner_recommendedherobanner",
       "label": "RecommendedHeroBanner()",
       "_callable": true,
@@ -1138,12 +1002,24 @@
       "source_location": "L9"
     },
     {
+      "id": "src_components_cat_catheadernav_catheadernav",
+      "label": "CatHeaderNav()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "catheadernav()",
+      "source_file": "src/components/cat/CatHeaderNav.tsx",
+      "source_location": "L18"
+    },
+    {
       "id": "src_components_cat_catroadmapdetailmodal_catroadmapdetailmodal",
       "label": "CatRoadmapDetailModal()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "catroadmapdetailmodal()",
       "source_file": "src/components/cat/CatRoadmapDetailModal.tsx",
@@ -1155,7 +1031,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "catroadmaptab()",
       "source_file": "src/components/cat/CatRoadmapTab.tsx",
@@ -1167,7 +1043,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "journeystageaccordion()",
       "source_file": "src/components/cat/journey/JourneyStageAccordion.tsx",
@@ -1179,11 +1055,71 @@
       "_callable": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "stage01topics()",
       "source_file": "src/components/cat/journey/Stage01Topics.tsx",
       "source_location": "L22"
+    },
+    {
+      "id": "src_components_common_footer_footer",
+      "label": "Footer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "footer()",
+      "source_file": "src/components/common/Footer.tsx",
+      "source_location": "L8"
+    },
+    {
+      "id": "src_components_common_logo_logo",
+      "label": "Logo()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "logo()",
+      "source_file": "src/components/common/Logo.tsx",
+      "source_location": "L10"
+    },
+    {
+      "id": "src_components_common_modal_modal",
+      "label": "Modal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "modal()",
+      "source_file": "src/components/common/Modal.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "src_components_common_searchmodal_searchmodal",
+      "label": "SearchModal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "searchmodal()",
+      "source_file": "src/components/common/SearchModal.tsx",
+      "source_location": "L26"
+    },
+    {
+      "id": "src_components_home_manifesto_manifesto",
+      "label": "Manifesto()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "manifesto()",
+      "source_file": "src/components/home/Manifesto.tsx",
+      "source_location": "L3"
     },
     {
       "id": "src_components_field_guide_fieldguidesection_fieldguidesection",
@@ -1232,18 +1168,6 @@
       "norm_label": "resourcecard()",
       "source_file": "src/components/resources/ResourceCard.tsx",
       "source_location": "L18"
-    },
-    {
-      "id": "src_components_resources_resourcelibraryview_resourcelibraryview",
-      "label": "ResourceLibraryView()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "EducationalResource",
-      "file_type": "code",
-      "norm_label": "resourcelibraryview()",
-      "source_file": "src/components/resources/ResourceLibraryView.tsx",
-      "source_location": "L10"
     },
     {
       "id": "src_data_resources_getresourcebyid",
@@ -1426,18 +1350,6 @@
       "source_location": "L15"
     },
     {
-      "id": "src_components_cat_views_catnotesdocsview_catnotesdocsview",
-      "label": "CatNotesDocsView()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "NotesLayout.tsx",
-      "file_type": "code",
-      "norm_label": "catnotesdocsview()",
-      "source_file": "src/components/cat/views/CatNotesDocsView.tsx",
-      "source_location": "L298"
-    },
-    {
       "id": "src_components_notes_notecontent_notecontent",
       "label": "NoteContent()",
       "_callable": true,
@@ -1615,7 +1527,7 @@
       "file_type": "code",
       "norm_label": "app()",
       "source_file": "src/App.tsx",
-      "source_location": "L19"
+      "source_location": "L25"
     },
     {
       "id": "src_components_background_knowledgemapbackground_knowledgemapbackground",
@@ -1642,30 +1554,6 @@
       "source_location": "L10"
     },
     {
-      "id": "src_components_cat_catheadernav_catheadernav",
-      "label": "CatHeaderNav()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "catheadernav()",
-      "source_file": "src/components/cat/CatHeaderNav.tsx",
-      "source_location": "L18"
-    },
-    {
-      "id": "src_components_cat_catlearningworkspace_catlearningworkspace",
-      "label": "CatLearningWorkspace()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "catlearningworkspace()",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L26"
-    },
-    {
       "id": "src_components_cat_catoverviewtab_catoverviewtab",
       "label": "CatOverviewTab()",
       "_callable": true,
@@ -1675,31 +1563,31 @@
       "file_type": "code",
       "norm_label": "catoverviewtab()",
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L26"
+      "source_location": "L374"
     },
     {
-      "id": "src_components_cat_views_catfundamentalsview_catfundamentalsview",
-      "label": "CatFundamentalsView()",
+      "id": "src_components_cat_catpracticetab_catpracticetab",
+      "label": "CatPracticeTab()",
       "_callable": true,
       "_origin": "ast",
       "community": 7,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "catfundamentalsview()",
-      "source_file": "src/components/cat/views/CatFundamentalsView.tsx",
-      "source_location": "L17"
+      "norm_label": "catpracticetab()",
+      "source_file": "src/components/cat/CatPracticeTab.tsx",
+      "source_location": "L13"
     },
     {
-      "id": "src_components_common_searchmodal_searchmodal",
-      "label": "SearchModal()",
+      "id": "src_components_common_navbar_navbar",
+      "label": "Navbar()",
       "_callable": true,
       "_origin": "ast",
       "community": 7,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "searchmodal()",
-      "source_file": "src/components/common/SearchModal.tsx",
-      "source_location": "L26"
+      "norm_label": "navbar()",
+      "source_file": "src/components/common/Navbar.tsx",
+      "source_location": "L22"
     },
     {
       "id": "src_components_field_fieldguideview_fieldguideview",
@@ -1712,6 +1600,18 @@
       "norm_label": "fieldguideview()",
       "source_file": "src/components/field/FieldGuideView.tsx",
       "source_location": "L12"
+    },
+    {
+      "id": "src_components_field_guide_guidenavigation_guidenavigation",
+      "label": "GuideNavigation()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "guidenavigation()",
+      "source_file": "src/components/field-guide/GuideNavigation.tsx",
+      "source_location": "L11"
     },
     {
       "id": "src_components_home_categorycard_categorycard",
@@ -1750,6 +1650,18 @@
       "source_location": "L17"
     },
     {
+      "id": "src_components_resources_resourcelibraryview_resourcelibraryview",
+      "label": "ResourceLibraryView()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "resourcelibraryview()",
+      "source_file": "src/components/resources/ResourceLibraryView.tsx",
+      "source_location": "L10"
+    },
+    {
       "id": "src_hooks_useroadmapprogress_useroadmapprogress",
       "label": "useRoadmapProgress()",
       "_callable": true,
@@ -1760,105 +1672,6 @@
       "norm_label": "useroadmapprogress()",
       "source_file": "src/hooks/useRoadmapProgress.ts",
       "source_location": "L6"
-    },
-    {
-      "id": "src_components_cat_catexaminfomodal",
-      "label": "CatExamInfoModal.tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "catexaminfomodal.tsx",
-      "source_file": "src/components/cat/CatExamInfoModal.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_cat_catpracticetab",
-      "label": "CatPracticeTab.tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "catpracticetab.tsx",
-      "source_file": "src/components/cat/CatPracticeTab.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_common_footer",
-      "label": "Footer.tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "footer.tsx",
-      "source_file": "src/components/common/Footer.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_common_logo",
-      "label": "Logo.tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "logo.tsx",
-      "source_file": "src/components/common/Logo.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_common_modal",
-      "label": "Modal.tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "modal.tsx",
-      "source_file": "src/components/common/Modal.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_common_navbar",
-      "label": "Navbar.tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "navbar.tsx",
-      "source_file": "src/components/common/Navbar.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_field_guide_guidenavigation",
-      "label": "GuideNavigation.tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "guidenavigation.tsx",
-      "source_file": "src/components/field-guide/GuideNavigation.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_home_manifesto",
-      "label": "Manifesto.tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "manifesto.tsx",
-      "source_file": "src/components/home/Manifesto.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "ref_react",
-      "label": "react",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "react",
-      "file_type": "concept",
-      "norm_label": "react",
-      "source_file": "package.json",
-      "source_location": "L14"
     },
     {
       "id": "src_components_home_recommendedherobanner",
@@ -1916,11 +1729,44 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_cat_catexaminfomodal",
+      "label": "CatExamInfoModal.tsx",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "catexaminfomodal.tsx",
+      "source_file": "src/components/cat/CatExamInfoModal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_cat_catheadernav",
+      "label": "CatHeaderNav.tsx",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "catheadernav.tsx",
+      "source_file": "src/components/cat/CatHeaderNav.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_cat_catpracticetab",
+      "label": "CatPracticeTab.tsx",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "catpracticetab.tsx",
+      "source_file": "src/components/cat/CatPracticeTab.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_components_cat_catroadmapdetailmodal",
       "label": "CatRoadmapDetailModal.tsx",
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "catroadmapdetailmodal.tsx",
       "source_file": "src/components/cat/CatRoadmapDetailModal.tsx",
@@ -1931,7 +1777,7 @@
       "label": "CatRoadmapTab.tsx",
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "catroadmaptab.tsx",
       "source_file": "src/components/cat/CatRoadmapTab.tsx",
@@ -1942,10 +1788,65 @@
       "label": "JourneyStageAccordion.tsx",
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "journeystageaccordion.tsx",
       "source_file": "src/components/cat/journey/JourneyStageAccordion.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_common_footer",
+      "label": "Footer.tsx",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "footer.tsx",
+      "source_file": "src/components/common/Footer.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_common_logo",
+      "label": "Logo.tsx",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "logo.tsx",
+      "source_file": "src/components/common/Logo.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_common_modal",
+      "label": "Modal.tsx",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "modal.tsx",
+      "source_file": "src/components/common/Modal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_common_searchmodal",
+      "label": "SearchModal.tsx",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "searchmodal.tsx",
+      "source_file": "src/components/common/SearchModal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_home_manifesto",
+      "label": "Manifesto.tsx",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "manifesto.tsx",
+      "source_file": "src/components/home/Manifesto.tsx",
       "source_location": "L1"
     },
     {
@@ -1953,7 +1854,7 @@
       "label": "catRoadmap.ts",
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "catroadmap.ts",
       "source_file": "src/data/catRoadmap.ts",
@@ -1964,7 +1865,7 @@
       "label": "CAT_ROADMAP_STAGES",
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "cat_roadmap_stages",
       "source_file": "src/data/catRoadmap.ts",
@@ -1975,11 +1876,22 @@
       "label": "roadmap.ts",
       "_origin": "ast",
       "community": 10,
-      "community_name": "CatRoadmapTab.tsx",
+      "community_name": "react",
       "file_type": "code",
       "norm_label": "roadmap.ts",
       "source_file": "src/types/roadmap.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "ref_react",
+      "label": "react",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "react",
+      "file_type": "concept",
+      "norm_label": "react",
+      "source_file": "package.json",
+      "source_location": "L14"
     },
     {
       "id": "src_components_field_guide_fieldguidesection",
@@ -2676,28 +2588,6 @@
       "source_location": "L25"
     },
     {
-      "id": "src_components_cat_views_catnotesdocsview",
-      "label": "CatNotesDocsView.tsx",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "NotesLayout.tsx",
-      "file_type": "code",
-      "norm_label": "catnotesdocsview.tsx",
-      "source_file": "src/components/cat/views/CatNotesDocsView.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_cat_views_catnotesdocsview_all_notes_data",
-      "label": "ALL_NOTES_DATA",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "NotesLayout.tsx",
-      "file_type": "code",
-      "norm_label": "all_notes_data",
-      "source_file": "src/components/cat/views/CatNotesDocsView.tsx",
-      "source_location": "L23"
-    },
-    {
       "id": "src_components_notes_notecontent",
       "label": "NoteContent.tsx",
       "_origin": "ast",
@@ -2940,28 +2830,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_cat_catheadernav",
-      "label": "CatHeaderNav.tsx",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "catheadernav.tsx",
-      "source_file": "src/components/cat/CatHeaderNav.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_cat_catlearningworkspace",
-      "label": "CatLearningWorkspace.tsx",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "catlearningworkspace.tsx",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_components_cat_catoverviewtab",
       "label": "CatOverviewTab.tsx",
       "_origin": "ast",
@@ -2973,25 +2841,80 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_cat_views_catfundamentalsview",
-      "label": "CatFundamentalsView.tsx",
+      "id": "src_components_cat_catoverviewtab_codex_notes",
+      "label": "CODEX_NOTES",
       "_origin": "ast",
       "community": 7,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "catfundamentalsview.tsx",
-      "source_file": "src/components/cat/views/CatFundamentalsView.tsx",
-      "source_location": "L1"
+      "norm_label": "codex_notes",
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L232"
     },
     {
-      "id": "src_components_common_searchmodal",
-      "label": "SearchModal.tsx",
+      "id": "src_components_cat_catoverviewtab_dilr_notes",
+      "label": "DILR_NOTES",
       "_origin": "ast",
       "community": 7,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "searchmodal.tsx",
-      "source_file": "src/components/common/SearchModal.tsx",
+      "norm_label": "dilr_notes",
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L180"
+    },
+    {
+      "id": "src_components_cat_catoverviewtab_qa_notes",
+      "label": "QA_NOTES",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "qa_notes",
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L27"
+    },
+    {
+      "id": "src_components_cat_catoverviewtab_stage_notes_map",
+      "label": "STAGE_NOTES_MAP",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "stage_notes_map",
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L277"
+    },
+    {
+      "id": "src_components_cat_catoverviewtab_stage_titles",
+      "label": "STAGE_TITLES",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "stage_titles",
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L259"
+    },
+    {
+      "id": "src_components_cat_catoverviewtab_varc_notes",
+      "label": "VARC_NOTES",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "varc_notes",
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L128"
+    },
+    {
+      "id": "src_components_common_navbar",
+      "label": "Navbar.tsx",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "navbar.tsx",
+      "source_file": "src/components/common/Navbar.tsx",
       "source_location": "L1"
     },
     {
@@ -3003,6 +2926,17 @@
       "file_type": "code",
       "norm_label": "fieldguideview.tsx",
       "source_file": "src/components/field/FieldGuideView.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_field_guide_guidenavigation",
+      "label": "GuideNavigation.tsx",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "guidenavigation.tsx",
+      "source_file": "src/components/field-guide/GuideNavigation.tsx",
       "source_location": "L1"
     },
     {
@@ -3795,7 +3729,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/App.tsx",
-      "source_location": "L41",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -3807,7 +3741,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/App.tsx",
-      "source_location": "L45",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -4340,7 +4274,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_components_cat_catexaminfomodal_catexaminfomodal",
+      "target": "src_components_cat_catroadmaptab_catroadmaptab",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4352,7 +4286,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_components_field_fieldguideview_fieldguideview",
+      "target": "src_components_cat_catsubjectstab_catsubjectstab",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4364,7 +4298,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_components_background_knowledgemapbackground_knowledgemapbackground",
+      "target": "src_components_cat_catpracticetab_catpracticetab",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4376,7 +4310,19 @@
     },
     {
       "source": "src_app",
-      "target": "src_data_fields_fields_data",
+      "target": "src_components_cat_catexaminfomodal_catexaminfomodal",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_components_notes_noteslayout_noteslayout",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4388,7 +4334,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_types_field_fieldcategory",
+      "target": "src_components_resources_resourcelibraryview_resourcelibraryview",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4400,19 +4346,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_types_field_fieldid",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/App.tsx",
-      "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app",
-      "target": "src_hooks_usevisitorpreferences_usevisitorpreferences",
+      "target": "src_components_field_fieldguideview_fieldguideview",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4424,7 +4358,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_hooks_useroadmapprogress_useroadmapprogress",
+      "target": "src_components_field_guide_guidenavigation_guidenavigation",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4432,6 +4366,18 @@
       "context": "import",
       "source_file": "src/App.tsx",
       "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_components_background_knowledgemapbackground_knowledgemapbackground",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -4444,6 +4390,66 @@
       "context": "import",
       "source_file": "src/App.tsx",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_data_fields_fields_data",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_types_field_fieldcategory",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_types_field_fieldid",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_hooks_usevisitorpreferences_usevisitorpreferences",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_hooks_useroadmapprogress_useroadmapprogress",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -4508,7 +4514,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_components_cat_catlearningworkspace_catlearningworkspace",
+      "target": "src_components_cat_catoverviewtab_catoverviewtab",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4683,66 +4689,6 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/cat/CatExamInfoModal.tsx",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catlearningworkspace",
-      "target": "src_components_cat_catroadmaptab_catroadmaptab",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catlearningworkspace",
-      "target": "src_components_cat_views_catfundamentalsview_catfundamentalsview",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catlearningworkspace",
-      "target": "src_components_cat_catsubjectstab_catsubjectstab",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catlearningworkspace",
-      "target": "src_components_cat_views_catnotesdocsview_catnotesdocsview",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catoverviewtab",
-      "target": "src_components_cat_catlearningworkspace_catlearningworkspace",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/CatOverviewTab.tsx",
       "source_location": "L2",
       "weight": 1.0
     },
@@ -5104,18 +5050,6 @@
       "context": "import",
       "source_file": "src/components/cat/journey/Stage01UnderstandJourney.tsx",
       "source_location": "L9",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_views_catnotesdocsview",
-      "target": "src_components_notes_noteslayout_noteslayout",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/views/CatNotesDocsView.tsx",
-      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -5732,7 +5666,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_components_cat_catexaminfomodal",
+      "target": "src_components_cat_catroadmaptab",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5744,7 +5678,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_components_field_fieldguideview",
+      "target": "src_components_cat_catsubjectstab",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5756,7 +5690,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_components_background_knowledgemapbackground",
+      "target": "src_components_cat_catpracticetab",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5768,7 +5702,19 @@
     },
     {
       "source": "src_app",
-      "target": "src_data_fields",
+      "target": "src_components_cat_catexaminfomodal",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_components_notes_noteslayout",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5780,7 +5726,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_types_field",
+      "target": "src_components_resources_resourcelibraryview",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5788,12 +5734,11 @@
       "context": "import",
       "source_file": "src/App.tsx",
       "source_location": "L15",
-      "type_only": true,
       "weight": 1.0
     },
     {
       "source": "src_app",
-      "target": "src_hooks_usevisitorpreferences",
+      "target": "src_components_field_fieldguideview",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5805,7 +5750,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_hooks_useroadmapprogress",
+      "target": "src_components_field_guide_guidenavigation",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5813,6 +5758,18 @@
       "context": "import",
       "source_file": "src/App.tsx",
       "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_components_background_knowledgemapbackground",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -5825,6 +5782,55 @@
       "context": "import",
       "source_file": "src/App.tsx",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_data_fields",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_types_field",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L21",
+      "type_only": true,
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_hooks_usevisitorpreferences",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_hooks_useroadmapprogress",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -5885,18 +5891,6 @@
       "context": "import",
       "source_file": "src/App.tsx",
       "source_location": "L7",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app",
-      "target": "src_components_cat_catlearningworkspace",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/App.tsx",
-      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -6195,78 +6189,6 @@
       "weight": 1.0
     },
     {
-      "source": "src_components_cat_catlearningworkspace",
-      "target": "ref_react",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catlearningworkspace",
-      "target": "ref_lucide_react",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catlearningworkspace",
-      "target": "src_components_cat_catroadmaptab",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catlearningworkspace",
-      "target": "src_components_cat_views_catfundamentalsview",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catlearningworkspace",
-      "target": "src_components_cat_catsubjectstab",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catlearningworkspace",
-      "target": "src_components_cat_views_catnotesdocsview",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
       "source": "src_components_cat_catoverviewtab",
       "target": "ref_react",
       "relation": "imports_from",
@@ -6280,7 +6202,7 @@
     },
     {
       "source": "src_components_cat_catoverviewtab",
-      "target": "src_components_cat_catlearningworkspace",
+      "target": "ref_lucide_react",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6999,66 +6921,6 @@
       "context": "import",
       "source_file": "src/components/cat/journey/Stage01UnderstandJourney.tsx",
       "source_location": "L9",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_views_catfundamentalsview",
-      "target": "ref_react",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/views/CatFundamentalsView.tsx",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_views_catfundamentalsview",
-      "target": "ref_lucide_react",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/views/CatFundamentalsView.tsx",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_views_catnotesdocsview",
-      "target": "ref_react",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/views/CatNotesDocsView.tsx",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_views_catnotesdocsview",
-      "target": "src_components_notes_noteslayout",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/views/CatNotesDocsView.tsx",
-      "source_location": "L10",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_views_catnotesdocsview",
-      "target": "ref_lucide_react",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/cat/views/CatNotesDocsView.tsx",
-      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -8548,7 +8410,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L19",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -8816,39 +8678,6 @@
       "weight": 1.0
     },
     {
-      "source": "src_components_cat_catlearningworkspace",
-      "target": "src_components_cat_catlearningworkspace_catlearningworkspaceprops",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L14",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catlearningworkspace",
-      "target": "src_components_cat_catlearningworkspace_catlearningworkspace",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L26",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_catlearningworkspace",
-      "target": "src_components_cat_catlearningworkspace_catworkspacetab",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cat/CatLearningWorkspace.tsx",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
       "source": "src_components_cat_catoverviewtab",
       "target": "src_components_cat_catoverviewtab_catoverviewtabprops",
       "relation": "contains",
@@ -8856,7 +8685,84 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L16",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cat_catoverviewtab",
+      "target": "src_components_cat_catoverviewtab_varc_notes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L128",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cat_catoverviewtab",
+      "target": "src_components_cat_catoverviewtab_noteitem",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cat_catoverviewtab",
+      "target": "src_components_cat_catoverviewtab_dilr_notes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L180",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cat_catoverviewtab",
+      "target": "src_components_cat_catoverviewtab_codex_notes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L232",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cat_catoverviewtab",
+      "target": "src_components_cat_catoverviewtab_stage_titles",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L259",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cat_catoverviewtab",
+      "target": "src_components_cat_catoverviewtab_qa_notes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_cat_catoverviewtab",
+      "target": "src_components_cat_catoverviewtab_stage_notes_map",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/cat/CatOverviewTab.tsx",
+      "source_location": "L277",
       "weight": 1.0
     },
     {
@@ -8867,7 +8773,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/cat/CatOverviewTab.tsx",
-      "source_location": "L26",
+      "source_location": "L374",
       "weight": 1.0
     },
     {
@@ -9154,72 +9060,6 @@
       "confidence_score": 1.0,
       "source_file": "src/components/cat/journey/Stage01UnderstandJourney.tsx",
       "source_location": "L25",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_views_catfundamentalsview",
-      "target": "src_components_cat_views_catfundamentalsview_catfundamentalsviewprops",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cat/views/CatFundamentalsView.tsx",
-      "source_location": "L13",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_views_catfundamentalsview",
-      "target": "src_components_cat_views_catfundamentalsview_catfundamentalsview",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cat/views/CatFundamentalsView.tsx",
-      "source_location": "L17",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_views_catnotesdocsview",
-      "target": "src_components_cat_views_catnotesdocsview_noteitem",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cat/views/CatNotesDocsView.tsx",
-      "source_location": "L12",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_views_catnotesdocsview",
-      "target": "src_components_cat_views_catnotesdocsview_all_notes_data",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cat/views/CatNotesDocsView.tsx",
-      "source_location": "L23",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_views_catnotesdocsview",
-      "target": "src_components_cat_views_catnotesdocsview_catnotesdocsviewprops",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cat/views/CatNotesDocsView.tsx",
-      "source_location": "L293",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_cat_views_catnotesdocsview",
-      "target": "src_components_cat_views_catnotesdocsview_catnotesdocsview",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/components/cat/views/CatNotesDocsView.tsx",
-      "source_location": "L298",
       "weight": 1.0
     },
     {
@@ -10681,5 +10521,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4024cb915cbfec35364e2b6644f9be0cd7b6972d"
+  "built_at_commit": "cb7cd53e80ec1ad61d2380672af5e2d020766fc6"
 }
