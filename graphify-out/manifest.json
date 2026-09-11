@@ -30,38 +30,38 @@
     "semantic_hash": ""
   },
   "src/components/background/CoffeeParticles.tsx": {
-    "mtime": 1789162484.1455832,
-    "seen": 1789162549.7315216,
+    "mtime": 1789162607.3282335,
+    "seen": 1789162703.6149423,
     "ast_hash": "0666ac368489779f692b9b5536312ddb",
     "semantic_hash": ""
   },
   "src/components/background/CoffeeRings.tsx": {
-    "mtime": 1789162497.4945061,
-    "seen": 1789162549.731523,
+    "mtime": 1789162607.350916,
+    "seen": 1789162703.6149461,
     "ast_hash": "b62ca00e3fbd018b00b1cbd769036795",
     "semantic_hash": ""
   },
   "src/components/background/CoffeeSteam.tsx": {
-    "mtime": 1789162490.5787663,
-    "seen": 1789162549.7315245,
+    "mtime": 1789162607.2694297,
+    "seen": 1789162703.6149483,
     "ast_hash": "fff63a87a7b0e530629bebed8e537ff3",
     "semantic_hash": ""
   },
   "src/components/background/ConstellationElements.tsx": {
-    "mtime": 1789162521.4943533,
-    "seen": 1789162549.7315257,
+    "mtime": 1789162607.2694297,
+    "seen": 1789162703.614951,
     "ast_hash": "d6a482fb77b8c39c0be0b0a8524e7142",
     "semantic_hash": ""
   },
   "src/components/background/DotMatrixCanvas.tsx": {
-    "mtime": 1789162477.5192716,
-    "seen": 1789162549.7315269,
+    "mtime": 1789162607.350916,
+    "seen": 1789162703.614954,
     "ast_hash": "0b3315abf25dfb75f3ba02c538e1fece",
     "semantic_hash": ""
   },
   "src/components/background/KnowledgeMapBackground.tsx": {
-    "mtime": 1789162469.6585639,
-    "seen": 1789162549.731528,
+    "mtime": 1789162607.3518975,
+    "seen": 1789162703.6149561,
     "ast_hash": "d07de64d1052e3acff50bb8927bf2b11",
     "semantic_hash": ""
   },
@@ -96,9 +96,9 @@
     "semantic_hash": "ef6a703e70cee85d3469037058bda7f9"
   },
   "src/components/cat/CatRoadmapTab.tsx": {
-    "mtime": 1789162273.444316,
-    "seen": 1789162394.5680614,
-    "ast_hash": "f1f07e4db601a7ea01b53c2c8b49b03d",
+    "mtime": 1789162680.6499217,
+    "seen": 1789162703.614997,
+    "ast_hash": "12de39f293ca7dcf8ab1be5d238cf65b",
     "semantic_hash": ""
   },
   "src/components/cat/CatSubjectsTab.tsx": {
@@ -114,8 +114,8 @@
     "semantic_hash": "b59dddf3e3b07b6a55ed40e8c3a3c96e"
   },
   "src/components/common/Logo.tsx": {
-    "mtime": 1789162527.6246886,
-    "seen": 1789162549.731554,
+    "mtime": 1789162607.3951612,
+    "seen": 1789162703.615037,
     "ast_hash": "30e342a3eb73f39e8bd35512e60fb93d",
     "semantic_hash": ""
   },
@@ -354,8 +354,8 @@
     "semantic_hash": "ad65b8c003edec418ebbb0f3a2860d90"
   },
   "tailwind.config.js": {
-    "mtime": 1789162457.3531895,
-    "seen": 1789162549.7316127,
+    "mtime": 1789162606.1519084,
+    "seen": 1789162703.6152332,
     "ast_hash": "49763b52cac7fbd0f46211dff2961941",
     "semantic_hash": ""
   },
@@ -567,6 +567,24 @@
     "mtime": 1789162272.0909925,
     "seen": 1789162394.5681045,
     "ast_hash": "16b82c1257a027b39574e82532b583a6",
+    "semantic_hash": ""
+  },
+  "src/components/cat/journey/JourneyStageAccordion.tsx": {
+    "mtime": 1789162644.2088995,
+    "seen": 1789162703.615011,
+    "ast_hash": "b2544285874ec5731fc10c8789ae94e3",
+    "semantic_hash": ""
+  },
+  "src/components/cat/journey/JourneyTopicAccordion.tsx": {
+    "mtime": 1789162622.2684164,
+    "seen": 1789162703.615017,
+    "ast_hash": "343c6b9589acb3d8e541874510734f9d",
+    "semantic_hash": ""
+  },
+  "src/components/cat/journey/Stage01Topics.tsx": {
+    "mtime": 1789162631.382748,
+    "seen": 1789162703.6150277,
+    "ast_hash": "6f5ec57df3e3ef8b007af7a2d4877387",
     "semantic_hash": ""
   }
 }
