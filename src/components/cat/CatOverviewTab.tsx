@@ -7,6 +7,7 @@ import {
   X,
   Compass,
 } from "lucide-react";
+import { Stage01Topics } from "./journey/Stage01Topics";
 
 export type CatTabType =
   | "overview"
@@ -593,20 +594,11 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
           </div>
         </button>
         {openSections["01"] && (
-          <div className="space-y-3 pt-1 fade-in">
-            <p className="text-xs text-secondary font-mono uppercase tracking-wider">
-              Before studying
-            </p>
-            <div className="text-secondary text-sm space-y-1">
-              <p>• What is CAT?</p>
-              <p>• QA, VARC &amp; DILR</p>
-              <p>• Exam pattern &amp; structure</p>
-              <p>• Percentile vs score</p>
-              <p>• Target colleges</p>
-              <p>• Understanding your goals</p>
-              <p>• Choosing your preparation approach</p>
-            </div>
-            <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+          <div className="space-y-4 pt-1 fade-in">
+            {/* 7 Interactive Stage 01 Topic Accordions */}
+            <Stage01Topics />
+
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-outline-variant/60">
               <p className="text-xs text-primary font-medium">
                 Goal: Know what you're preparing for before collecting resources
               </p>
@@ -615,22 +607,12 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    onNavigateTab?.("journey");
-                  }}
-                  className="inline-flex items-center space-x-1 text-[11px] font-mono text-on-primary bg-primary hover:bg-primary-hover px-2.5 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap font-medium"
-                >
-                  <span>Open Stage 01 Guide →</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
                     handleStageSelect("01");
                   }}
-                  className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap"
+                  className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2.5 py-1 rounded-lg transition-all cursor-pointer whitespace-nowrap font-medium shadow-xs"
                 >
                   <BookOpen className="w-3 h-3" />
-                  <span>View Notes →</span>
+                  <span>View Stage 01 Notes →</span>
                 </button>
               </div>
             </div>

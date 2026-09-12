@@ -1,15 +1,14 @@
 {
-  "0": "field.ts",
   "1": "useVisitorPreferences.ts",
-  "2": "SearchModal.tsx",
+  "2": "EducationalResource",
   "3": "KnowledgeMapBackground.tsx",
   "4": "compilerOptions",
   "5": "NotesLayout.tsx",
   "6": "lucide-react",
-  "7": "react",
+  "7": "App.tsx",
   "8": "compilerOptions",
   "9": "package.json",
-  "10": "CatRoadmapTab.tsx",
+  "10": "react",
   "11": "FieldGuideSection.tsx",
   "12": ".oxlintrc.json",
   "13": "Dedicated CAT Universe",
@@ -17,6 +16,5 @@
   "15": "postcss.config.js",
   "16": "tailwind.config.js",
   "17": "rules/graphify.md",
-  "18": "CatOverviewTab.tsx",
   "19": "workflows/graphify.md"
 }

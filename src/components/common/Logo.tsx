@@ -54,11 +54,13 @@ export const Logo: React.FC<LogoProps> = ({
               y2="100%"
             >
               <stop offset="0%" stopColor="#E6EBE4" />
+              <stop offset="50%" stopColor="#5EA876" />
               <stop offset="50%" stopColor="#385A42" />
               <stop offset="100%" stopColor="#D6B265" />
             </linearGradient>
             <linearGradient id="noteraGlow" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#E6EBE4" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#5EA876" stopOpacity="0.7" />
               <stop offset="100%" stopColor="#385A42" stopOpacity="0.7" />
             </linearGradient>
           </defs>

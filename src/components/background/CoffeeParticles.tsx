@@ -16,9 +16,11 @@ export const CoffeeParticles: React.FC<CoffeeParticlesProps> = ({
   const particles = useMemo(() => {
     const list = [];
     const colors = [
+      "#5EA876", // Forest Sage Green
       "#385A42", // Dark Dullish Forest Green
       "#D6B265", // Warm Ochre
       "#A89F91", // Warm Taupe
+      "#7E9987", // Soft Botanical Sage
       "#54735E", // Muted Forest Green
     ];
 

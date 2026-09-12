@@ -14,34 +14,70 @@ import {
   Info,
 } from "lucide-react";
 
+const ALL_TOPIC_IDS = [
+  "what-is-cat",
+  "pillars",
+  "pattern",
+  "score-percentile",
+  "colleges",
+  "goals",
+  "prep-approach",
+];
+
 interface Stage01TopicsProps {
-  defaultOpenTopicId?: string;
+  defaultOpenTopicId?: string | null;
   onAdvanceNextStage?: () => void;
 }
 
 export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
   defaultOpenTopicId = "what-is-cat",
 }) => {
-  const [openTopicId, setOpenTopicId] = useState<string | null>(
-    defaultOpenTopicId,
+  const [openTopicIds, setOpenTopicIds] = useState<Record<string, boolean>>(
+    () => {
+      if (defaultOpenTopicId) {
+        return { [defaultOpenTopicId]: true };
+      }
+      return { "what-is-cat": true };
+    },
   );
 
   const toggleTopic = (topicId: string) => {
-    setOpenTopicId((prev) => (prev === topicId ? null : topicId));
+    setOpenTopicIds((prev) => ({
+      ...prev,
+      [topicId]: !prev[topicId],
+    }));
+  };
+
+  const isAllOpen = ALL_TOPIC_IDS.every((id) => openTopicIds[id]);
+
+  const toggleAllTopics = () => {
+    const nextState = !isAllOpen;
+    const nextMap: Record<string, boolean> = {};
+    ALL_TOPIC_IDS.forEach((id) => {
+      nextMap[id] = nextState;
+    });
+    setOpenTopicIds(nextMap);
   };
 
   const { whatIsCat, pillars, examPattern, targetColleges } = STAGE_01_DATA;
 
   return (
     <div className="space-y-4">
-      {/* Intro Header */}
-      <div className="p-4 rounded-xl bg-surface-container/60 border border-outline-variant/60 text-xs sm:text-sm text-secondary leading-relaxed">
-        <p>
+      {/* Intro Header & Quick Controls */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-xl bg-surface-container/60 border border-outline-variant/60 text-xs sm:text-sm leading-relaxed">
+        <p className="text-secondary">
           <strong className="text-on-surface">Orientation Principle: </strong>
           Before opening books, solving questions or buying courses, understand
           what CAT actually is, how the exam works, and how you want to
           strategically structure your preparation.
         </p>
+        <button
+          type="button"
+          onClick={toggleAllTopics}
+          className="self-start sm:self-center text-xs font-mono text-primary hover:text-on-surface border border-outline-variant/80 hover:border-primary px-3 py-1 rounded-lg bg-surface/60 transition-all cursor-pointer whitespace-nowrap shrink-0"
+        >
+          {isAllOpen ? "Collapse All Topics" : "Expand All Topics"}
+        </button>
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
@@ -53,7 +89,7 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         title="What is CAT?"
         tagline="A high-stakes elimination & decision-making test under strict time scarcity"
         badge="Philosophy"
-        isOpen={openTopicId === "what-is-cat"}
+        isOpen={Boolean(openTopicIds["what-is-cat"])}
         onToggle={() => toggleTopic("what-is-cat")}
       >
         <div className="space-y-6 pt-2">
@@ -119,7 +155,7 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         title="QA, VARC & DILR"
         tagline="The three cognitive pillars with non-negotiable 40-minute locked windows"
         badge="3 Sections"
-        isOpen={openTopicId === "pillars"}
+        isOpen={Boolean(openTopicIds["pillars"])}
         onToggle={() => toggleTopic("pillars")}
       >
         <div className="pt-2">
@@ -140,7 +176,7 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         title="Exam Pattern & Structure"
         tagline="Structural constraints, negative marking economics (+3/-1), and time limits"
         badge="Pattern"
-        isOpen={openTopicId === "pattern"}
+        isOpen={Boolean(openTopicIds["pattern"])}
         onToggle={() => toggleTopic("pattern")}
       >
         <div className="space-y-5 pt-2">
@@ -186,7 +222,7 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         title="Percentile vs Score"
         tagline="Why ~40–50% raw marks yields 99th percentile + Interactive Estimator Tool"
         badge="Interactive Tool"
-        isOpen={openTopicId === "score-percentile"}
+        isOpen={Boolean(openTopicIds["score-percentile"])}
         onToggle={() => toggleTopic("score-percentile")}
       >
         <div className="pt-2">
@@ -203,7 +239,7 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         title="Target Colleges"
         tagline="College taxonomy tiers, percentile requirements, and composite score criteria"
         badge="Institutions"
-        isOpen={openTopicId === "colleges"}
+        isOpen={Boolean(openTopicIds["colleges"])}
         onToggle={() => toggleTopic("colleges")}
       >
         <div className="space-y-6 pt-2">
@@ -272,7 +308,7 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         title="Understanding Your Goals"
         tagline="Four foundational questions to define your target attempt year and profile"
         badge="Alignment"
-        isOpen={openTopicId === "goals"}
+        isOpen={Boolean(openTopicIds["goals"])}
         onToggle={() => toggleTopic("goals")}
       >
         <div className="pt-2">
@@ -289,7 +325,7 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         title="Choosing Your Preparation Approach"
         tagline="Compare Self-Study, Guided Coaching, and the Balanced Hybrid model"
         badge="Execution"
-        isOpen={openTopicId === "prep-approach"}
+        isOpen={Boolean(openTopicIds["prep-approach"])}
         onToggle={() => toggleTopic("prep-approach")}
       >
         <div className="pt-2">

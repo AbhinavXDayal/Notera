@@ -374,6 +374,8 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
             x2="100%"
             y2="100%"
           >
+            <stop offset="0%" stopColor="#5EA876" stopOpacity="0.05" />
+            <stop offset="50%" stopColor="#5EA876" stopOpacity="0.25" />
             <stop offset="0%" stopColor="#385A42" stopOpacity="0.05" />
             <stop offset="50%" stopColor="#385A42" stopOpacity="0.25" />
             <stop offset="100%" stopColor="#D6B265" stopOpacity="0.05" />
@@ -387,6 +389,7 @@ export const ConstellationElements: React.FC<ConstellationElementsProps> = ({
           >
             <stop offset="0%" stopColor="#A89F91" stopOpacity="0.05" />
             <stop offset="50%" stopColor="#A89F91" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#5EA876" stopOpacity="0.05" />
             <stop offset="100%" stopColor="#385A42" stopOpacity="0.05" />
           </linearGradient>
         </defs>
