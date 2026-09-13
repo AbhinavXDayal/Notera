@@ -6,8 +6,10 @@ import { ScorePercentileExplorer } from "./ScorePercentileExplorer";
 import { CallPredictorCard } from "./CallPredictorCard";
 import { GoalPlanningSection } from "./GoalPlanningSection";
 import { PreparationApproach } from "./PreparationApproach";
-import { TopicAiExplanationCard } from "../../ai/TopicAiExplanationCard";
-import { Building2, Info } from "lucide-react";
+import {
+  Building2,
+  Info,
+} from "lucide-react";
 
 const ALL_TOPIC_IDS = [
   "what-is-cat",
@@ -43,13 +45,6 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
     }));
   };
 
-  const handleNavigateTopic = (nextTopicId: string) => {
-    setOpenTopicIds((prev) => ({
-      ...prev,
-      [nextTopicId]: true,
-    }));
-  };
-
   const isAllOpen = ALL_TOPIC_IDS.every((id) => openTopicIds[id]);
 
   const toggleAllTopics = () => {
@@ -76,7 +71,7 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         <button
           type="button"
           onClick={toggleAllTopics}
-          className="self-start sm:self-center text-xs font-mono text-primary hover:text-on-surface border border-outline-variant/80 hover:border-primary px-3 py-1 rounded-lg bg-surface/60 transition-all cursor-pointer whitespace-nowrap shrink-0 font-medium"
+          className="self-start sm:self-center text-xs font-mono text-primary hover:text-on-surface border border-outline-variant/80 hover:border-primary px-3 py-1 rounded-lg bg-surface/60 transition-all cursor-pointer whitespace-nowrap shrink-0"
         >
           {isAllOpen ? "Collapse All Topics" : "Expand All Topics"}
         </button>
@@ -89,21 +84,19 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         id="what-is-cat"
         number="01"
         title="What is CAT?"
-        tagline="A high-stakes elimination & decision-making test under strict time scarcity"
-        badge="Philosophy"
+        tagline="Overview, purpose, and core exam philosophy"
+        badge="Overview"
         isOpen={Boolean(openTopicIds["what-is-cat"])}
         onToggle={() => toggleTopic("what-is-cat")}
       >
-        <TopicAiExplanationCard
-          context={{
-            field: "CAT",
-            section: "Roadmap",
-            stage: "Understand the Journey",
-            topic: "What is CAT?",
-            topicId: "what-is-cat",
-          }}
-          onNavigateTopic={handleNavigateTopic}
-        />
+        <div className="py-2 text-xs sm:text-sm text-secondary leading-relaxed space-y-2.5">
+          <p>
+            The <strong className="text-on-surface">Common Admission Test (CAT)</strong> is India’s premier national-level computer-based entrance examination conducted annually by the Indian Institutes of Management (IIMs) for admission to top-tier postgraduate management programs (MBA/PGP).
+          </p>
+          <p>
+            Rather than testing rote memorization, CAT evaluates speed, comprehension, analytical reasoning, and decisive decision-making under strict time constraints across three locked 40-minute sections: <span className="text-on-surface font-medium">VARC</span>, <span className="text-on-surface font-medium">DILR</span>, and <span className="text-on-surface font-medium">QA</span>.
+          </p>
+        </div>
       </JourneyTopicAccordion>
 
       {/* ─────────────────────────────────────────────────────────────
@@ -118,22 +111,13 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         isOpen={Boolean(openTopicIds["pillars"])}
         onToggle={() => toggleTopic("pillars")}
       >
-        <TopicAiExplanationCard
-          context={{
-            field: "CAT",
-            section: "Roadmap",
-            stage: "Understand the Journey",
-            topic: "QA, VARC & DILR",
-            topicId: "pillars",
-          }}
-          onNavigateTopic={handleNavigateTopic}
-        >
+        <div className="pt-2">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
             {pillars.map((pillar) => (
               <SectionPillarCard key={pillar.id} pillar={pillar} />
             ))}
           </div>
-        </TopicAiExplanationCard>
+        </div>
       </JourneyTopicAccordion>
 
       {/* ─────────────────────────────────────────────────────────────
@@ -148,49 +132,38 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         isOpen={Boolean(openTopicIds["pattern"])}
         onToggle={() => toggleTopic("pattern")}
       >
-        <TopicAiExplanationCard
-          context={{
-            field: "CAT",
-            section: "Roadmap",
-            stage: "Understand the Journey",
-            topic: "Exam Pattern & Structure",
-            topicId: "pattern",
-          }}
-          onNavigateTopic={handleNavigateTopic}
-        >
-          <div className="space-y-4">
-            {/* Attributes Matrix */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {examPattern.attributes.map((attr, idx) => (
-                <div
-                  key={idx}
-                  className="bg-surface border border-outline-variant rounded-xl p-4 sm:p-5 space-y-1.5"
-                >
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-secondary">
-                    {attr.label}
-                  </span>
-                  <h5 className="font-display text-lg text-primary font-semibold">
-                    {attr.value}
-                  </h5>
-                  <p className="text-xs text-secondary leading-relaxed">
-                    {attr.detail}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Variable Year Notice */}
-            <div className="bg-surface border border-outline-variant/60 rounded-xl p-4 flex items-start space-x-3 text-xs text-secondary leading-relaxed">
-              <Info className="w-4 h-4 text-tertiary shrink-0 mt-0.5" />
-              <span>
-                <strong className="text-on-surface">
-                  Annual Pattern Notice:{" "}
-                </strong>
-                {examPattern.notice}
-              </span>
-            </div>
+        <div className="space-y-5 pt-2">
+          {/* Attributes Matrix */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {examPattern.attributes.map((attr, idx) => (
+              <div
+                key={idx}
+                className="bg-surface border border-outline-variant rounded-xl p-4 sm:p-5 space-y-1.5"
+              >
+                <span className="text-[10px] font-mono uppercase tracking-wider text-secondary">
+                  {attr.label}
+                </span>
+                <h5 className="font-display text-lg text-primary font-semibold">
+                  {attr.value}
+                </h5>
+                <p className="text-xs text-secondary leading-relaxed">
+                  {attr.detail}
+                </p>
+              </div>
+            ))}
           </div>
-        </TopicAiExplanationCard>
+
+          {/* Variable Year Notice */}
+          <div className="bg-surface border border-outline-variant/60 rounded-xl p-4 flex items-start space-x-3 text-xs text-secondary leading-relaxed">
+            <Info className="w-4 h-4 text-tertiary shrink-0 mt-0.5" />
+            <span>
+              <strong className="text-on-surface">
+                Annual Pattern Notice:{" "}
+              </strong>
+              {examPattern.notice}
+            </span>
+          </div>
+        </div>
       </JourneyTopicAccordion>
 
       {/* ─────────────────────────────────────────────────────────────
@@ -205,18 +178,9 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         isOpen={Boolean(openTopicIds["score-percentile"])}
         onToggle={() => toggleTopic("score-percentile")}
       >
-        <TopicAiExplanationCard
-          context={{
-            field: "CAT",
-            section: "Roadmap",
-            stage: "Understand the Journey",
-            topic: "Percentile vs Score",
-            topicId: "score-percentile",
-          }}
-          onNavigateTopic={handleNavigateTopic}
-        >
+        <div className="pt-2">
           <ScorePercentileExplorer />
-        </TopicAiExplanationCard>
+        </div>
       </JourneyTopicAccordion>
 
       {/* ─────────────────────────────────────────────────────────────
@@ -231,72 +195,61 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         isOpen={Boolean(openTopicIds["colleges"])}
         onToggle={() => toggleTopic("colleges")}
       >
-        <TopicAiExplanationCard
-          context={{
-            field: "CAT",
-            section: "Roadmap",
-            stage: "Understand the Journey",
-            topic: "Target Colleges",
-            topicId: "colleges",
-          }}
-          onNavigateTopic={handleNavigateTopic}
-        >
-          <div className="space-y-6">
-            {/* 4 College Tiers Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {targetColleges.tiers.map((tier) => (
-                <div
-                  key={tier.id}
-                  className="bg-surface border border-outline-variant hover:border-primary/40 rounded-xl p-5 sm:p-6 space-y-3.5 transition-all"
-                >
-                  <div className="flex items-center justify-between pb-2 border-b border-outline-variant/60">
-                    <div className="flex items-center space-x-2">
-                      <Building2 className="w-4 h-4 text-primary" />
-                      <span className="font-mono text-xs font-semibold text-primary">
-                        {tier.category}
+        <div className="space-y-6 pt-2">
+          {/* 4 College Tiers Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {targetColleges.tiers.map((tier) => (
+              <div
+                key={tier.id}
+                className="bg-surface border border-outline-variant hover:border-primary/40 rounded-xl p-5 sm:p-6 space-y-3.5 transition-all"
+              >
+                <div className="flex items-center justify-between pb-2 border-b border-outline-variant/60">
+                  <div className="flex items-center space-x-2">
+                    <Building2 className="w-4 h-4 text-primary" />
+                    <span className="font-mono text-xs font-semibold text-primary">
+                      {tier.category}
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container border border-outline-variant text-secondary">
+                    {tier.percentileRange}
+                  </span>
+                </div>
+
+                <p className="text-xs text-secondary italic font-display">
+                  {tier.tagline}
+                </p>
+
+                {/* Example Institutions */}
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-tertiary font-semibold block">
+                    Benchmark Institutes:
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {tier.examples.map((ex, i) => (
+                      <span
+                        key={i}
+                        className="text-xs bg-surface-container px-2.5 py-1 rounded-md border border-outline-variant/60 text-on-surface font-medium"
+                      >
+                        {ex}
                       </span>
-                    </div>
-                    <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container border border-outline-variant text-secondary">
-                      {tier.percentileRange}
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-secondary italic font-display">
-                    {tier.tagline}
-                  </p>
-
-                  {/* Example Institutions */}
-                  <div className="space-y-1.5">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-tertiary font-semibold block">
-                      Benchmark Institutes:
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {tier.examples.map((ex, i) => (
-                        <span
-                          key={i}
-                          className="text-xs bg-surface-container px-2.5 py-1 rounded-md border border-outline-variant/60 text-on-surface font-medium"
-                        >
-                          {ex}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Profile Focus */}
-                  <div className="pt-2 text-xs text-secondary leading-relaxed border-t border-outline-variant/60">
-                    <strong className="text-on-surface">
-                      Profile Criteria:{" "}
-                    </strong>
-                    {tier.profileFocus}
+                    ))}
                   </div>
                 </div>
-              ))}
-            </div>
 
-            {/* Profile & Call Predictor Resource Card */}
-            <CallPredictorCard />
+                {/* Profile Focus */}
+                <div className="pt-2 text-xs text-secondary leading-relaxed border-t border-outline-variant/60">
+                  <strong className="text-on-surface">
+                    Profile Criteria:{" "}
+                  </strong>
+                  {tier.profileFocus}
+                </div>
+              </div>
+            ))}
           </div>
-        </TopicAiExplanationCard>
+
+          {/* Profile & Call Predictor Resource Card */}
+          <CallPredictorCard />
+        </div>
       </JourneyTopicAccordion>
 
       {/* ─────────────────────────────────────────────────────────────
@@ -311,18 +264,9 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         isOpen={Boolean(openTopicIds["goals"])}
         onToggle={() => toggleTopic("goals")}
       >
-        <TopicAiExplanationCard
-          context={{
-            field: "CAT",
-            section: "Roadmap",
-            stage: "Understand the Journey",
-            topic: "Understanding Your Goals",
-            topicId: "goals",
-          }}
-          onNavigateTopic={handleNavigateTopic}
-        >
+        <div className="pt-2">
           <GoalPlanningSection />
-        </TopicAiExplanationCard>
+        </div>
       </JourneyTopicAccordion>
 
       {/* ─────────────────────────────────────────────────────────────
@@ -337,18 +281,9 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         isOpen={Boolean(openTopicIds["prep-approach"])}
         onToggle={() => toggleTopic("prep-approach")}
       >
-        <TopicAiExplanationCard
-          context={{
-            field: "CAT",
-            section: "Roadmap",
-            stage: "Understand the Journey",
-            topic: "Choosing Your Preparation Approach",
-            topicId: "prep-approach",
-          }}
-          onNavigateTopic={handleNavigateTopic}
-        >
+        <div className="pt-2">
           <PreparationApproach />
-        </TopicAiExplanationCard>
+        </div>
       </JourneyTopicAccordion>
     </div>
   );

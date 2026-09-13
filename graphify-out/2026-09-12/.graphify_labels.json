@@ -1,12 +1,12 @@
 {
-  "0": "field.ts",
+  "0": "App.tsx",
   "1": "useVisitorPreferences.ts",
   "2": "SearchModal.tsx",
   "3": "react",
   "4": "compilerOptions",
   "5": "NotesLayout.tsx",
   "6": "lucide-react",
-  "7": "App.tsx",
+  "7": "TopicAiExplanationCard.tsx",
   "8": "compilerOptions",
   "9": "package.json",
   "10": "CatRoadmapTab.tsx",
@@ -17,6 +17,6 @@
   "15": "postcss.config.js",
   "16": "tailwind.config.js",
   "17": "rules/graphify.md",
-  "18": "CatOverviewTab.tsx",
+  "18": "explain.ts",
   "19": "workflows/graphify.md"
 }

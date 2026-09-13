@@ -36,8 +36,8 @@
     "semantic_hash": ""
   },
   "src/components/background/CoffeeRings.tsx": {
-    "mtime": 1789188338.3450985,
-    "seen": 1789188393.2878108,
+    "mtime": 1789188524.150922,
+    "seen": 1789188906.2511168,
     "ast_hash": "818be53268059a307bfb9178d231709d",
     "semantic_hash": ""
   },
@@ -48,8 +48,8 @@
     "semantic_hash": ""
   },
   "src/components/background/ConstellationElements.tsx": {
-    "mtime": 1789188350.3065338,
-    "seen": 1789188393.2878132,
+    "mtime": 1789188524.4378128,
+    "seen": 1789188906.2511206,
     "ast_hash": "8514ccd3bb76b7c1890c4a7e70d9919d",
     "semantic_hash": ""
   },
@@ -78,8 +78,8 @@
     "semantic_hash": "b3f3001bdf083e9b95d25f977e6483a8"
   },
   "src/components/cat/CatOverviewTab.tsx": {
-    "mtime": 1789188308.9438694,
-    "seen": 1789188393.2878208,
+    "mtime": 1789188524.4804304,
+    "seen": 1789188906.25113,
     "ast_hash": "f7ecab436923e8f7e7ae363567b2478b",
     "semantic_hash": ""
   },
@@ -354,8 +354,8 @@
     "semantic_hash": "ad65b8c003edec418ebbb0f3a2860d90"
   },
   "tailwind.config.js": {
-    "mtime": 1789188376.9161751,
-    "seen": 1789188393.2879045,
+    "mtime": 1789188524.0344255,
+    "seen": 1789188906.2512488,
     "ast_hash": "8acaaa13c1702898257f1d152782871c",
     "semantic_hash": ""
   },
@@ -582,9 +582,45 @@
     "semantic_hash": ""
   },
   "src/components/cat/journey/Stage01Topics.tsx": {
-    "mtime": 1789188294.2525184,
-    "seen": 1789188393.287843,
-    "ast_hash": "fe1a16e42f894081f41a897a91fed56f",
+    "mtime": 1789188874.4006174,
+    "seen": 1789188906.2511563,
+    "ast_hash": "76386f806587d83e756a9d846006fe52",
+    "semantic_hash": ""
+  },
+  "api/explain.ts": {
+    "mtime": 1789188842.9469984,
+    "seen": 1789188906.2510977,
+    "ast_hash": "5b48e15c67a8bba7e2ec08d120b3b54a",
+    "semantic_hash": ""
+  },
+  "src/components/ai/AskNoteraWidget.tsx": {
+    "mtime": 1789188887.6076853,
+    "seen": 1789188906.2511091,
+    "ast_hash": "ec44598ad77b3d1d662182176378f080",
+    "semantic_hash": ""
+  },
+  "src/components/ai/TopicAiExplanationCard.tsx": {
+    "mtime": 1789188892.5634725,
+    "seen": 1789188906.251111,
+    "ast_hash": "8114a5b9753e7a8007b1a02d3a45efd1",
+    "semantic_hash": ""
+  },
+  "src/data/catContent.ts": {
+    "mtime": 1789188831.0996132,
+    "seen": 1789188906.2511947,
+    "ast_hash": "44bbde9b19d8afa49d93f4ed3e10451d",
+    "semantic_hash": ""
+  },
+  "src/services/aiService.ts": {
+    "mtime": 1789188836.105698,
+    "seen": 1789188906.2512188,
+    "ast_hash": "5b9ddaa1d91dafc91f8c40002091c1bc",
+    "semantic_hash": ""
+  },
+  "src/types/ai.ts": {
+    "mtime": 1789188811.2715554,
+    "seen": 1789188906.2512233,
+    "ast_hash": "134504b0d57ecaf4c27684193bbe46e6",
     "semantic_hash": ""
   }
 }

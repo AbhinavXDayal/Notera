@@ -8,9 +8,6 @@ import { CallPredictorCard } from "./CallPredictorCard";
 import { GoalPlanningSection } from "./GoalPlanningSection";
 import { PreparationApproach } from "./PreparationApproach";
 import {
-  HelpCircle,
-  Lightbulb,
-  CheckCircle2,
   Building2,
   Sparkles,
   ArrowRight,
@@ -30,7 +27,6 @@ export const Stage01UnderstandJourney: React.FC<
     badge,
     title,
     tagline,
-    whatIsCat,
     pillars,
     examPattern,
     targetColleges,
@@ -51,60 +47,16 @@ export const Stage01UnderstandJourney: React.FC<
       <JourneySection
         id="what-is-cat"
         number="01"
-        title={whatIsCat.heading}
-        tagline={whatIsCat.summary}
+        title="What is CAT?"
+        tagline="Overview, purpose, and core exam philosophy"
       >
-        <div className="space-y-6">
-          {/* Core Analytical Reality */}
-          <div className="bg-surface-container border border-outline-variant rounded-xl p-6 space-y-4 shadow-terra-card">
-            <div className="flex items-center space-x-2 text-primary font-mono text-xs font-semibold">
-              <HelpCircle className="w-4 h-4" />
-              <span>CORE ARCHITECTURE • BEYOND FORMULA MEMORIZATION</span>
-            </div>
-            <p className="text-sm text-on-surface leading-relaxed">
-              {whatIsCat.corePhilosophy}
-            </p>
-
-            {/* 6 Essential Skills Matrix */}
-            <div className="pt-2">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-tertiary font-semibold block mb-3">
-                Key Analytical Capabilities Evaluated:
-              </span>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {whatIsCat.skills.map((skill, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-surface border border-outline-variant/60 rounded-xl p-4 space-y-1.5 hover:border-primary/40 transition-colors"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
-                      <h4 className="font-display text-base text-on-surface font-medium">
-                        {skill.title}
-                      </h4>
-                    </div>
-                    <p className="text-xs text-secondary leading-relaxed pl-5">
-                      {skill.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Highlighted Insight Callout */}
-          <div className="bg-surface border-2 border-primary/40 rounded-xl p-6 shadow-terra-card flex items-start space-x-4">
-            <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 text-primary mt-0.5">
-              <Lightbulb className="w-5 h-5" />
-            </div>
-            <div className="space-y-1">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-primary font-semibold block">
-                The Golden Invariant
-              </span>
-              <p className="font-display text-lg sm:text-xl text-on-surface italic font-medium leading-snug">
-                "{whatIsCat.highlightInsight}"
-              </p>
-            </div>
-          </div>
+        <div className="bg-surface-container border border-outline-variant rounded-xl p-5 sm:p-6 text-xs sm:text-sm text-secondary leading-relaxed space-y-2.5 shadow-terra-card">
+          <p>
+            The <strong className="text-on-surface">Common Admission Test (CAT)</strong> is India’s premier national-level computer-based entrance examination conducted annually by the Indian Institutes of Management (IIMs) for admission to top-tier postgraduate management programs (MBA/PGP).
+          </p>
+          <p>
+            Rather than testing rote memorization, CAT evaluates speed, comprehension, analytical reasoning, and decisive decision-making under strict time constraints across three locked 40-minute sections: <span className="text-on-surface font-medium">VARC</span>, <span className="text-on-surface font-medium">DILR</span>, and <span className="text-on-surface font-medium">QA</span>.
+          </p>
         </div>
       </JourneySection>
 
