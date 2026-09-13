@@ -71,7 +71,9 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
       >
         <div className="py-2 text-xs sm:text-sm text-secondary leading-relaxed space-y-4">
           <p>
-            The CAT exam syllabus comprises three core sections designed to evaluate analytical ability, quantitative reasoning, and verbal comprehension:
+            The CAT exam syllabus comprises three core sections designed to
+            evaluate analytical ability, quantitative reasoning, and verbal
+            comprehension:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
@@ -87,27 +89,41 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
               </div>
               <div className="space-y-2.5 text-xs">
                 <div>
-                  <p className="font-semibold text-on-surface">Arithmetic (~40–45%)</p>
+                  <p className="font-semibold text-on-surface">
+                    Arithmetic (~40–45%)
+                  </p>
                   <p className="text-secondary/90 font-light mt-0.5">
-                    Percentages, Profit & Loss, Simple & Compound Interest, Ratio & Proportion, Time Speed Distance (Races, Trains, Escalators), Time & Work, Averages & Mixtures.
+                    Percentages, Profit & Loss, Simple & Compound Interest,
+                    Ratio & Proportion, Time Speed Distance (Races, Trains,
+                    Escalators), Time & Work, Averages & Mixtures.
                   </p>
                 </div>
                 <div>
-                  <p className="font-semibold text-on-surface">Algebra (~30–35%)</p>
+                  <p className="font-semibold text-on-surface">
+                    Algebra (~30–35%)
+                  </p>
                   <p className="text-secondary/90 font-light mt-0.5">
-                    Linear & Quadratic Equations, Polynomials, Inequalities, Modulus, Functions & Graphs, Maxima-Minima, Logarithms, Sequences & Series.
+                    Linear & Quadratic Equations, Polynomials, Inequalities,
+                    Modulus, Functions & Graphs, Maxima-Minima, Logarithms,
+                    Sequences & Series.
                   </p>
                 </div>
                 <div>
-                  <p className="font-semibold text-on-surface">Geometry & Mensuration (~15–20%)</p>
+                  <p className="font-semibold text-on-surface">
+                    Geometry & Mensuration (~15–20%)
+                  </p>
                   <p className="text-secondary/90 font-light mt-0.5">
-                    Triangles, Circles, Quadrilaterals, Coordinate Geometry, Trigonometry, 2D & 3D Mensuration.
+                    Triangles, Circles, Quadrilaterals, Coordinate Geometry,
+                    Trigonometry, 2D & 3D Mensuration.
                   </p>
                 </div>
                 <div>
-                  <p className="font-semibold text-on-surface">Number Systems & Modern Math (~10%)</p>
+                  <p className="font-semibold text-on-surface">
+                    Number Systems & Modern Math (~10%)
+                  </p>
                   <p className="text-secondary/90 font-light mt-0.5">
-                    Divisibility, Remainders, Factors, Permutations & Combinations, Probability, Set Theory.
+                    Divisibility, Remainders, Factors, Permutations &
+                    Combinations, Probability, Set Theory.
                   </p>
                 </div>
               </div>
@@ -125,21 +141,32 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
               </div>
               <div className="space-y-2.5 text-xs">
                 <div>
-                  <p className="font-semibold text-on-surface">Reading Comprehension (~66%)</p>
+                  <p className="font-semibold text-on-surface">
+                    Reading Comprehension (~66%)
+                  </p>
                   <p className="text-secondary/90 font-light mt-0.5">
-                    4 Dense Passages (~400–500 words each) covering Philosophy, Sociology, Economics, Psychology, History, Science & Technology.
+                    4 Dense Passages (~400–500 words each) covering Philosophy,
+                    Sociology, Economics, Psychology, History, Science &
+                    Technology.
                   </p>
                 </div>
                 <div>
-                  <p className="font-semibold text-on-surface">RC Core Question Archetypes</p>
+                  <p className="font-semibold text-on-surface">
+                    RC Core Question Archetypes
+                  </p>
                   <p className="text-secondary/90 font-light mt-0.5">
-                    Central Theme & Main Idea, Author Tone & Attitude, Inference & Unstated Premises, Contextual Meaning, Logical Conclusion.
+                    Central Theme & Main Idea, Author Tone & Attitude, Inference
+                    & Unstated Premises, Contextual Meaning, Logical Conclusion.
                   </p>
                 </div>
                 <div>
-                  <p className="font-semibold text-on-surface">Verbal Ability (~34%)</p>
+                  <p className="font-semibold text-on-surface">
+                    Verbal Ability (~34%)
+                  </p>
                   <p className="text-secondary/90 font-light mt-0.5">
-                    Para Jumbles (TITA sequence ordering), Paragraph Summary (thesis compression), Odd Sentence Out, Para Completion & Sentence Insertion.
+                    Para Jumbles (TITA sequence ordering), Paragraph Summary
+                    (thesis compression), Odd Sentence Out, Para Completion &
+                    Sentence Insertion.
                   </p>
                 </div>
               </div>
@@ -157,21 +184,32 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
               </div>
               <div className="space-y-2.5 text-xs">
                 <div>
-                  <p className="font-semibold text-on-surface">Logical Reasoning</p>
+                  <p className="font-semibold text-on-surface">
+                    Logical Reasoning
+                  </p>
                   <p className="text-secondary/90 font-light mt-0.5">
-                    Linear & Circular Arrangements, Matrix Attribute Grids, Games & Tournaments (Round-Robin, Knockouts), Truth-Teller & Liar Binary Deduction.
+                    Linear & Circular Arrangements, Matrix Attribute Grids,
+                    Games & Tournaments (Round-Robin, Knockouts), Truth-Teller &
+                    Liar Binary Deduction.
                   </p>
                 </div>
                 <div>
-                  <p className="font-semibold text-on-surface">Data Interpretation</p>
+                  <p className="font-semibold text-on-surface">
+                    Data Interpretation
+                  </p>
                   <p className="text-secondary/90 font-light mt-0.5">
-                    Complex Multi-Layer Tables, Bar & Line Charts, Pie Charts, Radar/Spider Charts, Bubble & Scatter Plots, Missing Data Caselets.
+                    Complex Multi-Layer Tables, Bar & Line Charts, Pie Charts,
+                    Radar/Spider Charts, Bubble & Scatter Plots, Missing Data
+                    Caselets.
                   </p>
                 </div>
                 <div>
-                  <p className="font-semibold text-on-surface">Hybrid Analytical Sets</p>
+                  <p className="font-semibold text-on-surface">
+                    Hybrid Analytical Sets
+                  </p>
                   <p className="text-secondary/90 font-light mt-0.5">
-                    Network Routes & Max Flow, Venn Diagrams (2, 3, 4 Sets Maxima-Minima), Scheduling & Optimization Constraints.
+                    Network Routes & Max Flow, Venn Diagrams (2, 3, 4 Sets
+                    Maxima-Minima), Scheduling & Optimization Constraints.
                   </p>
                 </div>
               </div>
