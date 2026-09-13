@@ -186,25 +186,6 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
           <div className="space-y-4 pt-1 fade-in">
             {/* 7 Interactive Stage 01 Topic Accordions */}
             <Stage01Topics />
-
-            <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-outline-variant/60">
-              <p className="text-xs text-primary font-medium">
-                Goal: Know what you're preparing for before collecting resources
-              </p>
-              <div className="flex items-center space-x-2">
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleStageSelect("01");
-                  }}
-                  className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2.5 py-1 rounded-lg transition-all cursor-pointer whitespace-nowrap font-medium shadow-xs"
-                >
-                  <BookOpen className="w-3 h-3" />
-                  <span>View Stage 01 Notes →</span>
-                </button>
-              </div>
-            </div>
           </div>
         )}
       </div>
