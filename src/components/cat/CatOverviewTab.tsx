@@ -272,7 +272,6 @@ const STAGE_TITLES: Record<string, string> = {
   "12": "Final Month",
   "13": "CAT Exam Strategy",
   "14": "Beyond CAT",
-  summary: "The Notera CAT Journey",
 };
 
 const STAGE_NOTES_MAP: Record<string, string[]> = {
@@ -361,15 +360,6 @@ const STAGE_NOTES_MAP: Record<string, string[]> = {
   "12": ["codex-qa", "codex-dilr", "codex-varc"],
   "13": ["dilr-selection", "speed-math", "codex-varc", "codex-qa"],
   "14": ["codex-varc", "varc-central-theme", "varc-summary"],
-  summary: [
-    "speed-math",
-    "percentages-multipliers",
-    "varc-rc-deconstruction",
-    "dilr-selection",
-    "codex-qa",
-    "codex-dilr",
-    "codex-varc",
-  ],
 };
 
 export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
@@ -391,7 +381,6 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
     "12",
     "13",
     "14",
-    "summary",
   ];
 
   const [openSections, setOpenSections] = useState<Record<string, boolean>>(
@@ -1473,87 +1462,6 @@ ACCURACY → What causes my mistakes?`}
               >
                 <BookOpen className="w-3 h-3" />
                 <span>View Notes →</span>
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div className="border-t border-outline-variant/60" />
-
-      {/* The Notera CAT Journey Summary */}
-      <div
-        className={`space-y-3 p-3.5 -mx-3.5 rounded-xl transition-all ${
-          activeStageId === "summary"
-            ? "bg-primary/5 border border-primary/40 shadow-sm"
-            : "border border-transparent hover:border-outline-variant/40"
-        }`}
-      >
-        <button
-          type="button"
-          onClick={() => toggleSection("summary")}
-          className="w-full flex items-center justify-between text-left group cursor-pointer"
-        >
-          <div className="flex items-center space-x-2">
-            <h4 className="font-display text-xl text-on-surface group-hover:text-primary transition-colors font-semibold">
-              The Notera CAT Journey
-            </h4>
-          </div>
-          <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
-            <ChevronDown
-              className={`w-4 h-4 transition-transform duration-200 ${
-                openSections["summary"] ? "rotate-180" : ""
-              }`}
-            />
-          </div>
-        </button>
-
-        {openSections["summary"] && (
-          <div className="space-y-3 pt-1 fade-in">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs font-mono text-secondary">
-              {[
-                { num: "01", text: "Understand CAT" },
-                { num: "02", text: "Build Your Foundation" },
-                { num: "03", text: "Complete the Core Syllabus" },
-                { num: "04", text: "Practice & Apply" },
-                { num: "05", text: "Master Sectional Strategy" },
-                { num: "06", text: "Enter the Mock Phase" },
-                { num: "07", text: "Analyse & Learn" },
-                { num: "08", text: "Solve Previous Year Questions" },
-                { num: "09", text: "Build Your Personal Strategy" },
-                { num: "10", text: "Revise & Fix Weaknesses" },
-                { num: "11", text: "Intensive Mock Training" },
-                { num: "12", text: "Final Revision" },
-                { num: "13", text: "CAT Exam Day" },
-                { num: "14", text: "Interviews & MBA Journey" },
-              ].map((item) => (
-                <div
-                  key={item.num}
-                  onClick={() => handleStageSelect(item.num)}
-                  className={`flex items-center space-x-2 py-1.5 px-2.5 rounded-lg border transition-all cursor-pointer ${
-                    activeStageId === item.num
-                      ? "bg-primary/15 border-primary text-on-surface"
-                      : "bg-surface/60 border-outline-variant/60 hover:border-primary/50"
-                  }`}
-                >
-                  <span className="text-primary font-bold">{item.num}</span>
-                  <span className="text-on-surface font-sans text-xs">
-                    {item.text}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-end pt-1">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleStageSelect("summary");
-                }}
-                className="inline-flex items-center space-x-1 text-[11px] font-mono text-primary hover:text-on-surface bg-surface border border-outline-variant hover:border-primary px-2 py-0.5 rounded transition-all cursor-pointer whitespace-nowrap"
-              >
-                <BookOpen className="w-3 h-3" />
-                <span>View All Notes →</span>
               </button>
             </div>
           </div>
