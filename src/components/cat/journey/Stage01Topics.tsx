@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { JourneyTopicAccordion } from "./JourneyTopicAccordion";
-import { ExternalLink } from "lucide-react";
 
 interface Stage01TopicsProps {
   defaultOpenTopicId?: string | null;
@@ -61,269 +60,122 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
       </JourneyTopicAccordion>
 
       {/* ─────────────────────────────────────────────────────────────
-          TOPIC 2: QA, VARC & DILR
+          TOPIC 2: SYLLABUS
       ───────────────────────────────────────────────────────────── */}
       <JourneyTopicAccordion
-        id="pillars"
+        id="syllabus"
         number="02"
-        title="QA, VARC & DILR"
-        isOpen={Boolean(openTopicIds["pillars"])}
-        onToggle={() => toggleTopic("pillars")}
+        title="Syllabus"
+        isOpen={Boolean(openTopicIds["syllabus"])}
+        onToggle={() => toggleTopic("syllabus")}
       >
-        <div className="py-2 text-xs sm:text-sm text-secondary leading-relaxed space-y-2.5">
+        <div className="py-2 text-xs sm:text-sm text-secondary leading-relaxed space-y-4">
           <p>
-            The CAT exam consists of three distinct sections, each allocated a
-            strict, non-switchable 40-minute window:
+            The CAT exam syllabus comprises three core sections designed to evaluate analytical ability, quantitative reasoning, and verbal comprehension:
           </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-secondary">
-            <li>
-              <strong className="text-on-surface">
-                VARC (Verbal Ability & Reading Comprehension):
-              </strong>{" "}
-              Focuses on argument analysis, inference, dense academic passages,
-              and verbal logic (24 questions).
-            </li>
-            <li>
-              <strong className="text-on-surface">
-                DILR (Data Interpretation & Logical Reasoning):
-              </strong>{" "}
-              Tests multi-dimensional puzzle modeling, data analysis, and
-              selective set cracking (20–22 questions across 4–5 sets).
-            </li>
-            <li>
-              <strong className="text-on-surface">
-                QA (Quantitative Ability):
-              </strong>{" "}
-              Tests mathematical problem solving with ~70% weightage on
-              Arithmetic and Algebra, followed by Geometry and Modern Math (22
-              questions).
-            </li>
-          </ul>
-        </div>
-      </JourneyTopicAccordion>
 
-      {/* ─────────────────────────────────────────────────────────────
-          TOPIC 3: EXAM PATTERN & STRUCTURE
-      ───────────────────────────────────────────────────────────── */}
-      <JourneyTopicAccordion
-        id="pattern"
-        number="03"
-        title="Exam Pattern & Structure"
-        isOpen={Boolean(openTopicIds["pattern"])}
-        onToggle={() => toggleTopic("pattern")}
-      >
-        <div className="py-2 text-xs sm:text-sm text-secondary leading-relaxed space-y-2.5">
-          <p>
-            CAT is a 120-minute computer-based exam consisting of 66 total
-            questions with a fixed sectional sequence (
-            <span className="text-on-surface font-medium">
-              VARC → DILR → QA
-            </span>
-            ):
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-secondary">
-            <li>
-              <strong className="text-on-surface">Marking Scheme:</strong> +3
-              marks for every correct answer, -1 mark penalty for incorrect
-              MCQs. Non-MCQs (TITA — Type In The Answer) carry zero negative
-              marking penalty.
-            </li>
-            <li>
-              <strong className="text-on-surface">Sectional Lock:</strong> 40
-              minutes per section with an automatic timer transition. You cannot
-              return to previous sections or jump ahead.
-            </li>
-            <li>
-              <strong className="text-on-surface">Double Hurdle:</strong> Top
-              IIMs require candidates to clear both overall and individual
-              sectional percentile cutoffs (typically 80–85+ percentile per
-              section).
-            </li>
-          </ul>
-        </div>
-      </JourneyTopicAccordion>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+            {/* QA Pillar */}
+            <div className="p-4 rounded-xl bg-surface border border-outline-variant/80 space-y-3 shadow-xs">
+              <div className="flex items-center justify-between border-b border-outline-variant/60 pb-2.5">
+                <span className="font-mono text-xs uppercase tracking-wider text-primary font-bold">
+                  Quantitative Aptitude (QA)
+                </span>
+                <span className="text-[11px] font-mono text-secondary bg-surface-container px-2 py-0.5 rounded border border-outline-variant/50">
+                  22 Qs • 40m
+                </span>
+              </div>
+              <div className="space-y-2.5 text-xs">
+                <div>
+                  <p className="font-semibold text-on-surface">Arithmetic (~40–45%)</p>
+                  <p className="text-secondary/90 font-light mt-0.5">
+                    Percentages, Profit & Loss, Simple & Compound Interest, Ratio & Proportion, Time Speed Distance (Races, Trains, Escalators), Time & Work, Averages & Mixtures.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-on-surface">Algebra (~30–35%)</p>
+                  <p className="text-secondary/90 font-light mt-0.5">
+                    Linear & Quadratic Equations, Polynomials, Inequalities, Modulus, Functions & Graphs, Maxima-Minima, Logarithms, Sequences & Series.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-on-surface">Geometry & Mensuration (~15–20%)</p>
+                  <p className="text-secondary/90 font-light mt-0.5">
+                    Triangles, Circles, Quadrilaterals, Coordinate Geometry, Trigonometry, 2D & 3D Mensuration.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-on-surface">Number Systems & Modern Math (~10%)</p>
+                  <p className="text-secondary/90 font-light mt-0.5">
+                    Divisibility, Remainders, Factors, Permutations & Combinations, Probability, Set Theory.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-      {/* ─────────────────────────────────────────────────────────────
-          TOPIC 4: PERCENTILE VS SCORE
-      ───────────────────────────────────────────────────────────── */}
-      <JourneyTopicAccordion
-        id="score-percentile"
-        number="04"
-        title="Percentile vs Score"
-        isOpen={Boolean(openTopicIds["score-percentile"])}
-        onToggle={() => toggleTopic("score-percentile")}
-      >
-        <div className="py-2 text-xs sm:text-sm text-secondary leading-relaxed space-y-2.5">
-          <p>
-            Your <strong className="text-on-surface">Raw Score</strong> is the
-            total marks earned (+3 / -1), while your{" "}
-            <strong className="text-on-surface">Percentile</strong> represents
-            your relative rank among all test-takers nationwide.
-          </p>
-          <p>
-            Because CAT is an exam of relative accuracy and selection, you do
-            not need 90%+ raw marks. Historically:
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-secondary">
-            <li>
-              <strong className="text-on-surface">
-                ~45–50% Raw Score (~85–95 marks / 198):
-              </strong>{" "}
-              Typically yields a{" "}
-              <strong className="text-on-surface">99+ percentile</strong>.
-            </li>
-            <li>
-              <strong className="text-on-surface">
-                ~35–40% Raw Score (~70–80 marks / 198):
-              </strong>{" "}
-              Typically yields a{" "}
-              <strong className="text-on-surface">95–98 percentile</strong>.
-            </li>
-            <li>
-              <strong className="text-on-surface">
-                ~25–30% Raw Score (~50–60 marks / 198):
-              </strong>{" "}
-              Typically yields a{" "}
-              <strong className="text-on-surface">90 percentile</strong>.
-            </li>
-          </ul>
-          <p>
-            Scores are normalized across test slots to account for slight
-            variations in difficulty.
-          </p>
-        </div>
-      </JourneyTopicAccordion>
+            {/* VARC Pillar */}
+            <div className="p-4 rounded-xl bg-surface border border-outline-variant/80 space-y-3 shadow-xs">
+              <div className="flex items-center justify-between border-b border-outline-variant/60 pb-2.5">
+                <span className="font-mono text-xs uppercase tracking-wider text-primary font-bold">
+                  Verbal Ability & RC (VARC)
+                </span>
+                <span className="text-[11px] font-mono text-secondary bg-surface-container px-2 py-0.5 rounded border border-outline-variant/50">
+                  24 Qs • 40m
+                </span>
+              </div>
+              <div className="space-y-2.5 text-xs">
+                <div>
+                  <p className="font-semibold text-on-surface">Reading Comprehension (~66%)</p>
+                  <p className="text-secondary/90 font-light mt-0.5">
+                    4 Dense Passages (~400–500 words each) covering Philosophy, Sociology, Economics, Psychology, History, Science & Technology.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-on-surface">RC Core Question Archetypes</p>
+                  <p className="text-secondary/90 font-light mt-0.5">
+                    Central Theme & Main Idea, Author Tone & Attitude, Inference & Unstated Premises, Contextual Meaning, Logical Conclusion.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-on-surface">Verbal Ability (~34%)</p>
+                  <p className="text-secondary/90 font-light mt-0.5">
+                    Para Jumbles (TITA sequence ordering), Paragraph Summary (thesis compression), Odd Sentence Out, Para Completion & Sentence Insertion.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-      {/* ─────────────────────────────────────────────────────────────
-          TOPIC 5: TARGET COLLEGES
-      ───────────────────────────────────────────────────────────── */}
-      <JourneyTopicAccordion
-        id="colleges"
-        number="05"
-        title="Target Colleges"
-        isOpen={Boolean(openTopicIds["colleges"])}
-        onToggle={() => toggleTopic("colleges")}
-      >
-        <div className="py-2 text-xs sm:text-sm text-secondary leading-relaxed space-y-2.5">
-          <p>
-            Setting clear institutional bands helps you anchor your percentile
-            targets and preparation strategy:
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-secondary">
-            <li>
-              <strong className="text-on-surface">
-                Dream Targets (99+ %ile):
-              </strong>{" "}
-              IIM Ahmedabad, Bangalore, Calcutta, Lucknow, Kozhikode, and FMS
-              Delhi.
-            </li>
-            <li>
-              <strong className="text-on-surface">
-                High Targets (97–99 %ile):
-              </strong>{" "}
-              IIM Indore, IIM Mumbai, SPJIMR Mumbai, MDI Gurgaon, and IIT
-              Bombay/Delhi.
-            </li>
-            <li>
-              <strong className="text-on-surface">
-                New & Baby IIMs (92–97 %ile):
-              </strong>{" "}
-              IIM Udaipur, Ranchi, Trichy, Raipur, Rohtak, and CAP institutes.
-            </li>
-            <li>
-              <strong className="text-on-surface">
-                Allied Top Institutes (80–92 %ile):
-              </strong>{" "}
-              IMT Ghaziabad, GIM Goa, TAPMI, FORE, plus other exams like XAT
-              (XLRI) and SNAP (SIBM).
-            </li>
-          </ul>
-          <p>
-            Final interview calls depend on a Composite Score combining CAT
-            percentile with 10th/12th/Graduation marks, work experience, and
-            academic/gender diversity.
-          </p>
-        </div>
-      </JourneyTopicAccordion>
-
-      {/* ─────────────────────────────────────────────────────────────
-          TOPIC 6: UNDERSTANDING YOUR GOALS
-      ───────────────────────────────────────────────────────────── */}
-      <JourneyTopicAccordion
-        id="goals"
-        number="06"
-        title="Understanding Your Goals"
-        isOpen={Boolean(openTopicIds["goals"])}
-        onToggle={() => toggleTopic("goals")}
-      >
-        <div className="py-2 text-xs sm:text-sm text-secondary leading-relaxed space-y-2.5">
-          <p>
-            A high CAT score requires 8–10 months of consistent effort. Defining
-            your intrinsic reasons early sustains discipline through mock score
-            plateaus:
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-secondary">
-            <li>
-              <strong className="text-on-surface">Career Acceleration:</strong>{" "}
-              Transitioning from individual execution to strategic leadership
-              and general management roles.
-            </li>
-            <li>
-              <strong className="text-on-surface">Domain Pivot:</strong> Moving
-              into Management Consulting, Investment Banking, Private Equity,
-              Product Management, or Brand Strategy.
-            </li>
-            <li>
-              <strong className="text-on-surface">Network & Pedigree:</strong>{" "}
-              Gaining access to lifelong alumni networks, top recruiters, and
-              high-caliber peer groups.
-            </li>
-            <li>
-              <strong className="text-on-surface">Target Milestones:</strong>{" "}
-              Establish your attempt year, daily study hours, target percentile
-              band, and diagnostic baseline.
-            </li>
-          </ul>
-        </div>
-      </JourneyTopicAccordion>
-
-      {/* ─────────────────────────────────────────────────────────────
-          TOPIC 7: MBA CALL PREDICTOR (EMBEDDED)
-      ───────────────────────────────────────────────────────────── */}
-      <JourneyTopicAccordion
-        id="call-predictor"
-        number="07"
-        title="MBA Call Predictor"
-        isOpen={Boolean(openTopicIds["call-predictor"])}
-        onToggle={() => toggleTopic("call-predictor")}
-      >
-        <div className="py-2 space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm text-secondary leading-relaxed">
-            <p>
-              Evaluate your interview call probabilities across IIMs and premier
-              business schools based on your 10th, 12th, graduation scores, work
-              experience, category, and target CAT percentile.
-            </p>
-            <a
-              href="https://mba-call-predictor.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant hover:border-primary/50 text-xs font-mono text-primary transition-all shrink-0 self-start sm:self-auto"
-            >
-              <span>Open in New Tab</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          </div>
-
-          {/* Embedded Predictor Iframe */}
-          <div className="w-full rounded-xl overflow-hidden border border-outline-variant bg-surface-container shadow-inner">
-            <iframe
-              src="https://mba-call-predictor.vercel.app/"
-              title="MBA Call Predictor"
-              className="w-full h-[650px] sm:h-[750px] border-0"
-              loading="lazy"
-              allow="clipboard-write"
-            />
+            {/* DILR Pillar */}
+            <div className="p-4 rounded-xl bg-surface border border-outline-variant/80 space-y-3 shadow-xs">
+              <div className="flex items-center justify-between border-b border-outline-variant/60 pb-2.5">
+                <span className="font-mono text-xs uppercase tracking-wider text-primary font-bold">
+                  Data Interpretation & LR (DILR)
+                </span>
+                <span className="text-[11px] font-mono text-secondary bg-surface-container px-2 py-0.5 rounded border border-outline-variant/50">
+                  20–22 Qs • 40m
+                </span>
+              </div>
+              <div className="space-y-2.5 text-xs">
+                <div>
+                  <p className="font-semibold text-on-surface">Logical Reasoning</p>
+                  <p className="text-secondary/90 font-light mt-0.5">
+                    Linear & Circular Arrangements, Matrix Attribute Grids, Games & Tournaments (Round-Robin, Knockouts), Truth-Teller & Liar Binary Deduction.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-on-surface">Data Interpretation</p>
+                  <p className="text-secondary/90 font-light mt-0.5">
+                    Complex Multi-Layer Tables, Bar & Line Charts, Pie Charts, Radar/Spider Charts, Bubble & Scatter Plots, Missing Data Caselets.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-on-surface">Hybrid Analytical Sets</p>
+                  <p className="text-secondary/90 font-light mt-0.5">
+                    Network Routes & Max Flow, Venn Diagrams (2, 3, 4 Sets Maxima-Minima), Scheduling & Optimization Constraints.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </JourneyTopicAccordion>
