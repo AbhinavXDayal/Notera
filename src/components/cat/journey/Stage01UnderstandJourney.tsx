@@ -7,12 +7,7 @@ import { ScorePercentileExplorer } from "./ScorePercentileExplorer";
 import { CallPredictorCard } from "./CallPredictorCard";
 import { GoalPlanningSection } from "./GoalPlanningSection";
 import { PreparationApproach } from "./PreparationApproach";
-import {
-  Building2,
-  Sparkles,
-  ArrowRight,
-  Info,
-} from "lucide-react";
+import { Building2, Sparkles, ArrowRight, Info } from "lucide-react";
 
 interface Stage01UnderstandJourneyProps {
   onNavigateNextStage?: () => void;
@@ -52,10 +47,22 @@ export const Stage01UnderstandJourney: React.FC<
       >
         <div className="bg-surface-container border border-outline-variant rounded-xl p-5 sm:p-6 text-xs sm:text-sm text-secondary leading-relaxed space-y-2.5 shadow-terra-card">
           <p>
-            The <strong className="text-on-surface">Common Admission Test (CAT)</strong> is India’s premier national-level computer-based entrance examination conducted annually by the Indian Institutes of Management (IIMs) for admission to top-tier postgraduate management programs (MBA/PGP).
+            The{" "}
+            <strong className="text-on-surface">
+              Common Admission Test (CAT)
+            </strong>{" "}
+            is India’s premier national-level computer-based entrance
+            examination conducted annually by the Indian Institutes of
+            Management (IIMs) for admission to top-tier postgraduate management
+            programs (MBA/PGP).
           </p>
           <p>
-            Rather than testing rote memorization, CAT evaluates speed, comprehension, analytical reasoning, and decisive decision-making under strict time constraints across three locked 40-minute sections: <span className="text-on-surface font-medium">VARC</span>, <span className="text-on-surface font-medium">DILR</span>, and <span className="text-on-surface font-medium">QA</span>.
+            Rather than testing rote memorization, CAT evaluates speed,
+            comprehension, analytical reasoning, and decisive decision-making
+            under strict time constraints across three locked 40-minute
+            sections: <span className="text-on-surface font-medium">VARC</span>,{" "}
+            <span className="text-on-surface font-medium">DILR</span>, and{" "}
+            <span className="text-on-surface font-medium">QA</span>.
           </p>
         </div>
       </JourneySection>

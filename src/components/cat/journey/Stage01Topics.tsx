@@ -6,10 +6,7 @@ import { ScorePercentileExplorer } from "./ScorePercentileExplorer";
 import { CallPredictorCard } from "./CallPredictorCard";
 import { GoalPlanningSection } from "./GoalPlanningSection";
 import { PreparationApproach } from "./PreparationApproach";
-import {
-  Building2,
-  Info,
-} from "lucide-react";
+import { Building2, Info } from "lucide-react";
 
 const ALL_TOPIC_IDS = [
   "what-is-cat",
@@ -84,17 +81,27 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         id="what-is-cat"
         number="01"
         title="What is CAT?"
-        tagline="Overview, purpose, and core exam philosophy"
-        badge="Overview"
         isOpen={Boolean(openTopicIds["what-is-cat"])}
         onToggle={() => toggleTopic("what-is-cat")}
       >
         <div className="py-2 text-xs sm:text-sm text-secondary leading-relaxed space-y-2.5">
           <p>
-            The <strong className="text-on-surface">Common Admission Test (CAT)</strong> is India’s premier national-level computer-based entrance examination conducted annually by the Indian Institutes of Management (IIMs) for admission to top-tier postgraduate management programs (MBA/PGP).
+            The{" "}
+            <strong className="text-on-surface">
+              Common Admission Test (CAT)
+            </strong>{" "}
+            is India’s premier national-level computer-based entrance
+            examination conducted annually by the Indian Institutes of
+            Management (IIMs) for admission to top-tier postgraduate management
+            programs (MBA/PGP).
           </p>
           <p>
-            Rather than testing rote memorization, CAT evaluates speed, comprehension, analytical reasoning, and decisive decision-making under strict time constraints across three locked 40-minute sections: <span className="text-on-surface font-medium">VARC</span>, <span className="text-on-surface font-medium">DILR</span>, and <span className="text-on-surface font-medium">QA</span>.
+            Rather than testing rote memorization, CAT evaluates speed,
+            comprehension, analytical reasoning, and decisive decision-making
+            under strict time constraints across three locked 40-minute
+            sections: <span className="text-on-surface font-medium">VARC</span>,{" "}
+            <span className="text-on-surface font-medium">DILR</span>, and{" "}
+            <span className="text-on-surface font-medium">QA</span>.
           </p>
         </div>
       </JourneyTopicAccordion>
@@ -106,8 +113,6 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         id="pillars"
         number="02"
         title="QA, VARC & DILR"
-        tagline="The three cognitive pillars with non-negotiable 40-minute locked windows"
-        badge="3 Sections"
         isOpen={Boolean(openTopicIds["pillars"])}
         onToggle={() => toggleTopic("pillars")}
       >
@@ -127,8 +132,6 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         id="pattern"
         number="03"
         title="Exam Pattern & Structure"
-        tagline="Structural constraints, negative marking economics (+3/-1), and time limits"
-        badge="Pattern"
         isOpen={Boolean(openTopicIds["pattern"])}
         onToggle={() => toggleTopic("pattern")}
       >
@@ -173,8 +176,6 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         id="score-percentile"
         number="04"
         title="Percentile vs Score"
-        tagline="Why ~40–50% raw marks yields 99th percentile + Interactive Estimator Tool"
-        badge="Interactive Tool"
         isOpen={Boolean(openTopicIds["score-percentile"])}
         onToggle={() => toggleTopic("score-percentile")}
       >
@@ -190,8 +191,6 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         id="colleges"
         number="05"
         title="Target Colleges"
-        tagline="College taxonomy tiers, percentile requirements, and composite score criteria"
-        badge="Institutions"
         isOpen={Boolean(openTopicIds["colleges"])}
         onToggle={() => toggleTopic("colleges")}
       >
@@ -259,8 +258,6 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         id="goals"
         number="06"
         title="Understanding Your Goals"
-        tagline="Four foundational questions to define your target attempt year and profile"
-        badge="Alignment"
         isOpen={Boolean(openTopicIds["goals"])}
         onToggle={() => toggleTopic("goals")}
       >
@@ -276,8 +273,6 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
         id="prep-approach"
         number="07"
         title="Choosing Your Preparation Approach"
-        tagline="Compare Self-Study, Guided Coaching, and the Balanced Hybrid model"
-        badge="Execution"
         isOpen={Boolean(openTopicIds["prep-approach"])}
         onToggle={() => toggleTopic("prep-approach")}
       >

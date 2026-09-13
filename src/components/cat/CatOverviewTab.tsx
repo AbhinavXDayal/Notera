@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   ArrowLeft,
   ChevronDown,
-  Sparkles,
   BookOpen,
   X,
   Compass,
@@ -578,12 +577,6 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               01 — Understand the Journey
             </h4>
-            {activeStageId === "01" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -639,12 +632,6 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               02 — Build Your Foundation
             </h4>
-            {activeStageId === "02" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -741,12 +728,6 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               03 — Complete the Core Syllabus
             </h4>
-            {activeStageId === "03" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -819,12 +800,6 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               04 — Practice &amp; Application
             </h4>
-            {activeStageId === "04" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -909,12 +884,6 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               05 — Sectional Strategy
             </h4>
-            {activeStageId === "05" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -1004,12 +973,6 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               06 — Enter the Mock Phase
             </h4>
-            {activeStageId === "06" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -1068,12 +1031,6 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               07 — Mock Analysis
             </h4>
-            {activeStageId === "07" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -1138,12 +1095,6 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               08 — Previous Year Questions
             </h4>
-            {activeStageId === "08" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -1203,12 +1154,6 @@ export const CatOverviewTab: React.FC<CatOverviewTabProps> = ({
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               09 — Build Your Personal CAT Strategy
             </h4>
-            {activeStageId === "09" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -1268,12 +1213,6 @@ ACCURACY → What causes my mistakes?`}
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               10 — Revision &amp; Error Correction
             </h4>
-            {activeStageId === "10" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -1343,12 +1282,6 @@ ACCURACY → What causes my mistakes?`}
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               11 — Intensive Mock Phase
             </h4>
-            {activeStageId === "11" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -1405,12 +1338,6 @@ ACCURACY → What causes my mistakes?`}
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               12 — Final Month
             </h4>
-            {activeStageId === "12" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -1470,12 +1397,6 @@ ACCURACY → What causes my mistakes?`}
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               13 — CAT Exam Strategy
             </h4>
-            {activeStageId === "13" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -1531,12 +1452,6 @@ ACCURACY → What causes my mistakes?`}
             <h4 className="font-display text-lg text-on-surface group-hover:text-primary transition-colors font-semibold">
               14 — Beyond CAT
             </h4>
-            {activeStageId === "14" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
@@ -1589,12 +1504,6 @@ ACCURACY → What causes my mistakes?`}
             <h4 className="font-display text-xl text-on-surface group-hover:text-primary transition-colors font-semibold">
               The Notera CAT Journey
             </h4>
-            {activeStageId === "summary" && (
-              <span className="inline-flex items-center space-x-1 text-[10px] font-mono font-semibold text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>CONNECTED</span>
-              </span>
-            )}
           </div>
           <div className="p-1 rounded-md text-secondary group-hover:text-primary transition-colors">
             <ChevronDown
