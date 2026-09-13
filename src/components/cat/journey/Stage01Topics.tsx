@@ -130,8 +130,8 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
             </li>
             <li>
               <strong className="text-on-surface">Sectional Lock:</strong> 40
-              minutes per section with an automatic timer transition. You
-              cannot return to previous sections or jump ahead.
+              minutes per section with an automatic timer transition. You cannot
+              return to previous sections or jump ahead.
             </li>
             <li>
               <strong className="text-on-surface">Double Hurdle:</strong> Top
@@ -258,15 +258,13 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
       >
         <div className="py-2 text-xs sm:text-sm text-secondary leading-relaxed space-y-2.5">
           <p>
-            A high CAT score requires 8–10 months of consistent effort.
-            Defining your intrinsic reasons early sustains discipline through
-            mock score plateaus:
+            A high CAT score requires 8–10 months of consistent effort. Defining
+            your intrinsic reasons early sustains discipline through mock score
+            plateaus:
           </p>
           <ul className="list-disc pl-5 space-y-1.5 text-secondary">
             <li>
-              <strong className="text-on-surface">
-                Career Acceleration:
-              </strong>{" "}
+              <strong className="text-on-surface">Career Acceleration:</strong>{" "}
               Transitioning from individual execution to strategic leadership
               and general management roles.
             </li>
@@ -303,8 +301,8 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm text-secondary leading-relaxed">
             <p>
               Evaluate your interview call probabilities across IIMs and premier
-              business schools based on your 10th, 12th, graduation scores,
-              work experience, category, and target CAT percentile.
+              business schools based on your 10th, 12th, graduation scores, work
+              experience, category, and target CAT percentile.
             </p>
             <a
               href="https://mba-call-predictor.vercel.app/"
