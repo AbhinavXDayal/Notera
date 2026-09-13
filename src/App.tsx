@@ -11,6 +11,7 @@ import { CatRoadmapTab } from "./components/cat/CatRoadmapTab";
 import { CatSubjectsTab } from "./components/cat/CatSubjectsTab";
 import { CatPracticeTab } from "./components/cat/CatPracticeTab";
 import { CatExamInfoModal } from "./components/cat/CatExamInfoModal";
+import { CatUniverseModal } from "./components/cat/CatUniverseModal";
 import { NotesLayout } from "./components/notes/NotesLayout";
 import { ResourceLibraryView } from "./components/resources/ResourceLibraryView";
 import { FieldGuideView } from "./components/field/FieldGuideView";
@@ -36,6 +37,7 @@ export function App() {
   const [isVisitorOnboardingOpen, setIsVisitorOnboardingOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCatExamModalOpen, setIsCatExamModalOpen] = useState(false);
+  const [isCatModalOpen, setIsCatModalOpen] = useState(false);
 
   // Visitor Preferences & Recommendations
   const {
@@ -98,9 +100,7 @@ export function App() {
       return;
     }
     if (field.id === "CAT") {
-      setCurrentView("cat");
-      setCatTab("overview");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      setIsCatModalOpen(true);
     } else {
       setSelectedFieldId(field.id);
       setCurrentView("field");
@@ -110,7 +110,7 @@ export function App() {
 
   const handleSelectFieldById = (fieldId: FieldId) => {
     if (fieldId === "CAT") {
-      handleSelectField(FIELDS_DATA[0]);
+      setIsCatModalOpen(true);
     } else {
       setSelectedFieldId(fieldId);
       setCurrentView("field");
@@ -122,6 +122,10 @@ export function App() {
     tab: CatTabType = "overview",
     chapterId?: string,
   ) => {
+    if (tab === "overview") {
+      setIsCatModalOpen(true);
+      return;
+    }
     setCurrentView("cat");
     setCatTab(tab);
     if (chapterId) {
@@ -137,16 +141,12 @@ export function App() {
 
   const handleRecommendationCta = () => {
     if (recommendation.targetView === "cat") {
-      setCurrentView("cat");
-      setCatTab(recommendation.targetTab || "overview");
-      if (recommendation.targetChapterId) {
-        setActiveNoteChapterId(recommendation.targetChapterId);
-      }
+      setIsCatModalOpen(true);
     } else if (recommendation.targetView === "field") {
       setSelectedFieldId((recommendation.targetFieldId || "JEE") as FieldId);
       setCurrentView("field");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleSecondaryLinkClick = (link: {
@@ -156,18 +156,12 @@ export function App() {
     targetFieldId?: string;
   }) => {
     if (link.targetView === "cat" || !link.targetView) {
-      setCurrentView("cat");
-      if (link.targetTab) {
-        setCatTab(link.targetTab);
-      }
-      if (link.targetChapterId) {
-        setActiveNoteChapterId(link.targetChapterId);
-      }
+      setIsCatModalOpen(true);
     } else if (link.targetView === "field") {
       setSelectedFieldId((link.targetFieldId || "JEE") as FieldId);
       setCurrentView("field");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // Sort fields so visitor's selected interests appear first and are highlighted
@@ -327,8 +321,7 @@ export function App() {
             fieldId={selectedFieldId}
             onBackToPaths={handleNavigateHome}
             onSelectCatPortal={() => {
-              setCurrentView("cat");
-              setCatTab("overview");
+              setIsCatModalOpen(true);
             }}
           />
         )}
@@ -356,6 +349,14 @@ export function App() {
       <CatExamInfoModal
         isOpen={isCatExamModalOpen}
         onClose={() => setIsCatExamModalOpen(false)}
+      />
+
+      {/* CAT Universe Big Pop-up Modal */}
+      <CatUniverseModal
+        isOpen={isCatModalOpen}
+        onClose={() => setIsCatModalOpen(false)}
+        onNavigateTab={handleNavigateCat}
+        onOpenFundamentals={() => setIsCatExamModalOpen(true)}
       />
     </div>
   );
