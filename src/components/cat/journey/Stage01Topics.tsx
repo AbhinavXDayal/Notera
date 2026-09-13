@@ -8,16 +8,6 @@ import { GoalPlanningSection } from "./GoalPlanningSection";
 import { PreparationApproach } from "./PreparationApproach";
 import { Building2, Info } from "lucide-react";
 
-const ALL_TOPIC_IDS = [
-  "what-is-cat",
-  "pillars",
-  "pattern",
-  "score-percentile",
-  "colleges",
-  "goals",
-  "prep-approach",
-];
-
 interface Stage01TopicsProps {
   defaultOpenTopicId?: string | null;
   onAdvanceNextStage?: () => void;
@@ -42,37 +32,10 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
     }));
   };
 
-  const isAllOpen = ALL_TOPIC_IDS.every((id) => openTopicIds[id]);
-
-  const toggleAllTopics = () => {
-    const nextState = !isAllOpen;
-    const nextMap: Record<string, boolean> = {};
-    ALL_TOPIC_IDS.forEach((id) => {
-      nextMap[id] = nextState;
-    });
-    setOpenTopicIds(nextMap);
-  };
-
   const { pillars, examPattern, targetColleges } = STAGE_01_DATA;
 
   return (
     <div className="space-y-4">
-      {/* Intro Header & Quick Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-xl bg-surface-container/60 border border-outline-variant/60 text-xs sm:text-sm leading-relaxed">
-        <p className="text-secondary">
-          <strong className="text-on-surface">Orientation Principle: </strong>
-          Before opening books, solving questions or buying courses, understand
-          what CAT actually is, how the exam works, and how you want to
-          strategically structure your preparation.
-        </p>
-        <button
-          type="button"
-          onClick={toggleAllTopics}
-          className="self-start sm:self-center text-xs font-mono text-primary hover:text-on-surface border border-outline-variant/80 hover:border-primary px-3 py-1 rounded-lg bg-surface/60 transition-all cursor-pointer whitespace-nowrap shrink-0"
-        >
-          {isAllOpen ? "Collapse All Topics" : "Expand All Topics"}
-        </button>
-      </div>
 
       {/* ─────────────────────────────────────────────────────────────
           TOPIC 1: WHAT IS CAT?

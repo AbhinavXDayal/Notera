@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  ArrowLeft,
-  ChevronDown,
-  BookOpen,
-  X,
-  Compass,
-} from "lucide-react";
+import { ArrowLeft, ChevronDown, BookOpen, X, Compass } from "lucide-react";
 import { Stage01Topics } from "./journey/Stage01Topics";
 
 export type CatTabType =
