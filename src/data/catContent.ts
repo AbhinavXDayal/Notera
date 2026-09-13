@@ -207,6 +207,34 @@ export const CAT_STAGE_01_EXPLANATIONS: Record<string, TopicAiExplanation> = {
       },
     ],
   },
+  "call-predictor": {
+    title: "MBA Call Predictor",
+    summary:
+      "Interactive admissions probability and composite score estimation for IIMs and premier management institutions.",
+    explanation:
+      "The MBA Call Predictor allows CAT aspirants to simulate their interview call likelihood across 21 IIMs, FMS Delhi, SPJIMR, and other top business schools. It takes into account 10th, 12th, and graduation percentages, work experience duration, academic discipline, category reservations, and CAT sectional and overall percentiles.",
+    keyPoints: [
+      "Simulate shortlisting probabilities for IIM Ahmedabad, Bangalore, Calcutta, and new/baby IIMs.",
+      "Factor in academic diversity, gender diversity, and category multipliers.",
+      "Direct integration with live composite score evaluation algorithms.",
+    ],
+    whyItMatters:
+      "Understanding your profile strength early helps you set realistic percentile targets and determine which colleges prioritize CAT scores over past academics.",
+    beginnerPerspective:
+      "Enter your academic marks and explore what CAT percentile band is required to secure interview calls from your target colleges.",
+    nextTopics: [
+      {
+        id: "what-is-cat",
+        title: "What is CAT?",
+        tagline: "Review core philosophy and orientation principles",
+      },
+      {
+        id: "pillars",
+        title: "QA, VARC & DILR",
+        tagline: "Start planning your section-wise study schedule",
+      },
+    ],
+  },
 };
 
 /**

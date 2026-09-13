@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { JourneyTopicAccordion } from "./JourneyTopicAccordion";
+import { ExternalLink } from "lucide-react";
 
 interface Stage01TopicsProps {
   defaultOpenTopicId?: string | null;
@@ -289,40 +290,43 @@ export const Stage01Topics: React.FC<Stage01TopicsProps> = ({
       </JourneyTopicAccordion>
 
       {/* ─────────────────────────────────────────────────────────────
-          TOPIC 7: CHOOSING YOUR PREPARATION APPROACH
+          TOPIC 7: MBA CALL PREDICTOR (EMBEDDED)
       ───────────────────────────────────────────────────────────── */}
       <JourneyTopicAccordion
-        id="prep-approach"
+        id="call-predictor"
         number="07"
-        title="Choosing Your Preparation Approach"
-        isOpen={Boolean(openTopicIds["prep-approach"])}
-        onToggle={() => toggleTopic("prep-approach")}
+        title="MBA Call Predictor"
+        isOpen={Boolean(openTopicIds["call-predictor"])}
+        onToggle={() => toggleTopic("call-predictor")}
       >
-        <div className="py-2 text-xs sm:text-sm text-secondary leading-relaxed space-y-2.5">
-          <p>
-            Choose the preparation method that fits your baseline, routine, and
-            discipline level:
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-secondary">
-            <li>
-              <strong className="text-on-surface">Self-Study:</strong> Ideal
-              for self-disciplined students and working professionals using
-              standard books, online resources, and mock test series.
-            </li>
-            <li>
-              <strong className="text-on-surface">Guided Coaching:</strong>{" "}
-              Best for aspirants who benefit from fixed lecture schedules,
-              structured batch deadlines, and direct faculty doubt-clearing.
-            </li>
-            <li>
-              <strong className="text-on-surface">
-                Hybrid Model (Recommended):
-              </strong>{" "}
-              Self-driven foundational study combined with targeted micro-courses
-              for weak topics and enrollment in 2 national test series (e.g.
-              TIME / IMS / CL).
-            </li>
-          </ul>
+        <div className="py-2 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm text-secondary leading-relaxed">
+            <p>
+              Evaluate your interview call probabilities across IIMs and premier
+              business schools based on your 10th, 12th, graduation scores,
+              work experience, category, and target CAT percentile.
+            </p>
+            <a
+              href="https://mba-call-predictor.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant hover:border-primary/50 text-xs font-mono text-primary transition-all shrink-0 self-start sm:self-auto"
+            >
+              <span>Open in New Tab</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          {/* Embedded Predictor Iframe */}
+          <div className="w-full rounded-xl overflow-hidden border border-outline-variant bg-surface-container shadow-inner">
+            <iframe
+              src="https://mba-call-predictor.vercel.app/"
+              title="MBA Call Predictor"
+              className="w-full h-[650px] sm:h-[750px] border-0"
+              loading="lazy"
+              allow="clipboard-write"
+            />
+          </div>
         </div>
       </JourneyTopicAccordion>
     </div>

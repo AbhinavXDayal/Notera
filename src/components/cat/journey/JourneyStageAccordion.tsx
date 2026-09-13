@@ -47,7 +47,7 @@ export const JourneyStageAccordion: React.FC<JourneyStageAccordionProps> = ({
     "Percentile vs Score",
     "Target Colleges",
     "Understanding Your Goals",
-    "Choosing Your Preparation Approach",
+    "MBA Call Predictor",
   ];
 
   return (
