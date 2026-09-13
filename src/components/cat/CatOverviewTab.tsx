@@ -1104,7 +1104,7 @@ ACCURACY → What causes my mistakes?`}
   );
 
   return (
-    <div className="w-full px-3 sm:px-6 lg:px-8 py-6 space-y-6 fade-in">
+    <div className="w-full px-1 sm:px-2 md:px-4 py-2 space-y-6 fade-in">
       {/* Top Header Row: Back Navigation */}
       {onBackToPaths && (
         <div className="flex items-center justify-between">
@@ -1154,15 +1154,11 @@ ACCURACY → What causes my mistakes?`}
         </div>
 
         {/* Display only the active button's section */}
-        <div className="pt-2">
+        <div className="pt-2 w-full">
           {activeViewMode === "roadmap" ? (
-            <div className="fade-in max-w-4xl mx-auto">
-              {renderRoadmapContent()}
-            </div>
+            <div className="fade-in w-full">{renderRoadmapContent()}</div>
           ) : (
-            <div className="fade-in max-w-4xl mx-auto">
-              {renderNotesContent()}
-            </div>
+            <div className="fade-in w-full">{renderNotesContent()}</div>
           )}
         </div>
       </div>
